@@ -1,0 +1,460 @@
+/* ═══════════════════════════════════════════════════════════════
+   CHARTE GRAPHIQUE LAWIA — Fichier de référence
+   À importer dans tous les sites du cabinet pour cohérence visuelle
+
+   Principes :
+   - Bleu sky + Crème + Noir
+   - Georgia / Calibri / Consolas / Caveat
+   - Zéro dégradé, zéro rouge/vert/orange/violet
+   - Bordures épaisses, ombres offset solides
+   - Alternance sections claires/sombres
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ═══ 1. VARIABLES COULEURS ═══ */
+:root {
+  /* Bleus (accent) */
+  --bleu:    #6A9BCC;   /* Principal — accents, liens, highlights */
+  --bleu-f:  #4A7BA8;   /* Foncé — hover, ombres offset, overlines */
+  --bleu-c:  #A8C4E0;   /* Clair — textes sur fond noir, icônes SVG */
+  --bleu-p:  #D3E5F8;   /* Pâle — fonds de sections claires */
+
+  /* Neutres */
+  --dark:    #141413;    /* Noir quasi-pur — textes, fonds sombres, bordures */
+  --code:    #1A1917;    /* Noir léger — fonds de cards sur noir */
+  --creme:   #FAF9F5;    /* Crème chaud — fond principal */
+  --gris:    #B0AEA5;    /* Gris moyen — textes secondaires */
+  --gris-c:  #E8E6DC;    /* Gris clair — séparateurs, bordures internes */
+
+  /* Utilitaire négatif (croix, erreurs) */
+  --negatif: #C4745B;    /* Terre cuite — uniquement pour items négatifs */
+
+  /* Dimensions & effets */
+  --r: 12px;
+  --shadow:      0 4px 16px rgba(20,20,19, 0.10);
+  --shadow-bleu: 0 4px 16px rgba(74,123,168, 0.18);
+}
+
+
+/* ═══ 2. RESET & BASE ═══ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: Calibri, 'Gill Sans', sans-serif;
+  background: var(--creme);
+  color: var(--dark);
+  line-height: 1.75;
+  overflow-x: hidden;
+}
+
+
+/* ═══ 3. TYPOGRAPHIE ═══ */
+
+/* Google Fonts à ajouter dans le <head> :
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+*/
+
+h1, h2, h3, h4 { font-family: Georgia, serif; font-weight: 700; }
+h1 { font-size: clamp(2.2rem, 4.5vw, 3.4rem); line-height: 1.12; margin-bottom: 1.2rem; }
+h2 { font-size: 2.4rem; line-height: 1.2; }
+
+/* Overline — petit label au-dessus des titres */
+.overline {
+  font-family: Calibri, sans-serif;
+  font-size: 0.7rem;
+  color: var(--bleu-f);
+  text-transform: uppercase;
+  letter-spacing: 3.5px;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+/* Accent bleu sur un mot */
+.accent { color: var(--bleu); }
+
+/* Texte manuscrit (accroche) */
+.handwritten {
+  font-family: 'Caveat', cursive;
+  font-size: 1.8rem;
+  color: var(--bleu-f);
+  margin: -0.3rem 0 1rem;
+  line-height: 1.3;
+  position: relative;
+  display: inline-block;
+  transform: rotate(-1deg);
+}
+.handwritten::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--bleu-f);
+  opacity: 0.35;
+}
+
+
+/* ═══ 4. LAYOUT ═══ */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 1; }
+section { padding: 5.5rem 0; }
+
+
+/* ═══ 5. COMPOSANTS DÉCORATIFS ═══ */
+
+/* Ink separator — trait décoratif sous les overlines */
+.ink   { display: block; width: 48px; height: 3px; background: var(--dark); margin-bottom: 1rem; }
+.ink-c { display: block; width: 48px; height: 3px; background: var(--dark); margin: 0 auto 1rem; }
+
+/* Tags (badges) */
+.tag {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  background: var(--dark);
+  color: var(--creme);
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 4px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  border: 2px solid var(--dark);
+  box-shadow: 2px 2px 0 0 var(--bleu-f);
+}
+
+/* Dots pattern (fond hero) */
+.dots-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, var(--gris-c) 1px, transparent 1px);
+  background-size: 28px 28px;
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 0;
+}
+
+
+/* ═══ 6. NAVIGATION ═══ */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 0.7rem 0;
+  background: var(--creme);
+  border-bottom: 3px solid var(--dark);
+  transition: all 0.3s;
+}
+nav .container { display: flex; justify-content: space-between; align-items: center; }
+
+.logo { font-family: Georgia, serif; font-size: 1.5rem; font-weight: 700; color: var(--dark); text-decoration: none; }
+.logo span { color: var(--bleu); }
+
+nav ul { display: flex; list-style: none; gap: 1.6rem; align-items: center; }
+nav a { color: var(--gris); text-decoration: none; font-size: 0.95rem; font-weight: 600; transition: color 0.2s; }
+nav a:hover { color: var(--dark); }
+
+.nav-cta {
+  background: var(--dark);
+  color: var(--creme) !important;
+  padding: 0.4rem 1rem;
+  border-radius: 4px;
+  border: 2px solid var(--dark);
+}
+.nav-cta:hover { background: var(--bleu); border-color: var(--bleu); }
+
+
+/* ═══ 7. BOUTONS (3 variantes) ═══ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.6rem;
+  border-radius: 4px;
+  font-family: Calibri, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-decoration: none;
+  border: 3px solid var(--dark);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+/* Primary — fond noir, ombre bleutée */
+.btn-primary { background: var(--dark); color: var(--creme); box-shadow: var(--shadow-bleu); }
+.btn-primary:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 0 var(--bleu-f); }
+
+/* Outline — fond crème, bordure noire */
+.btn-outline { background: var(--creme); color: var(--dark); }
+.btn-outline:hover { background: var(--bleu-p); }
+
+/* Light — fond bleu, ombre crème */
+.btn-light { background: var(--bleu); color: #fff; border-color: var(--bleu); box-shadow: 6px 6px 0 0 var(--creme); }
+.btn-light:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 0 var(--creme); }
+
+
+/* ═══ 8. CARDS ═══ */
+
+/* Card blanche sur fond clair */
+.card {
+  background: #fff;
+  border: 3px solid var(--dark);
+  border-radius: var(--r);
+  padding: 1.8rem;
+  box-shadow: var(--shadow);
+}
+
+/* Card sombre sur fond noir */
+.card-dark {
+  background: var(--code);
+  border: 2px solid #2a2a28;
+  border-radius: var(--r);
+  padding: 1.6rem;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.card-dark:hover {
+  border-color: var(--bleu);
+  transform: translateY(-3px);
+  box-shadow: 0 0 0 1px var(--bleu);
+}
+.card-dark::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--bleu);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.card-dark:hover::before { opacity: 1; }
+
+/* Card témoignage — ombre offset noire */
+.card-testi {
+  background: #fff;
+  border: 3px solid var(--dark);
+  border-radius: var(--r);
+  padding: 1.5rem;
+  box-shadow: 4px 4px 0 0 var(--dark);
+}
+
+/* Card prix — ombre offset bleu */
+.card-price {
+  max-width: 460px;
+  margin: 2rem auto 0;
+  background: var(--creme);
+  border: 3px solid var(--creme);
+  border-radius: var(--r);
+  padding: 2.5rem;
+  text-align: center;
+  color: var(--dark);
+  box-shadow: 8px 8px 0 0 var(--bleu-f);
+}
+
+
+/* ═══ 9. FAQ ACCORDÉON ═══ */
+details {
+  border: 3px solid var(--dark);
+  border-radius: var(--r);
+  margin-bottom: 0.8rem;
+  background: #fff;
+  overflow: hidden;
+}
+summary {
+  padding: 1rem 1.2rem;
+  font-family: Georgia, serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+summary::after {
+  content: '+';
+  font-family: Consolas, monospace;
+  font-size: 1.2rem;
+  color: var(--bleu);
+  transition: transform 0.3s;
+}
+details[open] summary::after { content: '\2212'; }
+details[open] summary { border-bottom: 1px solid var(--gris-c); }
+details p { padding: 0.8rem 1.2rem; font-size: 0.88rem; color: var(--gris); }
+
+
+/* ═══ 10. TERMINAL (bloc démo) ═══ */
+.terminal {
+  background: var(--code);
+  border: 3px solid var(--dark);
+  border-radius: var(--r);
+  overflow: hidden;
+  max-width: 700px;
+  margin: 2rem auto 0;
+  box-shadow: var(--shadow);
+}
+.terminal-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.6rem 0.9rem;
+  background: var(--dark);
+  border-bottom: 2px solid #2a2a28;
+}
+.terminal-dot { width: 9px; height: 9px; border-radius: 50%; border: 1.5px solid #555; }
+.terminal-title { flex: 1; text-align: center; font-family: Consolas, monospace; font-size: 0.7rem; color: var(--gris); }
+.terminal-body { padding: 1.2rem; font-family: Consolas, monospace; font-size: 0.76rem; line-height: 1.7; color: #bbb; white-space: pre-line; }
+
+
+/* ═══ 11. STEPS (étapes numérotées) ═══ */
+.step {
+  text-align: center;
+  padding: 1.5rem;
+  background: #fff;
+  border: 3px solid var(--dark);
+  border-radius: var(--r);
+  box-shadow: var(--shadow);
+}
+.step-num {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 2.5px solid var(--dark);
+  font-family: Georgia, serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+}
+
+
+/* ═══ 12. AUTEUR / AVATAR INITIALES ═══ */
+.author-initials {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: var(--dark);
+  color: var(--creme);
+  font-family: Georgia, serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* ═══ 13. FOOTER ═══ */
+footer {
+  background: var(--dark);
+  border-top: 2px solid #2a2a28;
+  padding: 2rem 0;
+  text-align: center;
+}
+footer p { color: var(--gris); font-size: 0.78rem; }
+footer a { color: var(--bleu-c); text-decoration: none; }
+
+
+/* ═══ 14. ICÔNES SVG — Conventions ═══ */
+/*
+  - Toujours en stroke, jamais en fill
+  - stroke: var(--bleu-c) sur fond sombre
+  - stroke: var(--dark) sur fond clair
+  - stroke-width: 2
+  - stroke-linecap: round
+  - stroke-linejoin: round
+  - Taille standard : 28px × 28px
+*/
+
+
+/* ═══ 15. RESPONSIVE ═══ */
+@media (max-width: 900px) {
+  nav ul { display: none; }
+  .hamburger { display: block; }
+  .responsive-grid { grid-template-columns: 1fr !important; }
+}
+
+@media (max-width: 600px) {
+  h1 { font-size: 1.8rem; }
+}
+
+/* Hamburger */
+.hamburger { display: none; background: none; border: none; cursor: pointer; padding: 0.3rem; }
+.hamburger svg { width: 28px; height: 28px; stroke: var(--dark); stroke-width: 2.5; stroke-linecap: round; }
+
+/* Mobile menu overlay */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: var(--creme);
+  z-index: 200;
+  padding: 5rem 2rem 2rem;
+  text-align: center;
+}
+.mobile-menu.open { display: flex; flex-direction: column; gap: 1.2rem; align-items: center; }
+.mobile-menu a { font-family: Georgia, serif; font-size: 1.2rem; color: var(--dark); text-decoration: none; font-weight: 700; }
+.mobile-menu a:hover { color: var(--bleu); }
+.mobile-menu .close-menu {
+  position: absolute;
+  top: 1rem; right: 1.5rem;
+  background: none; border: none;
+  cursor: pointer;
+  font-size: 2rem;
+  color: var(--dark);
+  font-family: Consolas, monospace;
+}
+
+
+/* ═══ 16. ALTERNANCE DES FONDS DE SECTION ═══ */
+/*
+  Rythme obligatoire — jamais deux fonds identiques consécutifs :
+
+  1. var(--creme)   #FAF9F5   Crème       — texte --dark
+  2. var(--bleu-p)  #D3E5F8   Bleu pâle   — texte --dark
+  3. var(--dark)    #141413   Noir         — texte --creme, overline --bleu-c, ink --creme
+  4. #fff                     Blanc pur    — texte --dark
+  5. var(--bleu-f)  #4A7BA8   Bleu foncé   — texte #fff, overline --bleu-p
+*/
+
+/* Helpers pour sections sombres */
+.section-dark { background: var(--dark); color: var(--creme); }
+.section-dark .overline { color: var(--bleu-c); }
+.section-dark .ink, .section-dark .ink-c { background: var(--creme); }
+.section-dark h2 { color: var(--creme); }
+
+/* Helpers pour sections bleu pâle */
+.section-bleu-pale { background: var(--bleu-p); color: var(--dark); }
+.section-bleu-pale .overline { color: var(--bleu-f); }
+
+/* Helpers pour sections bleu foncé */
+.section-bleu-fonce { background: var(--bleu-f); color: #fff; }
+.section-bleu-fonce .overline { color: var(--bleu-p); }
+.section-bleu-fonce .ink-c { background: #fff; }
+.section-bleu-fonce h2 { color: #fff; }
+
+
+/* ═══ 17. RÉCAPITULATIF DES OMBRES OFFSET ═══ */
+/*
+  Signature visuelle LAWIA — ombres solides sans blur :
+
+  Tags :           2px 2px 0 0 var(--bleu-f)
+  Témoignages :    4px 4px 0 0 var(--dark)
+  btn-light :      6px 6px 0 0 var(--creme)
+  Price card :     8px 8px 0 0 var(--bleu-f)
+  btn-primary:hover : 8px 8px 0 0 var(--bleu-f)
+  btn-light:hover :   8px 8px 0 0 var(--creme)
+
+  Progression : 2px → 4px → 6px → 8px selon l'importance du composant
+*/
+
+
+/* ═══ 18. RÉCAPITULATIF BORDER-RADIUS ═══ */
+/*
+  Grands conteneurs (cards, sections, FAQ, terminal) : var(--r) = 12px
+  Petits éléments (boutons, tags, liens, nav-cta) :    4px
+  Cercles (step-num, avatar, dots) :                   50%
+  Barres de progression :                               2px
+*/

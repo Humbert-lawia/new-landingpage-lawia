@@ -1,0 +1,1450 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JurisConnect MCP — L'intelligence juridique connectée aux sources officielles</title>
+<meta name="description" content="Connectez votre IA aux bases juridiques officielles françaises. 38 outils. 6 sources. Légifrance, BOFiP, Judilibre, EUR-Lex, RNE, BODACC.">
+<style>
+/* ═══════════════════════════════════════════════════════════════
+   CHARTE GRAPHIQUE LAWIA
+   Bleu sky + Creme + Noir
+   Georgia / Calibri / Consolas / Caveat
+   Zero degrade. Zero rouge/vert/orange/violet.
+   Bordures epaisses, ombres offset solides
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ═══ 1. VARIABLES COULEURS ═══ */
+:root {
+  /* Bleus (accent) */
+  --bleu:    #6A9BCC;
+  --bleu-f:  #4A7BA8;
+  --bleu-c:  #A8C4E0;
+  --bleu-p:  #D3E5F8;
+
+  /* Neutres */
+  --dark:    #141413;
+  --code:    #1A1917;
+  --creme:   #FAF9F5;
+  --gris:    #B0AEA5;
+  --gris-c:  #E8E6DC;
+
+  /* Utilitaire negatif */
+  --negatif: #C4745B;
+
+  /* Dimensions & effets */
+  --r: 12px;
+  --shadow:      0 4px 16px rgba(20,20,19, 0.10);
+  --shadow-bleu: 0 4px 16px rgba(74,123,168, 0.18);
+}
+
+
+/* ═══ 2. RESET & BASE ═══ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: Calibri, 'Gill Sans', sans-serif;
+  background: var(--creme);
+  color: var(--dark);
+  line-height: 1.75;
+  overflow-x: hidden;
+}
+
+
+/* ═══ 3. TYPOGRAPHIE ═══ */
+h1, h2, h3, h4 { font-family: Georgia, serif; font-weight: 700; }
+h1 { font-size: clamp(2.2rem, 4.5vw, 3.4rem); line-height: 1.12; margin-bottom: 1.2rem; }
+h2 { font-size: 2.4rem; line-height: 1.2; }
+
+.overline {
+  font-family: Calibri, sans-serif;
+  font-size: 0.7rem;
+  color: var(--bleu-f);
+  text-transform: uppercase;
+  letter-spacing: 3.5px;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+.accent { color: var(--bleu); }
+
+.handwritten {
+  font-family: 'Caveat', cursive;
+  font-size: 1.8rem;
+  color: var(--bleu-f);
+  margin: -0.3rem 0 1rem;
+  line-height: 1.3;
+  position: relative;
+  display: inline-block;
+  transform: rotate(-1deg);
+}
+.handwritten::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--bleu-f);
+  opacity: 0.35;
+}
+
+
+/* ═══ 4. LAYOUT ═══ */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 1; }
+section { padding: 5.5rem 0; }
+
+
+/* ═══ 5. COMPOSANTS DECORATIFS ═══ */
+
+/* Ink separator */
+.ink   { display: block; width: 48px; height: 3px; background: var(--dark); margin-bottom: 1rem; }
+.ink-c { display: block; width: 48px; height: 3px; background: var(--dark); margin: 0 auto 1rem; }
+
+/* Tags (badges) */
+.tag {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  background: var(--dark);
+  color: var(--creme);
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 4px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  border: 2px solid var(--dark);
+  box-shadow: 2px 2px 0 0 var(--bleu-f);
+}
+
+/* Dots pattern (fond hero) */
+.dots-pattern {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, var(--gris-c) 1px, transparent 1px);
+  background-size: 28px 28px;
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 0;
+}
+
+
+/* ═══ 6. NAVIGATION ═══ */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 0.7rem 0;
+  background: var(--creme);
+  border-bottom: 3px solid var(--dark);
+  transition: all 0.3s;
+}
+nav.scrolled { padding: 0.5rem 0; }
+nav .container { display: flex; justify-content: space-between; align-items: center; }
+
+.logo { font-family: Georgia, serif; font-size: 1.5rem; font-weight: 700; color: var(--dark); text-decoration: none; display: flex; align-items: center; gap: 0.6rem; }
+.logo .accent { color: var(--bleu); }
+.logo-img { height: 36px; width: auto; object-fit: contain; }
+
+nav ul { display: flex; list-style: none; gap: 1.6rem; align-items: center; }
+nav a { color: var(--gris); text-decoration: none; font-size: 0.95rem; font-weight: 600; transition: color 0.2s; }
+nav a:hover { color: var(--dark); }
+
+.nav-cta {
+  background: var(--dark);
+  color: var(--creme) !important;
+  padding: 0.4rem 1rem;
+  border-radius: 4px;
+  border: 2px solid var(--dark);
+}
+.nav-cta:hover { background: var(--bleu); border-color: var(--bleu); }
+
+.nav-cta-bleu {
+  background: var(--bleu);
+  color: #fff !important;
+  padding: 0.4rem 1rem;
+  border-radius: 4px;
+  border: 2px solid var(--bleu);
+}
+.nav-cta-bleu:hover { background: var(--bleu-f); border-color: var(--bleu-f); }
+
+
+/* ═══ 7. BOUTONS (3 variantes) ═══ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.6rem;
+  border-radius: 4px;
+  font-family: Calibri, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-decoration: none;
+  border: 3px solid var(--dark);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-primary { background: var(--dark); color: var(--creme); box-shadow: var(--shadow-bleu); }
+.btn-primary:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 0 var(--bleu-f); }
+
+.btn-outline { background: var(--creme); color: var(--dark); }
+.btn-outline:hover { background: var(--bleu-p); }
+
+.btn-light { background: var(--bleu); color: #fff; border-color: var(--bleu); box-shadow: 6px 6px 0 0 var(--creme); }
+.btn-light:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 0 var(--creme); }
+
+
+/* ═══ 8. CARDS ═══ */
+.card {
+  background: #fff;
+  border: 3px solid var(--dark);
+  border-radius: var(--r);
+  padding: 1.8rem;
+  box-shadow: var(--shadow);
+}
+.card-dark {
+  background: var(--code);
+  border: 2px solid #2a2a28;
+  border-radius: var(--r);
+  padding: 1.6rem;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.card-dark:hover {
+  border-color: var(--bleu);
+  transform: translateY(-3px);
+  box-shadow: 0 0 0 1px var(--bleu);
+}
+.card-dark::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--bleu);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.card-dark:hover::before { opacity: 1; }
+
+
+/* ═══ 9. FAQ ACCORDEON ═══ */
+details {
+  border: 3px solid var(--dark);
+  border-radius: var(--r);
+  margin-bottom: 0.8rem;
+  background: #fff;
+  overflow: hidden;
+}
+summary {
+  padding: 1rem 1.2rem;
+  font-family: Georgia, serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+summary::after {
+  content: '+';
+  font-family: Consolas, monospace;
+  font-size: 1.2rem;
+  color: var(--bleu);
+  transition: transform 0.3s;
+}
+details[open] summary::after { content: '\2212'; }
+details[open] summary { border-bottom: 1px solid var(--gris-c); }
+details p { padding: 0.8rem 1.2rem; font-size: 0.88rem; color: var(--gris); }
+
+
+/* ═══ 10. TERMINAL (bloc demo) ═══ */
+.terminal {
+  background: var(--code);
+  border: 3px solid var(--dark);
+  border-radius: var(--r);
+  overflow: hidden;
+  max-width: 700px;
+  margin: 2rem auto 0;
+  box-shadow: var(--shadow);
+}
+.terminal-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.6rem 0.9rem;
+  background: var(--dark);
+  border-bottom: 2px solid #2a2a28;
+}
+.terminal-dot { width: 9px; height: 9px; border-radius: 50%; border: 1.5px solid #555; }
+.terminal-title { flex: 1; text-align: center; font-family: Consolas, monospace; font-size: 0.7rem; color: var(--gris); }
+.terminal-body { padding: 1.2rem; font-family: Consolas, monospace; font-size: 0.76rem; line-height: 1.7; color: #bbb; white-space: pre-line; }
+
+
+/* ═══ 11. STEPS (etapes numerotees) ═══ */
+.step {
+  text-align: center;
+  padding: 1.5rem;
+  background: #fff;
+  border: 3px solid var(--dark);
+  border-radius: var(--r);
+  box-shadow: var(--shadow);
+}
+.step-num {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 2.5px solid var(--dark);
+  font-family: Georgia, serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+}
+
+
+/* ═══ 12. AUTEUR / AVATAR INITIALES ═══ */
+.author-initials {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: var(--dark);
+  color: var(--creme);
+  font-family: Georgia, serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* ═══ 13. SECTION HELPERS ═══ */
+.section-dark { background: var(--dark); color: var(--creme); }
+.section-dark .overline { color: var(--bleu-c); }
+.section-dark .ink, .section-dark .ink-c { background: var(--creme); }
+.section-dark h2 { color: var(--creme); }
+
+.section-bleu-pale { background: var(--bleu-p); color: var(--dark); }
+.section-bleu-pale .overline { color: var(--bleu-f); }
+
+.section-bleu-fonce { background: var(--bleu-f); color: #fff; }
+.section-bleu-fonce .overline { color: var(--bleu-p); }
+.section-bleu-fonce .ink-c { background: #fff; }
+.section-bleu-fonce h2 { color: #fff; }
+
+
+/* ═══════════════════════════════════════════════════════════════
+   PAGE-SPECIFIC STYLES
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ═══ HERO ═══ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 5rem;
+  position: relative;
+  overflow: hidden;
+  background: var(--creme);
+}
+.hero .container {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 3rem;
+  align-items: center;
+}
+.hero-illustration {
+  position: relative;
+  z-index: 1;
+  width: 380px;
+  flex-shrink: 0;
+}
+.hero-illustration img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+.hero-content { max-width: 600px; }
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.9rem;
+  background: var(--dark);
+  color: var(--creme);
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 4px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  border: 2px solid var(--dark);
+  box-shadow: 2px 2px 0 0 var(--bleu-f);
+  margin-bottom: 2rem;
+  animation: fadeInUp 0.8s ease;
+}
+.hero-badge .dot {
+  width: 7px; height: 7px;
+  background: var(--bleu);
+  border-radius: 50%;
+}
+
+h1 { animation: fadeInUp 0.8s ease 0.1s both; }
+h1 .accent { color: var(--bleu); }
+
+.hero-sub {
+  font-size: 1.05rem;
+  color: var(--gris);
+  margin-bottom: 2.5rem;
+  max-width: 520px;
+  animation: fadeInUp 0.8s ease 0.2s both;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  animation: fadeInUp 0.8s ease 0.3s both;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 3rem;
+  margin-top: 4rem;
+  padding-top: 2.5rem;
+  border-top: 3px solid var(--dark);
+  animation: fadeInUp 0.8s ease 0.4s both;
+}
+.stat-number {
+  font-family: Georgia, serif;
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--dark);
+  line-height: 1;
+}
+.stat-label {
+  font-size: 0.78rem;
+  color: var(--gris);
+  margin-top: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ═══ PROBLEM / SOLUTION — section-bleu-pale ═══ */
+.problem { background: var(--bleu-p); }
+.problem-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+.problem-text h2 {
+  font-size: 2rem;
+  color: var(--dark);
+  margin-bottom: 1rem;
+}
+.problem-text p {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: var(--gris);
+}
+
+.comparison-card {
+  box-shadow: var(--shadow);
+  background: #fff;
+  border: 3px solid var(--dark);
+  border-radius: var(--r);
+  overflow: hidden;
+}
+.comp-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.comp-header > div {
+  padding: 0.8rem 1.2rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-family: Calibri, sans-serif;
+}
+.comp-without {
+  background: var(--gris-c);
+  color: var(--gris);
+  border-bottom: 2px solid var(--gris);
+}
+.comp-with {
+  background: var(--bleu-p);
+  color: var(--bleu-f);
+  border-bottom: 2px solid var(--bleu);
+}
+.comp-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid var(--gris-c);
+}
+.comp-row > div { padding: 0.7rem 1.2rem; font-size: 0.88rem; }
+.comp-row .bad { color: var(--negatif); text-decoration: line-through; text-decoration-color: var(--negatif); }
+.comp-row .good { color: var(--bleu-f); font-weight: 600; }
+
+
+/* ═══ SOURCES — section-dark ═══ */
+.sources { background: var(--dark); color: var(--creme); }
+.section-header { text-align: center; margin-bottom: 3.5rem; }
+.section-header .overline {
+  font-family: Calibri, sans-serif;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 3.5px;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+}
+.section-header h2 {
+  font-size: 2.4rem;
+  color: inherit;
+}
+.section-header p {
+  max-width: 550px;
+  margin: 0.8rem auto 0;
+  color: var(--gris);
+}
+
+.sources .section-header .overline { color: var(--bleu-c); }
+.sources .ink-c { background: var(--creme); }
+.sources .section-header p { color: var(--gris); }
+
+.sources-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+}
+.source-card {
+  background: var(--creme);
+  border: 3px solid var(--dark);
+  border-radius: var(--r);
+  padding: 1.8rem;
+  transition: all 0.3s ease;
+  position: relative;
+  box-shadow: var(--shadow);
+  color: var(--dark);
+}
+.source-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-bleu);
+  border-color: var(--bleu-f);
+}
+
+.source-icon {
+  width: 44px; height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-family: Consolas, monospace;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  background: var(--bleu-p);
+  color: var(--bleu-f);
+  border: 1px solid var(--bleu-c);
+}
+.source-card h3 {
+  font-size: 1.1rem;
+  color: var(--dark);
+  margin-bottom: 0.4rem;
+}
+.source-card p {
+  font-size: 0.88rem;
+  color: var(--gris);
+  margin-bottom: 0.8rem;
+}
+.source-tools {
+  font-size: 0.78rem;
+  color: var(--bleu-f);
+  font-weight: 700;
+  font-family: Calibri, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.icon-dim { background: var(--gris-c); color: var(--gris); border-color: var(--gris-c); }
+
+
+/* ═══ HOW IT WORKS — #fff ═══ */
+.how { background: #fff; }
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+.step h3 { font-size: 1.05rem; color: var(--dark); margin-bottom: 0.6rem; }
+.step p { font-size: 0.95rem; color: var(--gris); }
+
+
+/* ═══ DEMO — section-bleu-fonce ═══ */
+.demo { background: var(--bleu-f); color: #fff; }
+.demo .section-header .overline { color: var(--bleu-p); }
+.demo .ink-c { background: #fff; }
+.demo h2 { color: #fff; }
+.demo .terminal { box-shadow: var(--shadow-bleu); }
+
+.t-prompt { color: var(--bleu-c); }
+.t-user { color: #eee; }
+.t-ai { color: var(--bleu-c); font-weight: 700; }
+.t-dim { color: #555; }
+.t-ref { color: var(--bleu); }
+
+
+/* ═══ TOOLS — creme ═══ */
+.tools { background: var(--creme); }
+.tools-cats { max-width: 880px; margin: 0 auto; }
+.tool-category {
+  border: 3px solid var(--dark);
+  border-radius: var(--r);
+  margin-bottom: 1rem;
+  background: #fff;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+.tool-cat-header {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1.2rem 1.5rem;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.3s;
+}
+.tool-cat-header:hover { background: var(--bleu-p); }
+.cat-dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.cat-dot-lf { background: var(--bleu-f); }
+.cat-dot-bf { background: var(--bleu); }
+.cat-dot-jl { background: var(--bleu-c); }
+.cat-dot-rne { background: var(--dark); }
+.cat-dot-ue { background: var(--bleu-f); }
+.cat-dot-sys { background: var(--gris); }
+.cat-title {
+  font-family: Georgia, serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+  flex: 1;
+}
+.cat-count {
+  font-family: Consolas, monospace;
+  font-size: 0.7rem;
+  background: var(--bleu-p);
+  color: var(--bleu-f);
+  padding: 0.15rem 0.6rem;
+  border-radius: 20px;
+  font-weight: 700;
+}
+.cat-arrow {
+  font-size: 1.2rem;
+  color: var(--bleu);
+  transition: transform 0.3s;
+  font-family: Consolas, monospace;
+}
+.tool-category[open] .cat-arrow { transform: rotate(45deg); }
+.tool-cat-body { padding: 0 1.5rem 1.2rem; }
+.tool-item {
+  border-bottom: 1px solid var(--gris-c);
+  overflow: hidden;
+}
+.tool-item:last-child { border-bottom: none; }
+.tool-item-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.7rem 0;
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+}
+.tool-item-header::-webkit-details-marker { display: none; }
+.tool-item-header::marker { content: ''; }
+.tool-name {
+  font-family: Consolas, monospace;
+  font-size: 0.82rem;
+  color: var(--dark);
+  font-weight: 600;
+  flex: 1;
+}
+.tool-toggle {
+  font-family: Consolas, monospace;
+  font-size: 0.95rem;
+  color: var(--bleu);
+  transition: transform 0.3s;
+}
+.tool-item[open] .tool-toggle { transform: rotate(45deg); }
+.tool-desc {
+  padding: 0 0 0.8rem 1.4rem;
+  font-size: 0.85rem;
+  color: var(--gris);
+  line-height: 1.6;
+  border-left: 2px solid var(--bleu-p);
+  margin-left: 0.3rem;
+}
+.tool-desc code {
+  font-family: Consolas, monospace;
+  font-size: 0.78rem;
+  background: var(--bleu-p);
+  color: var(--bleu-f);
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+}
+
+
+/* ═══ INSTALL — bleu-p ═══ */
+.install { background: var(--bleu-p); }
+.install-steps {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+.install-card {
+  background: #fff;
+  border: 3px solid var(--dark);
+  border-radius: var(--r);
+  padding: 1.8rem;
+  box-shadow: var(--shadow);
+}
+.install-card h3 {
+  font-family: Georgia, serif;
+  color: var(--dark);
+  font-size: 1rem;
+  margin-bottom: 0.8rem;
+}
+.install-card pre {
+  background: var(--code);
+  padding: 1rem;
+  border-radius: 4px;
+  font-family: Consolas, monospace;
+  font-size: 0.78rem;
+  color: #ccc;
+  overflow-x: auto;
+  line-height: 1.65;
+}
+.install-card pre .key { color: var(--bleu-c); }
+.install-card pre .val { color: var(--bleu); }
+.install-card pre .comment { color: #555; }
+
+
+/* ═══ CTA — dark ═══ */
+.cta {
+  background: var(--dark);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta h2 {
+  font-size: 2.4rem;
+  color: var(--creme);
+  margin-bottom: 0.8rem;
+  position: relative;
+}
+.cta p {
+  font-size: 1.05rem;
+  color: var(--gris);
+  margin-bottom: 2rem;
+  max-width: 450px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+.cta .btn-light {
+  position: relative;
+}
+
+
+/* ═══ AUTHOR — #fff ═══ */
+.author { background: #fff; }
+.author-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2rem;
+  align-items: start;
+  margin-top: 2.5rem;
+  background: var(--creme);
+  border: 3px solid var(--dark);
+  border-radius: var(--r);
+  padding: 2.5rem;
+  box-shadow: var(--shadow);
+}
+.author-initials {
+  width: 72px; height: 72px;
+  flex-shrink: 0;
+}
+.author-name { font-size: 1.1rem; margin-bottom: 0.15rem; }
+.author-role {
+  font-size: 0.78rem;
+  color: var(--bleu-f);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.6rem;
+}
+.author-bio { font-size: 0.88rem; color: var(--gris); line-height: 1.7; }
+.author-stats {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-top: 1.2rem;
+}
+.author-stat {
+  font-size: 0.78rem;
+  padding: 0.3rem 0.8rem;
+  background: var(--bleu-p);
+  color: var(--bleu-f);
+  border-radius: 20px;
+  font-weight: 600;
+}
+.author-quote {
+  margin-top: 1.5rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  background: var(--creme);
+  border: 3px solid var(--dark);
+  border-radius: var(--r);
+  padding: 1.5rem 2rem;
+  box-shadow: 4px 4px 0 0 var(--dark);
+}
+.author-quote blockquote {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 0.92rem;
+  color: var(--dark);
+  margin-bottom: 0.5rem;
+}
+.author-quote cite {
+  font-size: 0.7rem;
+  color: var(--gris);
+  font-style: normal;
+  font-weight: 600;
+}
+
+
+/* ═══ FOOTER ═══ */
+footer {
+  background: var(--dark);
+  border-top: 2px solid #2a2a28;
+  padding: 2rem 0;
+  text-align: center;
+}
+footer p { color: var(--gris); font-size: 0.78rem; }
+footer a { color: var(--bleu-c); text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+
+
+/* ═══ HAMBURGER & MOBILE MENU ═══ */
+.hamburger { display: none; background: none; border: none; cursor: pointer; padding: 0.3rem; }
+.hamburger svg { width: 28px; height: 28px; stroke: var(--dark); stroke-width: 2.5; stroke-linecap: round; }
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: var(--creme);
+  z-index: 200;
+  padding: 5rem 2rem 2rem;
+  text-align: center;
+}
+.mobile-menu.open { display: flex; flex-direction: column; gap: 1.2rem; align-items: center; }
+.mobile-menu a { font-family: Georgia, serif; font-size: 1.2rem; color: var(--dark); text-decoration: none; font-weight: 700; }
+.mobile-menu a:hover { color: var(--bleu); }
+.mobile-menu .close-menu {
+  position: absolute;
+  top: 1rem; right: 1.5rem;
+  background: none; border: none;
+  cursor: pointer;
+  font-size: 2rem;
+  color: var(--dark);
+  font-family: Consolas, monospace;
+}
+.mobile-menu .nav-cta {
+  display: inline-block;
+  padding: 0.6rem 1.5rem;
+  margin-top: 0.5rem;
+}
+.mobile-menu .nav-cta-bleu {
+  display: inline-block;
+  padding: 0.6rem 1.5rem;
+}
+
+
+/* ═══ RESPONSIVE ═══ */
+@media (max-width: 900px) {
+  nav ul { display: none; }
+  .hamburger { display: block; }
+  .hero .container { grid-template-columns: 1fr; }
+  .hero-illustration { display: none; }
+  .problem-grid { grid-template-columns: 1fr; }
+  .sources-grid { grid-template-columns: 1fr 1fr; }
+  .steps { grid-template-columns: 1fr; }
+  .install-steps { grid-template-columns: 1fr; }
+  .comp-header, .comp-row { grid-template-columns: 1fr !important; }
+  .comp-header > div:first-child { border-bottom: 2px solid var(--gris-c); }
+  .author-grid { grid-template-columns: 1fr; text-align: center; }
+  .author-initials { margin: 0 auto; }
+  .author-stats { justify-content: center; }
+}
+
+@media (max-width: 600px) {
+  .sources-grid { grid-template-columns: 1fr; }
+  .hero-stats { flex-direction: column; flex-wrap: wrap; gap: 1.2rem; }
+  h1 { font-size: 1.8rem; }
+  .tool-cat-header { padding: 0.9rem 1rem; }
+  .tool-cat-body { padding: 0 1rem 0.8rem; }
+}
+
+
+/* ═══ ACCESSIBILITE — Reduced motion ═══ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<!-- ═══════════ NAVIGATION ═══════════ -->
+<nav id="nav">
+  <div class="container">
+    <a href="#" class="logo"><img src="../../logo lawia.png" alt="LAWIA" class="logo-img">Law<span class="accent">IA</span></a>
+    <ul>
+      <li><a href="#sources">Sources</a></li>
+      <li><a href="#comment">Fonctionnement</a></li>
+      <li><a href="#outils">38 outils</a></li>
+      <li><a href="#installer">Installation</a></li>
+      <li><a href="#commencer" class="nav-cta">Commencer</a></li>
+      <li><a class="nav-cta-bleu" href="/">Retour Law<span class="accent" style="color:#fff;">IA</span> Skills</a></li>
+    </ul>
+    <button class="hamburger" onclick="document.getElementById('mobileMenu').classList.add('open')" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+  </div>
+</nav>
+<div id="mobileMenu" class="mobile-menu">
+  <button class="close-menu" onclick="this.parentElement.classList.remove('open')">&times;</button>
+  <a href="#sources" onclick="this.parentElement.classList.remove('open')">Sources</a>
+  <a href="#comment" onclick="this.parentElement.classList.remove('open')">Fonctionnement</a>
+  <a href="#outils" onclick="this.parentElement.classList.remove('open')">38 outils</a>
+  <a href="#installer" onclick="this.parentElement.classList.remove('open')">Installation</a>
+  <a href="#commencer" class="nav-cta" onclick="this.parentElement.classList.remove('open')">Commencer</a>
+  <a class="nav-cta-bleu" href="/">Retour LawIA</a>
+</div>
+
+<!-- ═══════════ HERO — creme ═══════════ -->
+<section class="hero">
+  <div class="dots-pattern"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="dot"></span>
+        Open source — MCP Protocol
+      </div>
+      <h1>
+        Votre IA, <span class="accent">branchee</span><br>
+        sur le droit en vigueur.
+      </h1>
+      <p class="hero-sub">
+        JurisConnect connecte votre assistant IA aux bases juridiques officielles francaises.
+        Plus de memoire figee. Plus d'hallucinations. Le texte officiel, a jour, en temps reel.
+      </p>
+      <div class="hero-actions">
+        <a href="#installer" class="btn btn-primary">Installer en 5 minutes</a>
+        <a href="#demo" class="btn btn-outline">Voir la demo</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-number">38</div>
+          <div class="stat-label">Outils</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">6</div>
+          <div class="stat-label">Sources officielles</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">1.2M+</div>
+          <div class="stat-label">Decisions</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">73</div>
+          <div class="stat-label">Codes en vigueur</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-illustration">
+      <img src="mirabeau.png" alt="Mirabeau — illustration line art">
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ PROBLEM / SOLUTION — bleu-p ═══════════ -->
+<section class="problem">
+  <div class="container">
+    <div class="problem-grid">
+      <div class="problem-text">
+        <span class="ink"></span>
+        <h2>Le probleme n'est pas <span class="accent">l'intelligence</span> de l'outil.<br>C'est son isolement.</h2>
+        <p>
+          L'IA raisonne bien. Elle structure bien. Elle redige bien.
+          Mais elle puise dans une memoire figee.
+        </p>
+        <p>
+          Elle ne sait pas qu'un article a ete modifie par l'ordonnance du mois dernier.
+          Elle ne connait pas l'arret rendu il y a trois semaines.
+          Et elle ne vous previendra pas quand elle comble un vide par une invention plausible.
+        </p>
+        <p style="color: var(--bleu-f); font-weight: 700; margin-top: 1.5rem;">
+          JurisConnect change tout.
+        </p>
+      </div>
+      <div>
+        <div class="comparison-card">
+          <div class="comp-header">
+            <div class="comp-without">Sans JurisConnect</div>
+            <div class="comp-with">Avec JurisConnect</div>
+          </div>
+          <div class="comp-row">
+            <div class="bad">Textes potentiellement obsoletes</div>
+            <div class="good">Legislation consolidee a jour</div>
+          </div>
+          <div class="comp-row">
+            <div class="bad">Jurisprudence approximative</div>
+            <div class="good">Arrets reels avec references</div>
+          </div>
+          <div class="comp-row">
+            <div class="bad">Risque d'hallucination juridique</div>
+            <div class="good">Sources officielles verifiables</div>
+          </div>
+          <div class="comp-row">
+            <div class="bad">Aucun acces au JO recent</div>
+            <div class="good">Dernier JO en temps reel</div>
+          </div>
+          <div class="comp-row">
+            <div class="bad">BOFiP inaccessible</div>
+            <div class="good">Doctrine fiscale en vigueur</div>
+          </div>
+          <div class="comp-row">
+            <div class="bad">Pas de donnees entreprises</div>
+            <div class="good">RNE, BODACC, bilans, Kbis</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SOURCES — dark ═══════════ -->
+<section class="sources" id="sources">
+  <div class="container">
+    <div class="section-header">
+      <div class="overline">6 sources officielles</div>
+      <span class="ink-c"></span>
+      <h2>Tout le droit francais.<br>Un seul connecteur.</h2>
+      <p>JurisConnect agrege les bases publiques de reference pour une couverture juridique complete.</p>
+    </div>
+    <div class="sources-grid">
+      <div class="source-card">
+        <div class="source-icon">Lf</div>
+        <h3>Legifrance</h3>
+        <p>73 codes, jurisprudence judiciaire, administrative et financiere, CNIL, QPC, conventions collectives, Journal Officiel.</p>
+        <div class="source-tools">13 outils</div>
+      </div>
+      <div class="source-card">
+        <div class="source-icon">Bf</div>
+        <h3>BOFiP</h3>
+        <p>Doctrine administrative fiscale en vigueur. Impot sur le revenu, TVA, IS, plus-values, droits d'enregistrement.</p>
+        <div class="source-tools">2 outils — acces direct, gratuit</div>
+      </div>
+      <div class="source-card">
+        <div class="source-icon">Jl</div>
+        <h3>Judilibre</h3>
+        <p>Open data de la Cour de cassation. Decisions en texte integral, avec zones structurees et taxonomie.</p>
+        <div class="source-tools">3 outils — via PISTE</div>
+      </div>
+      <div class="source-card">
+        <div class="source-icon">Rn</div>
+        <h3>RNE / INPI / BODACC</h3>
+        <p>Registre des entreprises, annonces legales, statuts, PV d'AG, bilans comptables, extraits Kbis.</p>
+        <div class="source-tools">9 outils</div>
+      </div>
+      <div class="source-card">
+        <div class="source-icon">UE</div>
+        <h3>EUR-Lex</h3>
+        <p>Droit de l'Union europeenne. Reglements, directives, decisions. Articles, considerants, texte integral.</p>
+        <div class="source-tools">9 outils</div>
+      </div>
+      <div class="source-card">
+        <div class="source-icon icon-dim">Bo</div>
+        <h3>BOSS</h3>
+        <p>Bulletin Officiel de la Securite Sociale. Cotisations, prestations, avantages en nature.</p>
+        <div class="source-tools" style="color: var(--gris);">A venir — en attente d'API</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ HOW IT WORKS — #fff ═══════════ -->
+<section class="how" id="comment">
+  <div class="container">
+    <div class="section-header">
+      <div class="overline">Comment ca marche</div>
+      <span class="ink-c"></span>
+      <h2>Posez votre question.<br>Le droit vient a vous.</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Vous posez votre question</h3>
+        <p>En langage naturel, comme a un collaborateur. Pas de syntaxe. Pas de requete technique.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>L'IA identifie la source</h3>
+        <p>JurisConnect route automatiquement vers la bonne base : Legifrance, BOFiP, Judilibre, EUR-Lex ou RNE.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Le texte officiel arrive</h3>
+        <p>Article a jour, arret avec reference, doctrine fiscale en vigueur. Verifiable. Fiable.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ DEMO — bleu-f ═══════════ -->
+<section class="demo" id="demo">
+  <div class="container">
+    <div class="section-header">
+      <div class="overline">En action</div>
+      <span class="ink-c"></span>
+      <h2>Voyez la difference.</h2>
+    </div>
+    <div class="terminal">
+      <div class="terminal-bar">
+        <span class="terminal-dot"></span>
+        <span class="terminal-dot"></span>
+        <span class="terminal-dot"></span>
+        <span class="terminal-title">Claude + JurisConnect MCP</span>
+      </div>
+      <div class="terminal-body" id="terminal-body">
+        <span class="t-dim">// Connexion a JurisConnect MCP... 38 outils charges.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ ALL TOOLS — creme ═══════════ -->
+<section class="tools" id="outils">
+  <div class="container">
+    <div class="section-header">
+      <div class="overline">38 outils</div>
+      <span class="ink-c"></span>
+      <h2>Chaque question a son outil.<br>Cliquez pour decouvrir.</h2>
+    </div>
+    <div class="tools-cats">
+
+      <!-- ══ LEGIFRANCE — 13 outils ══ -->
+      <details class="tool-category" open>
+        <summary class="tool-cat-header">
+          <span class="cat-dot cat-dot-lf"></span>
+          <span class="cat-title">Legifrance</span>
+          <span class="cat-count">13 outils</span>
+          <span class="cat-arrow">+</span>
+        </summary>
+        <div class="tool-cat-body">
+          <details class="tool-item"><summary class="tool-item-header"><span class="tool-name">fl_articles_code</span><span class="tool-toggle">+</span></summary><div class="tool-desc">Recherche des articles dans les 73 codes juridiques francais. Par mots-cles (<code>"contrat de travail"</code>) ou par numero d'article (<code>"L1234-5"</code>). Filtrage par champ, tri par pertinence ou date.</div></details>
+          <details class="tool-item"><summary class="tool-item-header"><span class="tool-name">fl_liste_codes</span><span class="tool-toggle">+</span></summary><div class="tool-desc">Retourne la liste complete des 73 codes en vigueur disponibles : Code civil, Code penal, Code du travail, Code de commerce, etc.</div></details>
+          <details class="tool-item"><summary class="tool-item-header"><span class="tool-name">fl_juris_judiciaire</span><span class="tool-toggle">+</span></summary><div class="tool-desc">Recherche dans les decisions de la Cour de cassation, des cours d'appel et des tribunaux judiciaires. Filtrage par juridiction, publication au bulletin, mode panorama ou texte integral.</div></details>
+          <details class="tool-item"><summary class="tool-item-header"><span class="tool-name">fl_juris_administrative</span><span class="tool-toggle">+</span></summary><div class="tool-desc">Recherche dans les decisions du Conseil d'Etat, des cours administratives d'appel et des tribunaux administratifs. Pagination et tri par date ou pertinence.</div></details>
+          <details class="tool-item"><summary class="tool-item-header"><span class="tool-name">fl_juris_financiere</span><span class="tool-toggle">+</span></summary><div class="tool-desc">Recherche dans les decisions de la Cour des comptes, des chambres regionales des comptes et de la Cour de discipline budgetaire et financiere.</div></details>
+          <details class="tool-item"><summary class="tool-item-header"><span class="tool-name">fl_decisions_cnil</span><span class="tool-toggle">+</span></summary><div class="tool-desc">Recherche dans les deliberations de la CNIL : sanctions, avis, mises en demeure, recommandations, rappels a l'ordre. Filtrage par nature de deliberation.</div></details>
+          <details class="tool-item"><summary class="tool-item-header"><span class="tool-name">fl_decisions_qpc</span><span class="tool-toggle">+</span></summary><div class="tool-desc">Recherche dans les decisions du Conseil constitutionnel : QPC, DC (controle a priori), L (declassement). Filtrage par numero de decision.</div></details>
+          <details class="tool-item"><summary class="tool-item-header"><span class="tool-name">fl_conventions</span><span class="tool-toggle">+</span></summary><div class="tool-desc">Recherche dans les conventions collectives nationales (base KALI). Par nom, numero IDCC ou mots-cles. Mode panorama pour vue d'ensemble.</div></details>
+          <details class="tool-item"><summary class="tool-item-header"><span class="tool-name">fl_textes_consolides</span><span class="tool-toggle">+</span></summary><div class="tool-desc">Recherche dans les textes legaux consolides (LODA) : lois, decrets, ordonnances. Possibilite de cibler un texte precis par son numero.</div></details>
+          <details class="tool-item"><summary class="tool-item-header"><span class="tool-name">fl_journal_officiel</span><span class="tool-toggle">+</span></summary><div class="tool-desc">Recherche dans le Journal Officiel. Filtrage par date de publication, ministere, emetteur, type de texte (loi, decret, arrete).</div></details>
+          <details class="tool-item"><summary class="tool-item-header"><span class="tool-name">fl_dernier_jo</span><span class="tool-toggle">+</span></summary><div class="tool-desc">Recupere le sommaire du ou des derniers JO publies (1 a 10). Ideal pour la veille juridique quotidienne.</div></details>
+          <details class="tool-item"><summary class="tool-item-header"><span class="tool-name">fl_emetteurs_jo</span><span class="tool-toggle">+</span></summary><div class="tool-desc">Liste toutes les autorites emettrices pour filtrer les recherches JORF : ministeres, autorites independantes, etc.</div></details>
+          <details class="tool-item"><summary class="tool-item-header"><span class="tool-name">fl_types_textes_jo</span><span class="tool-toggle">+</span></summary><div class="tool-desc">Liste tous les types de textes publies au JO : loi, decret, arrete, avis, circulaire, etc.</div></details>
+        </div>
+      </details>
+
+      <!-- ══ BOFiP — 2 outils ══ -->
+      <details class="tool-category">
+        <summary class="tool-cat-header">
+          <span class="cat-dot cat-dot-bf"></span>
+          <span class="cat-title">BOFiP — Doctrine fiscale</span>
+          <span class="cat-count">2 outils</span>
+          <span class="cat-arrow">+</span>
+        </summary>
+        <div class="tool-cat-body">
+          <details class="tool-item"><summary class="tool-item-header"><span class="tool-name">fl_bofip</span><span class="tool-toggle">+</span></summary><div class="tool-desc">Recherche dans le Bulletin Officiel des Finances Publiques. Doctrine fiscale officielle de la DGFiP : impots, TVA, plus-values, fiscalite des entreprises.</div></details>
+          <details class="tool-item"><summary class="tool-item-header"><span class="tool-name">fl_bofip_document</span><span class="tool-toggle">+</span></summary><div class="tool-desc">Recupere le texte integral d'un document BOFiP a partir de son identifiant. Contenu complet avec references et liens.</div></details>
+        </div>
+      </details>
+
+      <!-- ══ JUDILIBRE — 3 outils ══ -->
+      <details class="tool-category">
+        <summary class="tool-cat-header">
+          <span class="cat-dot cat-dot-jl"></span>
+          <span class="cat-title">Judilibre — Cour de cassation</span>
+          <span class="cat-count">3 outils</span>
+          <span class="cat-arrow">+</span>
+        </summary>
+        <div class="tool-cat-body">
+          <details class="tool-item"><summary class="tool-item-header"><span class="tool-name">fl_judilibre</span><span class="tool-toggle">+</span></summary><div class="tool-desc">Recherche dans la base Judilibre de la Cour de cassation. Acces a toutes les decisions publiees en open data par la haute juridiction judiciaire.</div></details>
+          <details class="tool-item"><summary class="tool-item-header"><span class="tool-name">fl_judilibre_decision</span><span class="tool-toggle">+</span></summary><div class="tool-desc">Recupere le texte integral d'une decision Judilibre a partir de son identifiant. Motifs, dispositif, visa, references.</div></details>
+          <details class="tool-item"><summary class="tool-item-header"><span class="tool-name">fl_judilibre_taxonomie</span><span class="tool-toggle">+</span></summary><div class="tool-desc">Explore la taxonomie Judilibre : chambres, matieres, formations. Utile pour connaitre les categories de classement disponibles.</div></details>
+        </div>
+      </details>
+
+      <!-- ══ RNE / INPI / BODACC — 9 outils ══ -->
+      <details class="tool-category">
+        <summary class="tool-cat-header">
+          <span class="cat-dot cat-dot-rne"></span>
+          <span class="cat-title">RNE / INPI / BODACC — Entreprises</span>
+          <span class="cat-count">9 outils</span>
+          <span class="cat-arrow">+</span>
+        </summary>
+        <div class="tool-cat-body">
+          <details class="tool-item"><summary class="tool-item-header"><span class="tool-name">fl_entreprises</span><span class="tool-toggle">+</span></summary><div class="tool-desc">Recherche d'entreprises dans le Registre National des Entreprises par nom, SIREN ou mots-cles. Pagination integree.</div></details>
+          <details class="tool-item"><summary class="tool-item-header"><span class="tool-name">fl_fiche_entreprise</span><span class="tool-toggle">+</span></summary><div class="tool-desc">Fiche complete d'une entreprise : denomination, forme juridique, dirigeants, adresse, activite, immatriculations.</div></details>
+          <details class="tool-item"><summary class="tool-item-header"><span class="tool-name">fl_annonces_bodacc</span><span class="tool-toggle">+</span></summary><div class="tool-desc">Recherche dans les annonces legales BODACC : creations, modifications, radiations, procedures collectives (redressement, liquidation).</div></details>
+          <details class="tool-item"><summary class="tool-item-header"><span class="tool-name">fl_acte_entreprise</span><span class="tool-toggle">+</span></summary><div class="tool-desc">Telecharge un acte juridique depose : statuts constitutifs, PV d'assemblee generale, actes de cession, etc.</div></details>
+          <details class="tool-item"><summary class="tool-item-header"><span class="tool-name">fl_bilan_entreprise</span><span class="tool-toggle">+</span></summary><div class="tool-desc">Telecharge un bilan comptable depose par une entreprise (comptes annuels).</div></details>
+          <details class="tool-item"><summary class="tool-item-header"><span class="tool-name">fl_extrait_rne</span><span class="tool-toggle">+</span></summary><div class="tool-desc">Telecharge un extrait du Registre National des Entreprises, equivalent fonctionnel du Kbis.</div></details>
+          <details class="tool-item"><summary class="tool-item-header"><span class="tool-name">fl_fichiers_temp</span><span class="tool-toggle">+</span></summary><div class="tool-desc">Liste les fichiers temporaires en attente de telechargement (actes, bilans, extraits).</div></details>
+          <details class="tool-item"><summary class="tool-item-header"><span class="tool-name">fl_supprimer_fichier</span><span class="tool-toggle">+</span></summary><div class="tool-desc">Supprime un fichier temporaire specifique du cache local.</div></details>
+          <details class="tool-item"><summary class="tool-item-header"><span class="tool-name">fl_purger_fichiers</span><span class="tool-toggle">+</span></summary><div class="tool-desc">Purge tous les fichiers temporaires pour liberer l'espace disque.</div></details>
+        </div>
+      </details>
+
+      <!-- ══ EUR-LEX — 9 outils ══ -->
+      <details class="tool-category">
+        <summary class="tool-cat-header">
+          <span class="cat-dot cat-dot-ue"></span>
+          <span class="cat-title">EUR-Lex — Droit europeen</span>
+          <span class="cat-count">9 outils</span>
+          <span class="cat-arrow">+</span>
+        </summary>
+        <div class="tool-cat-body">
+          <details class="tool-item"><summary class="tool-item-header"><span class="tool-name">fl_ue_recherche</span><span class="tool-toggle">+</span></summary><div class="tool-desc">Recherche de textes europeens par titre ou mots-cles : reglements, directives, decisions de l'UE.</div></details>
+          <details class="tool-item"><summary class="tool-item-header"><span class="tool-name">fl_ue_par_celex</span><span class="tool-toggle">+</span></summary><div class="tool-desc">Recherche un texte europeen par son numero CELEX. Ex : <code>32016R0679</code> pour le RGPD. Acces direct.</div></details>
+          <details class="tool-item"><summary class="tool-item-header"><span class="tool-name">fl_ue_article</span><span class="tool-toggle">+</span></summary><div class="tool-desc">Recupere le texte d'un article specifique d'un document europeen. Ex : article 5 du RGPD.</div></details>
+          <details class="tool-item"><summary class="tool-item-header"><span class="tool-name">fl_ue_sommaire</span><span class="tool-toggle">+</span></summary><div class="tool-desc">Liste tous les articles d'un document europeen. Utile pour connaitre la structure d'un reglement ou d'une directive.</div></details>
+          <details class="tool-item"><summary class="tool-item-header"><span class="tool-name">fl_ue_considerant</span><span class="tool-toggle">+</span></summary><div class="tool-desc">Recupere un considerant specifique. Les considerants exposent les motifs et le contexte du texte.</div></details>
+          <details class="tool-item"><summary class="tool-item-header"><span class="tool-name">fl_ue_considerants</span><span class="tool-toggle">+</span></summary><div class="tool-desc">Liste tous les considerants d'un document europeen.</div></details>
+          <details class="tool-item"><summary class="tool-item-header"><span class="tool-name">fl_ue_recherche_dans</span><span class="tool-toggle">+</span></summary><div class="tool-desc">Recherche en texte integral a l'interieur d'un document europeen. Trouve un passage precis dans un long reglement.</div></details>
+          <details class="tool-item"><summary class="tool-item-header"><span class="tool-name">fl_ue_infos</span><span class="tool-toggle">+</span></summary><div class="tool-desc">Metadonnees d'un document : titre officiel, date d'adoption, auteur institutionnel, base juridique, entree en vigueur.</div></details>
+          <details class="tool-item"><summary class="tool-item-header"><span class="tool-name">fl_ue_texte_integral</span><span class="tool-toggle">+</span></summary><div class="tool-desc">Recupere le texte integral complet d'un document europeen.</div></details>
+        </div>
+      </details>
+
+      <!-- ══ SYSTEME — 2 outils ══ -->
+      <details class="tool-category">
+        <summary class="tool-cat-header">
+          <span class="cat-dot cat-dot-sys"></span>
+          <span class="cat-title">Systeme — Diagnostic</span>
+          <span class="cat-count">2 outils</span>
+          <span class="cat-arrow">+</span>
+        </summary>
+        <div class="tool-cat-body">
+          <details class="tool-item"><summary class="tool-item-header"><span class="tool-name">fl_diagnostic</span><span class="tool-toggle">+</span></summary><div class="tool-desc">Verifie la connexion a toutes les API et retourne l'etat de chaque service : actif, cle manquante, erreur. Outil de depannage.</div></details>
+          <details class="tool-item"><summary class="tool-item-header"><span class="tool-name">fl_boss</span><span class="tool-toggle">+</span></summary><div class="tool-desc">Retourne les informations du Bulletin Officiel de la Securite Sociale. Doctrine officielle en matiere de protection sociale.</div></details>
+        </div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ INSTALL — bleu-p ═══════════ -->
+<section class="install" id="installer">
+  <div class="container">
+    <div class="section-header">
+      <div class="overline">Installation</div>
+      <span class="ink-c"></span>
+      <h2>5 minutes. Aucune<br>competence technique.</h2>
+    </div>
+    <div class="install-steps">
+      <div class="install-card">
+        <h3>1. Obtenez vos cles</h3>
+        <pre><span class="comment"># JurisConnect (Legifrance, RNE, EUR-Lex)</span>
+<span class="key">https://auth.openlegi.fr</span>
+
+<span class="comment"># Judilibre (Cour de cassation)</span>
+<span class="key">https://piste.gouv.fr</span>
+
+<span class="comment"># BOFiP : aucune cle requise</span></pre>
+      </div>
+      <div class="install-card">
+        <h3>2. Installez uv</h3>
+        <pre><span class="comment"># macOS / Linux</span>
+<span class="val">curl -LsSf https://astral.sh/uv/install.sh | sh</span>
+
+<span class="comment"># Windows</span>
+<span class="val">powershell -c "irm https://astral.sh/uv/install.ps1 | iex"</span></pre>
+      </div>
+      <div class="install-card">
+        <h3>3. Configurez Claude Desktop</h3>
+        <pre><span class="comment">// claude_desktop_config.json</span>
+{
+  <span class="key">"mcpServers"</span>: {
+    <span class="key">"jurisconnect"</span>: {
+      <span class="key">"command"</span>: <span class="val">"uv"</span>,
+      <span class="key">"args"</span>: [<span class="val">"run"</span>, <span class="val">"--python"</span>, <span class="val">"3.12"</span>,
+        <span class="val">"--directory"</span>, <span class="val">"/chemin/vers/MCP JurisConnect"</span>,
+        <span class="val">"python"</span>, <span class="val">"server.py"</span>],
+      <span class="key">"env"</span>: {
+        <span class="key">"JURISCONNECT_TOKEN"</span>: <span class="val">"votre_token"</span>,
+        <span class="key">"JUDILIBRE_KEY"</span>: <span class="val">"votre_cle_piste"</span>
+      }
+    }
+  }
+}</pre>
+      </div>
+      <div class="install-card">
+        <h3>4. Relancez Claude</h3>
+        <pre><span class="comment"># C'est fait. Testez avec :</span>
+
+<span class="val">"Quel est le texte actuel
+  de l'article 1240 du Code civil ?"</span>
+
+<span class="val">"Recherche les dernieres sanctions
+  CNIL sur le RGPD"</span>
+
+<span class="val">"Doctrine fiscale BOFiP
+  sur les plus-values immobilieres"</span></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CTA — dark ═══════════ -->
+<section class="cta" id="commencer">
+  <div class="container">
+    <h2>Pret a connecter votre IA<br>au droit en vigueur ?</h2>
+    <p>Open source. Gratuit. Operationnel en 5 minutes.</p>
+    <a href="#installer" class="btn btn-light">Installer JurisConnect</a>
+  </div>
+</section>
+
+<!-- ═══════════ AUTEUR — #fff ═══════════ -->
+<section class="author" id="auteur">
+  <div class="container">
+    <div class="section-header">
+      <div class="overline">Le createur</div>
+      <span class="ink-c"></span>
+      <h2>Me Patrice Humbert</h2>
+    </div>
+    <div class="author-grid">
+      <div class="author-initials">PH</div>
+      <div>
+        <h3 class="author-name">Me Patrice Humbert</h3>
+        <div class="author-role">Avocat au Barreau d'Aix-en-Provence — Fondateur de LAW I.A.</div>
+        <p class="author-bio">Avocat depuis 2006, specialiste en dommage corporel et responsabilite medicale (CNB). Major de l'EDA Sud (Prix du Batonnier). Double diplome en Faculte de Medecine. Depuis decembre 2022, il a consacre plus de 1 500 heures a l'IA et forme plus de 1 000 professionnels du droit. Createur de la methode de juridico-prompt-ingenierie, il adapte le syllogisme juridique a la generation de textes par IA.</p>
+        <div class="author-stats">
+          <span class="author-stat">128 000+ abonnes YouTube</span>
+          <span class="author-stat">1 000+ professionnels formes</span>
+          <span class="author-stat">TEDx 2025</span>
+          <span class="author-stat">WAICF Cannes 2024</span>
+          <span class="author-stat">20 ans de Barreau</span>
+          <span class="author-stat">1 500h consacrees a l'IA</span>
+        </div>
+      </div>
+    </div>
+    <div class="author-quote">
+      <blockquote>Par son expertise, sa pedagogie et son engagement, il contribue activement a faire rayonner le Barreau d'Aix bien au-dela de son ressort territorial, au niveau national.</blockquote>
+      <cite>Me Xavier Pietra — Batonnier du Barreau d'Aix-en-Provence (2026-2027)</cite>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+  <div class="container">
+    <p>JurisConnect MCP — Cree par Me Patrice Humbert &middot; <a href="https://www.lawia-formation.fr" target="_blank">LAW I.A.</a></p>
+    <p style="margin-top: 0.4rem;">38 outils &middot; 6 sources officielles &middot; Legifrance &middot; BOFiP &middot; Judilibre &middot; EUR-Lex &middot; RNE &middot; BODACC</p>
+  </div>
+</footer>
+
+<!-- ═══════════ SCRIPTS ═══════════ -->
+<script>
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
+});
+
+const conversation = [
+  { delay: 1200, type: 'prompt', text: '> ' },
+  { delay: 100, type: 'user', text: 'Quel est le texte actuel de l\'article 1240 du Code civil ?' },
+  { delay: 800, type: 'dim', text: '\n  fl_articles_code(recherche="1240", nom_code="Code civil", champ="NUM_ARTICLE")' },
+  { delay: 1500, type: 'ai', text: '\n\n  Article 1240 du Code civil (version en vigueur)' },
+  { delay: 200, type: 'ai', text: '\n  ─────────────────────────────────────────────────' },
+  { delay: 100, type: 'ref', text: '\n  "Tout fait quelconque de l\'homme, qui cause a' },
+  { delay: 100, type: 'ref', text: '\n   autrui un dommage, oblige celui par la faute' },
+  { delay: 100, type: 'ref', text: '\n   duquel il est arrive a le reparer."' },
+  { delay: 200, type: 'dim', text: '\n\n  Source : Legifrance — Code civil, Livre III, Titre IV bis' },
+  { delay: 2000, type: 'prompt', text: '\n\n> ' },
+  { delay: 100, type: 'user', text: 'Doctrine fiscale BOFiP sur les plus-values immobilieres' },
+  { delay: 800, type: 'dim', text: '\n  fl_bofip(recherche="plus-value immobiliere")' },
+  { delay: 1200, type: 'ai', text: '\n\n  BOFiP — 47 document(s) trouve(s)' },
+  { delay: 200, type: 'ref', text: '\n  BOI-RFPI-PVI — Plus-values immobilieres des particuliers' },
+  { delay: 100, type: 'ref', text: '\n  BOI-RFPI-PVI-10 — Champ d\'application' },
+  { delay: 100, type: 'ref', text: '\n  BOI-RFPI-PVI-20 — Determination de la plus-value brute' },
+  { delay: 200, type: 'dim', text: '\n\n  Source : data.economie.gouv.fr — BOFiP en vigueur' },
+];
+
+const terminal = document.getElementById('terminal-body');
+let idx = 0;
+function animate() {
+  if (idx >= conversation.length) return;
+  const l = conversation[idx];
+  setTimeout(() => {
+    const s = document.createElement('span');
+    s.className = 't-' + l.type;
+    s.textContent = l.text;
+    terminal.appendChild(s);
+    terminal.scrollTop = terminal.scrollHeight;
+    idx++;
+    animate();
+  }, l.delay);
+}
+
+const obs = new IntersectionObserver((e) => {
+  if (e[0].isIntersecting) { animate(); obs.disconnect(); }
+}, { threshold: 0.3 });
+obs.observe(document.querySelector('.terminal'));
+
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const t = document.querySelector(a.getAttribute('href'));
+    if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+</script>
+
+</body>
+</html>

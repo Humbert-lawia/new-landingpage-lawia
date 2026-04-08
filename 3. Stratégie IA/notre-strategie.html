@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<title>Votre stratégie IA — LAWIA | Conseil & accompagnement pour cabinets d'avocats</title>
+<meta name="description" content="L'IA dans votre cabinet, sans improvisation. Diagnostic, cartographie, audit et accompagnement par Me Patrice Humbert. 40+ cabinets accompagnés.">
+<style>
+:root {
+  --bleu:#6A9BCC;--bleu-f:#4A7BA8;--bleu-c:#A8C4E0;--bleu-p:#D3E5F8;
+  --dark:#141413;--code:#1A1917;--creme:#FAF9F5;--gris:#B0AEA5;--gris-c:#E8E6DC;
+  --negatif:#C4745B;
+  --r:12px;--shadow:0 4px 16px rgba(20,20,19,0.10);--shadow-bleu:0 4px 16px rgba(74,123,168,0.18);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{font-family:Calibri,'Gill Sans',sans-serif;background:var(--creme);color:var(--dark);line-height:1.75;overflow-x:hidden;}
+h1,h2,h3,h4{font-family:Georgia,serif;font-weight:700;}
+h2{font-size:2.4rem;line-height:1.2;}
+.container{max-width:1100px;margin:0 auto;padding:0 2rem;position:relative;z-index:1;}
+section{padding:5.5rem 0;}
+.ink{display:block;width:48px;height:3px;background:var(--dark);margin-bottom:1rem;}
+.ink-c{display:block;width:48px;height:3px;background:var(--dark);margin:0 auto 1rem;}
+.overline{font-family:Calibri,sans-serif;font-size:0.7rem;color:var(--bleu-f);text-transform:uppercase;letter-spacing:3.5px;font-weight:700;margin-bottom:0.4rem;}
+.accent{color:var(--bleu);}
+.handwritten{font-family:'Caveat',cursive;font-size:1.8rem;color:var(--bleu-f);margin:-0.3rem 0 1rem;line-height:1.3;position:relative;display:inline-block;transform:rotate(-1deg);}
+.handwritten::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:2px;background:var(--bleu-f);opacity:0.35;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0.7rem 0;background:var(--creme);border-bottom:3px solid var(--dark);transition:all 0.3s;}
+nav .container{display:flex;justify-content:space-between;align-items:center;}
+.logo{display:flex;align-items:center;gap:0.6rem;text-decoration:none;}
+.logo-icon{width:36px;height:36px;border:2px solid var(--dark);border-radius:6px;box-shadow:3px 3px 0 0 var(--bleu);overflow:hidden;display:flex;align-items:center;justify-content:center;background:var(--creme);}
+.logo-icon img{width:100%;height:100%;object-fit:contain;}
+.logo-text{font-family:Georgia,serif;font-size:1.5rem;font-weight:700;color:var(--dark);}
+.logo-text span{color:var(--bleu);}
+nav ul{display:flex;list-style:none;gap:1.6rem;align-items:center;}
+nav a{color:var(--gris);text-decoration:none;font-size:0.95rem;font-weight:600;transition:color 0.2s;}
+nav a:hover{color:var(--dark);}
+nav a.active{color:var(--dark);}
+.nav-cta{background:var(--dark);color:var(--creme)!important;padding:0.4rem 1rem;border-radius:4px;border:2px solid var(--dark);}
+.nav-cta:hover{background:var(--bleu);border-color:var(--bleu);}
+
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.8rem 1.6rem;border-radius:4px;font-family:Calibri,sans-serif;font-size:0.95rem;font-weight:700;text-decoration:none;border:3px solid var(--dark);cursor:pointer;transition:all 0.2s;}
+.btn-primary{background:var(--dark);color:var(--creme);box-shadow:var(--shadow-bleu);}
+.btn-primary:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 0 var(--bleu-f);}
+.btn-outline{background:var(--creme);color:var(--dark);}
+.btn-outline:hover{background:var(--bleu-p);}
+.btn-light{background:var(--bleu);color:#fff;border-color:var(--bleu);box-shadow:6px 6px 0 0 var(--creme);}
+.btn-light:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 0 var(--creme);}
+
+/* HERO */
+.hero{min-height:80vh;display:flex;align-items:center;padding-top:5rem;position:relative;overflow:hidden;background:var(--creme);}
+.hero-dots{position:absolute;inset:0;background-image:radial-gradient(circle,var(--gris-c) 1px,transparent 1px);background-size:28px 28px;opacity:0.5;z-index:0;pointer-events:none;}
+.hero .container{position:relative;z-index:1;}
+.hero-row{display:grid;grid-template-columns:1fr auto;gap:3rem;align-items:center;}
+.hero-content{max-width:600px;}
+h1{font-size:clamp(2.2rem,4.5vw,3.4rem);line-height:1.12;margin-bottom:1.2rem;}
+.hero-sub{font-size:1.05rem;color:var(--gris);margin-bottom:2rem;max-width:500px;}
+.hero-stats{display:flex;gap:2.5rem;margin-top:3rem;padding-top:2rem;border-top:3px solid var(--dark);}
+.stat-num{font-family:Georgia,serif;font-size:2rem;font-weight:700;color:var(--dark);line-height:1;}
+.stat-lbl{font-size:0.78rem;color:var(--gris);margin-top:0.2rem;text-transform:uppercase;letter-spacing:1px;}
+
+/* CONVICTION BLOCK */
+.conviction-block{background:var(--dark);border:3px solid var(--dark);border-radius:var(--r);padding:2rem;position:relative;overflow:hidden;width:380px;flex-shrink:0;}
+.conviction-block::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;border-radius:50%;border:1px solid rgba(106,155,204,0.15);pointer-events:none;}
+.conviction-label{font-size:0.68rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--bleu-c);margin-bottom:0.8rem;}
+.conviction-block blockquote{font-family:Georgia,serif;font-style:italic;font-size:0.95rem;color:rgba(250,249,245,0.8);line-height:1.75;margin-bottom:1.2rem;}
+.conviction-items{display:flex;flex-direction:column;gap:0.6rem;}
+.conviction-item{display:flex;align-items:flex-start;gap:0.6rem;}
+.c-dot{width:6px;height:6px;border-radius:50%;background:var(--bleu);margin-top:0.4rem;flex-shrink:0;}
+.conviction-item span{font-size:0.82rem;color:rgba(250,249,245,0.55);line-height:1.6;}
+.conviction-item strong{color:rgba(250,249,245,0.85);}
+
+/* POUR QUI — BLEU PALE */
+.pour-qui{background:var(--bleu-p);}
+.pour-qui .overline{color:var(--bleu-f);}
+.pour-qui .ink-c{background:var(--dark);}
+.pq-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem;}
+.pq-card{background:#fff;border:3px solid var(--dark);border-radius:var(--r);padding:1.8rem;box-shadow:var(--shadow);transition:all 0.3s;}
+.pq-card:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 0 var(--bleu-f);}
+.pq-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;background:var(--bleu-p);border:1px solid var(--bleu-c);}
+.pq-card h3{font-size:1.05rem;color:var(--dark);margin-bottom:0.5rem;}
+.pq-card p{font-size:0.88rem;color:var(--gris);}
+
+/* SERVICES — BLANC */
+.services{background:#fff;}
+.service-item{display:grid;grid-template-columns:auto 1fr;gap:2rem;padding:2.5rem 0;border-bottom:2px solid var(--gris-c);align-items:start;}
+.service-item:last-child{border-bottom:none;}
+.service-num{font-family:Georgia,serif;font-size:4rem;font-weight:700;color:var(--bleu-p);line-height:1;user-select:none;}
+.service-item h3{font-size:1.3rem;color:var(--dark);margin-bottom:0.3rem;}
+.service-tagline{font-size:0.92rem;font-style:italic;font-family:Georgia,serif;color:var(--bleu-f);margin-bottom:0.8rem;}
+.service-item>div>p{font-size:0.92rem;color:var(--gris);line-height:1.85;margin-bottom:1rem;}
+.service-meta{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:1rem;}
+.meta-pill{font-size:0.75rem;color:var(--dark);background:var(--bleu-p);border:1px solid var(--bleu-c);border-radius:4px;padding:0.25rem 0.6rem;}
+.deliverable-title{font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gris);margin-bottom:0.5rem;}
+.deliverable-list{list-style:none;margin-bottom:1.2rem;}
+.deliverable-list li{font-size:0.85rem;color:var(--dark);padding:0.3rem 0;display:flex;align-items:flex-start;gap:0.5rem;line-height:1.55;}
+.deliverable-list li::before{content:'';display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--bleu);margin-top:0.5rem;flex-shrink:0;}
+.service-cta{display:inline-flex;align-items:center;gap:0.4rem;background:var(--dark);color:var(--creme);border:none;border-radius:4px;padding:0.6rem 1.2rem;font-family:Calibri,sans-serif;font-size:0.85rem;font-weight:700;cursor:pointer;text-decoration:none;transition:background 0.2s;}
+.service-cta:hover{background:var(--bleu-f);}
+
+/* PROCESS — NOIR */
+.process{background:var(--dark);color:var(--creme);}
+.process .overline{color:var(--bleu-c);}
+.process .ink-c{background:var(--creme);}
+.process h2{color:var(--creme);}
+.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.06);border-radius:var(--r);overflow:hidden;margin-top:2.5rem;}
+.step-card{background:rgba(255,255,255,0.03);padding:1.8rem;position:relative;transition:background 0.2s;}
+.step-card:hover{background:rgba(106,155,204,0.07);}
+.step-num{font-family:Georgia,serif;font-weight:700;font-size:2.5rem;color:rgba(106,155,204,0.2);line-height:1;margin-bottom:0.8rem;user-select:none;}
+.step-card h3{font-size:0.95rem;color:var(--creme);margin-bottom:0.4rem;}
+.step-card p{font-size:0.82rem;color:rgba(250,249,245,0.45);line-height:1.7;}
+.step-card::after{content:'→';position:absolute;top:1.8rem;right:-8px;font-size:0.85rem;color:rgba(106,155,204,0.35);z-index:2;}
+.step-card:last-child::after{display:none;}
+
+/* CAS CLIENTS — CREME */
+.cases{background:var(--creme);}
+.cases-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem;}
+.case-card{background:#fff;border:3px solid var(--dark);border-radius:var(--r);overflow:hidden;transition:all 0.3s;display:flex;flex-direction:column;}
+.case-card:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 0 var(--bleu-f);}
+.case-tag{font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--bleu-f);padding:1rem 1.2rem 0.4rem;}
+.case-title{font-size:0.95rem;color:var(--dark);padding:0 1.2rem 0.6rem;line-height:1.4;}
+.case-desc{font-size:0.82rem;color:var(--gris);line-height:1.7;padding:0 1.2rem 1.2rem;flex:1;}
+.case-result{border-top:2px solid var(--gris-c);padding:0.8rem 1.2rem;display:flex;align-items:baseline;gap:0.5rem;background:var(--creme);}
+.case-result-num{font-family:Georgia,serif;font-weight:700;font-size:1.3rem;color:var(--bleu-f);}
+.case-result-label{font-size:0.75rem;color:var(--gris);line-height:1.4;}
+
+/* FAQ — BLANC */
+.faq-section{background:#fff;}
+.faq-grid{display:grid;grid-template-columns:340px 1fr;gap:4rem;margin-top:2rem;}
+.faq-list{display:flex;flex-direction:column;}
+details{border:3px solid var(--dark);border-radius:var(--r);margin-bottom:0.8rem;background:#fff;overflow:hidden;}
+summary{padding:1rem 1.2rem;font-family:Georgia,serif;font-size:0.95rem;font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;}
+summary::after{content:'+';font-family:Consolas,monospace;font-size:1.2rem;color:var(--bleu);transition:transform 0.3s;}
+details[open] summary::after{content:'\2212';}
+details[open] summary{border-bottom:1px solid var(--gris-c);}
+details p{padding:0.8rem 1.2rem;font-size:0.88rem;color:var(--gris);}
+
+/* CTA */
+.cta-final{background:var(--dark);text-align:center;color:var(--creme);position:relative;overflow:hidden;}
+.cta-final h2{color:var(--creme);font-size:2rem;margin-bottom:0.6rem;}
+.cta-final>div>p{color:var(--gris);margin-bottom:1.5rem;max-width:520px;margin-left:auto;margin-right:auto;}
+.cta-final>div>p strong{color:var(--creme);}
+
+/* FOOTER */
+footer{background:var(--dark);border-top:2px solid #2a2a28;padding:2rem 0;text-align:center;}
+footer .container{display:flex;flex-direction:column;align-items:center;gap:0.8rem;}
+footer .footer-logo{display:flex;align-items:center;gap:0.5rem;}
+footer .footer-logo-icon{width:28px;height:28px;border:1.5px solid #2a2a28;border-radius:4px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:var(--code);}
+footer .footer-logo-icon img{width:100%;height:100%;object-fit:contain;}
+footer .footer-logo-text{font-family:Georgia,serif;font-size:1.1rem;font-weight:700;color:var(--creme);}
+footer .footer-logo-text span{color:var(--bleu);}
+footer p{color:var(--gris);font-size:0.78rem;}
+footer a{color:var(--bleu-c);text-decoration:none;}
+
+/* RESPONSIVE */
+@media(max-width:900px){.hero-row{grid-template-columns:1fr;}.conviction-block{display:none;}.pq-grid,.cases-grid{grid-template-columns:1fr;}.steps-grid{grid-template-columns:1fr 1fr;}.faq-grid{grid-template-columns:1fr;}.service-item{grid-template-columns:1fr;}nav ul{display:none;}.hamburger{display:block;}.responsive-grid{grid-template-columns:1fr!important;}}
+@media(max-width:600px){h1{font-size:1.8rem;}.steps-grid{grid-template-columns:1fr;}.hero-stats{flex-direction:column;gap:1rem;}}
+.hamburger{display:none;background:none;border:none;cursor:pointer;padding:0.3rem;}
+.hamburger svg{width:28px;height:28px;stroke:var(--dark);stroke-width:2.5;stroke-linecap:round;}
+.mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--creme);z-index:200;padding:5rem 2rem 2rem;text-align:center;}
+.mobile-menu.open{display:flex;flex-direction:column;gap:1.2rem;align-items:center;}
+.mobile-menu a{font-family:Georgia,serif;font-size:1.2rem;color:var(--dark);text-decoration:none;font-weight:700;}
+.mobile-menu a:hover{color:var(--bleu);}
+.mobile-menu .close-menu{position:absolute;top:1rem;right:1.5rem;background:none;border:none;cursor:pointer;font-size:2rem;color:var(--dark);font-family:Consolas,monospace;}
+
+.fade-in{opacity:0;transform:translateY(30px);transition:opacity 0.6s ease,transform 0.6s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms!important;animation-iteration-count:1!important;transition-duration:0.01ms!important;scroll-behavior:auto!important;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <a href="../Assets/index.html" class="logo">
+      <div class="logo-icon"><img src="../logo lawia.png" alt="LAWIA"></div>
+      <div class="logo-text">Law<span>IA</span></div>
+    </a>
+    <ul>
+      <li><a href="../1. LAWIA/lawia.html">LAWIA</a></li>
+      <li><a href="../2. Agents & Outils IA/nos-outils.html">Vos agents & outils</a></li>
+      <li><a href="notre-strategie.html" class="active">Votre stratégie IA</a></li>
+      <li><a href="../4. Formations IA/nos-formations.html">Vos formations</a></li>
+      <li><a href="#">L'Édito de Me Humbert</a></li>
+      <li><a class="nav-cta" href="#">Prendre rendez-vous</a></li>
+    </ul>
+    <button class="hamburger" onclick="document.getElementById('mobileMenu').classList.add('open')" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+  </div>
+</nav>
+<div id="mobileMenu" class="mobile-menu">
+  <button class="close-menu" onclick="this.parentElement.classList.remove('open')">&times;</button>
+  <a href="../1. LAWIA/lawia.html" onclick="this.parentElement.classList.remove('open')">LAWIA</a>
+  <a href="../2. Agents & Outils IA/nos-outils.html" onclick="this.parentElement.classList.remove('open')">Outils</a>
+  <a href="notre-strategie.html" onclick="this.parentElement.classList.remove('open')">Stratégie</a>
+  <a href="../4. Formations IA/nos-formations.html" onclick="this.parentElement.classList.remove('open')">Formations</a>
+  <a href="#" onclick="this.parentElement.classList.remove('open')">L'Édito</a>
+  <a class="nav-cta" href="#">Prendre rendez-vous</a>
+</div>
+
+<!-- ═══ HERO — CREME ═══ -->
+<section class="hero">
+  <div class="hero-dots"></div>
+  <div class="container">
+    <div class="hero-row">
+      <div class="hero-content">
+        <div class="overline">Nos services</div>
+        <span class="ink"></span>
+        <h1>L'IA dans votre cabinet, <span class="accent">sans improvisation.</span></h1>
+        <p class="handwritten">Un diagnostic honnête, pas un pitch commercial</p>
+        <p class="hero-sub">Avant de déployer un outil, il faut comprendre où vous en êtes. Avant de former, il faut savoir ce qui mérite d'être automatisé. Nos services partent toujours du même endroit : votre pratique réelle.</p>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+          <a href="#" class="btn btn-primary">Réserver un diagnostic</a>
+          <a href="#services" class="btn btn-outline">Voir les 4 services</a>
+        </div>
+        <div class="hero-stats">
+          <div>
+            <div class="stat-num" data-target="40">0</div>
+            <div class="stat-lbl">cabinets accompagnés</div>
+          </div>
+          <div>
+            <div class="stat-num">30 min</div>
+            <div class="stat-lbl">diagnostic initial</div>
+          </div>
+          <div>
+            <div class="stat-num">100%</div>
+            <div class="stat-lbl">préco. testées en cabinet</div>
+          </div>
+        </div>
+      </div>
+      <div class="conviction-block">
+        <div class="conviction-label">Notre position</div>
+        <blockquote>La plupart des acteurs IA vendent des outils. Nous vendons d'abord un diagnostic honnête. Si l'IA ne vous apporte pas de gain mesurable, nous vous le disons.</blockquote>
+        <div class="conviction-items">
+          <div class="conviction-item"><div class="c-dot"></div><span><strong>Pas de solution universelle.</strong> Chaque cabinet a ses contraintes, son volume, son niveau d'équipement.</span></div>
+          <div class="conviction-item"><div class="c-dot"></div><span><strong>La crédibilité d'un praticien.</strong> Maître Humbert est avocat en exercice. Il a vécu ce qu'il analyse.</span></div>
+          <div class="conviction-item"><div class="c-dot"></div><span><strong>Déontologie intégrée.</strong> Secret professionnel, RGPD, règles du Barreau — dans chaque recommandation.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ POUR QUI — BLEU PALE ═══ -->
+<section class="pour-qui">
+  <div class="container">
+    <div style="text-align:center;">
+      <div class="overline">Pour qui</div>
+      <span class="ink-c"></span>
+      <h2>Nos services s'adressent à trois profils.</h2>
+    </div>
+    <div class="pq-grid">
+      <div class="pq-card fade-in">
+        <div class="pq-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4A7BA8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+        <h3>Cabinets d'avocats</h3>
+        <p>De l'avocat seul au cabinet de 20 collaborateurs. Vous voulez structurer votre usage de l'IA, ou comprendre pourquoi les outils testés n'ont pas tenu leurs promesses.</p>
+      </div>
+      <div class="pq-card fade-in">
+        <div class="pq-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4A7BA8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21 Q4 15 8 14 Q10 13 12 12 Q14 13 16 14 Q20 15 20 21"/></svg></div>
+        <h3>Avocats indépendants</h3>
+        <p>Vous exercez seul et chaque heure compte. Vous cherchez un regard extérieur — pragmatique — sur ce que vous pourriez déléguer à l'IA dès cette semaine.</p>
+      </div>
+      <div class="pq-card fade-in">
+        <div class="pq-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4A7BA8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="6" width="16" height="12" rx="2"/><rect x="9" y="2" width="6" height="5" rx="1"/></svg></div>
+        <h3>Juristes d'entreprise</h3>
+        <p>Direction juridique ou service legal. Vous pilotez la transformation IA de votre équipe et cherchez une méthode rigoureuse, adaptée aux contraintes du droit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ 4 SERVICES — BLANC ═══ -->
+<section class="services" id="services">
+  <div class="container">
+    <div style="text-align:center;">
+      <div class="overline">Ce qu'on propose</div>
+      <span class="ink-c"></span>
+      <h2>Quatre niveaux d'intervention.</h2>
+      <p style="max-width:520px;margin:0.6rem auto 0;color:var(--gris);">Du plus léger au plus engagé. Chaque service peut être pris seul ou combiné selon votre situation.</p>
+    </div>
+
+    <!-- Service 01 -->
+    <div class="service-item fade-in">
+      <div class="service-num">01</div>
+      <div>
+        <h3>Diagnostic IA</h3>
+        <div class="service-tagline">« Où en êtes-vous vraiment avec l'IA ? »</div>
+        <p>Un entretien structuré pour établir un état des lieux honnête de votre pratique : quels outils vous utilisez déjà, ce qui fonctionne, ce qui ne fonctionne pas, et les trois tâches les plus chronophages. Sans langue de bois.</p>
+        <div class="service-meta">
+          <span class="meta-pill">30 à 60 min</span>
+          <span class="meta-pill">Visio ou sur site</span>
+          <span class="meta-pill">Sous 5 jours ouvrés</span>
+        </div>
+        <div class="deliverable-title">Ce que vous recevez</div>
+        <ul class="deliverable-list">
+          <li>Compte-rendu écrit avec les 3 priorités identifiées</li>
+          <li>Évaluation de votre niveau de maturité IA (5 niveaux)</li>
+          <li>Liste des risques déontologiques à anticiper</li>
+          <li>Recommandation de la prochaine étape</li>
+        </ul>
+        <a href="#" class="service-cta">Réserver un diagnostic →</a>
+      </div>
+    </div>
+
+    <!-- Service 02 -->
+    <div class="service-item fade-in">
+      <div class="service-num">02</div>
+      <div>
+        <h3>Cartographie de processus</h3>
+        <div class="service-tagline">« Quelles tâches automatiser — et lesquelles ne jamais automatiser ? »</div>
+        <p>Une immersion dans votre organisation. Nous analysons vos flux : de la prise de client à la clôture du dossier. Chaque étape est qualifiée selon son potentiel d'automatisation et son niveau de risque.</p>
+        <div class="service-meta">
+          <span class="meta-pill">Demi-journée ou journée</span>
+          <span class="meta-pill">Sur site de préférence</span>
+          <span class="meta-pill">Entretiens équipe inclus</span>
+        </div>
+        <div class="deliverable-title">Ce que vous recevez</div>
+        <ul class="deliverable-list">
+          <li>Carte visuelle complète de vos processus (PDF annoté)</li>
+          <li>Matrice de priorisation : impact × risque × effort</li>
+          <li>Identification des 5 à 10 cas d'usage à fort ROI</li>
+          <li>Feuille de route IA sur 6 mois, prête à présenter aux associés</li>
+        </ul>
+        <a href="#" class="service-cta">Demander une cartographie →</a>
+      </div>
+    </div>
+
+    <!-- Service 03 -->
+    <div class="service-item fade-in">
+      <div class="service-num">03</div>
+      <div>
+        <h3>Audit IA de cabinet</h3>
+        <div class="service-tagline">« Votre usage actuel est-il conforme, efficace et sécurisé ? »</div>
+        <p>Un audit complet pour les cabinets qui utilisent déjà des outils IA. Nous vérifions la conformité déontologique, la sécurité des données, la qualité des outputs, et l'adéquation des outils à vos véritables besoins.</p>
+        <div class="service-meta">
+          <span class="meta-pill">1 à 3 jours</span>
+          <span class="meta-pill">Rapport écrit + restitution orale</span>
+          <span class="meta-pill">⚠ Validation déontologique</span>
+        </div>
+        <div class="deliverable-title">Ce que vous recevez</div>
+        <ul class="deliverable-list">
+          <li>Rapport d'audit complet (conformité, sécurité, efficacité)</li>
+          <li>Analyse outil par outil : conserver, remplacer ou encadrer</li>
+          <li>Vérification RGPD et secret professionnel</li>
+          <li>Présentation de restitution devant les associés</li>
+        </ul>
+        <a href="#" class="service-cta">Demander un audit →</a>
+      </div>
+    </div>
+
+    <!-- Service 04 -->
+    <div class="service-item fade-in">
+      <div class="service-num">04</div>
+      <div>
+        <h3>Conseil & accompagnement</h3>
+        <div class="service-tagline">« Un partenaire qui reste là après la livraison. »</div>
+        <p>Pour les cabinets qui veulent aller plus loin qu'un rapport. Un accompagnement continu : sélection et déploiement des outils, formation des équipes, suivi des résultats. Vous avez un interlocuteur dédié — pas un numéro de ticket.</p>
+        <div class="service-meta">
+          <span class="meta-pill">Mensuel ou trimestriel</span>
+          <span class="meta-pill">Interlocuteur dédié</span>
+          <span class="meta-pill">2h coaching/mois inclus</span>
+          <span class="meta-pill">Accessible Slack ou visio</span>
+        </div>
+        <div class="deliverable-title">Ce que vous recevez</div>
+        <ul class="deliverable-list">
+          <li>Point mensuel de 1h sur vos usages IA</li>
+          <li>Accès prioritaire aux nouveaux outils LAWIA</li>
+          <li>Revue trimestrielle des gains réels (temps, qualité, conformité)</li>
+          <li>Hotline déontologie IA : réponse sous 48h</li>
+        </ul>
+        <a href="#" class="service-cta">Parler de votre projet →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ COMMENT ON TRAVAILLE — NOIR ═══ -->
+<section class="process">
+  <div class="container">
+    <div style="text-align:center;">
+      <div class="overline">Méthode</div>
+      <span class="ink-c"></span>
+      <h2>Comment on travaille.</h2>
+      <p style="max-width:520px;margin:0.6rem auto 0;color:var(--gris);">Pas de consultant avec une solution déjà en tête. Notre méthode commence par l'écoute — et se termine quand les résultats sont là.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card fade-in">
+        <div class="step-num">01</div>
+        <h3>Écoute & cadrage</h3>
+        <p>Un entretien initial pour comprendre votre organisation, vos outils, vos contraintes réglementaires et vos attentes. Sans présupposé.</p>
+      </div>
+      <div class="step-card fade-in">
+        <div class="step-num">02</div>
+        <h3>Analyse terrain</h3>
+        <p>Immersion dans votre pratique réelle. On observe, on documente, on identifie les irritants que vous ne verbalisez plus.</p>
+      </div>
+      <div class="step-card fade-in">
+        <div class="step-num">03</div>
+        <h3>Livrable & restitution</h3>
+        <p>Un rapport écrit précis, une restitution orale devant votre équipe. Des recommandations actionnables — pas des slides à ranger.</p>
+      </div>
+      <div class="step-card fade-in">
+        <div class="step-num">04</div>
+        <h3>Suivi & ajustements</h3>
+        <p>Un suivi continu, des ajustements en fonction des résultats réels, et une disponibilité que les grands cabinets de conseil n'offrent pas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CAS CLIENTS — CREME ═══ -->
+<section class="cases">
+  <div class="container">
+    <div style="text-align:center;">
+      <div class="overline">Ce qu'on a livré</div>
+      <span class="ink-c"></span>
+      <h2>Déjà en production.</h2>
+      <p style="max-width:500px;margin:0.6rem auto 0;color:var(--gris);">Des missions concrètes, des résultats mesurables.</p>
+    </div>
+    <div class="cases-grid">
+      <div class="case-card fade-in">
+        <div class="case-tag">Diagnostic + Cartographie</div>
+        <div class="case-title">Cabinet droit médical — 4 avocats · Aix-en-Provence</div>
+        <div class="case-desc">Diagnostic d'1h, suivi d'une cartographie complète des 14 types d'actes produits. Identification de 6 cas d'usage prioritaires et des 3 risques déontologiques à corriger immédiatement.</div>
+        <div class="case-result">
+          <span class="case-result-num">-2h30</span>
+          <span class="case-result-label">par dossier complexe après 8 semaines</span>
+        </div>
+      </div>
+      <div class="case-card fade-in">
+        <div class="case-tag">Audit IA</div>
+        <div class="case-title">Cabinet affaires — 12 collaborateurs · Paris</div>
+        <div class="case-desc">Audit de 2 jours révélant 4 pratiques non conformes RGPD, 1 outil transmettant des données à un serveur américain, et 3 process à restructurer.</div>
+        <div class="case-result">
+          <span class="case-result-num">4</span>
+          <span class="case-result-label">non-conformités identifiées & corrigées</span>
+        </div>
+      </div>
+      <div class="case-card fade-in">
+        <div class="case-tag">Conseil & accompagnement</div>
+        <div class="case-title">Direction juridique — Groupe industriel · Lyon</div>
+        <div class="case-desc">Accompagnement sur 6 mois de 8 juristes. Déploiement progressif d'un workflow IA pour la revue de contrats et la veille réglementaire.</div>
+        <div class="case-result">
+          <span class="case-result-num">+40%</span>
+          <span class="case-result-label">de contrats traités à équipe constante</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FAQ — BLANC ═══ -->
+<section class="faq-section">
+  <div class="container">
+    <div class="faq-grid">
+      <div>
+        <div class="overline">Questions fréquentes</div>
+        <span class="ink"></span>
+        <h2 style="font-size:1.8rem;">Ce que les avocats nous demandent souvent.</h2>
+        <p style="font-size:0.9rem;color:var(--gris);margin-top:0.8rem;line-height:1.8;">Des réponses directes, sans langue de bois. Si votre question n'est pas là, posez-la nous.</p>
+      </div>
+      <div class="faq-list">
+        <details><summary>Est-ce que vous intervenez pour les petits cabinets ?</summary><p>La majorité de nos missions concernent des avocats seuls ou des cabinets de 2 à 8 personnes. La cartographie et le diagnostic ont été conçus pour être accessibles à des structures légères.</p></details>
+        <details><summary>Comment est garantie la confidentialité ?</summary><p>Maître Humbert est avocat en exercice et soumis au secret professionnel. Une convention de confidentialité est signée. Nous travaillons sur les processus, pas sur les contenus des dossiers.</p></details>
+        <details><summary>Quelle différence entre audit et cartographie ?</summary><p>La cartographie analyse vos flux pour identifier quoi automatiser. L'audit évalue ce que vous faites déjà avec l'IA — sa conformité, sa sécurité, son efficacité réelle.</p></details>
+        <details><summary>Vos recommandations sont-elles compatibles avec les règles du Barreau ?</summary><p>C'est la colonne vertébrale de notre approche. Chaque recommandation est passée au filtre des règles déontologiques : publicité, secret professionnel, responsabilité, RGPD.</p></details>
+        <details><summary>Imposez-vous des outils spécifiques ?</summary><p>Non. Nos recommandations sont indépendantes de nos produits. Si un outil concurrent correspond mieux, nous le dirons. L'objectif est votre autonomie.</p></details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA FINAL — NOIR ═══ -->
+<section class="cta-final">
+  <div class="container">
+    <h2>Par où commencer ?</h2>
+    <p><strong>Un diagnostic de 30 minutes, sans engagement.</strong> Maître Humbert évalue votre situation, identifie les priorités, et vous dit franchement si et comment nous pouvons vous aider.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <a href="#" class="btn btn-light">Réserver mon diagnostic</a>
+      <a href="../2. Agents & Outils IA/nos-outils.html" class="btn btn-outline" style="border-color:var(--gris);color:var(--gris);">Voir nos produits →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-logo">
+      <div class="footer-logo-icon"><img src="../Assets/Icon.png" alt="LAWIA"></div>
+      <div class="footer-logo-text">Law<span>IA</span></div>
+    </div>
+    <p>© 2026 LAWIA — Maître Patrice Humbert & Naïm Zriouel · <a href="#">Mentions légales</a> · <a href="#">RGPD</a></p>
+    <p>LawIA SAS — SIREN 990 961 120 — <a href="mailto:contact@lawia.fr">contact@lawia.fr</a></p>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{document.querySelector('nav').classList.toggle('scrolled',window.scrollY>50);});
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'});});});
+const fadeEls=document.querySelectorAll('.fade-in');
+const fadeObs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');fadeObs.unobserve(e.target);}});},{threshold:0.15});
+fadeEls.forEach(el=>fadeObs.observe(el));
+const counters=document.querySelectorAll('.stat-num[data-target]');
+const counterObs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){const target=parseInt(e.target.dataset.target);let current=0;const step=Math.max(1,Math.floor(target/60));const timer=setInterval(()=>{current+=step;if(current>=target){current=target;clearInterval(timer);}e.target.textContent=current.toLocaleString('fr-FR');},25);counterObs.unobserve(e.target);}});},{threshold:0.5});
+counters.forEach(c=>counterObs.observe(c));
+</script>
+</body>
+</html>

@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nos Services — LAWIA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  /* === VARIABLES CHARTE LAWIA === */
+  :root {
+    --bleu:    #6A9BCC;
+    --bleu-f:  #4A7BA8;
+    --bleu-c:  #A8C4E0;
+    --bleu-p:  #D3E5F8;
+    --dark:    #141413;
+    --code:    #1A1917;
+    --creme:   #FAF9F5;
+    --gris:    #B0AEA5;
+    --gris-c:  #E8E6DC;
+    --negatif: #C4745B;
+    --r: 12px;
+    --shadow:      0 4px 16px rgba(20,20,19, 0.10);
+    --shadow-bleu: 0 4px 16px rgba(74,123,168, 0.18);
+  }
+
+  /* === RESET & BASE === */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 16px; scroll-behavior: smooth; }
+  body {
+    background: var(--creme);
+    color: var(--dark);
+    font-family: Calibri, 'Gill Sans', sans-serif;
+    line-height: 1.75;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 { font-family: Georgia, serif; font-weight: 700; line-height: 1.2; }
+  h1 { font-size: clamp(2.2rem, 4.5vw, 3.4rem); line-height: 1.12; margin-bottom: 1.2rem; }
+  h2 { font-size: 2.4rem; line-height: 1.2; }
+
+  /* === LAYOUT === */
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 1; }
+  section { padding: 5.5rem 0; }
+
+  /* === TYPOGRAPHIE CHARTE === */
+  .overline {
+    font-family: Calibri, sans-serif;
+    font-size: 0.7rem;
+    color: var(--bleu-f);
+    text-transform: uppercase;
+    letter-spacing: 3.5px;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+  }
+  .accent { color: var(--bleu); }
+  .handwritten {
+    font-family: 'Caveat', cursive;
+    font-size: 1.8rem;
+    color: var(--bleu-f);
+    margin: -0.3rem 0 1rem;
+    line-height: 1.3;
+    position: relative;
+    display: inline-block;
+    transform: rotate(-1deg);
+  }
+
+  /* === DECORATIFS === */
+  .ink   { display: block; width: 48px; height: 3px; background: var(--dark); margin-bottom: 1rem; }
+  .ink-c { display: block; width: 48px; height: 3px; background: var(--dark); margin: 0 auto 1rem; }
+
+  .tag {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    background: var(--dark);
+    color: var(--creme);
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 4px;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    border: 2px solid var(--dark);
+    box-shadow: 2px 2px 0 0 var(--bleu-f);
+  }
+
+  .dots-pattern {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, var(--gris-c) 1px, transparent 1px);
+    background-size: 28px 28px;
+    opacity: 0.5;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* === NAVIGATION CHARTE === */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 0.7rem 0;
+    background: var(--creme);
+    border-bottom: 3px solid var(--dark);
+    transition: all 0.3s;
+  }
+  nav .container { display: flex; justify-content: space-between; align-items: center; }
+  .logo { font-family: Georgia, serif; font-size: 1.5rem; font-weight: 700; color: var(--dark); text-decoration: none; display: flex; align-items: center; gap: 0.6rem; }
+  .logo .accent { color: var(--bleu); }
+  .logo-img { height: 36px; width: auto; object-fit: contain; }
+  nav ul { display: flex; list-style: none; gap: 1.6rem; align-items: center; }
+  nav a { color: var(--gris); text-decoration: none; font-size: 0.95rem; font-weight: 600; transition: color 0.2s; }
+  nav a:hover { color: var(--dark); }
+  nav a.active { color: var(--dark); font-weight: 700; }
+  .nav-cta {
+    background: var(--dark);
+    color: var(--creme) !important;
+    padding: 0.4rem 1rem;
+    border-radius: 4px;
+    border: 2px solid var(--dark);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+  }
+  .nav-cta:hover { background: var(--bleu); border-color: var(--bleu); }
+
+  /* Hamburger */
+  .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 0.3rem; }
+  .hamburger svg { width: 28px; height: 28px; stroke: var(--dark); stroke-width: 2.5; stroke-linecap: round; }
+
+  /* Mobile menu overlay */
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: var(--creme);
+    z-index: 200;
+    padding: 5rem 2rem 2rem;
+    text-align: center;
+  }
+  .mobile-menu.open { display: flex; flex-direction: column; gap: 1.2rem; align-items: center; }
+  .mobile-menu a { font-family: Georgia, serif; font-size: 1.2rem; color: var(--dark); text-decoration: none; font-weight: 700; }
+  .mobile-menu a:hover { color: var(--bleu); }
+  .mobile-menu .close-menu {
+    position: absolute;
+    top: 1rem; right: 1.5rem;
+    background: none; border: none;
+    cursor: pointer;
+    font-size: 2rem;
+    color: var(--dark);
+    font-family: Consolas, monospace;
+  }
+
+  /* === BOUTONS CHARTE (3 variantes) === */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.6rem;
+    border-radius: 4px;
+    font-family: Calibri, sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-decoration: none;
+    border: 3px solid var(--dark);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-primary { background: var(--dark); color: var(--creme); box-shadow: var(--shadow-bleu); }
+  .btn-primary:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 0 var(--bleu-f); }
+  .btn-outline { background: var(--creme); color: var(--dark); }
+  .btn-outline:hover { background: var(--bleu-p); }
+  .btn-light { background: var(--bleu); color: #fff; border-color: var(--bleu); box-shadow: 6px 6px 0 0 var(--creme); }
+  .btn-light:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 0 var(--creme); }
+
+  /* === CARDS CHARTE === */
+  .card {
+    background: #fff;
+    border: 3px solid var(--dark);
+    border-radius: var(--r);
+    padding: 1.8rem;
+    box-shadow: var(--shadow);
+  }
+  .card-dark {
+    background: var(--code);
+    border: 2px solid #2a2a28;
+    border-radius: var(--r);
+    padding: 1.6rem;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .card-dark:hover {
+    border-color: var(--bleu);
+    transform: translateY(-3px);
+    box-shadow: 0 0 0 1px var(--bleu);
+  }
+  .card-dark::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--bleu);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .card-dark:hover::before { opacity: 1; }
+
+  /* === SECTIONS CHARTE (alternance fonds) === */
+  .section-dark { background: var(--dark); color: var(--creme); }
+  .section-dark .overline { color: var(--bleu-c); }
+  .section-dark .ink, .section-dark .ink-c { background: var(--creme); }
+  .section-dark h2 { color: var(--creme); }
+
+  .section-bleu-pale { background: var(--bleu-p); color: var(--dark); }
+  .section-bleu-pale .overline { color: var(--bleu-f); }
+
+  .section-bleu-fonce { background: var(--bleu-f); color: #fff; }
+  .section-bleu-fonce .overline { color: var(--bleu-p); }
+  .section-bleu-fonce .ink-c { background: #fff; }
+  .section-bleu-fonce h2 { color: #fff; }
+
+  /* === FAQ ACCORDEON CHARTE === */
+  details {
+    border: 3px solid var(--dark);
+    border-radius: var(--r);
+    margin-bottom: 0.8rem;
+    background: #fff;
+    overflow: hidden;
+  }
+  summary {
+    padding: 1rem 1.2rem;
+    font-family: Georgia, serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  summary::after {
+    content: '+';
+    font-family: Consolas, monospace;
+    font-size: 1.2rem;
+    color: var(--bleu);
+    transition: transform 0.3s;
+  }
+  details[open] summary::after { content: '\2212'; }
+  details[open] summary { border-bottom: 1px solid var(--gris-c); }
+  details p { padding: 0.8rem 1.2rem; font-size: 0.88rem; color: var(--gris); }
+
+  /* === FOOTER CHARTE === */
+  footer {
+    background: var(--dark);
+    border-top: 2px solid #2a2a28;
+    padding: 2rem 0;
+    text-align: center;
+  }
+  footer p { color: var(--gris); font-size: 0.78rem; }
+  footer a { color: var(--bleu-c); text-decoration: none; }
+
+  /* ══════════════
+     HERO — fond creme
+  ══════════════ */
+  .hero {
+    padding: 7.5rem 0 5rem;
+    background: var(--creme);
+    position: relative;
+  }
+  .hero-grid {
+    display: grid; grid-template-columns: 1fr 420px; gap: 5rem; align-items: start;
+  }
+  .hero h1 { color: var(--dark); margin-bottom: 1.5rem; }
+  .hero-lead { font-size: 1.05rem; color: var(--gris); line-height: 1.85; max-width: 520px; margin-bottom: 2rem; }
+
+  /* conviction block */
+  .conviction {
+    background: var(--dark); border-radius: var(--r); padding: 2.25rem;
+    border: 3px solid var(--dark);
+    position: relative; overflow: hidden;
+  }
+  .conviction-label {
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 3.5px; text-transform: uppercase;
+    color: var(--bleu-c); margin-bottom: 1rem;
+  }
+  .conviction p {
+    font-family: Georgia, serif; font-style: italic;
+    font-size: 1.05rem; color: rgba(250,249,245,.85); line-height: 1.75; margin-bottom: 1.5rem;
+  }
+  .conviction-divider { height: 1px; background: rgba(255,255,255,.08); margin-bottom: 1.5rem; }
+  .conviction-items { display: flex; flex-direction: column; gap: 0.75rem; }
+  .conviction-item { display: flex; align-items: flex-start; gap: 0.75rem; }
+  .conviction-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--bleu); margin-top: 0.45rem; flex-shrink: 0;
+  }
+  .conviction-item span { font-size: 0.875rem; color: rgba(250,249,245,.6); line-height: 1.6; }
+  .conviction-item strong { color: rgba(250,249,245,.9); font-weight: 600; }
+
+  /* social proof */
+  .social-proof { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-top: 1rem; }
+  .social-proof-stat { font-family: Georgia, serif; font-weight: 700; font-size: 1.6rem; color: var(--bleu-f); }
+  .social-proof-label { font-size: 0.78rem; color: var(--gris); margin-top: 0.1rem; }
+  .social-proof-sep { width: 1px; background: var(--gris-c); }
+
+  /* ══════════════
+     POUR QUI — fond bleu pale
+  ══════════════ */
+  .pour-qui {
+    background: var(--bleu-p);
+    padding: 5.5rem 0;
+  }
+  .pour-qui-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem;
+    margin-top: 2.5rem;
+  }
+  .pq-cell {
+    background: #fff; padding: 1.75rem;
+    border: 3px solid var(--dark);
+    border-radius: var(--r);
+    box-shadow: var(--shadow);
+    transition: transform 0.2s;
+  }
+  .pq-cell:hover { transform: translateY(-3px); }
+  .pq-icon { margin-bottom: 1rem; }
+  .pq-title { font-family: Georgia, serif; font-weight: 700; font-size: 1.05rem; color: var(--dark); margin-bottom: 0.5rem; }
+  .pq-desc { font-size: 0.875rem; color: var(--gris); line-height: 1.75; }
+
+  /* ══════════════
+     LES 4 SERVICES — fond blanc
+  ══════════════ */
+  .services-section {
+    padding: 5.5rem 0;
+    background: #fff;
+  }
+  .services-section h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); color: var(--dark); margin-bottom: 0.75rem; }
+  .services-section > .container > p.services-intro { font-size: 1rem; color: var(--gris); max-width: 560px; line-height: 1.8; margin-bottom: 3.5rem; }
+
+  /* service item : alternance gauche/droite */
+  .service-item {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;
+    padding: 3.5rem 0;
+    border-top: 3px solid var(--gris-c);
+    position: relative;
+  }
+  .service-item:last-child { border-bottom: 3px solid var(--gris-c); }
+  .service-item.reverse { direction: rtl; }
+  .service-item.reverse > * { direction: ltr; }
+
+  .service-num {
+    font-family: Georgia, serif; font-weight: 700;
+    font-size: 5rem; color: var(--bleu-p); line-height: 1;
+    margin-bottom: 0.25rem; user-select: none;
+  }
+  .service-badge {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.3rem 0.75rem; border-radius: 4px; margin-bottom: 1rem;
+    background: var(--dark); color: var(--creme); border: 2px solid var(--dark);
+    box-shadow: 2px 2px 0 0 var(--bleu-f);
+  }
+  .service-title { font-size: clamp(1.5rem, 2.5vw, 2rem); color: var(--dark); margin-bottom: 0.75rem; }
+  .service-tagline { font-size: 1rem; color: var(--bleu-f); font-style: italic; font-family: Georgia, serif; margin-bottom: 1.25rem; }
+  .service-desc { font-size: 0.925rem; color: var(--gris); line-height: 1.85; margin-bottom: 1.75rem; }
+
+  .service-meta {
+    display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.75rem;
+  }
+  .meta-pill {
+    font-size: 0.78rem; color: var(--dark); background: var(--creme);
+    border: 2px solid var(--gris-c); border-radius: 4px; padding: 0.3rem 0.75rem;
+    display: flex; align-items: center; gap: 0.35rem;
+  }
+
+  .service-deliverables { margin-bottom: 1.75rem; }
+  .service-deliverables-title {
+    font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--gris); margin-bottom: 0.75rem;
+  }
+  .deliverable-list { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; }
+  .deliverable-list li {
+    font-size: 0.875rem; color: var(--dark); display: flex; align-items: flex-start; gap: 0.6rem; line-height: 1.55;
+  }
+  .deliverable-list li::before {
+    content: '';
+    display: inline-block; width: 14px; height: 14px; flex-shrink: 0; margin-top: 1px;
+    background: var(--bleu-p); border: 1.5px solid var(--bleu); border-radius: 3px;
+  }
+
+  .service-cta {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--dark); color: var(--creme);
+    border: 3px solid var(--dark); border-radius: 4px; padding: 0.8rem 1.6rem;
+    font-family: Calibri, sans-serif; font-size: 0.95rem; font-weight: 700;
+    cursor: pointer; text-decoration: none; transition: all 0.2s;
+    box-shadow: var(--shadow-bleu);
+  }
+  .service-cta:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 0 var(--bleu-f); }
+  .service-cta::after { content: ' \2192'; }
+
+  /* Visuel service */
+  .service-visual {
+    border: 3px solid var(--dark); border-radius: var(--r);
+    overflow: hidden; background: #fff;
+    display: flex; flex-direction: column;
+    box-shadow: var(--shadow);
+  }
+  .service-visual-top {
+    background: var(--bleu-p); padding: 2.5rem;
+    display: flex; align-items: center; justify-content: center;
+    min-height: 200px;
+  }
+  .service-visual-bottom { padding: 1.5rem; }
+  .service-result {
+    font-family: Georgia, serif; font-weight: 700;
+    font-size: 2rem; color: var(--bleu-f); line-height: 1; margin-bottom: 0.2rem;
+  }
+  .service-result-label { font-size: 0.78rem; color: var(--gris); }
+
+  /* ══════════════
+     COMMENT CA SE PASSE — fond dark
+  ══════════════ */
+  .process-section {
+    background: var(--dark); padding: 5.5rem 0;
+    position: relative; overflow: hidden;
+  }
+  .process-section .overline { color: var(--bleu-c); }
+  .process-section .ink { background: var(--creme); }
+  .process-section h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); color: var(--creme); margin-bottom: 0.75rem; }
+  .process-section > .container > p.process-intro { font-size: 1rem; color: rgba(250,249,245,.55); max-width: 520px; margin-bottom: 3.5rem; line-height: 1.8; }
+
+  .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+  .process-step {
+    background: var(--code); padding: 2rem 1.75rem; position: relative;
+    border: 2px solid #2a2a28; border-radius: var(--r);
+    transition: border-color 0.2s;
+  }
+  .process-step:hover { border-color: var(--bleu); }
+  .process-step::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--bleu);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .process-step:hover::before { opacity: 1; }
+  .process-step-num {
+    font-family: Georgia, serif; font-weight: 700; font-size: 2.8rem;
+    color: rgba(106,155,204,.2); line-height: 1; margin-bottom: 1rem; user-select: none;
+  }
+  .process-step h3 { font-family: Georgia, serif; font-size: 1rem; color: var(--creme); margin-bottom: 0.6rem; }
+  .process-step p { font-size: 0.85rem; color: rgba(250,249,245,.45); line-height: 1.7; }
+
+  .process-cta-block {
+    margin-top: 3rem; padding: 2rem;
+    border: 2px solid #2a2a28; border-radius: var(--r);
+    background: var(--code);
+    display: flex; align-items: center; justify-content: space-between; gap: 2rem;
+  }
+  .process-cta-block p { font-size: 0.95rem; color: rgba(250,249,245,.75); max-width: 560px; line-height: 1.65; }
+  .process-cta-block strong { color: var(--creme); }
+  .btn-outline-light {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: transparent; color: var(--bleu-c);
+    border: 3px solid var(--bleu-c); border-radius: 4px;
+    padding: 0.8rem 1.6rem; font-family: Calibri, sans-serif;
+    font-size: 0.95rem; font-weight: 700; cursor: pointer; white-space: nowrap;
+    transition: all 0.2s; text-decoration: none;
+  }
+  .btn-outline-light:hover { background: var(--bleu); border-color: var(--bleu); color: #fff; }
+  .btn-outline-light::after { content: ' \2192'; }
+
+  /* ══════════════
+     CAS CLIENTS — fond creme
+  ══════════════ */
+  .cases-section { padding: 5.5rem 0; background: var(--creme); }
+  .cases-section h2 { font-size: clamp(1.6rem, 2.5vw, 2.2rem); color: var(--dark); margin-bottom: 0.6rem; }
+  .cases-section > .container > p.cases-intro { font-size: 0.95rem; color: var(--gris); max-width: 500px; margin-bottom: 3rem; line-height: 1.8; }
+  .cases-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+  .case-card {
+    border: 3px solid var(--dark); border-radius: var(--r); overflow: hidden;
+    background: #fff; display: flex; flex-direction: column;
+    box-shadow: 4px 4px 0 0 var(--dark);
+    transition: transform 0.2s;
+  }
+  .case-card:hover { transform: translateY(-3px); }
+  .case-tag {
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 3.5px; text-transform: uppercase;
+    color: var(--bleu-f); padding: 1rem 1.25rem 0.5rem;
+  }
+  .case-title { font-family: Georgia, serif; font-weight: 700; font-size: 1rem; color: var(--dark); padding: 0 1.25rem 0.75rem; line-height: 1.4; }
+  .case-desc { font-size: 0.85rem; color: var(--gris); line-height: 1.7; padding: 0 1.25rem 1.25rem; flex: 1; }
+  .case-result {
+    border-top: 3px solid var(--gris-c); padding: 1rem 1.25rem;
+    display: flex; align-items: baseline; gap: 0.5rem; background: var(--creme);
+  }
+  .case-result-num { font-family: Georgia, serif; font-weight: 700; font-size: 1.4rem; color: var(--bleu-f); }
+  .case-result-label { font-size: 0.78rem; color: var(--gris); line-height: 1.4; }
+
+  /* ══════════════
+     FAQ — fond bleu pale
+  ══════════════ */
+  .faq-section {
+    background: var(--bleu-p);
+    padding: 5.5rem 0;
+  }
+  .faq-grid { display: grid; grid-template-columns: 360px 1fr; gap: 5rem; align-items: start; }
+  .faq-intro h2 { font-size: clamp(1.5rem, 2.5vw, 2rem); color: var(--dark); margin-bottom: 1rem; }
+  .faq-intro p { font-size: 0.9rem; color: var(--gris); line-height: 1.8; }
+  .faq-list { display: flex; flex-direction: column; gap: 0.8rem; }
+
+  /* ══════════════
+     CTA FINAL — fond bleu fonce
+  ══════════════ */
+  .cta-final {
+    padding: 5.5rem 0;
+    background: var(--bleu-f);
+  }
+  .cta-box {
+    display: grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: center;
+  }
+  .cta-box h2 { font-size: 1.9rem; color: #fff; margin-bottom: 0.75rem; }
+  .cta-box p { font-size: 0.95rem; color: rgba(255,255,255,.7); line-height: 1.75; max-width: 500px; }
+  .cta-box p strong { color: #fff; }
+  .cta-buttons { display: flex; flex-direction: column; gap: 0.75rem; align-items: flex-end; flex-shrink: 0; }
+  .btn-creme {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--creme); color: var(--dark);
+    border: 3px solid var(--dark); border-radius: 4px; padding: 0.8rem 1.6rem;
+    font-family: Calibri, sans-serif; font-size: 0.95rem; font-weight: 700;
+    cursor: pointer; white-space: nowrap; text-decoration: none;
+    transition: all 0.2s;
+    box-shadow: 6px 6px 0 0 var(--creme);
+  }
+  .btn-creme:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 0 var(--creme); }
+  .btn-creme::after { content: ' \2192'; }
+  .btn-ghost-light {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: transparent; color: rgba(255,255,255,.7);
+    border: 2px solid rgba(255,255,255,.3); border-radius: 4px;
+    padding: 0.75rem 1.6rem; font-family: Calibri, sans-serif;
+    font-size: 0.95rem; font-weight: 700; cursor: pointer; white-space: nowrap;
+    text-decoration: none; transition: all 0.2s;
+  }
+  .btn-ghost-light:hover { border-color: #fff; color: #fff; }
+
+  /* === RESPONSIVE === */
+  @media (max-width: 900px) {
+    nav ul { display: none; }
+    .hamburger { display: block; }
+    .hero-grid { grid-template-columns: 1fr; }
+    .service-item, .service-item.reverse { grid-template-columns: 1fr; direction: ltr; }
+    .service-item.reverse > * { direction: ltr; }
+    .process-steps { grid-template-columns: 1fr 1fr; }
+    .pour-qui-grid { grid-template-columns: 1fr; }
+    .cases-grid { grid-template-columns: 1fr; }
+    .faq-grid { grid-template-columns: 1fr; }
+    .cta-box { grid-template-columns: 1fr; text-align: center; }
+    .cta-buttons { align-items: center; }
+    .process-cta-block { flex-direction: column; text-align: center; }
+  }
+
+  @media (max-width: 600px) {
+    h1 { font-size: 1.8rem; }
+    .process-steps { grid-template-columns: 1fr; }
+  }
+
+  /* === ACCESSIBILITE — Reduced motion === */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- === NAV === -->
+<nav>
+  <div class="container">
+    <a href="#" class="logo"><img src="../logo lawia.png" alt="LAWIA" class="logo-img">Law<span class="accent">IA</span></a>
+    <ul>
+      <li><a href="#">Qui sommes-nous</a></li>
+      <li><a href="#">Nos produits</a></li>
+      <li><a href="#" class="active">Nos services</a></li>
+      <li><a href="#">Se former</a></li>
+      <li><a href="#">Edito</a></li>
+    </ul>
+    <a href="#" class="nav-cta">Prendre rendez-vous</a>
+    <button class="hamburger" onclick="document.getElementById('mobile-menu').classList.add('open')" aria-label="Menu">
+      <svg viewBox="0 0 28 28" fill="none"><line x1="4" y1="7" x2="24" y2="7"/><line x1="4" y1="14" x2="24" y2="14"/><line x1="4" y1="21" x2="24" y2="21"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile menu -->
+<div id="mobile-menu" class="mobile-menu">
+  <button class="close-menu" onclick="this.parentElement.classList.remove('open')" aria-label="Fermer">&times;</button>
+  <a href="#">Qui sommes-nous</a>
+  <a href="#">Nos produits</a>
+  <a href="#">Nos services</a>
+  <a href="#">Se former</a>
+  <a href="#">Edito</a>
+  <a href="#" class="nav-cta" style="margin-top:1rem;">Prendre rendez-vous</a>
+</div>
+
+<!-- ══════════════
+     HERO — fond creme
+══════════════ -->
+<header class="hero">
+  <div class="dots-pattern"></div>
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <p class="overline">Nos services</p>
+        <span class="ink"></span>
+        <h1>L'IA dans votre cabinet,<br><span class="accent">sans improvisation.</span></h1>
+        <p class="hero-lead">
+          Avant de deployer un outil, il faut comprendre ou vous en etes. Avant de former, il faut savoir ce qui merite d'etre automatise. Nos services partent toujours du meme endroit : votre pratique reelle -- pas un cas d'usage generique.
+        </p>
+        <!-- social proof -->
+        <div class="social-proof">
+          <div>
+            <div class="social-proof-stat">40+</div>
+            <div class="social-proof-label">cabinets accompagnes</div>
+          </div>
+          <div class="social-proof-sep"></div>
+          <div>
+            <div class="social-proof-stat">30 min</div>
+            <div class="social-proof-label">pour un diagnostic initial</div>
+          </div>
+          <div class="social-proof-sep"></div>
+          <div>
+            <div class="social-proof-stat">100%</div>
+            <div class="social-proof-label">des preconisations testees en cabinet</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bloc conviction -->
+      <div class="conviction">
+        <div class="conviction-label">Notre position</div>
+        <p>
+          La plupart des acteurs IA vendent des outils. Nous vendons d'abord un diagnostic honnete. Si l'IA ne vous apporte pas de gain mesurable, nous vous le disons.
+        </p>
+        <div class="conviction-divider"></div>
+        <div class="conviction-items">
+          <div class="conviction-item">
+            <div class="conviction-dot"></div>
+            <span><strong>Pas de solution universelle.</strong> Chaque cabinet a ses contraintes, son volume, son niveau d'equipement numerique.</span>
+          </div>
+          <div class="conviction-item">
+            <div class="conviction-dot"></div>
+            <span><strong>La credibilite d'un praticien.</strong> Maitre Humbert est avocat en exercice. Il a vecu ce qu'il analyse.</span>
+          </div>
+          <div class="conviction-item">
+            <div class="conviction-dot"></div>
+            <span><strong>Deontologie integree.</strong> Chaque recommandation tient compte du secret professionnel, du RGPD et des regles du Barreau.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════
+     POUR QUI — fond bleu pale
+══════════════ -->
+<section class="pour-qui">
+  <div class="container">
+    <p class="overline">Pour qui</p>
+    <span class="ink"></span>
+    <h2 style="font-size:clamp(1.5rem,2.5vw,2rem);">Nos services s'adressent a trois profils.</h2>
+    <div class="pour-qui-grid">
+      <div class="pq-cell">
+        <div class="pq-icon">
+          <svg width="28" height="28" viewBox="0 0 36 36" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="4" y="6" width="28" height="24" rx="4" stroke="var(--dark)" stroke-width="2" fill="none"/>
+            <line x1="4" y1="14" x2="32" y2="14" stroke="var(--bleu-c)" stroke-width="2"/>
+            <circle cx="18" cy="22" r="4" stroke="var(--dark)" stroke-width="2" fill="none"/>
+          </svg>
+        </div>
+        <div class="pq-title">Cabinets d'avocats</div>
+        <p class="pq-desc">De l'avocat seul au cabinet de 20 collaborateurs. Vous voulez structurer votre usage de l'IA, ou comprendre pourquoi les outils que vous avez testes n'ont pas tenu leurs promesses.</p>
+      </div>
+      <div class="pq-cell">
+        <div class="pq-icon">
+          <svg width="28" height="28" viewBox="0 0 36 36" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="18" cy="12" r="6" stroke="var(--dark)" stroke-width="2" fill="none"/>
+            <path d="M6 32 Q6 22 12 20 Q14 19 18 18 Q22 19 24 20 Q30 22 30 32" stroke="var(--dark)" stroke-width="2" fill="none"/>
+          </svg>
+        </div>
+        <div class="pq-title">Avocats independants</div>
+        <p class="pq-desc">Vous exercez seul et chaque heure compte. Vous cherchez un regard exterieur -- pragmatique -- sur les taches que vous pourriez deleguer a l'IA des cette semaine.</p>
+      </div>
+      <div class="pq-cell">
+        <div class="pq-icon">
+          <svg width="28" height="28" viewBox="0 0 36 36" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="6" y="8" width="24" height="20" rx="3" stroke="var(--dark)" stroke-width="2" fill="none"/>
+            <rect x="14" y="4" width="8" height="6" rx="2" stroke="var(--dark)" stroke-width="2" fill="none"/>
+            <line x1="10" y1="17" x2="26" y2="17" stroke="var(--bleu-c)" stroke-width="2"/>
+            <line x1="10" y1="22" x2="22" y2="22" stroke="var(--bleu-c)" stroke-width="2"/>
+          </svg>
+        </div>
+        <div class="pq-title">Juristes d'entreprise</div>
+        <p class="pq-desc">Direction juridique ou service legal d'une PME ou d'un grand groupe. Vous pilotez la transformation IA de votre equipe et cherchez une methode rigoureuse, adaptee aux contraintes du droit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════
+     LES 4 SERVICES — fond blanc
+══════════════ -->
+<section class="services-section">
+  <div class="container">
+    <p class="overline">Ce qu'on propose</p>
+    <span class="ink"></span>
+    <h2>Quatre niveaux d'<span class="accent">intervention</span>.</h2>
+    <p class="services-intro">Du plus leger au plus engage. Chaque service peut etre pris seul ou combine selon votre situation.</p>
+
+    <!-- SERVICE 1 : DIAGNOSTIC -->
+    <div class="service-item">
+      <div>
+        <div class="service-num">01</div>
+        <div class="service-badge">30 a 60 min &middot; En visio ou sur site</div>
+        <h3 class="service-title">Diagnostic <span class="accent">IA</span></h3>
+        <p class="service-tagline">&laquo; Ou en etes-vous vraiment avec l'IA ? &raquo;</p>
+        <p class="service-desc">
+          Un entretien structure pour etablir un etat des lieux honnete de votre pratique : quels outils vous utilisez deja, ce qui fonctionne, ce qui ne fonctionne pas, et les trois taches les plus chronophages de votre quotidien. Sans langue de bois.
+        </p>
+        <div class="service-meta">
+          <span class="meta-pill">30 a 60 min</span>
+          <span class="meta-pill">Visio ou sur site</span>
+          <span class="meta-pill">Disponible sous 5 jours ouvres</span>
+        </div>
+        <div class="service-deliverables">
+          <div class="service-deliverables-title">Ce que vous recevez</div>
+          <ul class="deliverable-list">
+            <li>Compte-rendu ecrit avec les 3 priorites identifiees</li>
+            <li>Evaluation de votre niveau de maturite IA (5 niveaux)</li>
+            <li>Liste des risques deontologiques a anticiper</li>
+            <li>Recommandation de la prochaine etape (formation, cartographie ou outil direct)</li>
+          </ul>
+        </div>
+        <a href="#" class="service-cta">Reserver un diagnostic</a>
+      </div>
+      <div class="service-visual">
+        <div class="service-visual-top">
+          <svg width="180" height="150" viewBox="0 0 180 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="30" y="20" width="80" height="100" rx="6" stroke="#4A7BA8" stroke-width="2" fill="white" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="42" y1="38" x2="98" y2="38" stroke="#A8C4E0" stroke-width="2" stroke-linecap="round"/>
+            <line x1="42" y1="48" x2="98" y2="48" stroke="#A8C4E0" stroke-width="2" stroke-linecap="round"/>
+            <line x1="42" y1="58" x2="80" y2="58" stroke="#A8C4E0" stroke-width="2" stroke-linecap="round"/>
+            <rect x="38" y="70" width="54" height="22" rx="3" fill="#D3E5F8"/>
+            <line x1="42" y1="78" x2="86" y2="78" stroke="#6A9BCC" stroke-width="2" stroke-linecap="round"/>
+            <line x1="42" y1="86" x2="76" y2="86" stroke="#6A9BCC" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="128" cy="90" r="32" stroke="#4A7BA8" stroke-width="2" fill="none"/>
+            <circle cx="128" cy="90" r="26" stroke="#A8C4E0" stroke-width="2" fill="rgba(211,229,248,.3)"/>
+            <line x1="150" y1="110" x2="166" y2="130" stroke="#4A7BA8" stroke-width="2" stroke-linecap="round"/>
+            <line x1="118" y1="90" x2="138" y2="90" stroke="#4A7BA8" stroke-width="2" stroke-linecap="round"/>
+            <line x1="128" y1="80" x2="128" y2="100" stroke="#4A7BA8" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="148" cy="56" r="14" fill="#4A7BA8"/>
+            <path d="M141 56 L146 61 L156 49" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+        </div>
+        <div class="service-visual-bottom">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:.75rem;">
+            <div>
+              <div class="service-result">3</div>
+              <div class="service-result-label">priorites identifiees par session</div>
+            </div>
+            <div>
+              <div class="service-result">5 j.</div>
+              <div class="service-result-label">delai moyen de livraison</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SERVICE 2 : CARTOGRAPHIE -->
+    <div class="service-item reverse">
+      <div>
+        <div class="service-num">02</div>
+        <div class="service-badge">Demi-journee a 1 journee &middot; Sur site</div>
+        <h3 class="service-title">Cartographie de <span class="accent">processus</span></h3>
+        <p class="service-tagline">&laquo; Quelles taches automatiser en priorite -- et lesquelles ne jamais automatiser ? &raquo;</p>
+        <p class="service-desc">
+          Une immersion dans votre organisation de travail. Nous analysons vos flux : de la prise de client a la cloture du dossier, en passant par la redaction, la recherche, la facturation. Chaque etape est qualifiee selon son potentiel d'automatisation et son niveau de risque.
+        </p>
+        <div class="service-meta">
+          <span class="meta-pill">Demi-journee ou journee complete</span>
+          <span class="meta-pill">Sur site de preference</span>
+          <span class="meta-pill">Inclut entretiens equipe</span>
+        </div>
+        <div class="service-deliverables">
+          <div class="service-deliverables-title">Ce que vous recevez</div>
+          <ul class="deliverable-list">
+            <li>Carte visuelle complete de vos processus (format PDF annote)</li>
+            <li>Matrice de priorisation : impact x risque x effort</li>
+            <li>Identification des 5 a 10 cas d'usage a fort ROI</li>
+            <li>Signalement des zones a ne pas automatiser (secret pro, responsabilite)</li>
+            <li>Feuille de route IA sur 6 mois, prete a presenter a vos associes</li>
+          </ul>
+        </div>
+        <a href="#" class="service-cta">Demander une cartographie</a>
+      </div>
+      <div class="service-visual">
+        <div class="service-visual-top" style="background:var(--bleu-p);">
+          <svg width="200" height="150" viewBox="0 0 200 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="100" cy="75" r="20" fill="#D3E5F8" stroke="#4A7BA8" stroke-width="2"/>
+            <text x="100" y="79" text-anchor="middle" fill="#4A7BA8" font-family="Georgia,serif" font-weight="700" font-size="9">Cabinet</text>
+            <circle cx="30" cy="38" r="14" fill="white" stroke="#6A9BCC" stroke-width="2"/>
+            <text x="30" y="42" text-anchor="middle" fill="#6A9BCC" font-family="Calibri,sans-serif" font-size="7">Redaction</text>
+            <circle cx="170" cy="38" r="14" fill="white" stroke="#6A9BCC" stroke-width="2"/>
+            <text x="170" y="42" text-anchor="middle" fill="#6A9BCC" font-family="Calibri,sans-serif" font-size="7">Recherche</text>
+            <circle cx="22" cy="112" r="14" fill="white" stroke="#6A9BCC" stroke-width="2"/>
+            <text x="22" y="116" text-anchor="middle" fill="#6A9BCC" font-family="Calibri,sans-serif" font-size="7">Facturation</text>
+            <circle cx="178" cy="112" r="14" fill="white" stroke="#6A9BCC" stroke-width="2"/>
+            <text x="178" y="116" text-anchor="middle" fill="#6A9BCC" font-family="Calibri,sans-serif" font-size="7">Suivi client</text>
+            <line x1="42" y1="47" x2="84" y2="62" stroke="#A8C4E0" stroke-width="2" stroke-dasharray="3 2"/>
+            <line x1="156" y1="47" x2="116" y2="62" stroke="#A8C4E0" stroke-width="2" stroke-dasharray="3 2"/>
+            <line x1="34" y1="102" x2="84" y2="88" stroke="#A8C4E0" stroke-width="2" stroke-dasharray="3 2"/>
+            <line x1="166" y1="102" x2="116" y2="88" stroke="#A8C4E0" stroke-width="2" stroke-dasharray="3 2"/>
+            <rect x="44" y="28" width="28" height="12" rx="3" fill="#4A7BA8"/>
+            <text x="58" y="37" text-anchor="middle" fill="white" font-family="Calibri,sans-serif" font-size="7" font-weight="700">Fort ROI</text>
+            <text x="100" y="140" text-anchor="middle" fill="#B0AEA5" font-family="Calibri,sans-serif" font-size="8">Impact x Risque x Effort</text>
+          </svg>
+        </div>
+        <div class="service-visual-bottom">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:.75rem;">
+            <div>
+              <div class="service-result">5-10</div>
+              <div class="service-result-label">cas d'usage identifies</div>
+            </div>
+            <div>
+              <div class="service-result">6 mois</div>
+              <div class="service-result-label">feuille de route livree</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SERVICE 3 : AUDIT -->
+    <div class="service-item">
+      <div>
+        <div class="service-num">03</div>
+        <div class="service-badge">1 a 3 jours &middot; Sur site &middot; Rapport ecrit</div>
+        <h3 class="service-title">Audit <span class="accent">IA</span> de cabinet</h3>
+        <p class="service-tagline">&laquo; Votre usage actuel de l'IA est-il conforme, efficace et securise ? &raquo;</p>
+        <p class="service-desc">
+          Un audit complet pour les cabinets qui utilisent deja des outils IA -- ou qui s'appretent a le faire a grande echelle. Nous verifions la conformite deontologique, la securite des donnees, la qualite des outputs, et l'adequation des outils a vos veritables besoins.
+        </p>
+        <div class="service-meta">
+          <span class="meta-pill">1 a 3 jours selon la taille du cabinet</span>
+          <span class="meta-pill">Rapport ecrit + restitution orale</span>
+          <span class="meta-pill">Validation deontologique incluse</span>
+        </div>
+        <div class="service-deliverables">
+          <div class="service-deliverables-title">Ce que vous recevez</div>
+          <ul class="deliverable-list">
+            <li>Rapport d'audit complet (conformite, securite, efficacite)</li>
+            <li>Analyse outil par outil : ce qui est a conserver, remplacer ou encadrer</li>
+            <li>Verification RGPD et secret professionnel sur les flux de donnees</li>
+            <li>Recommandations de gouvernance IA pour le cabinet</li>
+            <li>Presentation de restitution devant les associes</li>
+          </ul>
+        </div>
+        <a href="#" class="service-cta">Demander un audit</a>
+      </div>
+      <div class="service-visual">
+        <div class="service-visual-top" style="background:var(--bleu-p);">
+          <svg width="180" height="150" viewBox="0 0 180 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="30" y="15" width="120" height="110" rx="8" stroke="#4A7BA8" stroke-width="2" fill="white" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="30" y="15" width="120" height="28" rx="8" stroke="none" fill="#D3E5F8"/>
+            <text x="90" y="33" text-anchor="middle" fill="#4A7BA8" font-family="Georgia,serif" font-weight="700" font-size="9">Rapport d'audit IA</text>
+            <rect x="42" y="54" width="96" height="16" rx="3" fill="#F0F0EE"/>
+            <rect x="42" y="54" width="58" height="16" rx="3" fill="#4A7BA8" opacity=".8"/>
+            <text x="48" y="65" fill="white" font-family="Calibri,sans-serif" font-size="7.5">Conformite : 76%</text>
+            <rect x="42" y="76" width="96" height="16" rx="3" fill="#F0F0EE"/>
+            <rect x="42" y="76" width="40" height="16" rx="3" fill="#B0AEA5" opacity=".9"/>
+            <text x="48" y="87" fill="var(--dark)" font-family="Calibri,sans-serif" font-size="7.5">Securite : 42%</text>
+            <rect x="42" y="98" width="96" height="16" rx="3" fill="#F0F0EE"/>
+            <rect x="42" y="98" width="80" height="16" rx="3" fill="#4A7BA8" opacity=".5"/>
+            <text x="48" y="109" fill="white" font-family="Calibri,sans-serif" font-size="7.5">Efficacite : 83%</text>
+            <circle cx="152" cy="70" r="16" fill="var(--bleu-p)" stroke="var(--bleu-c)" stroke-width="2"/>
+            <text x="152" y="67" text-anchor="middle" fill="var(--bleu-f)" font-family="Georgia,serif" font-weight="700" font-size="10">!</text>
+            <text x="152" y="79" text-anchor="middle" fill="var(--bleu-f)" font-family="Calibri,sans-serif" font-size="6">3 risques</text>
+          </svg>
+        </div>
+        <div class="service-visual-bottom">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:.75rem;">
+            <div>
+              <div class="service-result">3</div>
+              <div class="service-result-label">dimensions auditees</div>
+            </div>
+            <div>
+              <div class="service-result">100%</div>
+              <div class="service-result-label">des outils analyses</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SERVICE 4 : CONSEIL -->
+    <div class="service-item reverse">
+      <div>
+        <div class="service-num">04</div>
+        <div class="service-badge">Accompagnement sur mesure &middot; Duree variable</div>
+        <h3 class="service-title">Conseil & <span class="accent">accompagnement</span></h3>
+        <p class="service-tagline">&laquo; Un partenaire qui reste la apres la livraison. &raquo;</p>
+        <p class="service-desc">
+          Pour les cabinets qui veulent aller plus loin qu'un rapport. Un accompagnement continu : selection et deploiement des outils, formation des equipes, suivi des resultats, ajustements. Vous avez un interlocuteur dedie -- pas un numero de ticket.
+        </p>
+        <div class="service-meta">
+          <span class="meta-pill">Mensuel ou trimestriel</span>
+          <span class="meta-pill">Interlocuteur dedie</span>
+          <span class="meta-pill">Inclut 2h de coaching/mois</span>
+          <span class="meta-pill">Accessible par Slack ou visio</span>
+        </div>
+        <div class="service-deliverables">
+          <div class="service-deliverables-title">Ce que vous recevez</div>
+          <ul class="deliverable-list">
+            <li>Point mensuel de 1h sur vos usages IA et les evolutions du marche</li>
+            <li>Acces prioritaire aux nouveaux outils LAWIA en avant-premiere</li>
+            <li>Revue trimestrielle des gains reels (temps, qualite, conformite)</li>
+            <li>Formation continue de l'equipe integree (nouveaux arrivants, nouvelles fonctionnalites)</li>
+            <li>Hotline deontologie IA : reponse sous 48h a toute question de conformite</li>
+          </ul>
+        </div>
+        <a href="#" class="service-cta">Parler de votre projet</a>
+      </div>
+      <div class="service-visual">
+        <div class="service-visual-top" style="background:var(--bleu-p);">
+          <svg width="200" height="150" viewBox="0 0 200 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="30" y1="120" x2="175" y2="120" stroke="#A8C4E0" stroke-width="2" stroke-linecap="round"/>
+            <line x1="30" y1="30" x2="30" y2="120" stroke="#A8C4E0" stroke-width="2" stroke-linecap="round"/>
+            <path d="M30 115 Q50 110 70 100 Q90 85 110 70 Q130 52 150 38 Q165 30 175 28"
+                  stroke="#4A7BA8" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <path d="M30 115 Q50 110 70 100 Q90 85 110 70 Q130 52 150 38 Q165 30 175 28 L175 120 L30 120 Z"
+                  fill="#D3E5F8" opacity=".3"/>
+            <circle cx="70" cy="100" r="5" fill="#4A7BA8"/>
+            <circle cx="110" cy="70" r="5" fill="#4A7BA8"/>
+            <circle cx="150" cy="38" r="5" fill="#4A7BA8"/>
+            <text x="70" y="114" text-anchor="middle" fill="#6A9BCC" font-family="Calibri,sans-serif" font-size="7">Mois 1</text>
+            <text x="110" y="114" text-anchor="middle" fill="#6A9BCC" font-family="Calibri,sans-serif" font-size="7">Mois 3</text>
+            <text x="150" y="114" text-anchor="middle" fill="#6A9BCC" font-family="Calibri,sans-serif" font-size="7">Mois 6</text>
+            <text x="14" y="120" fill="#B0AEA5" font-family="Calibri,sans-serif" font-size="7">0</text>
+            <text x="8" y="75" fill="#B0AEA5" font-family="Calibri,sans-serif" font-size="7">+50%</text>
+            <text x="4" y="36" fill="#4A7BA8" font-family="Calibri,sans-serif" font-size="7" font-weight="700">+100%</text>
+            <text x="80" y="145" text-anchor="middle" fill="#B0AEA5" font-family="Calibri,sans-serif" font-size="8">Gain de productivite - estimation cabinet moyen</text>
+          </svg>
+        </div>
+        <div class="service-visual-bottom">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:.75rem;">
+            <div>
+              <div class="service-result">2h</div>
+              <div class="service-result-label">coaching/mois inclus</div>
+            </div>
+            <div>
+              <div class="service-result">48h</div>
+              <div class="service-result-label">reponse hotline deonto</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════
+     COMMENT CA SE PASSE — fond dark
+══════════════ -->
+<section class="process-section section-dark">
+  <div class="container">
+    <p class="overline">Methode</p>
+    <span class="ink" style="background:var(--creme);"></span>
+    <h2>Comment on <span class="accent">travaille</span>.</h2>
+    <p class="process-intro">Pas de consultant qui arrive avec une solution deja en tete. Notre methode commence par l'ecoute -- et se termine quand les resultats sont la.</p>
+
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="process-step-num">01</div>
+        <h3>Ecoute & cadrage</h3>
+        <p>Un entretien initial pour comprendre votre organisation, vos outils existants, vos contraintes reglementaires et vos attentes. Sans presuppose.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-step-num">02</div>
+        <h3>Analyse terrain</h3>
+        <p>Immersion dans votre pratique reelle -- pas dans un organigramme. On observe, on documente, on identifie les irritants que vous ne verbalisez plus.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-step-num">03</div>
+        <h3>Livrable & restitution</h3>
+        <p>Un rapport ecrit precis, une restitution orale devant votre equipe. Des recommandations actionnables -- pas des slides a ranger dans un tiroir.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-step-num">04</div>
+        <h3>Suivi & ajustements</h3>
+        <p>Pour les missions de conseil : un suivi continu, des ajustements en fonction des resultats reels, et une disponibilite que les grands cabinets de conseil n'offrent pas.</p>
+      </div>
+    </div>
+
+    <div class="process-cta-block">
+      <p><strong>Pas de commercial, pas d'engagement a la premiere prise de contact.</strong> 30 minutes avec Maitre Humbert pour evaluer si nos services correspondent a votre situation. Si ce n'est pas le cas, nous vous le dirons.</p>
+      <a href="#" class="btn-outline-light">Reserver 30 minutes</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════
+     CAS CLIENTS — fond creme
+══════════════ -->
+<section class="cases-section">
+  <div class="container">
+    <p class="overline">Ce qu'on a livre</p>
+    <span class="ink"></span>
+    <h2>Deja en <span class="accent">production</span>.</h2>
+    <p class="cases-intro">Des missions concretes, des resultats mesurables. Ces cas sont representatifs de ce que nous observons sur le terrain.</p>
+
+    <div class="cases-grid">
+      <div class="case-card">
+        <div class="case-tag">Diagnostic + Cartographie</div>
+        <div class="case-title">Cabinet droit medical -- 4 avocats - Aix-en-Provence</div>
+        <p class="case-desc">Cabinet specialise en responsabilite medicale utilisant ChatGPT de maniere non structuree. Diagnostic d'1h, suivi d'une cartographie complete des 14 types d'actes produits. Identification de 6 cas d'usage prioritaires et des 3 risques deontologiques a corriger immediatement.</p>
+        <div class="case-result">
+          <span class="case-result-num">-2h30</span>
+          <span class="case-result-label">par dossier complexe<br>apres 8 semaines</span>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-tag">Audit IA</div>
+        <div class="case-title">Cabinet affaires -- 12 collaborateurs - Paris</div>
+        <p class="case-desc">Cabinet ayant deploye deux outils IA en 6 mois sans gouvernance definie. Audit de 2 jours revelant 4 pratiques non conformes RGPD, 1 outil transmettant des donnees a un serveur americain sans encadrement contractuel, et 3 process a restructurer avant tout deploiement elargi.</p>
+        <div class="case-result">
+          <span class="case-result-num">4</span>
+          <span class="case-result-label">non-conformites<br>identifiees & corrigees</span>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-tag">Conseil & accompagnement</div>
+        <div class="case-title">Direction juridique -- Groupe industriel - Lyon</div>
+        <p class="case-desc">Accompagnement sur 6 mois d'une equipe de 8 juristes d'entreprise. Deploiement progressif d'un workflow IA pour la revue de contrats, la veille reglementaire et la redaction de memos internes. Formation de l'equipe incluse, avec montee en competence documentee.</p>
+        <div class="case-result">
+          <span class="case-result-num">+40%</span>
+          <span class="case-result-label">de contrats traites<br>a equipe constante</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════
+     FAQ — fond bleu pale
+══════════════ -->
+<section class="faq-section">
+  <div class="container">
+    <div class="faq-grid">
+      <div class="faq-intro">
+        <p class="overline">Questions frequentes</p>
+        <span class="ink"></span>
+        <h2>Ce que les avocats nous demandent souvent.</h2>
+        <p>Des reponses directes, sans langue de bois. Si votre question n'est pas la, posez-la nous.</p>
+      </div>
+      <div class="faq-list">
+        <details>
+          <summary>Est-ce que vous intervenez pour les petits cabinets ou seulement les structures importantes ?</summary>
+          <p>La majorite de nos missions concernent des avocats seuls ou des cabinets de 2 a 8 personnes. La cartographie et le diagnostic ont precisement ete concus pour etre accessibles a des structures legeres. La complexite ne conditionne pas l'utilite du service.</p>
+        </details>
+        <details>
+          <summary>Comment est garantie la confidentialite des informations partagees lors d'une mission ?</summary>
+          <p>Maitre Humbert est avocat en exercice et soumis au secret professionnel. Une convention de confidentialite est signee avant toute mission. Aucune donnee de dossier n'est necessaire pour les missions de diagnostic et cartographie -- nous travaillons sur les processus, pas sur les contenus.</p>
+        </details>
+        <details>
+          <summary>Quelle est la difference entre un audit et une cartographie ?</summary>
+          <p>La cartographie analyse vos flux de travail pour identifier quoi automatiser. L'audit evalue ce que vous faites deja avec l'IA -- sa conformite, sa securite, son efficacite reelle. La cartographie precede souvent l'audit ; l'audit est utile quand vous avez deja des outils en place.</p>
+        </details>
+        <details>
+          <summary>Vos recommandations sont-elles compatibles avec les regles deontologiques du Barreau ?</summary>
+          <p>C'est la colonne vertebrale de notre approche. Chaque recommandation est passee au filtre des regles deontologiques applicables -- publicite, secret professionnel, responsabilite, RGPD. C'est ce qui nous differencie des prestataires IA generalistes.</p>
+        </details>
+        <details>
+          <summary>Est-ce que vous nous imposez des outils specifiques a l'issue de la mission ?</summary>
+          <p>Non. Nos recommandations sont independantes de nos produits. Si un outil concurrent correspond mieux a votre pratique, nous le dirons. L'objectif est votre autonomie -- pas notre chiffre d'affaires.</p>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════
+     CTA FINAL — fond bleu fonce
+══════════════ -->
+<section class="cta-final section-bleu-fonce">
+  <div class="container">
+    <div class="cta-box">
+      <div>
+        <h2>Par ou commencer ?</h2>
+        <p>
+          <strong>Un diagnostic de 30 minutes, sans engagement.</strong> Maitre Humbert evalue votre situation, identifie les deux ou trois actions les plus urgentes, et vous dit franchement si et comment nous pouvons vous aider. Si ce n'est pas le bon moment, il vous le dira aussi.
+        </p>
+      </div>
+      <div class="cta-buttons">
+        <a href="#" class="btn-creme">Reserver mon diagnostic</a>
+        <a href="#" class="btn-ghost-light">Voir nos produits</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p>&copy; 2025 LAWIA -- Maitre Patrice Humbert & Naim Zriouel - Tous droits reserves - <a href="#">Mentions legales</a> - <a href="#">RGPD</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
