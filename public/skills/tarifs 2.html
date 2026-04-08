@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tarifs Skills Claude — LawIA | Pack et Skills a l'unite pour avocats</title>
+<meta name="description" content="Tarifs LawIA Skills : Pack 5 Skills a 250 EUR HT (valeur 300 EUR HT) ou chaque Skill a 60 EUR HT a l'unite. Packs specialises Dommage corporel, Famille/Patrimoine a venir.">
+<link rel="canonical" href="https://lawia-skills.pages.dev/tarifs.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+/* ── VARIABLES ── */
+:root {
+  --bleu: #6A9BCC;
+  --bleu-f: #4A7BA8;
+  --bleu-c: #A8C4E0;
+  --bleu-p: #D3E5F8;
+  --dark: #141413;
+  --code: #1A1917;
+  --creme: #FAF9F5;
+  --gris: #B0AEA5;
+  --gris-c: #E8E6DC;
+  --negatif: #C4745B;
+  --r: 12px;
+  --shadow: 6px 6px 0 0 var(--dark);
+}
+
+/* ── RESET ── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body { font-family: Calibri, 'Gill Sans', sans-serif; background: var(--creme); color: var(--dark); line-height: 1.7; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+/* ── TYPO ── */
+h1, h2, h3, h4 { font-family: Georgia, serif; font-weight: 700; }
+h2 { font-size: 1.8rem; line-height: 1.2; }
+
+/* ── LAYOUT ── */
+.container { max-width: 1080px; margin: 0 auto; padding: 0 2rem; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: var(--creme); border-bottom: 3px solid var(--dark);
+  padding: 0.7rem 2rem;
+}
+nav .container { display: flex; align-items: center; justify-content: space-between; }
+.nav-logo { display: flex; align-items: center; gap: 0.5rem; text-decoration: none; }
+.logo-img { height: 32px; width: auto; }
+.nav-logo span { font-family: Georgia, serif; font-size: 1.3rem; font-weight: 700; color: var(--dark); }
+nav ul { list-style: none; display: flex; gap: 1.8rem; }
+nav ul a { font-size: 0.88rem; font-weight: 600; letter-spacing: 0.5px; transition: color 0.2s; }
+nav ul a:hover { color: var(--bleu-f); }
+.hamburger { display: none; background: none; border: none; cursor: pointer; padding: 0.25rem; }
+.hamburger span { display: block; width: 22px; height: 2px; background: var(--dark); margin: 5px 0; transition: 0.3s; }
+
+/* ── BUTTONS ── */
+.btn {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.75rem 1.5rem; border-radius: 4px;
+  font-family: Calibri, sans-serif; font-size: 0.9rem; font-weight: 700;
+  text-decoration: none; border: 3px solid var(--dark);
+  cursor: pointer; transition: all 0.2s; letter-spacing: 0.3px;
+}
+.btn-primary {
+  background: var(--dark); color: var(--creme);
+  box-shadow: 6px 6px 0 0 var(--bleu-f);
+}
+.btn-primary:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 0 var(--bleu-f); }
+.btn-outline { background: transparent; color: var(--dark); }
+.btn-outline:hover { background: var(--bleu-p); }
+.btn-light { background: #fff; color: var(--dark); }
+.btn-light:hover { background: var(--bleu-p); }
+
+/* ── HERO ── */
+.tarifs-hero {
+  padding: 8rem 0 3.5rem; text-align: center;
+  background: var(--dark); color: var(--creme);
+}
+.overline {
+  font-family: Consolas, monospace; font-size: 0.72rem;
+  letter-spacing: 3.5px; text-transform: uppercase;
+  color: var(--bleu-c); margin-bottom: 0.8rem;
+}
+.tarifs-hero h1 {
+  font-family: Georgia, serif; font-size: 2.4rem; font-weight: 700;
+  line-height: 1.15; margin-bottom: 1rem;
+}
+.tarifs-hero h1 em { font-style: normal; color: var(--bleu-c); }
+.tarifs-hero p { color: var(--gris); max-width: 540px; margin: 0 auto; font-size: 1rem; }
+.ink-line { display: block; width: 48px; height: 3px; background: var(--bleu); margin: 0.8rem auto 1.2rem; border-radius: 2px; }
+
+/* ── SECTIONS ── */
+section { padding: 4rem 0; }
+.section-title { text-align: center; margin-bottom: 2.5rem; }
+.section-title .overline { color: var(--bleu-f); }
+.section-title h2 { margin-bottom: 0.5rem; }
+.section-title p { color: var(--gris); max-width: 500px; margin: 0 auto; font-size: 0.95rem; }
+
+/* ── PACK HERO CARD ── */
+.pack-hero-wrap { max-width: 680px; margin: 0 auto 1.5rem; }
+.pack-hero-card {
+  border: 3px solid var(--dark); border-radius: var(--r);
+  overflow: hidden; box-shadow: 8px 8px 0 0 var(--bleu-f); background: #fff;
+}
+.pack-hero-header {
+  background: var(--dark); color: var(--creme);
+  padding: 1.5rem 2rem; display: flex; align-items: center;
+  justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+}
+.pack-hero-label {
+  font-family: Consolas, monospace; font-size: 0.72rem;
+  letter-spacing: 3px; text-transform: uppercase; color: var(--bleu-c);
+}
+.pack-hero-badge {
+  background: var(--bleu-f); color: #fff;
+  font-family: Consolas, monospace; font-size: 0.7rem; font-weight: 700;
+  padding: 0.3rem 0.7rem; border-radius: 4px; letter-spacing: 1px;
+}
+.pack-hero-title {
+  font-family: Georgia, serif; font-size: 1.55rem; font-weight: 700;
+  color: #fff; margin-top: 0.4rem;
+}
+.pack-hero-body { padding: 2rem; }
+.pack-economy-badge {
+  display: inline-block; background: var(--bleu-f); color: #fff;
+  font-family: Consolas, monospace; font-size: 0.68rem; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 0.3rem 0.8rem; border-radius: 4px; margin-bottom: 0.9rem;
+}
+.pack-old-price {
+  font-family: Georgia, serif; font-size: 1.6rem; font-weight: 700;
+  color: var(--gris); text-decoration: line-through;
+  text-decoration-color: var(--bleu-f); text-decoration-thickness: 3px;
+}
+.pack-price-row { display: flex; align-items: baseline; gap: 0.8rem; margin-bottom: 0.4rem; }
+.pack-price-main { font-family: Georgia, serif; font-size: 3rem; font-weight: 700; color: var(--dark); line-height: 1; }
+.pack-price-ht { font-size: 1rem; color: var(--gris); }
+.pack-price-unit { font-size: 0.85rem; color: var(--gris); margin-bottom: 1.2rem; }
+.pack-saving {
+  display: inline-block; background: var(--bleu-p); color: var(--bleu-f);
+  border: 2px solid var(--bleu-f); font-size: 0.78rem; font-weight: 700;
+  padding: 0.25rem 0.7rem; border-radius: 4px; margin: 0.4rem 0 0.3rem;
+}
+.pack-features {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 0.4rem 1.5rem; margin-bottom: 1.5rem;
+}
+.pack-feat {
+  font-size: 0.85rem; color: var(--dark);
+  display: flex; align-items: center; gap: 0.4rem;
+}
+.pack-feat::before {
+  content: ''; width: 6px; height: 6px;
+  border-radius: 50%; background: var(--bleu-f); flex-shrink: 0;
+}
+.pack-skills-list {
+  border-top: 2px solid var(--gris-c);
+  padding-top: 1.2rem; margin-bottom: 1.5rem;
+}
+.pack-skills-list p {
+  font-family: Consolas, monospace; font-size: 0.7rem;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--bleu-f); margin-bottom: 0.7rem;
+}
+.pack-skill-item {
+  display: flex; align-items: center; gap: 0.7rem;
+  padding: 0.4rem 0; border-bottom: 1px solid var(--gris-c); font-size: 0.88rem;
+}
+.pack-skill-num {
+  font-family: Consolas, monospace; font-size: 0.65rem; color: var(--bleu-f);
+  font-weight: 700; background: var(--bleu-p);
+  padding: 0.15rem 0.4rem; border-radius: 3px; flex-shrink: 0;
+}
+
+/* ── INDIVIDUAL SKILLS GRID ── */
+.skills-indiv-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.2rem;
+}
+.skill-indiv-card {
+  border: 3px solid var(--dark); border-radius: var(--r);
+  overflow: hidden; box-shadow: 5px 5px 0 0 var(--bleu-f);
+  background: #fff; display: flex; flex-direction: column;
+}
+.sid-header {
+  background: var(--code); padding: 0.6rem 1rem;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.sid-num {
+  font-family: Consolas, monospace; font-size: 0.65rem;
+  color: var(--bleu-c); font-weight: 700; letter-spacing: 2px;
+}
+.sid-badge {
+  background: var(--bleu-f); color: #fff; font-size: 0.6rem;
+  font-weight: 700; padding: 0.15rem 0.45rem;
+  border-radius: 3px; letter-spacing: 1px;
+}
+.sid-body { padding: 1.2rem 1.3rem; flex: 1; }
+.sid-title {
+  font-family: Georgia, serif; font-size: 1rem; font-weight: 700;
+  color: var(--dark); margin-bottom: 0.5rem; line-height: 1.3;
+}
+.sid-desc { font-size: 0.83rem; color: var(--gris); line-height: 1.5; margin-bottom: 0.9rem; }
+.sid-features { list-style: none; margin-bottom: 1rem; }
+.sid-features li {
+  font-size: 0.8rem; color: var(--dark); padding: 0.25rem 0;
+  border-bottom: 1px solid var(--gris-c);
+  display: flex; align-items: center; gap: 0.4rem;
+}
+.sid-features li::before {
+  content: ''; width: 5px; height: 5px;
+  border-radius: 50%; background: var(--bleu-f); flex-shrink: 0;
+}
+.sid-footer {
+  padding: 1rem 1.3rem; background: var(--bleu-p);
+  border-top: 2px solid var(--bleu-f);
+  display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; flex-wrap: wrap;
+}
+.sid-price { font-family: Georgia, serif; font-size: 1.3rem; font-weight: 700; color: var(--dark); }
+.sid-price span { font-size: 0.75rem; font-weight: 400; color: var(--gris); }
+
+/* ── COMING SOON ── */
+.coming-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem;
+}
+.coming-card {
+  border: 3px solid var(--dark); border-radius: var(--r);
+  overflow: hidden; box-shadow: 5px 5px 0 0 var(--gris);
+  background: var(--creme); opacity: 0.92;
+}
+.coming-header { background: var(--dark); padding: 1.1rem 1.3rem; position: relative; }
+.coming-badge-soon {
+  position: absolute; top: 0.8rem; right: 1rem;
+  background: var(--bleu-c); color: var(--dark);
+  font-family: Consolas, monospace; font-size: 0.6rem; font-weight: 700;
+  padding: 0.2rem 0.5rem; border-radius: 4px;
+  letter-spacing: 1px; text-transform: uppercase;
+}
+.coming-label {
+  font-family: Consolas, monospace; font-size: 0.65rem;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--bleu-c); margin-bottom: 0.3rem;
+}
+.coming-title {
+  font-family: Georgia, serif; font-size: 1.1rem;
+  font-weight: 700; color: #fff; line-height: 1.3;
+}
+.coming-body { padding: 1.2rem 1.3rem; }
+.coming-price {
+  font-family: Georgia, serif; font-size: 1.8rem;
+  font-weight: 700; color: var(--dark); margin-bottom: 0.3rem;
+}
+.coming-price span { font-size: 0.85rem; font-weight: 400; color: var(--gris); }
+.coming-count {
+  font-family: Consolas, monospace; font-size: 0.7rem;
+  color: var(--bleu-f); margin-bottom: 1rem; letter-spacing: 1px;
+}
+.coming-list { list-style: none; }
+.coming-list li {
+  font-size: 0.8rem; color: var(--dark); padding: 0.25rem 0;
+  border-bottom: 1px solid var(--gris-c);
+  display: flex; align-items: center; gap: 0.4rem;
+}
+.coming-list li::before {
+  content: ''; width: 5px; height: 5px;
+  border-radius: 50%; background: var(--gris); flex-shrink: 0;
+}
+.coming-list li.coming-more { color: var(--gris); font-style: italic; }
+.coming-list li.coming-more::before { background: var(--gris-c); }
+.coming-footer {
+  padding: 0.9rem 1.3rem; background: var(--gris-c);
+  border-top: 2px solid var(--gris);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.coming-notif-btn {
+  font-size: 0.78rem; color: var(--bleu-f); font-weight: 700;
+  border: 2px solid var(--bleu-f); padding: 0.35rem 0.8rem;
+  border-radius: 5px; background: transparent; cursor: pointer;
+  transition: background 0.2s;
+}
+.coming-notif-btn:hover { background: var(--bleu-p); }
+
+/* ── FAQ ── */
+.faq-list { max-width: 620px; margin: 0 auto; }
+.faq-item { border-bottom: 2px solid var(--gris-c); padding: 1rem 0; }
+.faq-q { font-weight: 700; font-size: 0.92rem; color: var(--dark); margin-bottom: 0.3rem; }
+.faq-a { font-size: 0.85rem; color: var(--gris); }
+
+/* ── CTA BOTTOM ── */
+.cta-bottom {
+  background: var(--bleu-f); padding: 3.5rem 0;
+  text-align: center; color: #fff;
+}
+.cta-bottom h2 { font-family: Georgia, serif; font-size: 1.8rem; font-weight: 700; margin-bottom: 0.6rem; }
+.cta-bottom p { color: var(--bleu-p); margin-bottom: 1.8rem; font-size: 0.97rem; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--dark); color: var(--gris);
+  padding: 2rem; text-align: center; font-size: 0.82rem;
+  border-top: 3px solid var(--bleu-f);
+}
+footer a { color: var(--bleu-c); text-decoration: none; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav ul { gap: 1rem; }
+}
+@media (max-width: 600px) {
+  .pack-features { grid-template-columns: 1fr; }
+  .skills-indiv-grid { grid-template-columns: 1fr; }
+  .coming-grid { grid-template-columns: 1fr; }
+  .pack-price-main { font-size: 2.2rem; }
+  .tarifs-hero h1 { font-size: 1.7rem; }
+  nav ul { display: none; }
+  .hamburger { display: block; }
+  .sid-footer { flex-direction: column; align-items: stretch; gap: 0.6rem; text-align: center; }
+}
+
+/* ── REDUCED MOTION ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  html { scroll-behavior: auto; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="container" style="display:flex;align-items:center;justify-content:space-between;">
+    <a class="nav-logo" href="/">
+      <img src="/logo lawia.png" alt="LAWIA" class="logo-img">
+      <span>Skills</span>
+    </a>
+    <ul>
+      <li><a href="/skills/">Accueil</a></li>
+      <li><a href="/skills/#skills">Les 5 Skills</a></li>
+      <li><a href="/skills/tarifs.html" style="color:var(--bleu-f);">Tarifs</a></li>
+      <li><a href="/skills/pack-gratuit.html">Essai gratuit</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Menu" onclick="document.querySelector('nav ul').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <a href="/skills/pack-gratuit.html" class="btn btn-primary" style="font-size:0.8rem;padding:0.55rem 1rem;">Essai gratuit</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="tarifs-hero">
+  <div class="container">
+    <div class="overline">Tarifs</div>
+    <span class="ink-line"></span>
+    <h1>Tarifs <em>transparents</em>,<br>acces permanent</h1>
+    <p>Achetez le pack ou chaque Skill a l'unite. Paiement unique, acces permanent. Aucun abonnement, aucune surprise.</p>
+  </div>
+</section>
+
+<!-- PACK 5 SKILLS -->
+<section style="background:var(--creme);">
+  <div class="container">
+    <div class="section-title">
+      <div class="overline">Le meilleur rapport qualite / prix</div>
+      <span class="ink-line"></span>
+      <h2>Pack 5 Skills -- 250 EUR HT</h2>
+      <p>Les 5 Skills reunis. L'offre complete pour les avocats qui veulent aller vite.</p>
+    </div>
+    <div class="pack-hero-wrap">
+      <div class="pack-hero-card">
+        <div class="pack-hero-header">
+          <div>
+            <div class="pack-hero-label">Pack complet</div>
+            <div class="pack-hero-title">Pack 5 Skills LawIA</div>
+          </div>
+          <div class="pack-hero-badge">5 Skills inclus</div>
+        </div>
+        <div class="pack-hero-body">
+          <div class="pack-economy-badge">Offre Pack -- economie 50 EUR</div>
+          <div style="display:flex;align-items:center;gap:0.7rem;margin-bottom:0.4rem;">
+            <div class="pack-old-price">300 EUR HT</div>
+            <div style="font-size:0.75rem;color:var(--gris);background:var(--gris-c);padding:0.2rem 0.5rem;border-radius:3px;">valeur a l'unite</div>
+          </div>
+          <div class="pack-price-row">
+            <div class="pack-price-main">250 EUR</div>
+            <div class="pack-price-ht">HT</div>
+          </div>
+          <div class="pack-saving">Vous economisez 50 EUR HT</div>
+          <div class="pack-price-unit">300 EUR TTC -- Paiement unique -- TVA 20 % en sus -- Acces permanent</div>
+          <div class="pack-features">
+            <div class="pack-feat">5 Skills Claude prets a l'emploi</div>
+            <div class="pack-feat">6 videos de formation incluses</div>
+            <div class="pack-feat">Mises a jour incluses a vie</div>
+            <div class="pack-feat">Support par email</div>
+            <div class="pack-feat">Acces permanent, sans abonnement</div>
+            <div class="pack-feat">Valeur unitaire : 5 x 60 EUR HT = 300 EUR HT</div>
+          </div>
+          <div class="pack-skills-list">
+            <p>Skills inclus dans ce pack</p>
+            <div class="pack-skill-item">
+              <span class="pack-skill-num">SKILL 01</span>
+              Assignation Tribunal Judiciaire -- refere &amp; au fond, 5 matieres
+            </div>
+            <div class="pack-skill-item">
+              <span class="pack-skill-num">SKILL 02</span>
+              Requete Tribunal Administratif -- refere &amp; memoire au fond, 8 matieres
+            </div>
+            <div class="pack-skill-item">
+              <span class="pack-skill-num">SKILL 03</span>
+              Contre-argumentation -- 5 types de failles, 7 domaines
+            </div>
+            <div class="pack-skill-item">
+              <span class="pack-skill-num">SKILL 04</span>
+              Conclusions en appel -- appelant &amp; intime, RPVA, .docx
+            </div>
+            <div class="pack-skill-item">
+              <span class="pack-skill-num">SKILL 05</span>
+              Convention d'honoraires -- 4 formules, conforme CNB 2023
+            </div>
+          </div>
+          <a href="STRIPE_PAYMENT_LINK_PACK" class="btn btn-primary" style="width:100%;justify-content:center;font-size:0.95rem;" data-stripe="pack">Obtenir le Pack 5 Skills -- 250 EUR HT (valeur 300 EUR)</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS INDIVIDUELS -->
+<section style="background:var(--dark);">
+  <div class="container">
+    <div class="section-title">
+      <div class="overline" style="color:var(--bleu-c);">A l'unite</div>
+      <span class="ink-line"></span>
+      <h2 style="color:var(--creme);">5 Skills a 60 EUR HT chacun</h2>
+      <p style="color:var(--gris);">Choisissez uniquement le Skill dont vous avez besoin maintenant. Vous pouvez completer votre pack a tout moment.</p>
+    </div>
+    <div class="skills-indiv-grid">
+
+      <!-- SKILL 01 -->
+      <div class="skill-indiv-card">
+        <div class="sid-header">
+          <span class="sid-num">SKILL 01</span>
+          <span class="sid-badge">Judiciaire</span>
+        </div>
+        <div class="sid-body">
+          <div class="sid-title">Assignation Tribunal Judiciaire</div>
+          <div class="sid-desc">Refere et au fond. 5 matieres couvertes. Structure Art. 56 CPC. Anti-hallucination integre.</div>
+          <ul class="sid-features">
+            <li>Dommage corporel &amp; responsabilite medicale</li>
+            <li>Consommation, construction, droit civil</li>
+            <li>Expose des faits + discussion + dispositif</li>
+            <li>Bordereau de pieces integre</li>
+            <li>2h gagnees par assignation</li>
+          </ul>
+        </div>
+        <div class="sid-footer">
+          <div class="sid-price">60 EUR <span>HT</span></div>
+          <a href="/skills/skill-assignation.html" class="btn btn-outline" style="font-size:0.78rem;padding:0.4rem 0.9rem;border-color:var(--bleu-f);color:var(--bleu-f);">Voir le detail</a>
+          <a href="STRIPE_PAYMENT_LINK_ASSIGNATION" class="btn btn-primary" style="font-size:0.78rem;padding:0.4rem 0.9rem;" data-stripe="assignation">Acheter</a>
+        </div>
+      </div>
+
+      <!-- SKILL 02 -->
+      <div class="skill-indiv-card">
+        <div class="sid-header">
+          <span class="sid-num">SKILL 02</span>
+          <span class="sid-badge">Administratif</span>
+        </div>
+        <div class="sid-body">
+          <div class="sid-title">Requete Tribunal Administratif</div>
+          <div class="sid-desc">Refere et memoire au fond. 8 matieres. Verificateur RAPO integre. Protocole anti-hallucination OpenLegi.</div>
+          <ul class="sid-features">
+            <li>8 matieres administratives couvertes</li>
+            <li>Verificateur RAPO prealable integre</li>
+            <li>Protocole anti-hallucination OpenLegi</li>
+            <li>Moyens illegalite externe / interne</li>
+            <li>2h gagnees par requete</li>
+          </ul>
+        </div>
+        <div class="sid-footer">
+          <div class="sid-price">60 EUR <span>HT</span></div>
+          <a href="STRIPE_PAYMENT_LINK_REQUETE" class="btn btn-primary" style="font-size:0.78rem;padding:0.4rem 0.9rem;" data-stripe="requete">Acheter</a>
+        </div>
+      </div>
+
+      <!-- SKILL 03 -->
+      <div class="skill-indiv-card">
+        <div class="sid-header">
+          <span class="sid-num">SKILL 03</span>
+          <span class="sid-badge">Transversal</span>
+        </div>
+        <div class="sid-body">
+          <div class="sid-title">Contre-argumentation</div>
+          <div class="sid-desc">Analyse methodique des ecritures adverses. Detection 5 types de failles. Triple verification anti-hallucination. 7 domaines.</div>
+          <ul class="sid-features">
+            <li>Cartographie des arguments adverses</li>
+            <li>5 types de failles detectees</li>
+            <li>Repertoire contre-arguments evalues</li>
+            <li>Triple verification -- zero hallucination</li>
+            <li>2h gagnees par dossier</li>
+          </ul>
+        </div>
+        <div class="sid-footer">
+          <div class="sid-price">60 EUR <span>HT</span></div>
+          <a href="/skills/skill-contre-argumentation.html" class="btn btn-outline" style="font-size:0.78rem;padding:0.4rem 0.9rem;border-color:var(--bleu-f);color:var(--bleu-f);">Voir le detail</a>
+          <a href="STRIPE_PAYMENT_LINK_CONTRE_ARG" class="btn btn-primary" style="font-size:0.78rem;padding:0.4rem 0.9rem;" data-stripe="contre-argumentation">Acheter</a>
+        </div>
+      </div>
+
+      <!-- SKILL 04 -->
+      <div class="skill-indiv-card">
+        <div class="sid-header">
+          <span class="sid-num">SKILL 04</span>
+          <span class="sid-badge">Appel</span>
+        </div>
+        <div class="sid-body">
+          <div class="sid-title">Conclusions en appel</div>
+          <div class="sid-desc">Appelant ou intime. 10 sections. Syllogisme En droit / En l'espece. Critique du jugement. .docx professionnel RPVA.</div>
+          <ul class="sid-features">
+            <li>Structure RPVA conforme R.954-1 CPC</li>
+            <li>Appelant &amp; intime -- 10 sections</li>
+            <li>Critique motivee du jugement</li>
+            <li>Dispositif + tableau recapitulatif</li>
+            <li>3h gagnees par jeu de conclusions</li>
+          </ul>
+        </div>
+        <div class="sid-footer">
+          <div class="sid-price">60 EUR <span>HT</span></div>
+          <a href="STRIPE_PAYMENT_LINK_APPEL" class="btn btn-primary" style="font-size:0.78rem;padding:0.4rem 0.9rem;" data-stripe="appel">Acheter</a>
+        </div>
+      </div>
+
+      <!-- SKILL 05 -->
+      <div class="skill-indiv-card">
+        <div class="sid-header">
+          <span class="sid-num">SKILL 05</span>
+          <span class="sid-badge">Gestion cabinet</span>
+        </div>
+        <div class="sid-body">
+          <div class="sid-title">Convention d'honoraires</div>
+          <div class="sid-desc">4 formules de facturation. Conforme CNB 2023, CJUE C-395/21, RGPD + AI Act. 20 articles.</div>
+          <ul class="sid-features">
+            <li>Forfait / Taux horaire / Resultat / Mixte</li>
+            <li>Honoraire de resultat 14 % integre</li>
+            <li>Conforme CNB 2023 + RGPD + AI Act</li>
+            <li>Clause revision + rupture de mandat</li>
+            <li>15 min gagnees par convention</li>
+          </ul>
+        </div>
+        <div class="sid-footer">
+          <div class="sid-price">60 EUR <span>HT</span></div>
+          <a href="/skills/skill-convention.html" class="btn btn-outline" style="font-size:0.78rem;padding:0.4rem 0.9rem;border-color:var(--bleu-f);color:var(--bleu-f);">Voir le detail</a>
+          <a href="STRIPE_PAYMENT_LINK_CONVENTION" class="btn btn-primary" style="font-size:0.78rem;padding:0.4rem 0.9rem;" data-stripe="convention">Acheter</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PACKS A VENIR -->
+<section style="background:var(--creme);">
+  <div class="container">
+    <div class="section-title">
+      <div class="overline">Bientot disponibles</div>
+      <span class="ink-line"></span>
+      <h2>Packs specialises -- a venir</h2>
+      <p>Des packs thematiques ultra-complets sont en preparation. Soyez notifie en avant-premiere des leur sortie.</p>
+    </div>
+    <div class="coming-grid">
+
+      <!-- PACK DOMMAGE CORPOREL -->
+      <div class="coming-card">
+        <div class="coming-header">
+          <div class="coming-badge-soon">A venir</div>
+          <div class="coming-label">Pack specialise</div>
+          <div class="coming-title">Pack Skills<br>Dommage corporel</div>
+        </div>
+        <div class="coming-body">
+          <div class="coming-price">900 EUR <span>HT</span></div>
+          <div class="coming-count">7 Skills specialises inclus</div>
+          <ul class="coming-list">
+            <li>Assignation refere expertise provision -- accident</li>
+            <li>Assignation refere expertise -- responsabilite medicale</li>
+            <li>Dire a expert &amp; contre-argumentation medicale</li>
+            <li>Evaluation et maximisation des prejudices</li>
+            <li>Assignation au fond -- responsabilite medicale + liquidation</li>
+            <li>Assignation au fond -- accident + liquidation prejudices</li>
+            <li>Conclusions en appel -- responsabilite</li>
+          </ul>
+        </div>
+        <div class="coming-footer">
+          <span style="font-size:0.78rem;color:var(--gris);">Prochainement</span>
+          <button class="coming-notif-btn" onclick="notifPack('dommage-corporel')">M'avertir a la sortie</button>
+        </div>
+      </div>
+
+      <!-- PACK FAMILLE & PATRIMOINE -->
+      <div class="coming-card">
+        <div class="coming-header">
+          <div class="coming-badge-soon">A venir</div>
+          <div class="coming-label">Pack specialise</div>
+          <div class="coming-title">Pack Skills<br>Famille &amp; patrimoine</div>
+        </div>
+        <div class="coming-body">
+          <div class="coming-price">800 EUR <span>HT</span></div>
+          <div class="coming-count">9 Skills specialises inclus</div>
+          <ul class="coming-list">
+            <li>Requete modification droit de visite &amp; pension alimentaire</li>
+            <li>Convention de divorce par consentement mutuel</li>
+            <li>Assignation divorce avec demandes provisoires</li>
+            <li>Conclusions apres AOMP</li>
+            <li>Liquidation de patrimoine</li>
+            <li>Assignation a jour fixe</li>
+            <li>Assignation expertise immobiliere</li>
+            <li>Dire a expert</li>
+            <li class="coming-more">Et d'autres Skills a decouvrir...</li>
+          </ul>
+        </div>
+        <div class="coming-footer">
+          <span style="font-size:0.78rem;color:var(--gris);">Prochainement</span>
+          <button class="coming-notif-btn" onclick="notifPack('famille-patrimoine')">M'avertir a la sortie</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="background:var(--bleu-p);padding:3.5rem 0;">
+  <div class="container">
+    <div class="section-title">
+      <div class="overline">Questions frequentes</div>
+      <span class="ink-line"></span>
+      <h2>Tout ce que vous devez savoir</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">Puis-je acheter un seul Skill puis completer plus tard ?</div>
+        <div class="faq-a">Oui. Chaque achat est independant. Vous payez la difference si vous souhaitez acceder au Pack complet ulterieurement.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Les mises a jour sont-elles incluses ?</div>
+        <div class="faq-a">Oui, pour le Pack comme pour les achats a l'unite. Lorsqu'un Skill est ameliore, vous recevez la mise a jour sans frais supplementaires.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Faut-il un abonnement Claude Pro ou Team ?</div>
+        <div class="faq-a">Les Skills fonctionnent avec Claude Pro (20 $/mois) ou Claude Team. Ils ne necessitent aucun abonnement LawIA supplementaire.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Quand sortiront les packs specialises ?</div>
+        <div class="faq-a">Les dates ne sont pas encore confirmees. Cliquez sur "M'avertir a la sortie" pour etre prevenu en avant-premiere lors du lancement.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Y a-t-il une facture pour la comptabilite du cabinet ?</div>
+        <div class="faq-a">Oui, une facture HT + TVA est emise automatiquement apres chaque achat. Deductible comme frais de formation professionnelle.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAS -->
+<section class="cta-bottom">
+  <div class="container">
+    <h2>Testez avant d'acheter</h2>
+    <p>2 Skills offerts gratuitement -- bordereau de pieces et verificateur de sources V1.2. Aucune carte bancaire requise.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <a href="/skills/pack-gratuit.html" class="btn btn-light">Telecharger les 2 Skills gratuits</a>
+      <a href="/skills/#skills" class="btn btn-outline" style="border-color:var(--bleu-p);color:var(--bleu-p);">Voir les 5 Skills en detail</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>LawIA SAS -- SIREN 990 961 120 -- <a href="mailto:contact@lawia.fr">contact@lawia.fr</a></p>
+  <p style="margin-top:0.4rem;">2026 LawIA -- Tous droits reserves -- <a href="/">lawia-skills.pages.dev</a></p>
+  <p style="margin-top:0.5rem;font-size:0.72rem;"><a href="/skills/mentions-legales.html">Mentions legales</a> -- <a href="/skills/cgv.html">CGV</a></p>
+</footer>
+
+<script>
+function notifPack(pack){
+  var labels = {
+    'dommage-corporel': 'Pack Dommage corporel',
+    'famille-patrimoine': 'Pack Famille & Patrimoine'
+  };
+  var email = prompt('Votre email pour etre notifie a la sortie du ' + (labels[pack] || pack) + ' :');
+  var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  if(email && emailRegex.test(email.trim())){
+    alert('Parfait ! Vous serez notifie des la sortie du ' + (labels[pack] || pack) + '.\nEmail enregistre : ' + email.trim());
+  } else if(email !== null && email !== ''){
+    alert('Adresse email invalide. Veuillez reessayer.');
+  }
+}
+</script>
+
+</body>
+</html>
