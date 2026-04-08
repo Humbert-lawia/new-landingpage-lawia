@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignation devant le Tribunal Judiciaire — Référé & Au Fond | LawIA Skills</title>
+    <meta name="description" content="Skill IA pour la rédaction d'assignations devant le tribunal judiciaire. 5 matières : dommage corporel, responsabilité médicale, consommation, construction, droit civil. Référé ou au fond, représentation obligatoire ou non.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ═══════════════════════════════════════════════════════════════
+           CHARTE GRAPHIQUE LAWIA — EXACTE
+           Bleu sky + Crème + Noir
+           Georgia / Calibri / Consolas / Caveat
+           Zéro dégradé, zéro rouge/vert/orange/violet
+           Bordures épaisses, ombres offset solides
+           ═══════════════════════════════════════════════════════════════ */
+        :root {
+            --bleu:    #6A9BCC;
+            --bleu-f:  #4A7BA8;
+            --bleu-c:  #A8C4E0;
+            --bleu-p:  #D3E5F8;
+            --dark:    #141413;
+            --code:    #1A1917;
+            --creme:   #FAF9F5;
+            --gris:    #B0AEA5;
+            --gris-c:  #E8E6DC;
+            --r: 12px;
+            --shadow:      0 4px 16px rgba(20,20,19, 0.10);
+            --shadow-bleu: 0 4px 16px rgba(74,123,168, 0.18);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body { font-family: Calibri, 'Gill Sans', sans-serif; background: var(--creme); color: var(--dark); line-height: 1.75; overflow-x: hidden; }
+        a { text-decoration: none; color: inherit; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 1; }
+        section { padding: 5.5rem 0; }
+
+        h1, h2, h3, h4 { font-family: Georgia, serif; font-weight: 700; }
+        h1 { font-size: clamp(2.2rem, 4.5vw, 3.4rem); line-height: 1.12; margin-bottom: 1.2rem; }
+        h2 { font-size: 2.4rem; line-height: 1.2; }
+
+        .overline { font-family: Calibri, sans-serif; font-size: 0.7rem; color: var(--bleu-f); text-transform: uppercase; letter-spacing: 3.5px; font-weight: 700; margin-bottom: 0.4rem; }
+        .accent { color: var(--bleu); }
+        .handwritten { font-family: 'Caveat', cursive; font-size: 1.8rem; color: var(--bleu-f); margin: -0.3rem 0 1rem; line-height: 1.3; position: relative; display: inline-block; transform: rotate(-1deg); }
+        .handwritten::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 100%; height: 2px; background: var(--bleu-f); opacity: 0.35; }
+        .ink-c { display: block; width: 48px; height: 3px; background: var(--dark); margin: 0 auto 1rem; }
+
+        .dots-pattern { position: absolute; inset: 0; background-image: radial-gradient(circle, var(--gris-c) 1px, transparent 1px); background-size: 28px 28px; opacity: 0.5; pointer-events: none; z-index: 0; }
+
+        /* NAV */
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0.7rem 0; background: var(--creme); border-bottom: 3px solid var(--dark); }
+        nav .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: Georgia, serif; font-size: 1.5rem; font-weight: 700; color: var(--dark); }
+        .logo span { color: var(--bleu); }
+        .logo-sub { font-family: Calibri, sans-serif; font-size: 0.7rem; color: var(--gris); font-weight: 400; margin-left: 0.5rem; }
+        nav ul { display: flex; list-style: none; gap: 1.6rem; align-items: center; }
+        nav a { color: var(--gris); font-size: 0.95rem; font-weight: 600; transition: color 0.2s; }
+        nav a:hover { color: var(--dark); }
+        .nav-cta { background: var(--dark); color: var(--creme) !important; padding: 0.4rem 1rem; border-radius: 4px; border: 2px solid var(--dark); }
+        .nav-cta:hover { background: var(--bleu); border-color: var(--bleu); }
+        .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 0.3rem; }
+        .hamburger svg { width: 28px; height: 28px; stroke: var(--dark); stroke-width: 2.5; stroke-linecap: round; }
+        @media (max-width: 768px) { .hamburger { display: block; } nav ul { display: none; } }
+
+        /* BOUTONS */
+        .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.8rem 1.6rem; border-radius: 4px; font-family: Calibri, sans-serif; font-size: 0.95rem; font-weight: 700; border: 3px solid var(--dark); cursor: pointer; transition: all 0.2s; }
+        .btn-primary { background: var(--dark); color: var(--creme); }
+        .btn-primary:hover { transform: translate(-2px,-2px); box-shadow: 8px 8px 0 0 var(--bleu-f); }
+        .btn-outline { background: var(--creme); color: var(--dark); }
+        .btn-outline:hover { background: var(--bleu-p); }
+        .btn-light { background: var(--bleu); color: #fff; border-color: var(--bleu); box-shadow: 6px 6px 0 0 var(--creme); }
+        .btn-light:hover { transform: translate(-2px,-2px); box-shadow: 8px 8px 0 0 var(--creme); }
+
+        /* TAGS */
+        .tag { display: inline-block; padding: 0.3rem 0.8rem; background: var(--dark); color: var(--creme); font-size: 0.75rem; font-weight: 700; border-radius: 4px; letter-spacing: 0.6px; text-transform: uppercase; border: 2px solid var(--dark); box-shadow: 2px 2px 0 0 var(--bleu-f); }
+        .tag-bleu { background: var(--bleu-p); color: var(--bleu-f); border-color: var(--bleu-f); box-shadow: 2px 2px 0 0 var(--bleu-c); }
+        .tag-outline { background: transparent; color: var(--dark); border-color: var(--gris-c); box-shadow: none; }
+        .tags-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+
+        /* HERO */
+        .hero { padding: 8rem 0 4rem; background: var(--creme); position: relative; }
+        .hero-inner { display: grid; grid-template-columns: 1fr 0.8fr; gap: 3rem; align-items: start; }
+        .hero-subtitle { font-size: 1.05rem; color: var(--gris); max-width: 650px; margin: 0 0 2rem; line-height: 1.7; }
+        .hero-actions { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
+        .hero-meta { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1.5rem; font-size: 0.85rem; color: var(--gris); }
+        .hero-meta strong { color: var(--dark); font-weight: 700; }
+
+        /* AUTHOR CARD */
+        .author-card { width: 100%; background: #fff; border: 3px solid var(--dark); border-radius: var(--r); overflow: hidden; box-shadow: 8px 8px 0 0 var(--bleu-f); position: relative; top: 1rem; }
+        .author-photo { width: 100%; aspect-ratio: 3 / 3.2; object-fit: cover; object-position: top center; display: block; border-bottom: 3px solid var(--dark); }
+        .author-footer { padding: 1rem 1.2rem; display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; }
+        .author-name { font-family: Georgia, serif; font-size: 1rem; font-weight: 700; color: var(--dark); margin-bottom: 0.15rem; }
+        .author-title { font-size: 0.75rem; color: var(--gris); line-height: 1.4; }
+        .author-badge { white-space: nowrap; background: var(--bleu-p); color: var(--bleu-f); border: 2px solid var(--bleu-f); border-radius: 4px; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 0.25rem 0.6rem; flex-shrink: 0; }
+
+        /* TRUST BAR */
+        .trust-bar { padding: 2rem 0; background: var(--bleu-p); border-top: 3px solid var(--dark); border-bottom: 3px solid var(--dark); }
+        .trust-bar .container { display: flex; align-items: center; justify-content: center; gap: 3rem; flex-wrap: wrap; }
+        .trust-item { display: flex; align-items: center; gap: 0.6rem; font-size: 0.9rem; font-weight: 700; color: var(--dark); }
+        .trust-icon { width: 38px; height: 38px; border: 2.5px solid var(--dark); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; background: #fff; }
+
+        /* SECTION HEADER */
+        .section-header { text-align: center; margin-bottom: 3rem; }
+        .section-header h2 { margin-bottom: 0.8rem; }
+        .section-header p { font-size: 1rem; color: var(--gris); max-width: 520px; margin: 0 auto; }
+
+        /* FILE TREE */
+        .file-tree-section { background: #fff; padding: 4rem 0; }
+        .file-tree-wrapper { display: grid; grid-template-columns: 340px 1fr; gap: 2.5rem; align-items: start; }
+        .file-tree { background: var(--code); border: 3px solid var(--dark); border-radius: var(--r); padding: 1.5rem; font-family: Consolas, 'Courier New', monospace; font-size: 0.85rem; color: var(--creme); box-shadow: 6px 6px 0 0 var(--bleu-f); }
+        .file-tree-title { font-family: Calibri, sans-serif; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--gris); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid #333; }
+        .ft-folder { color: var(--bleu-c); }
+        .ft-file { color: var(--gris); }
+        .ft-main { color: var(--creme); font-weight: 700; }
+        .file-tree ul { list-style: none; padding-left: 1.2rem; }
+        .file-tree > ul { padding-left: 0; }
+        .file-tree li { padding: 0.2rem 0; }
+        .file-tree-desc h3 { font-size: 1.3rem; margin-bottom: 1rem; }
+        .file-tree-desc p { color: var(--gris); font-size: 0.95rem; margin-bottom: 1rem; line-height: 1.7; }
+        .detail-row { display: flex; justify-content: space-between; padding: 0.6rem 0; border-bottom: 1px solid var(--gris-c); font-size: 0.88rem; }
+        .detail-row .label { color: var(--gris); }
+        .detail-row .value { font-weight: 700; color: var(--dark); }
+
+        /* DUAL MODE */
+        .dual-section { background: var(--creme); }
+        .dual-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        .dual-card { background: #fff; border: 3px solid var(--dark); border-radius: var(--r); padding: 2rem; box-shadow: var(--shadow); transition: all 0.3s; position: relative; overflow: hidden; }
+        .dual-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--bleu); }
+        .dual-card:hover { transform: translateY(-3px); box-shadow: 4px 4px 0 0 var(--bleu-f); }
+        .dual-card h3 { font-size: 1.3rem; margin-bottom: 0.3rem; }
+        .dual-card .dual-subtitle { font-size: 0.85rem; color: var(--bleu-f); font-weight: 600; margin-bottom: 1rem; }
+        .dual-card p { font-size: 0.9rem; color: var(--gris); line-height: 1.7; margin-bottom: 1rem; }
+        .dual-card ul { list-style: none; margin-bottom: 1rem; }
+        .dual-card ul li { display: flex; align-items: flex-start; gap: 0.6rem; font-size: 0.88rem; color: var(--dark); margin-bottom: 0.5rem; line-height: 1.5; }
+        .dual-card ul li::before { content: '>'; color: var(--bleu); font-weight: 700; flex-shrink: 0; font-family: Consolas, monospace; }
+        .dual-badge { display: inline-block; padding: 0.2rem 0.6rem; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; border-radius: 4px; margin-bottom: 1rem; }
+        .badge-urgence { background: var(--bleu-p); color: var(--bleu-f); border: 2px solid var(--bleu-f); }
+        .badge-fond { background: var(--dark); color: var(--creme); border: 2px solid var(--dark); }
+
+        /* FEATURES */
+        .features { background: #fff; }
+        .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+        .card { background: #fff; border: 3px solid var(--dark); border-radius: var(--r); padding: 1.8rem; box-shadow: var(--shadow); transition: all 0.3s; }
+        .card:hover { transform: translateY(-3px); box-shadow: 4px 4px 0 0 var(--bleu-f); }
+        .card-icon { width: 46px; height: 46px; border: 2.5px solid var(--dark); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 1rem; background: var(--bleu-p); }
+        .card h3 { font-size: 1.15rem; margin-bottom: 0.5rem; }
+        .card p { font-size: 0.9rem; color: var(--gris); line-height: 1.7; }
+
+        /* STEPS */
+        .how-it-works { background: var(--bleu-p); }
+        .steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+        .step { text-align: center; padding: 1.5rem; background: #fff; border: 3px solid var(--dark); border-radius: var(--r); box-shadow: var(--shadow); }
+        .step-num { width: 46px; height: 46px; border-radius: 50%; border: 2.5px solid var(--dark); font-family: Georgia, serif; font-size: 1.2rem; font-weight: 700; color: var(--dark); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; background: var(--bleu-p); }
+        .step h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+        .step p { font-size: 0.85rem; color: var(--gris); }
+
+        /* MATIÈRES GRID */
+        .matieres-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; }
+        .matiere-card { background: #fff; border: 3px solid var(--dark); border-radius: var(--r); padding: 1.2rem; text-align: center; box-shadow: var(--shadow); transition: all 0.3s; }
+        .matiere-card:hover { transform: translateY(-3px); box-shadow: 4px 4px 0 0 var(--bleu-f); }
+        .matiere-icon { font-size: 1.8rem; margin-bottom: 0.5rem; }
+        .matiere-card h4 { font-size: 0.88rem; margin-bottom: 0.3rem; font-family: Georgia, serif; }
+        .matiere-card p { font-size: 0.72rem; color: var(--gris); line-height: 1.5; margin-bottom: 0.5rem; }
+        .matiere-mode { display: inline-block; margin-top: 0.2rem; font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; padding: 0.15rem 0.4rem; border-radius: 3px; background: var(--bleu-p); color: var(--bleu-f); border: 1px solid var(--bleu-c); }
+
+        /* PROCÉDURE INFO */
+        .procedure-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem; }
+        .procedure-card { background: var(--creme); border: 2px solid var(--gris-c); border-radius: var(--r); padding: 1.4rem; position: relative; }
+        .procedure-card .proc-label { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--bleu-f); margin-bottom: 0.5rem; }
+        .procedure-card h4 { font-size: 1rem; margin-bottom: 0.6rem; }
+        .procedure-card ul { list-style: none; }
+        .procedure-card ul li { font-size: 0.83rem; color: var(--gris); padding: 0.3rem 0; border-bottom: 1px solid var(--gris-c); display: flex; gap: 0.5rem; }
+        .procedure-card ul li:last-child { border-bottom: none; }
+        .procedure-card ul li span { color: var(--bleu); font-weight: 700; flex-shrink: 0; }
+
+        /* A5 APERÇU */
+        .a5-wrapper { display: flex; justify-content: center; gap: 3rem; align-items: flex-start; }
+        .a5-doc { width: 420px; flex-shrink: 0; background: #fff; border: 3px solid var(--dark); border-radius: 4px; box-shadow: 8px 8px 0 0 var(--bleu-f), 0 20px 60px rgba(20,20,19,0.18); position: relative; overflow: hidden; }
+        .a5-doc-header { background: var(--dark); padding: 0.8rem 1.2rem; display: flex; align-items: center; gap: 0.6rem; }
+        .a5-doc-header span { font-family: Consolas, monospace; font-size: 0.72rem; color: var(--gris); letter-spacing: 0.5px; }
+        .a5-doc-header .dot { width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--gris); display: inline-block; }
+        .a5-doc-body { padding: 2rem 2rem 0; font-family: 'Times New Roman', Times, serif; font-size: 0.78rem; line-height: 1.85; color: var(--dark); max-height: 520px; overflow: hidden; }
+        .a5-title { text-align: center; font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--dark); }
+        .a5-ref { text-align: right; font-size: 0.7rem; color: var(--gris); margin-bottom: 1.2rem; }
+        .a5-section { margin-bottom: 1rem; }
+        .a5-section-title { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.3rem; }
+        .a5-line { font-size: 0.76rem; padding-left: 1rem; margin-bottom: 0.15rem; line-height: 1.6; }
+        .a5-line-blur { filter: blur(4px); user-select: none; color: var(--gris); }
+        .a5-separator { border: none; border-top: 1px solid var(--gris-c); margin: 0.8rem 0; }
+        .a5-fade { position: absolute; bottom: 0; left: 0; right: 0; height: 220px; background: linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.6) 40%, rgba(255,255,255,0.97) 80%, #fff 100%); display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding-bottom: 1.8rem; gap: 0.6rem; }
+        .a5-lock { width: 44px; height: 44px; border: 3px solid var(--dark); border-radius: 50%; background: var(--creme); display: flex; align-items: center; justify-content: center; font-size: 20px; box-shadow: 3px 3px 0 0 var(--bleu-f); }
+        .a5-lock-label { font-family: Calibri, sans-serif; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--bleu-f); }
+        .a5-aside { flex: 1; max-width: 420px; }
+        .a5-aside h3 { font-size: 1.2rem; margin-bottom: 1rem; }
+        .a5-aside p { font-size: 0.9rem; color: var(--gris); line-height: 1.7; margin-bottom: 1.2rem; }
+        .reveal-row { display: flex; align-items: center; gap: 0.8rem; padding: 0.7rem 0; border-bottom: 1px solid var(--gris-c); font-size: 0.88rem; }
+        .reveal-icon { width: 32px; height: 32px; border: 2px solid var(--dark); border-radius: 50%; background: var(--bleu-p); display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+        .reveal-text { color: var(--dark); font-weight: 600; }
+        .reveal-lock { margin-left: auto; font-size: 0.7rem; color: var(--gris); font-style: italic; }
+
+        /* CTA */
+        .cta-section { background: var(--bleu-f); color: #fff; text-align: center; }
+        .cta-section h2 { color: #fff; margin-bottom: 0.8rem; }
+        .cta-section p { color: var(--bleu-p); margin-bottom: 2rem; font-size: 1.05rem; }
+
+        /* FOOTER */
+        footer { background: var(--dark); border-top: 2px solid #2a2a28; padding: 2rem 0; }
+        footer .container { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+        .footer-brand { font-family: Georgia, serif; font-size: 1.1rem; font-weight: 700; color: var(--creme); }
+        .footer-brand span { color: var(--bleu); }
+        .footer-links { display: flex; gap: 1.5rem; }
+        .footer-links a { color: var(--gris); font-size: 0.78rem; transition: color 0.2s; }
+        .footer-links a:hover { color: var(--bleu-c); }
+        .footer-copy { color: var(--gris); font-size: 0.78rem; }
+        .footer-copy a { color: var(--bleu-c); }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .file-tree-wrapper { grid-template-columns: 1fr; }
+            .dual-grid, .procedure-grid { grid-template-columns: 1fr; }
+            .matieres-grid { grid-template-columns: repeat(3, 1fr); }
+            .steps-grid { grid-template-columns: repeat(2, 1fr); }
+            .a5-wrapper { flex-direction: column; align-items: center; }
+            .a5-aside { max-width: 100%; }
+        }
+        @media (max-width: 768px) {
+            .hero-inner { grid-template-columns: 1fr; }
+            .features-grid { grid-template-columns: 1fr; }
+            .matieres-grid { grid-template-columns: repeat(2, 1fr); }
+            h2 { font-size: 1.8rem; }
+            footer .container { flex-direction: column; text-align: center; }
+            .footer-links { flex-wrap: wrap; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <div class="container">
+            <a href="/" class="logo">Law<span>IA</span> <span class="logo-sub">Skills</span></a>
+            <ul>
+                <li><a href="#modes">Référé / Au fond</a></li>
+                <li><a href="#matieres">5 Matières</a></li>
+                <li><a href="#workflow">Workflow</a></li>
+                <li><a href="/tarifs.html" class="nav-cta">Lancer le skill</a></li>
+            </ul>
+            <button class="hamburger" aria-label="Menu">
+                <svg viewBox="0 0 24 24" fill="none"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="dots-pattern"></div>
+        <div class="container">
+            <div class="hero-inner">
+                <div>
+                    <div class="tags-row">
+                        <span class="tag">Acte introductif</span>
+                        <span class="tag tag-bleu">Dommage corporel</span>
+                        <span class="tag tag-bleu">Responsabilité médicale</span>
+                        <span class="tag tag-outline">Consommation</span>
+                        <span class="tag tag-outline">Construction</span>
+                    </div>
+                    <h1>Assignation devant le <span class="accent">Tribunal Judiciaire</span></h1>
+                    <span class="handwritten">5 matières · Référé ou au fond · en un prompt</span>
+                    <p class="hero-subtitle">
+                        Skill unifié pour la rédaction d'assignations civiles devant le tribunal judiciaire. Détection automatique du régime procédural (art. 752 ou 753 CPC), 5 matières couvertes, checklist anti-hallucination, génération .docx professionnel.
+                    </p>
+                    <div class="hero-meta">
+                        <span><strong>LawIA Skills</strong></span>
+                        <span>v2026.04.04</span>
+                        <span>LAWIA Contrat de Licence V1</span>
+                    </div>
+                    <div class="hero-actions">
+                        <a href="/tarifs.html" class="btn btn-primary">Lancer le skill &rarr;</a>
+                        <a href="/tarifs.html" class="btn btn-outline">Télécharger le .zip</a>
+                    </div>
+                </div>
+                <div class="author-card">
+                    <img src="/img/patrice-assignation.webp" alt="Me Patrice Humbert" class="author-photo" width="800" height="800" loading="lazy">
+                    <div class="author-footer">
+                        <div>
+                            <div class="author-name">Me Patrice Humbert</div>
+                            <div class="author-title">Avocat · Dommage corporel &amp; Responsabilité médicale</div>
+                        </div>
+                        <span class="author-badge">Auteur du skill</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRUST BAR -->
+    <div class="trust-bar">
+        <div class="container">
+            <div class="trust-item"><div class="trust-icon">&#9878;</div> Conforme CPC</div>
+            <div class="trust-item"><div class="trust-icon">&#128220;</div> Sortie .docx</div>
+            <div class="trust-item"><div class="trust-icon">&#128218;</div> 5 matières</div>
+            <div class="trust-item"><div class="trust-icon">&#9989;</div> Checklist anti-hallucination</div>
+            <div class="trust-item"><div class="trust-icon">&#128736;</div> 7 phases guidées</div>
+        </div>
+    </div>
+
+    <!-- FILE TREE -->
+    <section class="file-tree-section">
+        <div class="container">
+            <div class="file-tree-wrapper">
+                <div class="file-tree">
+                    <div class="file-tree-title">Fichiers inclus</div>
+                    <ul>
+                        <li><span class="ft-folder">assignation-tribunal-judiciaire/</span>
+                            <ul>
+                                <li><span class="ft-main">SKILL.md</span></li>
+                                <li><span class="ft-main">assignation-tribunal-judiciaire.skill</span></li>
+                                <li><span class="ft-file">LICENSE.txt</span></li>
+                                <li><span class="ft-folder">references/</span>
+                                    <ul>
+                                        <li><span class="ft-main">mentions-obligatoires.md</span></li>
+                                        <li><span class="ft-main">structure-assignation.md</span></li>
+                                        <li><span class="ft-file">formules-types.md</span></li>
+                                        <li><span class="ft-main">variantes-matieres.md</span></li>
+                                        <li><span class="ft-main">workflow-collecte.md</span></li>
+                                        <li><span class="ft-main">checklist-verification.md</span></li>
+                                        <li><span class="ft-file">jurisprudence-reference.md</span></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="file-tree-desc">
+                    <h3>Assignation Tribunal Judiciaire — v2026.04.04</h3>
+                    <p>
+                        Skill unifié couvrant <strong>5 matières civiles</strong> en référé et au fond. Détecte automatiquement le régime procédural (représentation obligatoire art. 752 / non obligatoire art. 753 CPC) et adapte toutes les mentions légales en conséquence.
+                    </p>
+                    <div class="detail-row"><span class="label">Matières</span><span class="value">DC · Resp. médicale · Consommation · Construction · Civil général</span></div>
+                    <div class="detail-row"><span class="label">Modes</span><span class="value">Référé (art. 834/835/145) · Au fond</span></div>
+                    <div class="detail-row"><span class="label">Procédure</span><span class="value">Art. 752 CPC (>10k€) · Art. 753 CPC (≤10k€)</span></div>
+                    <div class="detail-row"><span class="label">Références</span><span class="value">7 fichiers spécialisés</span></div>
+                    <div class="detail-row"><span class="label">Sortie</span><span class="value">.docx professionnel</span></div>
+                    <div class="detail-row"><span class="label">Licence</span><span class="value">LAWIA Contrat de Licence V1</span></div>
+                    <div class="detail-row"><span class="label">Auteur</span><span class="value">Me Patrice Humbert — LAWIA</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RÉFÉRÉ vs AU FOND -->
+    <section class="dual-section" id="modes">
+        <div class="container">
+            <div class="section-header">
+                <div class="overline">Deux modes de saisine</div>
+                <span class="ink-c"></span>
+                <h2>Référé <span class="accent">ou</span> instance au fond</h2>
+                <p>Détection automatique selon vos mots-clés. Commandes directes disponibles : <code>/refere</code> · <code>/fond</code> · <code>/assignation</code></p>
+            </div>
+            <div class="dual-grid">
+                <div class="dual-card">
+                    <span class="dual-badge badge-urgence">Urgence · Ordonnance provisoire</span>
+                    <h3>Assignation en référé</h3>
+                    <div class="dual-subtitle">Président du TJ · Art. 834, 835, 145 CPC</div>
+                    <p>Procédure rapide pour mesures conservatoires, provision ou expertise avant tout procès. L'ordonnance de référé est provisoire et n'a pas autorité de chose jugée au fond.</p>
+                    <ul>
+                        <li><strong>Référé-expertise</strong> (art. 145 CPC) — motif légitime, mission précise, consignation</li>
+                        <li><strong>Référé-provision</strong> (art. 835 al. 2) — obligation non sérieusement contestable</li>
+                        <li><strong>Référé-urgence</strong> (art. 834) — mesures conservatoires, extrême urgence</li>
+                        <li><strong>Référé-cessation</strong> (art. 835 al. 1) — trouble manifestement illicite</li>
+                        <li>Exécution provisoire de droit · Pas de tentative amiable préalable</li>
+                    </ul>
+                    <p style="font-size:0.82rem;color:var(--bleu-f);font-weight:600;">Commande : <code>/refere</code></p>
+                </div>
+                <div class="dual-card">
+                    <span class="dual-badge badge-fond">Jugement définitif</span>
+                    <h3>Assignation au fond</h3>
+                    <div class="dual-subtitle">Tribunal judiciaire · Jugement au principal</div>
+                    <p>Procédure complète pour trancher le litige définitivement. Le skill détermine automatiquement le régime procédural selon le montant et la matière.</p>
+                    <ul>
+                        <li>Représentation obligatoire si > 10 000 € → mentions art. 752 CPC</li>
+                        <li>Représentation non obligatoire si ≤ 10 000 € → mentions art. 753 CPC</li>
+                        <li>Nomenclature Dintilhac (dommage corporel) avec tableau récapitulatif</li>
+                        <li>Exécution provisoire de droit (art. 514 CPC)</li>
+                        <li>Dispositif complet : condamnations, art. 700, dépens, intérêts</li>
+                    </ul>
+                    <p style="font-size:0.82rem;color:var(--bleu-f);font-weight:600;">Commandes : <code>/fond</code> · <code>/assignation</code></p>
+                </div>
+            </div>
+
+            <!-- Tableau régime procédural -->
+            <div class="procedure-grid">
+                <div class="procedure-card">
+                    <div class="proc-label">Représentation obligatoire · Art. 752 CPC</div>
+                    <h4>Demande &gt; 10 000 € ou compétence exclusive TJ</h4>
+                    <ul>
+                        <li><span>✓</span> Constitution avocat demandeur obligatoire</li>
+                        <li><span>✓</span> Délai 15 jours pour constituer avocat</li>
+                        <li><span>✓</span> Rappel loi 31/12/1971 + art. 641-644 CPC</li>
+                        <li><span>✓</span> Mention procédure sans audience (art. L.212-5-1 COJ)</li>
+                    </ul>
+                </div>
+                <div class="procedure-card">
+                    <div class="proc-label">Représentation non obligatoire · Art. 753 CPC</div>
+                    <h4>Demande ≤ 10 000 € hors compétence exclusive</h4>
+                    <ul>
+                        <li><span>✓</span> Art. 832 CPC (modalités assistance/représentation)</li>
+                        <li><span>✓</span> Conditions pour se faire représenter</li>
+                        <li><span>✓</span> Pouvoir spécial requis si représentant non-avocat</li>
+                        <li><span>✓</span> Tentative amiable si demande ≤ 5 000 €</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5 MATIÈRES -->
+    <section class="features" id="matieres" style="background: var(--creme);">
+        <div class="container">
+            <div class="section-header">
+                <div class="overline">Couverture complète</div>
+                <span class="ink-c"></span>
+                <h2>5 matières du contentieux civil</h2>
+                <p>Le skill adapte automatiquement les fondements, les mentions et les demandes selon la matière détectée.</p>
+            </div>
+            <div class="matieres-grid">
+                <div class="matiere-card">
+                    <div class="matiere-icon">&#128657;</div>
+                    <h4>Dommage corporel</h4>
+                    <p>Loi Badinter, art. 1240-1242 C. civ., nomenclature Dintilhac, recours tiers payeurs CPAM</p>
+                    <span class="matiere-mode">Référé &amp; Fond</span>
+                </div>
+                <div class="matiere-card">
+                    <div class="matiere-icon">&#9877;</div>
+                    <h4>Responsabilité médicale</h4>
+                    <p>Art. L.1142-1 CSP, faute/aléa/nosocomial, perte de chance, ONIAM</p>
+                    <span class="matiere-mode">Référé &amp; Fond</span>
+                </div>
+                <div class="matiere-card">
+                    <div class="matiere-icon">&#128717;</div>
+                    <h4>Droit de la consommation</h4>
+                    <p>Garantie conformité (ord. 2021), vices cachés art. 1641, clauses abusives L.212-1</p>
+                    <span class="matiere-mode">Fond</span>
+                </div>
+                <div class="matiere-card">
+                    <div class="matiere-icon">&#127968;</div>
+                    <h4>Droit de la construction</h4>
+                    <p>Garantie décennale art. 1792, biennale, parfait achèvement, assurance DO</p>
+                    <span class="matiere-mode">Référé &amp; Fond</span>
+                </div>
+                <div class="matiere-card">
+                    <div class="matiere-icon">&#9878;</div>
+                    <h4>Droit civil général</h4>
+                    <p>Responsabilité contractuelle art. 1231-1, délictuelle art. 1240, inexécution</p>
+                    <span class="matiere-mode">Référé &amp; Fond</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WORKFLOW -->
+    <section class="how-it-works" id="workflow">
+        <div class="container">
+            <div class="section-header">
+                <div class="overline">Processus</div>
+                <span class="ink-c"></span>
+                <h2>Workflow guidé en 7 phases</h2>
+                <p>De la détermination du régime procédural à la génération du document final.</p>
+            </div>
+            <div class="steps-grid">
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <h3>Mode &amp; régime procédural</h3>
+                    <p>Référé ou fond ? Montant &gt;/≤ 10 000 € ? Représentation obligatoire ou non ?</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <h3>Identification des parties</h3>
+                    <p>Demandeur, défendeur(s), avocats plaidant et postulant, assureurs, tiers (CPAM, ONIAM).</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <h3>Juridiction &amp; audience</h3>
+                    <p>Compétence territoriale (art. 42-46 CPC), formation saisie, date et heure d'audience.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">4</div>
+                    <h3>Éléments factuels</h3>
+                    <p>Chronologie, démarches précontentieuses, expertise, contestations adverses.</p>
+                </div>
+            </div>
+            <div class="steps-grid" style="margin-top:1.5rem;">
+                <div class="step">
+                    <div class="step-num">5</div>
+                    <h3>Fondements &amp; expertise</h3>
+                    <p>Articles applicables, rapport d'expertise, jurisprudences, date de consolidation.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">6</div>
+                    <h3>Préjudices &amp; demandes</h3>
+                    <p>Dintilhac poste par poste, provision, art. 700 CPC, dépens, intérêts, capitalisation.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num">7</div>
+                    <h3>Pièces &amp; bordereau</h3>
+                    <p>Checklist des pièces indispensables par matière. Bordereau numéroté annexé à l'acte.</p>
+                </div>
+                <div class="step">
+                    <div class="step-num" style="background:var(--dark);color:var(--creme);">✓</div>
+                    <h3>Vérification finale</h3>
+                    <p>Checklist 7 sections : mentions, argumentation, pièces, cohérence, qualité, anti-hallucination.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FONCTIONNALITÉS -->
+    <section class="features">
+        <div class="container">
+            <div class="section-header">
+                <div class="overline">Fonctionnalités</div>
+                <span class="ink-c"></span>
+                <h2>Ce que le skill intègre</h2>
+                <p>7 fichiers de référence, chacun couvrant un aspect précis de l'assignation.</p>
+            </div>
+            <div class="features-grid">
+                <div class="card">
+                    <div class="card-icon">&#9878;</div>
+                    <h3>Mentions obligatoires CPC</h3>
+                    <p>Art. 54, 56, 648, 752, 753 CPC — Le skill adapte automatiquement les avertissements selon le régime procédural. Zéro risque de nullité pour mention manquante.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">&#128218;</div>
+                    <h3>Nomenclature Dintilhac</h3>
+                    <p>Chaque poste de préjudice défini, justifié, évalué. Tableau récapitulatif automatique. Recours tiers payeurs CPAM intégré (protocole Cass. 3 juill. 2021).</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">&#9997;</div>
+                    <h3>Variantes par matière</h3>
+                    <p>5 matières avec fondements, spécificités rédactionnelles et demandes-types dédiés. Adaptation automatique selon la matière détectée.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">&#128196;</div>
+                    <h3>Workflow collecte 7 phases</h3>
+                    <p>20 questions structurées couvrant parties, juridiction, faits, fondements, préjudices et pièces. Extraction automatique depuis les documents fournis.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">&#9989;</div>
+                    <h3>Checklist anti-hallucination</h3>
+                    <p>7 sections de vérification : mentions formelles, argumentation, pièces, cohérence globale, qualité rédactionnelle. Aucune jurisprudence inventée.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">&#128190;</div>
+                    <h3>Export .docx pro</h3>
+                    <p>Times New Roman ou Garamond 12, marges 2,5 cm, interligne 1,15/1,5, gras/italique/souligné, numérotation des pages.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- APERÇU STRUCTURE -->
+    <section class="features" style="background: var(--bleu-p);">
+        <div class="container">
+            <div class="section-header">
+                <div class="overline">Aperçu exclusif</div>
+                <span class="ink-c"></span>
+                <h2>Structure de l'assignation générée</h2>
+                <p>Un extrait du document produit par le skill. La structure complète est réservée aux utilisateurs.</p>
+            </div>
+            <div class="a5-wrapper">
+                <div class="a5-doc">
+                    <div class="a5-doc-header">
+                        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                        <span style="margin-left:0.5rem;">assignation-tj-dommage-corporel.docx</span>
+                    </div>
+                    <div class="a5-doc-body">
+                        <div class="a5-ref">Dossier n° 2026-XXX / PH</div>
+                        <div class="a5-title">ASSIGNATION DEVANT LE TRIBUNAL JUDICIAIRE<br>DE [VILLE]</div>
+                        <hr class="a5-separator">
+                        <div class="a5-section">
+                            <div class="a5-section-title">À LA DEMANDE DE :</div>
+                            <div class="a5-line">Madame / Monsieur [Prénom NOM], né(e) le...</div>
+                            <div class="a5-line">demeurant [adresse complète]</div>
+                            <div class="a5-line">Ayant pour avocat plaidant : Me Patrice HUMBERT</div>
+                            <div class="a5-line">SELARL LEXVOX AVOCATS &amp; ASSOCIÉS</div>
+                        </div>
+                        <hr class="a5-separator">
+                        <div class="a5-section">
+                            <div class="a5-section-title">TRÈS IMPORTANT</div>
+                            <div class="a5-line">Dans un délai de QUINZE JOURS à compter de la date</div>
+                            <div class="a5-line">du présent acte, vous êtes tenu(e) de constituer avocat...</div>
+                            <div class="a5-line" style="font-size:0.7rem;color:var(--gris);">[Art. 752 CPC · Loi 31/12/1971 · Art. 641-644 CPC]</div>
+                        </div>
+                        <hr class="a5-separator">
+                        <div class="a5-section">
+                            <div class="a5-section-title">PLAISE AU TRIBUNAL</div>
+                            <div class="a5-line"><em>I. Rappel des faits et de la procédure</em></div>
+                            <div class="a5-line a5-line-blur">Le [date], [victime] a été victime d'un accident...</div>
+                            <div class="a5-line a5-line-blur">Par rapport d'expertise du Dr [NOM] en date du [date]...</div>
+                        </div>
+                        <div class="a5-section">
+                            <div class="a5-section-title a5-line-blur">II. En droit — Discussion juridique</div>
+                            <div class="a5-line a5-line-blur">Sur la responsabilité · Sur les préjudices Dintilhac...</div>
+                            <div class="a5-line a5-line-blur">DFT · PGPF · SE · DFP · PA · PE · préjudice sexuel...</div>
+                            <div class="a5-line a5-line-blur">PAR CES MOTIFS — PLAISE AU TRIBUNAL...</div>
+                        </div>
+                    </div>
+                    <div class="a5-fade">
+                        <div class="a5-lock">&#128274;</div>
+                        <div class="a5-lock-label">Contenu réservé</div>
+                    </div>
+                </div>
+
+                <div class="a5-aside">
+                    <h3>Ce que contient l'assignation complète</h3>
+                    <p>Le skill génère un acte de <strong>30 à 60 pages</strong>, entièrement structuré selon le régime procédural détecté (art. 752 ou 753 CPC).</p>
+                    <div class="reveal-row">
+                        <div class="reveal-icon">1</div>
+                        <span class="reveal-text">En-tête, parties &amp; convocation</span>
+                        <span class="reveal-lock">✓ visible</span>
+                    </div>
+                    <div class="reveal-row">
+                        <div class="reveal-icon">2</div>
+                        <span class="reveal-text">Mentions obligatoires CPC (art. 752/753)</span>
+                        <span class="reveal-lock">✓ visible</span>
+                    </div>
+                    <div class="reveal-row">
+                        <div class="reveal-icon">3</div>
+                        <span class="reveal-text">Rappel des faits &amp; procédure</span>
+                        <span class="reveal-lock">&#128274; réservé</span>
+                    </div>
+                    <div class="reveal-row">
+                        <div class="reveal-icon">4</div>
+                        <span class="reveal-text">Discussion juridique &amp; moyens</span>
+                        <span class="reveal-lock">&#128274; réservé</span>
+                    </div>
+                    <div class="reveal-row">
+                        <div class="reveal-icon">5</div>
+                        <span class="reveal-text">Préjudices Dintilhac poste par poste</span>
+                        <span class="reveal-lock">&#128274; réservé</span>
+                    </div>
+                    <div class="reveal-row">
+                        <div class="reveal-icon">6</div>
+                        <span class="reveal-text">Dispositif complet &amp; bordereau de pièces</span>
+                        <span class="reveal-lock">&#128274; réservé</span>
+                    </div>
+                    <div style="margin-top:1.5rem;">
+                        <a href="/tarifs.html" class="btn btn-primary">Obtenir le skill complet &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Prêt à rédiger votre assignation ?</h2>
+            <p>Lancez le skill dans Claude Code et laissez-vous guider en 7 phases.</p>
+            <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+                <a href="/tarifs.html" class="btn btn-light" style="border-color:var(--bleu);">Lancer le skill &rarr;</a>
+                <a href="/tarifs.html" class="btn btn-outline" style="border-color:var(--creme);color:var(--creme);">Télécharger le .zip</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-brand">Law<span>IA</span> Skills</div>
+            <div class="footer-links">
+                <a href="#">Mentions légales</a>
+                <a href="#">CGU</a>
+                <a href="#">Confidentialité</a>
+                <a href="/">Tous les skills</a>
+            </div>
+            <div class="footer-copy">
+                &copy; 2026 LawIA Skills. Tous droits réservés. Développé par <a href="/">LawIA</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

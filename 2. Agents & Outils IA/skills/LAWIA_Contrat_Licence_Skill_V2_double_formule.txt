@@ -1,0 +1,460 @@
+
+================================================================================
+        CONTRAT DE LICENCE D'UTILISATION D'UN SKILL D'INTELLIGENCE ARTIFICIELLE
+                     VERSION 2 — DOUBLE FORMULE TARIFAIRE
+             Skill individuel 50 € HT  |  Pack 5 Skills 250 € HT
+================================================================================
+
+FORMULE APPLICABLE (cocher la case correspondante) :
+
+  □  FORMULE INDIVIDUELLE — Skill [NOM DU SKILL — à compléter] — 50,00 € HT (60,00 € TTC)
+
+  □  FORMULE PACK 5 SKILLS — Liste des 5 Skills (voir Annexe 1) — 250,00 € HT (300,00 € TTC)
+
+________________________________________________________________________________
+
+PRÉAMBULE
+
+Le présent contrat a pour objet de définir les conditions dans lesquelles LAWIA
+met à la disposition du Licencié le ou les Skills d'IA désignés ci-après, sans
+aucun transfert de propriété ni cession de droits de propriété intellectuelle.
+
+LAWIA propose deux formules tarifaires : une licence individuelle portant sur un
+Skill unique, et une licence Pack portant sur un ensemble de cinq Skills regroupés.
+La formule souscrite est celle cochée ci-dessus et détaillée à l'article 3.
+
+________________________________________________________________________________
+
+ARTICLE 1 — DÉFINITIONS
+
+« Concédant » désigne la société LAWIA, société par actions simplifiée au capital
+social de 1 000 euros, dont le siège social est situé au 11 Boulevard Émile Combes,
+13200 Arles, immatriculée au Registre du Commerce et des Sociétés de Tarascon sous
+le numéro 990 961 120, représentée par la société HOLDING LEXVOX, agissant en
+qualité de Président et ayant les pouvoirs nécessaires à l'effet des présentes.
+
+« Licencié » désigne le professionnel, personne morale ou personne physique
+exerçant une activité professionnelle, ayant accepté les termes du présent contrat
+et dûment identifié lors de la souscription.
+
+« Skill » désigne le programme, l'outil ou le module d'intelligence artificielle,
+incluant l'ensemble de ses composants constitutifs : code source, code objet,
+prompts, instructions système, bases de connaissances, modèles, paramètres,
+architecture logique, documentation et toute mise à jour ou version ultérieure
+fournie par le Concédant.
+
+« Skill Individuel » désigne la licence portant sur un seul Skill, dénommé
+[NOM DU SKILL — à adapter], souscrite dans le cadre de la Formule Individuelle.
+
+« Pack 5 Skills » désigne la licence portant sur un ensemble de cinq Skills listés
+en Annexe 1, souscrite dans le cadre de la Formule Pack.
+
+« Date d'Activation » désigne la date à laquelle le Licencié accède pour la
+première fois au Skill ou aux Skills après acceptation du présent contrat.
+
+« Usage interne » désigne l'utilisation du Skill exclusivement dans le cadre de
+l'activité professionnelle propre du Licencié, par ses collaborateurs ou salariés
+dûment habilités, à l'exclusion de tout tiers.
+
+________________________________________________________________________________
+
+ARTICLE 2 — OBJET DE LA LICENCE
+
+Le Concédant concède au Licencié, qui accepte, une licence personnelle, non
+transférable, non cessible et révocable dans les conditions de l'article 10, pour
+l'utilisation du Skill ou des Skills dans les conditions limitativement définies
+au présent contrat.
+
+Cette licence est consentie à titre onéreux, pour les besoins exclusivement
+professionnels du Licencié, et n'emporte aucune cession de droits de propriété
+intellectuelle au sens du Code de la propriété intellectuelle.
+
+La formule souscrite (Individuelle ou Pack 5 Skills) détermine le périmètre exact
+des droits accordés, conformément à l'article 3.
+
+________________________________________________________________________________
+
+ARTICLE 3 — CONTREPARTIE FINANCIÈRE ET PÉRIMÈTRE DE LICENCE
+
+3.1 — Formule Individuelle (Skill unique)
+
+Lorsque la case « FORMULE INDIVIDUELLE » est cochée en page de garde, le présent
+contrat porte exclusivement sur le Skill dénommé :
+
+    [NOM DU SKILL — à compléter]
+
+La redevance forfaitaire correspondante est fixée à :
+
+    50,00 € (cinquante euros) hors taxes,
+    auxquels s'ajoute la taxe sur la valeur ajoutée (TVA) au taux légal en vigueur
+    à la date de facturation, soit à ce jour 20 %, portant le montant toutes taxes
+    comprises à 60,00 € TTC.
+
+La licence Individuelle est strictement limitée au Skill désigné ci-dessus. Tout
+autre Skill commercialisé par LAWIA fait l'objet d'un contrat distinct ou d'une
+souscription à la Formule Pack.
+
+3.2 — Formule Pack 5 Skills
+
+Lorsque la case « FORMULE PACK 5 SKILLS » est cochée en page de garde, le présent
+contrat porte sur l'ensemble des cinq Skills listés en Annexe 1 au présent contrat.
+
+La redevance forfaitaire correspondante est fixée à :
+
+    250,00 € (deux cent cinquante euros) hors taxes,
+    auxquels s'ajoute la taxe sur la valeur ajoutée (TVA) au taux légal en vigueur
+    à la date de facturation, soit à ce jour 20 %, portant le montant toutes taxes
+    comprises à 300,00 € TTC.
+
+La redevance Pack couvre les cinq Skills listés en Annexe 1, sans possibilité de
+substitution ou d'échange d'un Skill contre un autre après activation, sauf accord
+écrit du Concédant. L'ajout d'un sixième Skill ou plus donne lieu à une nouvelle
+souscription.
+
+3.3 — Modalités de paiement (communes aux deux formules)
+
+La redevance est due et exigible :
+- Lors de la souscription, préalablement à la Date d'Activation du ou des Skills ;
+- Par virement bancaire ou tout autre moyen de paiement accepté par le Concédant,
+  sur présentation d'une facture émise par LAWIA, conforme aux exigences de
+  l'article 289 du Code général des impôts.
+
+3.4 — Défaut de paiement
+
+Tout retard de paiement entraîne de plein droit, sans mise en demeure préalable :
+- L'application d'intérêts de retard au taux légal majoré de cinq (5) points, à
+  compter du jour suivant la date d'échéance ;
+- Une indemnité forfaitaire pour frais de recouvrement de 40 € (quarante euros)
+  conformément à l'article L. 441-10 du Code de commerce ;
+- La faculté pour LAWIA de suspendre l'accès à l'ensemble des Skills couverts par
+  le contrat jusqu'au parfait paiement des sommes dues, sans que cette suspension
+  puisse être assimilée à une résiliation.
+
+3.5 — Révision du tarif
+
+En cas de reconduction ou de renouvellement d'une nouvelle licence, LAWIA se
+réserve le droit de modifier le montant des redevances, sous réserve d'en informer
+le Licencié avec un préavis de trente (30) jours avant la date de prise d'effet.
+
+________________________________________________________________________________
+
+ARTICLE 4 — ÉTENDUE DE LA LICENCE (DOMAINE D'EXPLOITATION)
+
+4.1 — Droits accordés
+
+Le Licencié est autorisé à :
+- Utiliser le ou les Skills pour ses besoins internes et dans le cadre de son
+  activité professionnelle propre ;
+- Accéder au ou aux Skills via l'interface ou l'environnement prévu à cet effet
+  par le Concédant ;
+- Utiliser les productions générées par le ou les Skills dans le cadre de son
+  activité professionnelle.
+
+En Formule Pack, les droits accordés s'appliquent individuellement à chacun des
+cinq Skills listés en Annexe 1, dans les mêmes limites qu'une licence individuelle.
+
+4.2 — Interdictions expresses
+
+Le Licencié s'interdit formellement et expressément :
+- De revendre, louer, prêter, sous-licencier le Skill ou tout droit découlant du
+  présent contrat, à quelque titre que ce soit ;
+- De mettre à disposition le Skill à des tiers, directement ou indirectement,
+  y compris dans le cadre d'un service en ligne, d'un accès mutualisé ou d'une
+  plateforme SaaS, sans accord préalable et écrit du Concédant ;
+- De reproduire, copier, dupliquer tout ou partie du Skill, de ses composants,
+  de ses prompts ou de sa documentation, sauf à des fins de sauvegarde strictement
+  interne et dans les limites prévues par la loi ;
+- De procéder à toute ingénierie inverse, décompilation, désassemblage, déchiffrement
+  ou toute tentative d'accès au code source du Skill, hormis les cas expressément
+  prévus par l'article L. 122-6-1 du Code de la propriété intellectuelle ;
+- De modifier, adapter, traduire, créer une œuvre dérivée du Skill sans autorisation
+  préalable écrite du Concédant ;
+- De contourner, désactiver ou neutraliser tout mécanisme de protection technique
+  ou de gestion des droits numériques mis en place par le Concédant.
+
+En Formule Pack, la violation portant sur l'un quelconque des cinq Skills suffit
+à entraîner la résiliation du contrat dans son intégralité, sans remboursement
+de la redevance déjà versée.
+
+Toute violation des interdictions visées au présent article constitue une faute
+contractuelle susceptible d'engager la responsabilité du Licencié et de justifier
+la résiliation immédiate du contrat, sans préjudice de toute action en contrefaçon.
+
+________________________________________________________________________________
+
+ARTICLE 5 — EXCLUSIVITÉ RESTREINTE
+
+La présente licence est concédée à titre exclusif au seul Licencié : le Concédant
+s'engage à ne pas concéder à un autre client professionnel une licence identique
+portant sur le même Skill, sauf accord contraire expressément stipulé par écrit
+entre les parties.
+
+En Formule Pack, cette exclusivité s'applique à chacun des cinq Skills listés
+en Annexe 1.
+
+Cette exclusivité est strictement limitée au périmètre d'usage interne défini à
+l'article 4. Elle ne confère pas au Licencié un droit de distribution, de revente,
+ni de commercialisation du Skill ou de ses dérivés.
+
+________________________________________________________________________________
+
+ARTICLE 6 — DURÉE
+
+Le présent contrat est conclu pour une durée indéterminée, à compter de la Date
+d'Activation.
+
+Chacune des parties peut y mettre fin dans les conditions prévues à l'article 10.
+
+________________________________________________________________________________
+
+ARTICLE 7 — TERRITOIRE
+
+La licence est concédée pour le territoire de la République française.
+
+Toute utilisation depuis un territoire étranger devra faire l'objet d'un accord
+écrit et préalable du Concédant.
+
+________________________________________________________________________________
+
+ARTICLE 8 — PROPRIÉTÉ INTELLECTUELLE
+
+8.1 — Titularité des droits
+
+LAWIA demeure le titulaire exclusif et incessible de l'ensemble des droits de
+propriété intellectuelle afférents au ou aux Skills, y compris sans que cette
+liste soit limitative :
+- Le code source et le code objet ;
+- Les prompts, instructions système et architectures de traitement ;
+- Les bases de connaissances, jeux de données d'entraînement et de paramétrage ;
+- La documentation, les interfaces, les visuels et les marques associées ;
+- Toute version, mise à jour ou évolution ultérieure du ou des Skills.
+
+8.2 — Absence de cession
+
+La présente licence n'emporte aucune cession de droits au bénéfice du Licencié.
+Ce dernier n'acquiert, par l'exécution du contrat, aucun droit de propriété
+intellectuelle, aucun droit d'auteur, aucun droit sur les marques, brevets ou
+secrets de fabrication attachés au Skill.
+
+8.3 — Garantie d'éviction
+
+Le Concédant déclare être titulaire des droits nécessaires à la conclusion du
+présent contrat et garantit le Licencié contre tout trouble, revendication ou
+action d'un tiers fondé sur une atteinte aux droits de propriété intellectuelle
+qu'il aurait pu causer.
+
+8.4 — Productions du Licencié
+
+Les productions réalisées par le Licencié grâce au Skill (documents, analyses,
+résultats) restent la propriété du Licencié, sous réserve que leur réalisation
+soit conforme au présent contrat.
+
+________________________________________________________________________________
+
+ARTICLE 9 — GARANTIES ET RESPONSABILITÉ
+
+9.1 — Absence de garantie de résultat
+
+Le Skill est mis à disposition en l'état. Le Concédant ne garantit pas :
+- L'absence totale d'anomalies, d'erreurs ou d'interruptions de service ;
+- L'adéquation du Skill aux besoins spécifiques du Licencié ;
+- L'exactitude, l'exhaustivité ou la pertinence des résultats produits ;
+- La compatibilité du Skill avec tout environnement technique particulier du Licencié.
+
+Le Concédant n'est tenu qu'à une obligation de moyens dans la mise à disposition
+et la maintenance du Skill.
+
+9.2 — Limitation de responsabilité
+
+La responsabilité totale et cumulée du Concédant, toutes causes confondues, est
+expressément limitée au montant hors taxes des sommes effectivement versées par
+le Licencié au titre du présent contrat au cours des douze (12) derniers mois
+précédant le fait générateur.
+
+9.3 — Exclusion des dommages indirects
+
+Le Concédant ne pourra en aucun cas être tenu responsable de :
+- Pertes d'exploitation, manque à gagner, perte de chiffre d'affaires ou de
+  clientèle ;
+- Perte, altération ou corruption de données ;
+- Préjudice indirect, immatériel ou consécutif de quelque nature que ce soit.
+
+9.4 — Responsabilité du Licencié
+
+Le Licencié est seul responsable de l'usage qu'il fait du Skill, des décisions
+qu'il prend sur la foi des productions générées, et du respect des obligations
+légales et réglementaires applicables à son activité.
+
+________________________________________________________________________________
+
+ARTICLE 10 — RÉSILIATION
+
+10.1 — Résiliation pour manquement
+
+En cas de manquement grave de l'une ou l'autre des parties à l'une quelconque de
+ses obligations contractuelles, la partie lésée pourra résilier le contrat de plein
+droit, après mise en demeure adressée par lettre recommandée avec accusé de
+réception, restée sans effet pendant quinze (15) jours calendaires à compter de
+sa réception.
+
+Constituent notamment des manquements graves justifiant une résiliation immédiate
+et sans préavis :
+- Toute violation des interdictions visées à l'article 4.2 ;
+- Toute atteinte aux droits de propriété intellectuelle du Concédant ;
+- Toute communication, divulgation ou mise à disposition du Skill à un tiers sans
+  autorisation préalable écrite.
+
+En Formule Pack, le manquement portant sur l'un quelconque des Skills entraîne
+la résiliation de l'intégralité du contrat Pack.
+
+10.2 — Résiliation pour convenance
+
+Chacune des parties peut mettre fin au présent contrat à tout moment, en notifiant
+l'autre partie par lettre recommandée avec accusé de réception, avec un préavis de
+soixante (60) jours calendaires à compter de la réception de ladite notification.
+
+10.3 — Effets de la résiliation : cessation d'usage et obligation de suppression
+
+À la date d'effet de la résiliation, quelle qu'en soit la cause ou l'origine :
+
+a) Cessation immédiate et définitive d'usage
+
+   Le droit d'utilisation du ou des Skills accordé au Licencié cesse immédiatement
+   et de plein droit. Le Licencié s'interdit, dès cette date, toute utilisation,
+   consultation, exploitation, reproduction ou mise à disposition du ou des Skills
+   ou de l'un quelconque de leurs composants, à quelque titre et sous quelque forme
+   que ce soit.
+
+b) Obligation de suppression totale
+
+   Le Licencié est tenu de supprimer intégralement et définitivement l'ensemble
+   des éléments du ou des Skills en sa possession ou sous son contrôle, notamment :
+   - Toute copie du Skill, quel qu'en soit le support (local, cloud, sauvegarde,
+     archive) ;
+   - Tout prompt, instruction système, modèle ou base de connaissances issus du Skill ;
+   - Toute documentation, note ou extraction reproduisant tout ou partie du Skill ;
+   - Tout accès, identifiant ou clé permettant l'utilisation du Skill.
+   Cette suppression devra intervenir dans un délai maximum de sept (7) jours
+   calendaires à compter de la date d'effet de la résiliation.
+
+c) Attestation de suppression
+
+   Dans ce même délai de sept (7) jours, le Licencié adresse à LAWIA une attestation
+   écrite sur l'honneur, signée par son représentant légal, certifiant la suppression
+   intégrale de l'ensemble des éléments visés au paragraphe b) ci-dessus.
+
+d) Sanction du non-respect
+
+   Tout manquement aux obligations de cessation d'usage et de suppression exposera
+   le Licencié à :
+   - Une action en contrefaçon sur le fondement des articles L. 335-2 et suivants
+     du Code de la propriété intellectuelle ;
+   - Une action en responsabilité contractuelle pour réparation de l'intégralité
+     des préjudices subis par LAWIA, sans que la limitation de responsabilité
+     prévue à l'article 9.2 ne soit opposable dans cette hypothèse ;
+   - Le cas échéant, une mesure d'injonction en référé devant le Tribunal de
+     Commerce de Tarascon aux fins de cessation immédiate de l'usage illicite.
+
+e) Survie des obligations
+
+   Les obligations de suppression, de confidentialité (article 11) et de propriété
+   intellectuelle (article 8) survivent à la résiliation du présent contrat, sans
+   limitation de durée pour les obligations de suppression, et pour cinq (5) ans
+   s'agissant de la confidentialité.
+
+________________________________________________________________________________
+
+ARTICLE 11 — CONFIDENTIALITÉ
+
+Le Licencié s'engage à traiter comme strictement confidentiels l'ensemble des
+éléments constitutifs du ou des Skills (architecture, prompts, logique de traitement,
+base de connaissances), dont il reconnaît que la divulgation causerait un préjudice
+irréparable à LAWIA.
+
+Cette obligation de confidentialité survit à l'expiration ou à la résiliation du
+contrat pendant une durée de cinq (5) ans à compter de la date d'effet de la
+résiliation.
+
+________________________________________________________________________________
+
+ARTICLE 12 — DONNÉES PERSONNELLES
+
+Chaque partie s'engage à respecter les dispositions du Règlement (UE) 2016/679
+(RGPD) et de la loi n° 78-17 du 6 janvier 1978 modifiée, pour les données à
+caractère personnel traitées dans le cadre du présent contrat.
+
+________________________________________________________________________________
+
+ARTICLE 13 — DROIT APPLICABLE ET JURIDICTION
+
+Le présent contrat est soumis au droit français.
+
+En cas de litige relatif à son interprétation, son exécution ou sa résiliation,
+les parties s'engagent à rechercher une solution amiable préalablement à toute
+action judiciaire.
+
+À défaut d'accord amiable dans un délai de trente (30) jours à compter de la
+notification du différend, le litige sera soumis à la compétence exclusive du
+Tribunal de Commerce de Tarascon, nonobstant pluralité de défendeurs ou appel en
+garantie, y compris pour les procédures de référé ou de mesures conservatoires.
+
+________________________________________________________________________________
+
+ARTICLE 14 — DISPOSITIONS FINALES
+
+- Intégralité du contrat : le présent contrat constitue l'intégralité de l'accord
+  entre les parties et annule tout accord antérieur portant sur le même objet.
+- Modifications : toute modification du présent contrat devra faire l'objet d'un
+  avenant signé par les deux parties.
+- Divisibilité : si une clause est déclarée nulle ou inapplicable, les autres
+  clauses demeurent en vigueur.
+- Non-renonciation : le fait pour LAWIA de ne pas se prévaloir d'un manquement
+  ne vaut pas renonciation à s'en prévaloir ultérieurement.
+
+________________________________________________________________________________
+
+SIGNATURES
+
+Fait à Arles, le _______________
+
+Pour LAWIA — Le Concédant             Pour le Licencié
+HOLDING LEXVOX, Président             [Raison sociale]
+                                      [Représentant légal, Qualité]
+
+Signature :                           Signature :
+
+Date :                                Date :
+
+« Lu et approuvé — Bon pour accord »  « Lu et approuvé — Bon pour accord »
+
+________________________________________________________________________________
+
+ANNEXE 1 — LISTE DES SKILLS COUVERTS PAR LA FORMULE PACK 5 SKILLS
+
+(À compléter lors de la souscription — applicable uniquement si la case
+« FORMULE PACK 5 SKILLS » est cochée en page de garde)
+
+Skill n°1 : _______________________________________________
+
+Skill n°2 : _______________________________________________
+
+Skill n°3 : _______________________________________________
+
+Skill n°4 : _______________________________________________
+
+Skill n°5 : _______________________________________________
+
+________________________________________________________________________________
+
+NOTES D'UTILISATION
+
+- Formule Individuelle : compléter [NOM DU SKILL] à l'article 1 et au § 3.1.
+  Barrer le § 3.2 et l'Annexe 1.
+- Formule Pack : lister les 5 Skills en Annexe 1. Barrer le § 3.1.
+- TVA : si LAWIA bénéficie de la franchise en base (art. 293 B CGI), remplacer
+  les mentions TVA par « TVA non applicable, art. 293 B du CGI » et supprimer
+  les montants TTC.
+- La redevance Pack (250 € HT) équivaut à 5 × 50 € HT — l'avantage est la
+  facturation groupée et la gestion contractuelle simplifiée sur un seul acte.
+
+================================================================================

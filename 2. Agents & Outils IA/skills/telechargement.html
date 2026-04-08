@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<title>Téléchargement — LawIA</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="/favicon.png">
+<style>
+:root {
+  --bleu: #6A9BCC;
+  --bleu-f: #4A7BA8;
+  --bleu-c: #A8C4E0;
+  --bleu-p: #D3E5F8;
+  --dark: #141413;
+  --creme: #FAF9F5;
+  --gris: #B0AEA5;
+  --gris-c: #E8E6DC;
+  --negatif: #C4745B;
+  --r: 12px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{font-size:16px;}
+body{font-family:Calibri,'Gill Sans',sans-serif;background:var(--creme);color:var(--dark);line-height:1.75;min-height:100vh;display:flex;flex-direction:column;}
+h1,h2,h3{font-family:Georgia,serif;font-weight:700;}
+.container{max-width:700px;margin:0 auto;padding:0 2rem;}
+a{color:var(--bleu-f);text-decoration:none;font-weight:600;}
+a:hover{color:var(--dark);}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0.7rem 0;background:var(--creme);border-bottom:3px solid var(--dark);}
+nav .nav-inner{max-width:1100px;margin:0 auto;padding:0 2rem;display:flex;justify-content:space-between;align-items:center;}
+.logo{display:flex;align-items:center;gap:0.5rem;font-family:Georgia,serif;font-size:1.5rem;font-weight:700;color:var(--dark);text-decoration:none;}
+.logo-img{height:32px;width:auto;}
+.logo span{color:var(--bleu);}
+
+/* MAIN */
+.main{flex:1;display:flex;align-items:center;justify-content:center;padding:4rem 0;}
+.card{background:#fff;border:3px solid var(--dark);border-radius:var(--r);padding:2.5rem;box-shadow:8px 8px 0 0 var(--bleu-f);text-align:center;width:100%;}
+.card h1{font-size:1.8rem;margin-bottom:0.5rem;}
+.card p{color:var(--gris);margin-bottom:1.5rem;}
+.product-name{display:inline-block;padding:0.3rem 0.8rem;background:var(--dark);color:var(--creme);font-size:0.75rem;font-weight:700;border-radius:4px;letter-spacing:0.6px;text-transform:uppercase;margin-bottom:1.2rem;}
+.btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.9rem 2rem;border-radius:4px;font-family:Calibri,sans-serif;font-size:1rem;font-weight:700;text-decoration:none;border:3px solid var(--dark);cursor:pointer;transition:all 0.2s;background:var(--dark);color:var(--creme);}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 0 var(--bleu-f);color:var(--creme);}
+.downloads-info{font-size:0.85rem;color:var(--gris);margin-top:1rem;}
+.help-text{font-size:0.85rem;color:var(--gris);margin-top:2rem;padding-top:1.5rem;border-top:2px solid var(--gris-c);}
+
+/* STATES */
+.state{display:none;}
+.state.active{display:block;}
+.spinner{width:40px;height:40px;border:4px solid var(--gris-c);border-top-color:var(--bleu-f);border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 1.5rem;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.error-icon{font-size:2.5rem;margin-bottom:1rem;}
+.retry-btn{background:var(--creme);color:var(--dark);border:3px solid var(--dark);padding:0.6rem 1.2rem;border-radius:4px;font-weight:700;cursor:pointer;font-size:0.9rem;margin-top:1rem;}
+.retry-btn:hover{background:var(--bleu-p);}
+
+/* FOOTER */
+footer{background:var(--dark);padding:1.5rem 0;text-align:center;border-top:2px solid #2a2a28;font-size:0.8rem;color:var(--gris);}
+footer a{color:var(--bleu-c);text-decoration:none;}
+
+@media(max-width:600px){
+  .card{padding:1.5rem;}
+  .card h1{font-size:1.4rem;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="logo"><img src="../../logo lawia.png" alt="LAWIA" class="logo-img"> Law<span>IA</span></a>
+    <a href="/" style="font-size:0.9rem;">← Retour au site</a>
+  </div>
+</nav>
+
+<div class="main">
+  <div class="container">
+    <div class="card">
+
+      <!-- LOADING -->
+      <div class="state active" id="stateLoading">
+        <div class="spinner"></div>
+        <h1>Vérification de votre achat...</h1>
+        <p>Merci pour votre confiance. Nous préparons vos fichiers.</p>
+      </div>
+
+      <!-- SUCCESS -->
+      <div class="state" id="stateSuccess">
+        <h1>Vos Skills sont prêts !</h1>
+        <p>Merci pour votre achat. Cliquez ci-dessous pour télécharger.</p>
+        <div id="productTag" class="product-name"></div>
+        <br><br>
+        <a id="downloadBtn" class="btn" href="#">Télécharger mes Skills →</a>
+        <div id="downloadsInfo" class="downloads-info"></div>
+        <div class="help-text">
+          Un email de confirmation avec le lien de téléchargement vous a également été envoyé.<br>
+          En cas de problème : <a href="mailto:contact@lawia.fr">contact@lawia.fr</a>
+        </div>
+      </div>
+
+      <!-- PENDING (webhook pas encore fire) -->
+      <div class="state" id="statePending">
+        <div class="spinner"></div>
+        <h1>Paiement confirmé !</h1>
+        <p>Préparation de vos fichiers en cours. La page se recharge automatiquement...</p>
+      </div>
+
+      <!-- ERROR -->
+      <div class="state" id="stateError">
+        <div class="error-icon">⚠</div>
+        <h1>Lien invalide ou expiré</h1>
+        <p id="errorMsg">Ce lien de téléchargement n'est plus valide.</p>
+        <button class="retry-btn" onclick="window.location.reload()">Réessayer</button>
+        <div class="help-text">
+          Si le problème persiste, contactez-nous :<br>
+          <a href="mailto:contact@lawia.fr">contact@lawia.fr</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    LawIA SAS — SIREN 990 961 120 — <a href="mailto:contact@lawia.fr">contact@lawia.fr</a>
+  </div>
+</footer>
+
+<script>
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  var sessionId = params.get('session_id');
+  var token = params.get('token');
+
+  if (!sessionId && !token) {
+    showState('stateError', 'Paramètres manquants. Utilisez le lien reçu par email.');
+    return;
+  }
+
+  // Construire l'URL de verification
+  var query = token ? '?token=' + encodeURIComponent(token) : '?session_id=' + encodeURIComponent(sessionId);
+
+  fetch('/api/verify-session' + query)
+    .then(function(res) {
+      return res.json().then(function(data) {
+        return { status: res.status, data: data };
+      });
+    })
+    .then(function(result) {
+      if (result.status === 200 && result.data.token) {
+        // Succes : afficher le bouton de telechargement
+        document.getElementById('productTag').textContent = result.data.product || 'Skills LawIA';
+        document.getElementById('downloadBtn').href = '/api/download/' + result.data.token;
+        document.getElementById('downloadsInfo').textContent =
+          result.data.downloadsRemaining + ' téléchargement' + (result.data.downloadsRemaining > 1 ? 's' : '') + ' restant' + (result.data.downloadsRemaining > 1 ? 's' : '');
+        showState('stateSuccess');
+      } else if (result.status === 202) {
+        // Paiement ok mais webhook pas encore fire
+        showState('statePending');
+        setTimeout(function() { window.location.reload(); }, 4000);
+      } else {
+        showState('stateError', result.data.error || 'Lien invalide ou expiré.');
+      }
+    })
+    .catch(function() {
+      showState('stateError', 'Erreur de connexion. Veuillez réessayer.');
+    });
+
+  function showState(id, errorMsg) {
+    document.querySelectorAll('.state').forEach(function(el) { el.classList.remove('active'); });
+    document.getElementById(id).classList.add('active');
+    if (errorMsg) {
+      document.getElementById('errorMsg').textContent = errorMsg;
+    }
+  }
+})();
+</script>
+</body>
+</html>

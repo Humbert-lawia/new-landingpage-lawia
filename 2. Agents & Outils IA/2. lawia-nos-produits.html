@@ -552,6 +552,12 @@
   footer a { color: var(--bleu-c); text-decoration: none; }
   footer a:hover { color: var(--bleu); }
 
+  /* ═══ SECTIONS HELPERS ═══ */
+  .section-bleu-fonce { background: var(--bleu-f); color: #fff; }
+  .section-bleu-fonce .overline { color: var(--bleu-p); }
+  .section-bleu-fonce .ink-c { background: #fff; }
+  .section-bleu-fonce h2 { color: #fff; }
+
   /* ═══ RESPONSIVE ═══ */
   @media (max-width: 900px) {
     nav ul { display: none; }
@@ -767,7 +773,7 @@
     <div class="product-grid">
 
       <!-- CARD 3 : Skills & Prompts -->
-      <a href="#" class="card" style="position:relative;">
+      <a href="https://lawia-skills.pages.dev/" class="card" style="position:relative;" target="_blank">
         <div class="card-visual" style="background:var(--bleu-p); height:120px;">
           <svg width="130" height="90" viewBox="0 0 130 90" fill="none" xmlns="http://www.w3.org/2000/svg">
             <!-- stack of cards -->
@@ -866,6 +872,20 @@
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="7.5" stroke="#6A9BCC" stroke-width="1.5"/><path d="M9 5v4l2.5 2.5" stroke="#6A9BCC" stroke-width="1.5" stroke-linecap="round"/></svg>
       </div>
       <p><strong>Outils Droit de la famille</strong> — en cours de d&eacute;veloppement. S&eacute;parations, garde d'enfants, successions : les m&ecirc;mes exigences de rigueur, appliqu&eacute;es au droit familial. <a href="#" style="color:var(--bleu-f); font-weight:600;">Etre notifi&eacute; &agrave; la sortie &#8594;</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA SKILLS — fond bleu fonce ═══ -->
+<section class="section-bleu-fonce" style="padding:4.5rem 0;">
+  <div class="container" style="text-align:center;">
+    <p class="overline" style="color:var(--bleu-p);">Skills IA pour avocats</p>
+    <span class="ink-c" style="background:#fff;"></span>
+    <h2 style="color:#fff; margin-bottom:1rem;">D&eacute;couvrez nos <span style="color:var(--bleu-p);">Skills Claude</span></h2>
+    <p style="color:rgba(255,255,255,0.8); max-width:600px; margin:0 auto 2rem; font-size:1.05rem; line-height:1.7;">5 Skills pr&ecirc;ts &agrave; l'emploi — assignation, appel, contre-argumentation, convention d'honoraires. Transformez Claude AI en r&eacute;dacteur juridique fiable. &Agrave; partir de <strong style="color:#fff;">60&nbsp;&euro;&nbsp;HT</strong>.</p>
+    <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
+      <a href="https://lawia-skills.pages.dev/" target="_blank" class="btn btn-light" style="font-size:1rem; padding:1rem 2rem;">Explorer les Skills &#8594;</a>
+      <a href="https://lawia-skills.pages.dev/tarifs.html" target="_blank" class="btn btn-outline" style="background:transparent; color:#fff; border-color:#fff;">Voir les tarifs</a>
     </div>
   </div>
 </section>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skill Assignation Tribunal Judiciaire — LawIA Skills pour avocats</title>
+<meta name="description" content="Skill Claude pour rediger une assignation devant le tribunal judiciaire. Refere et au fond, 5 matieres couvertes, protocole anti-hallucination. Par Me Humbert.">
+<link rel="canonical" href="https://lawia-skills.pages.dev/skill-assignation.html">
+<style>
+/* ── VARIABLES ── */
+:root {
+  --bleu: #6A9BCC; --bleu-f: #4A7BA8; --bleu-c: #A8C4E0; --bleu-p: #D3E5F8;
+  --dark: #141413; --code: #1A1917; --creme: #FAF9F5;
+  --gris: #B0AEA5; --gris-c: #E8E6DC; --negatif: #C4745B;
+  --r: 12px; --shadow: 6px 6px 0 0 var(--dark);
+}
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body { font-family: Calibri, 'Gill Sans', sans-serif; background: var(--creme); color: var(--dark); line-height: 1.75; }
+img { max-width: 100%; display: block; }
+h1, h2, h3, h4 { font-family: Georgia, serif; font-weight: 700; }
+h2 { font-size: 1.8rem; line-height: 1.2; }
+.container { max-width: 880px; margin: 0 auto; padding: 0 2rem; }
+
+/* ── NAV ── */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0.7rem 0; background: var(--creme); border-bottom: 3px solid var(--dark); }
+nav .container { display: flex; justify-content: space-between; align-items: center; }
+.nav-logo { display: flex; align-items: center; gap: 0.5rem; text-decoration: none; }
+.logo-img { height: 32px; width: auto; }
+.nav-logo span { font-family: Georgia, serif; font-size: 1.3rem; font-weight: 700; color: var(--dark); }
+.back { font-size: 0.9rem; font-weight: 600; color: var(--bleu-f); text-decoration: none; display: flex; align-items: center; gap: 0.3rem; }
+.back:hover { color: var(--dark); }
+.hamburger { display: none; background: none; border: none; cursor: pointer; }
+.hamburger span { display: block; width: 22px; height: 2px; background: var(--dark); margin: 5px 0; }
+
+/* ── HERO ── */
+.hero-detail { padding: 7rem 0 3rem; background: var(--creme); }
+.breadcrumb { font-size: 0.78rem; color: var(--gris); margin-bottom: 1.5rem; }
+.breadcrumb a { color: var(--bleu-f); text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+.skill-badge { display: inline-block; font-size: 0.7rem; font-weight: 700; color: var(--bleu-f); background: var(--bleu-p); padding: 0.25rem 0.7rem; border-radius: 4px; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 1rem; }
+h1 { font-size: clamp(2rem, 4vw, 2.8rem); line-height: 1.15; margin-bottom: 1rem; }
+.hero-desc { font-size: 1.1rem; color: var(--gris); max-width: 680px; margin-bottom: 2rem; }
+.meta-bar { display: flex; gap: 1.5rem; flex-wrap: wrap; padding: 1.2rem 0; border-top: 3px solid var(--dark); border-bottom: 3px solid var(--dark); }
+.meta-item { font-size: 0.82rem; }
+.meta-label { color: var(--gris); font-weight: 400; }
+.meta-val { font-weight: 700; color: var(--dark); }
+
+/* ── SECTIONS ── */
+section { padding: 3.5rem 0; }
+.content-section { background: #fff; border-top: 1px solid var(--gris-c); }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1.5rem; }
+.feature-card { background: var(--creme); border: 3px solid var(--dark); border-radius: var(--r); padding: 1.5rem; box-shadow: var(--shadow); }
+.feature-card h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+.feature-card p { font-size: 0.88rem; color: var(--gris); }
+
+/* ── TERMINAL ── */
+.example-section { background: var(--dark); color: var(--creme); }
+.example-section h2 { color: var(--creme); }
+.terminal { background: var(--code); border: 3px solid #2a2a28; border-radius: var(--r); overflow: hidden; margin-top: 1.5rem; box-shadow: var(--shadow); }
+.terminal-bar { display: flex; align-items: center; gap: 6px; padding: 0.6rem 0.9rem; background: var(--dark); border-bottom: 2px solid #2a2a28; }
+.terminal-dot { width: 9px; height: 9px; border-radius: 50%; border: 1.5px solid #555; }
+.terminal-title { flex: 1; text-align: center; font-family: Consolas, monospace; font-size: 0.7rem; color: var(--gris); }
+.terminal-body { padding: 1.2rem; font-family: Consolas, monospace; font-size: 0.76rem; line-height: 1.7; color: #bbb; white-space: pre-line; }
+.terminal-body .lbl { color: var(--bleu-c); }
+.terminal-body .val { color: var(--bleu); }
+.terminal-body .bold { color: #eee; font-weight: 700; }
+.terminal-body .dim { color: #555; }
+
+/* ── CTA ── */
+.cta-section { background: var(--bleu-p); text-align: center; }
+.btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.8rem 1.6rem; border-radius: 4px; font-family: Calibri, sans-serif; font-size: 0.95rem; font-weight: 700; text-decoration: none; border: 3px solid var(--dark); transition: all 0.2s; }
+.btn-primary { background: var(--dark); color: var(--creme); box-shadow: 6px 6px 0 0 var(--bleu-f); }
+.btn-primary:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 0 var(--bleu-f); }
+
+/* ── FOOTER ── */
+footer { background: var(--dark); padding: 2rem 0; text-align: center; }
+footer p { color: var(--gris); font-size: 0.78rem; }
+footer a { color: var(--bleu-c); text-decoration: none; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) { .two-col { gap: 1.5rem; } }
+@media (max-width: 600px) { .two-col { grid-template-columns: 1fr; } .meta-bar { flex-direction: column; gap: 0.8rem; } .hamburger { display: block; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<nav><div class="container">
+  <a class="nav-logo" href="/">
+    <img src="../../logo lawia.png" alt="LAWIA" class="logo-img">
+    <span>Skills</span>
+  </a>
+  <a class="back" href="tarifs.html">Retour aux Skills</a>
+</div></nav>
+
+<section class="hero-detail">
+<div class="container">
+  <div class="breadcrumb"><a href="/">LawIA Skills</a> / <a href="tarifs.html">Tarifs</a> / Skill 01</div>
+  <div class="skill-badge">Skill 01</div>
+  <h1>Assignation TJ</h1>
+  <p class="hero-desc">Generez des assignations conformes a l'article 56 du Code de procedure civile. Mentions obligatoires, visa des textes, structure des moyens, demandes chiffrees -- pretes a etre relues et signifiees.</p>
+  <div class="meta-bar">
+    <div class="meta-item"><span class="meta-label">Auteur</span><br><span class="meta-val">Me Patrice Humbert</span></div>
+    <div class="meta-item"><span class="meta-label">Gain de temps</span><br><span class="meta-val">2h / assignation</span></div>
+    <div class="meta-item"><span class="meta-label">Specialite</span><br><span class="meta-val">Procedure civile</span></div>
+    <div class="meta-item"><span class="meta-label">Mise a jour</span><br><span class="meta-val">Mars 2026</span></div>
+  </div>
+</div>
+</section>
+
+<section class="content-section">
+<div class="container">
+  <h2>Ce que produit ce Skill</h2>
+  <div class="two-col">
+    <div class="feature-card">
+      <h3>Conformite article 56 CPC</h3>
+      <p>Toutes les mentions obligatoires sont integrees automatiquement : juridiction, parties, objet, moyens de fait et de droit, demandes.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Structure des moyens</h3>
+      <p>Discussion organisee en moyens numerotes avec fondements juridiques, visa des textes et jurisprudence applicable.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Demandes chiffrees</h3>
+      <p>Le dispositif integre les demandes principales, subsidiaires, les depens et l'article 700 CPC.</p>
+    </div>
+    <div class="feature-card">
+      <h3>Bordereaux inclus</h3>
+      <p>Un bordereau de communication de pieces est genere automatiquement en annexe de l'assignation.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="example-section">
+<div class="container">
+  <h2>Exemple de resultat</h2>
+  <div class="terminal">
+    <div class="terminal-bar">
+      <span class="terminal-dot"></span><span class="terminal-dot"></span><span class="terminal-dot"></span>
+      <span class="terminal-title">Claude + Skill Assignation TJ</span>
+    </div>
+    <div class="terminal-body"><span class="bold">ASSIGNATION DEVANT LE TRIBUNAL JUDICIAIRE DE MARSEILLE</span>
+<span class="dim">Refere -- Art. 56 CPC</span>
+
+<span class="bold">I. PARTIES</span>
+<span class="lbl">Demandeur :</span> <span class="val">M. Martin Jean, ne le 12/04/1975...</span>
+<span class="lbl">Defendeur :</span> <span class="val">SA Assurances Generales, RCS Paris...</span>
+
+<span class="bold">II. OBJET DE LA DEMANDE</span>
+<span class="val">Designation d'un expert medical aux fins d'evaluation des prejudices...</span>
+
+<span class="bold">III. DISCUSSION</span>
+<span class="lbl">Moyen 1.</span> <span class="val">Sur la competence -- Art. R.211-3-26 COJ</span>
+<span class="lbl">Moyen 2.</span> <span class="val">Sur le droit a indemnisation -- Loi Badinter art. 3</span>
+
+<span class="bold">IV. DISPOSITIF</span>
+<span class="val">PAR CES MOTIFS, il est demande au Tribunal de...</span></div>
+  </div>
+</div>
+</section>
+
+<section class="cta-section">
+<div class="container">
+  <h2>Obtenez ce Skill</h2>
+  <p style="color:var(--gris);margin:0.5rem 0 1.5rem;">Inclus dans le Pack de 5 Skills LawIA -- paiement unique.</p>
+  <a class="btn btn-primary" href="tarifs.html">Obtenir le Pack Skills</a>
+</div>
+</section>
+
+<footer><div class="container">
+  <p>LawIA -- Cree par Me Patrice Humbert -- <a href="https://www.lawia-formation.fr" target="_blank" rel="noopener noreferrer">lawia-formation.fr</a></p>
+  <p style="margin-top:0.5rem;font-size:0.72rem;"><a href="/mentions-legales.html">Mentions legales</a> -- <a href="/cgv.html">CGV</a></p>
+</div></footer>
+
+</body>
+</html>
