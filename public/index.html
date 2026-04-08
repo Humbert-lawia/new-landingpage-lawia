@@ -81,10 +81,10 @@ nav a.active{color:var(--dark);}
 .hero{min-height:100vh;display:flex;align-items:center;padding-top:5rem;position:relative;overflow:hidden;background:var(--creme);}
 .hero-dots{position:absolute;inset:0;background-image:radial-gradient(circle,var(--gris-c) 1px,transparent 1px);background-size:28px 28px;opacity:0.5;z-index:0;pointer-events:none;}
 .hero .container{position:relative;z-index:1;}
-.hero-row{display:grid;grid-template-columns:1fr 320px;gap:3rem;align-items:stretch;}
+.hero-row{display:grid;grid-template-columns:1fr 420px;gap:3rem;align-items:stretch;}
 .hero-content{max-width:600px;position:relative;z-index:1;}
-.hero-illustration{position:relative;z-index:1;width:320px;flex-shrink:0;}
-.hero-img-photo{width:100%;height:100%;border-radius:var(--r);border:3px solid var(--dark);box-shadow:8px 8px 0 0 var(--bleu-f);object-fit:cover;object-position:center 15%;display:block;transform:scale(1.1);}
+.hero-illustration{position:relative;z-index:1;width:420px;flex-shrink:0;}
+.hero-img-photo{width:100%;height:100%;border-radius:var(--r);border:4px solid var(--dark);box-shadow:12px 12px 0 0 var(--bleu-f);object-fit:cover;object-position:center 15%;display:block;}
 .hero-img-mirabeau{display:none;}
 h1{font-size:clamp(2.2rem,4.2vw,3.2rem);line-height:1.12;margin-bottom:1.2rem;}
 .hero-sub{font-size:1.05rem;color:var(--gris);margin-bottom:2rem;max-width:500px;}
@@ -205,12 +205,54 @@ footer p{color:var(--gris);font-size:0.78rem;}
 footer a{color:var(--bleu-c);text-decoration:none;}
 footer a:hover{text-decoration:underline;}
 
+/* ═══ POUR QUI — BLEU PALE ═══ */
+.pour-qui{background:var(--bleu-p);}
+.pour-qui .overline{color:var(--bleu-f);}
+.pour-qui .ink{background:var(--dark);}
+.pour-qui-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2.5rem;}
+.pour-qui-card{background:#fff;border:3px solid var(--dark);border-radius:var(--r);padding:1.8rem;box-shadow:4px 4px 0 0 var(--bleu-f);transition:all 0.3s;}
+.pour-qui-card:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 0 var(--bleu-f);}
+.pour-qui-card-header{display:flex;align-items:center;gap:0.8rem;margin-bottom:0.8rem;}
+.pour-qui-icon{width:40px;height:40px;border-radius:8px;background:var(--dark);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.pour-qui-icon svg{width:20px;height:20px;}
+.pour-qui-card h3{font-size:1rem;color:var(--dark);font-family:Georgia,serif;}
+.pour-qui-card p{font-size:0.88rem;color:var(--gris);line-height:1.75;}
+
+/* ═══ TÉMOIGNAGES — CREME ═══ */
+.temoignages{background:var(--creme);}
+.temoignages .overline{color:var(--bleu-f);}
+.temo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem;}
+.temo-card{background:#fff;border:3px solid var(--dark);border-radius:var(--r);padding:2rem;box-shadow:var(--shadow);position:relative;transition:all 0.3s;display:flex;flex-direction:column;}
+.temo-card:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 0 var(--bleu-f);}
+.temo-quote{font-family:Georgia,serif;font-size:4rem;line-height:0.7;color:var(--bleu-c);margin-bottom:0.6rem;display:block;user-select:none;}
+.temo-card blockquote{font-size:0.92rem;color:var(--dark);line-height:1.8;font-style:italic;margin-bottom:auto;padding-bottom:1.2rem;}
+.temo-footer{border-top:2px solid var(--gris-c);padding-top:1rem;margin-top:1rem;}
+.temo-author{font-size:0.78rem;color:var(--bleu-f);font-weight:700;text-transform:uppercase;letter-spacing:0.8px;}
+.temo-note{font-size:0.72rem;color:var(--gris);margin-top:0.2rem;}
+
+/* ═══ FAQ — BLANC ═══ */
+.faq{background:#fff;}
+.faq .overline{color:var(--bleu-f);}
+.faq-list{margin-top:2.5rem;max-width:780px;margin-left:auto;margin-right:auto;}
+details.faq-item{border:3px solid var(--dark);border-radius:var(--r);margin-bottom:1rem;overflow:hidden;}
+details.faq-item summary{list-style:none;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 1.5rem;cursor:pointer;font-family:Georgia,serif;font-size:1rem;font-weight:700;color:var(--dark);background:#fff;transition:background 0.2s;gap:1rem;}
+details.faq-item summary:hover{background:var(--bleu-p);}
+details.faq-item summary::-webkit-details-marker{display:none;}
+details.faq-item summary::after{content:'+';font-family:Consolas,monospace;font-size:1.5rem;color:var(--bleu-f);flex-shrink:0;line-height:1;}
+details.faq-item[open] summary::after{content:'−';}
+details.faq-item[open]>summary{background:var(--bleu-p);}
+.faq-body{padding:1.2rem 1.5rem 1.5rem;font-size:0.9rem;color:var(--gris);line-height:1.85;border-top:2px solid var(--gris-c);}
+.faq-body a{color:var(--bleu-f);font-weight:700;text-decoration:none;}
+.faq-body a:hover{text-decoration:underline;}
+
 /* ═══ RESPONSIVE ═══ */
 @media(max-width:900px){
   .hero-row{grid-template-columns:1fr;}.hero-illustration{width:200px;height:260px;margin:0 auto 2rem;}
   .qui-header{grid-template-columns:1fr;text-align:center;justify-items:center;}.qui-text{text-align:center;}.qui-text .ink{margin:0 auto 1rem;}
   .histoire-grid{grid-template-columns:1fr;}
+  .pour-qui-grid{grid-template-columns:1fr;}
   .pourquoi-grid{grid-template-columns:1fr;}
+  .temo-grid{grid-template-columns:1fr;}
   .stats-grid{grid-template-columns:1fr 1fr;}
   .equipe-grid{grid-template-columns:1fr;}
   nav ul{display:none;}
@@ -387,6 +429,53 @@ footer a:hover{text-decoration:underline;}
   </div>
 </section>
 
+<!-- ═══ POUR QUI — BLEU PALE ═══ -->
+<section class="pour-qui">
+  <div class="container">
+    <div class="overline">Nos clients</div>
+    <span class="ink"></span>
+    <h2>Vous reconnaissez-vous ?</h2>
+    <div class="pour-qui-grid">
+      <div class="pour-qui-card fade-in">
+        <div class="pour-qui-card-header">
+          <div class="pour-qui-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+          </div>
+          <h3>L'avocat débordé</h3>
+        </div>
+        <p>Vous passez vos nuits sur des conclusions alors que le raisonnement juridique — votre vraie valeur — mérite mieux que la mise en forme. L'IA devrait s'occuper du reste.</p>
+      </div>
+      <div class="pour-qui-card fade-in">
+        <div class="pour-qui-card-header">
+          <div class="pour-qui-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3>Le cabinet qui recrute</h3>
+        </div>
+        <p>Former un collaborateur prend des mois. Un agent IA maîtrise votre méthodologie en quelques jours — disponible 24h/24, sans période d'essai, sans congés.</p>
+      </div>
+      <div class="pour-qui-card fade-in">
+        <div class="pour-qui-card-header">
+          <div class="pour-qui-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <h3>L'associé curieux</h3>
+        </div>
+        <p>Vous avez testé ChatGPT, vous avez été déçu par les hallucinations. Vous cherchez une IA qui comprend vraiment le droit français — celle qui cite Légifrance, pas Common Law.</p>
+      </div>
+      <div class="pour-qui-card fade-in">
+        <div class="pour-qui-card-header">
+          <div class="pour-qui-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          </div>
+          <h3>Le formateur ou bâtonnier</h3>
+        </div>
+        <p>Vous voulez proposer à vos confrères une montée en compétence IA sérieuse — sans jargon tech, sans vendeur de rêves — par un pair qui plaide encore.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ═══ POURQUOI — CREME ═══ -->
 <section class="pourquoi">
   <div class="container">
@@ -401,7 +490,7 @@ footer a:hover{text-decoration:underline;}
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#4A7BA8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
         <h3>Déontologie intégrée</h3>
-        <p>Chaque outil est passé au filtre du secret professionnel, du RGPD et des règles du Barreau. Ce n'est pas un argument marketing, c'est une obligation que nous appliquons parce que nous y sommes soumis.</p>
+        <p>Secret professionnel, RGPD, règles du Barreau — ces contraintes ne sont pas des cases cochées pour rassurer. Elles sont notre quotidien d'avocat. Chaque outil que nous concevons est soumis au même filtre déontologique que celui que nous appliquons dans notre propre cabinet.</p>
       </div>
       <div class="pourquoi-card fade-in">
         <div class="pourquoi-icon">
@@ -503,14 +592,80 @@ footer a:hover{text-decoration:underline;}
   </div>
 </section>
 
+<!-- ═══ TÉMOIGNAGES — CREME ═══ -->
+<section class="temoignages">
+  <div class="container">
+    <div style="text-align:center;">
+      <div class="overline">Ils nous font confiance</div>
+      <span class="ink-c"></span>
+      <h2>Ce que disent ceux qui ont sauté le pas.</h2>
+    </div>
+    <div class="temo-grid">
+      <div class="temo-card fade-in">
+        <span class="temo-quote">"</span>
+        <blockquote>Avant LAWIA, je testais l'IA en solo et j'obtenais n'importe quoi. Depuis la formation, j'ai une méthode. Mes conclusions prennent 40 % de temps en moins.</blockquote>
+        <div class="temo-footer">
+          <div class="temo-author">Avocat — Barreau de Lyon</div>
+          <div class="temo-note">Formation IA juridique · 2025</div>
+        </div>
+      </div>
+      <div class="temo-card fade-in">
+        <span class="temo-quote">"</span>
+        <blockquote>La certification IA de Maître Humbert, c'est la seule que j'ai vue pensée par quelqu'un qui plaide. Pas par un prof d'école de commerce.</blockquote>
+        <div class="temo-footer">
+          <div class="temo-author">Avocate spécialiste famille — Paris</div>
+          <div class="temo-note">Certification IA · 2025</div>
+        </div>
+      </div>
+      <div class="temo-card fade-in">
+        <span class="temo-quote">"</span>
+        <blockquote>JurisConnect MCP est la seule extension qui interroge Légifrance en temps réel sans halluciner. On a arrêté de vérifier manuellement chaque référence.</blockquote>
+        <div class="temo-footer">
+          <div class="temo-author">Avocat d'affaires — Marseille</div>
+          <div class="temo-note">JurisConnect MCP · 2024</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FAQ — BLANC ═══ -->
+<section class="faq">
+  <div class="container">
+    <div style="text-align:center;">
+      <div class="overline">Vos questions</div>
+      <span class="ink-c"></span>
+      <h2>Ce que les avocats nous demandent le plus souvent.</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>L'IA respecte-t-elle le secret professionnel ?</summary>
+        <div class="faq-body">Oui. Nos outils sont conçus pour fonctionner soit en local, soit avec des modèles dont les conditions d'utilisation garantissent la confidentialité des données. Aucun document client ne transite vers un serveur tiers sans votre accord explicite.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Faut-il être technicien pour utiliser vos outils ?</summary>
+        <div class="faq-body">Non. Nos Skills et agents sont pensés pour des avocats, pas pour des développeurs. Si vous savez rédiger une instruction à un stagiaire, vous savez utiliser nos outils.</div>
+      </details>
+      <details class="faq-item">
+        <summary>En combien de temps voit-on des résultats ?</summary>
+        <div class="faq-body">La plupart de nos participants identifient leur premier gain de temps dès la première semaine. La formation d'initiation dure 2 × 3h. Les outils sont opérationnels immédiatement après la première session.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Quel est le prix de vos formations ?</summary>
+        <div class="faq-body">Nos tarifs varient selon la formule : initiation individuelle, formation inter-cabinet ou accompagnement sur-mesure. <a href="#contact">Prenez rendez-vous</a> pour un devis adapté à votre situation.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
 <!-- ═══ CTA — BLEU FONCE ═══ -->
 <section class="cta-final">
   <div class="geo"></div>
   <div class="container">
     <div class="overline" style="color:var(--bleu-p);">Passer à l'action</div>
     <span class="ink-c" style="background:#fff;"></span>
-    <h2>Prêt à transformer votre pratique ?</h2>
-    <p>30 minutes avec Maître Humbert pour évaluer votre situation, identifier les priorités, et décider ensemble si et comment l'IA peut vous aider. Sans engagement.</p>
+    <h2>30 minutes pour savoir où vous en êtes.</h2>
+    <p>Pas un discours commercial. Une conversation entre avocats. Vous arrivez avec vos questions, vos craintes, vos cas d'usage. Vous repartez avec un diagnostic clair sur ce que l'IA peut — et ne peut pas encore — faire pour votre cabinet.</p>
     <a href="#contact" class="btn btn-primary">Prendre rendez-vous →</a>
   </div>
 </section>
