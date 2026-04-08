@@ -585,35 +585,85 @@
   .skill-gain { font-size: 0.72rem; font-weight: 700; color: var(--bleu-f); background: rgba(74,123,168,0.1); border: 1px solid rgba(74,123,168,0.2); padding: 0.3rem 0.6rem; border-radius: 4px; display: inline-block; }
 
   /* ═══ PRIVADOC SECTION ═══ */
-  .privadoc-section { background: #fff; }
+  .privadoc-section { background: var(--creme); }
   .privadoc-section .overline { color: var(--bleu-f); }
-  .privadoc-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; margin-bottom: 3rem; }
+
+  .privadoc-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: center; margin-bottom: 4rem; }
   .privadoc-intro-text h2 { margin-bottom: 0.8rem; }
-  .privadoc-intro-text p { font-size: 1rem; color: var(--gris); line-height: 1.85; margin-bottom: 1.2rem; }
-  .privadoc-trust { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 1.5rem; }
-  .privadoc-badge { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.3rem 0.8rem; border: 2px solid var(--dark); border-radius: 4px; font-size: 0.72rem; font-weight: 700; background: #fff; box-shadow: 2px 2px 0 0 var(--bleu-f); }
-  .privadoc-visual { background: var(--bleu-p); border: 3px solid var(--dark); border-radius: var(--r); padding: 2.5rem; display: flex; flex-direction: column; gap: 1.2rem; justify-content: center; }
-  .privadoc-visual-item { display: flex; align-items: center; gap: 1rem; background: #fff; border: 2px solid var(--dark); border-radius: 8px; padding: 0.9rem 1.2rem; font-size: 0.88rem; font-weight: 600; color: var(--dark); }
-  .privadoc-visual-icon { width: 36px; height: 36px; background: var(--bleu-p); border: 1.5px solid var(--bleu); border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 18px; }
-  .privadoc-features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-bottom: 2.5rem; }
-  .privadoc-feature { background: var(--creme); border: 3px solid var(--dark); border-radius: var(--r); padding: 1.6rem; transition: all 0.3s; }
+  .privadoc-intro-text > p { font-size: 1rem; color: var(--gris); line-height: 1.85; margin-bottom: 1.2rem; }
+
+  .privadoc-trust { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.6rem; }
+  .privadoc-badge {
+    display: inline-flex; align-items: center; gap: 0.45rem;
+    padding: 0.3rem 0.9rem; border: 2px solid var(--dark); border-radius: 4px;
+    font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+    background: #fff; box-shadow: 2px 2px 0 0 var(--bleu-f); color: var(--dark);
+  }
+  .privadoc-badge svg { width: 12px; height: 12px; stroke: var(--bleu-f); stroke-width: 2; flex-shrink: 0; fill: none; }
+
+  .privadoc-visual {
+    background: var(--bleu-p); border: 3px solid var(--dark); border-radius: var(--r);
+    padding: 2.5rem; display: flex; flex-direction: column; gap: 0;
+    box-shadow: 4px 4px 0 0 var(--bleu-f); justify-content: center;
+  }
+  .priva-flow-step {
+    display: flex; align-items: center; gap: 1rem;
+    background: #fff; border: 2px solid var(--dark); border-radius: 8px;
+    padding: 0.9rem 1.2rem;
+  }
+  .priva-flow-step.highlight { border-color: var(--bleu-f); box-shadow: 3px 3px 0 0 var(--bleu-f); }
+  .priva-flow-icon {
+    width: 36px; height: 36px; background: var(--bleu-p); border: 2px solid var(--bleu);
+    border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .priva-flow-icon svg { width: 18px; height: 18px; stroke: var(--bleu-f); stroke-width: 2; fill: none; }
+  .priva-flow-icon.dark { background: var(--dark); border-color: var(--dark); }
+  .priva-flow-icon.dark svg { stroke: var(--bleu-c); }
+  .priva-flow-step span { font-size: 0.875rem; font-weight: 600; color: var(--dark); }
+  .priva-flow-arrow { display: flex; justify-content: center; padding: 0.4rem 0; }
+  .priva-flow-arrow svg { width: 20px; height: 20px; stroke: var(--bleu-f); stroke-width: 2; fill: none; }
+
+  .privadoc-features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 3rem; }
+  .privadoc-feature {
+    background: #fff; border: 3px solid var(--dark); border-radius: var(--r);
+    padding: 1.8rem; transition: all 0.25s; box-shadow: 4px 4px 0 0 var(--bleu-f);
+  }
   .privadoc-feature:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 0 var(--bleu-f); }
-  .privadoc-feature-icon { width: 44px; height: 44px; background: var(--bleu-p); border: 2px solid var(--dark); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 0.8rem; }
-  .privadoc-feature h3 { font-size: 1rem; margin-bottom: 0.4rem; }
-  .privadoc-feature p { font-size: 0.85rem; color: var(--gris); line-height: 1.7; }
-  .privadoc-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-bottom: 2.5rem; }
-  .privadoc-step { text-align: center; padding: 1.5rem; background: var(--bleu-p); border: 3px solid var(--dark); border-radius: var(--r); }
-  .privadoc-step-num { width: 44px; height: 44px; border-radius: 50%; border: 2.5px solid var(--dark); font-family: Georgia, serif; font-size: 1.2rem; font-weight: 700; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.8rem; background: #fff; }
+  .privadoc-feature-icon {
+    width: 44px; height: 44px; background: var(--bleu-p); border: 2px solid var(--bleu);
+    border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;
+  }
+  .privadoc-feature-icon svg { width: 22px; height: 22px; stroke: var(--bleu-f); stroke-width: 2; fill: none; }
+  .privadoc-feature h3 { font-size: 1rem; margin-bottom: 0.45rem; }
+  .privadoc-feature p { font-size: 0.85rem; color: var(--gris); line-height: 1.75; }
+
+  .privadoc-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 0; }
+  .privadoc-step {
+    text-align: center; padding: 1.8rem 1.5rem; background: #fff;
+    border: 3px solid var(--dark); border-radius: var(--r);
+    box-shadow: 4px 4px 0 0 var(--bleu-f); transition: all 0.25s;
+  }
+  .privadoc-step:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 0 var(--bleu-f); }
+  .privadoc-step-num { font-family: Georgia, serif; font-size: 2.2rem; font-weight: 700; color: var(--bleu-f); line-height: 1; margin-bottom: 0.8rem; }
   .privadoc-step h3 { font-size: 0.95rem; margin-bottom: 0.4rem; }
-  .privadoc-step p { font-size: 0.82rem; color: var(--gris); }
-  .privadoc-compliance { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
-  .privadoc-compliance-card { background: var(--dark); border-radius: var(--r); padding: 1.8rem; border: 2px solid #2a2a28; transition: all 0.3s; }
-  .privadoc-compliance-card:hover { border-color: var(--bleu); }
-  .privadoc-compliance-card h3 { font-size: 0.95rem; color: var(--creme); margin-bottom: 0.5rem; }
-  .privadoc-compliance-card p { font-size: 0.83rem; color: var(--gris); line-height: 1.7; }
-  .privadoc-compliance-tag { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--bleu-c); background: rgba(106,155,204,0.12); border: 1px solid rgba(106,155,204,0.2); padding: 0.2rem 0.5rem; border-radius: 3px; display: inline-block; margin-bottom: 0.8rem; }
+  .privadoc-step p { font-size: 0.82rem; color: var(--gris); line-height: 1.7; }
   .step-formats { display: flex; gap: 0.4rem; justify-content: center; margin-top: 0.6rem; flex-wrap: wrap; }
   .step-formats span { background: var(--dark); color: var(--creme); padding: 0.2rem 0.4rem; border-radius: 3px; font-size: 0.65rem; font-weight: 700; }
+
+  .privadoc-compliance-wrap { background: var(--dark); border-radius: var(--r); padding: 3rem; margin-top: 3rem; }
+  .privadoc-compliance-header { text-align: center; margin-bottom: 2rem; }
+  .privadoc-compliance-header .overline { color: var(--bleu-c); }
+  .privadoc-compliance-header .ink-c { background: var(--bleu-c); opacity: 0.6; }
+  .privadoc-compliance-header h2 { color: var(--creme); }
+  .privadoc-compliance { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+  .privadoc-compliance-card { background: var(--code); border-radius: calc(var(--r) - 2px); padding: 1.8rem; border: 2px solid #2a2a28; transition: all 0.3s; }
+  .privadoc-compliance-card:hover { border-color: var(--bleu); transform: translateY(-2px); }
+  .privadoc-compliance-card h3 { font-size: 0.95rem; color: var(--creme); margin-bottom: 0.5rem; }
+  .privadoc-compliance-card p { font-size: 0.83rem; color: var(--gris); line-height: 1.7; }
+  .privadoc-compliance-tag { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--bleu-c); background: rgba(106,155,204,0.12); border: 1px solid rgba(106,155,204,0.25); padding: 0.25rem 0.6rem; border-radius: 3px; display: inline-block; margin-bottom: 0.8rem; }
+  .cnb-banner { margin-top: 1.5rem; background: rgba(211,229,248,0.06); border: 1px solid rgba(106,155,204,0.2); border-left: 3px solid var(--bleu); border-radius: calc(var(--r) - 2px); padding: 1.5rem 2rem; }
+  .cnb-banner p { font-size: 0.88rem; color: #aaa; line-height: 1.85; }
+  .cnb-banner strong { color: var(--bleu-c); }
 
   /* ═══ AGENTS (fond creme) ═══ */
   .agents-section { background: var(--creme); }
@@ -848,7 +898,7 @@
   </div>
 </section>
 
-<!-- ═══ PRIVADOC DETAIL — fond blanc ═══ -->
+<!-- ═══ PRIVADOC DETAIL — fond creme ═══ -->
 <section class="privadoc-section" id="privadoc">
   <div class="container">
 
@@ -858,114 +908,152 @@
         <div class="overline">Confidentialité &amp; Souveraineté</div>
         <span class="ink"></span>
         <h2>Anonymisez vos documents avant d'envoyer à l'IA.</h2>
-        <p class="handwritten">La protection du secret de vos clients est notre priorité</p>
+        <p class="handwritten">La protection du secret de vos clients, notre priorité.</p>
         <p>Avant d'envoyer un document à <strong>Claude, ChatGPT ou Gemini</strong>, PrivaDoc pseudonymise automatiquement toutes les données personnelles. Vos clients restent protégés. Votre secret professionnel, préservé.</p>
         <div class="privadoc-trust">
-          <span class="privadoc-badge">🇫🇷 Hébergé en France</span>
-          <span class="privadoc-badge">🔒 Chiffrement AES-256</span>
-          <span class="privadoc-badge">⚖️ Conforme RGPD</span>
-          <span class="privadoc-badge">🏛️ Conforme AI Act</span>
+          <span class="privadoc-badge">
+            <svg viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Hébergé en France
+          </span>
+          <span class="privadoc-badge">
+            <svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2" stroke-linejoin="round"/><path d="M8 11V7a4 4 0 018 0v4" stroke-linecap="round"/></svg>
+            Chiffrement AES-256
+          </span>
+          <span class="privadoc-badge">
+            <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Conforme RGPD
+          </span>
+          <span class="privadoc-badge">
+            <svg viewBox="0 0 24 24"><path d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Conforme AI Act
+          </span>
         </div>
         <div style="display:flex;gap:1rem;flex-wrap:wrap;">
-          <a href="/#contact" class="btn btn-primary">Demander l'accès →</a>
-          <a href="#" class="btn btn-outline">Voir la démo</a>
+          <a href="/#contact" class="btn btn-primary">Demander l'acc&egrave;s &rarr;</a>
+          <a href="#" class="btn btn-outline">Voir la d&eacute;mo</a>
         </div>
       </div>
+
+      <!-- Diagramme flux — SVG only -->
       <div class="privadoc-visual">
-        <div class="privadoc-visual-item">
-          <div class="privadoc-visual-icon">📄</div>
-          <span>Document original (données sensibles)</span>
+        <div class="priva-flow-step">
+          <div class="priva-flow-icon">
+            <!-- document icon -->
+            <svg viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <span>Document original <span style="color:var(--gris);font-weight:400;">— données sensibles</span></span>
         </div>
-        <div style="text-align:center;font-size:1.5rem;color:var(--bleu-f);">↓</div>
-        <div class="privadoc-visual-item" style="border-color:var(--bleu-f);box-shadow:3px 3px 0 0 var(--bleu-f);">
-          <div class="privadoc-visual-icon" style="background:var(--dark);border-color:var(--dark);">🔐</div>
-          <span><strong>PrivaDoc</strong> — Pseudonymisation automatique</span>
+        <div class="priva-flow-arrow">
+          <!-- chevron down -->
+          <svg viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
-        <div style="text-align:center;font-size:1.5rem;color:var(--bleu-f);">↓</div>
-        <div class="privadoc-visual-item" style="opacity:0.8;">
-          <div class="privadoc-visual-icon">🤖</div>
-          <span>Claude · ChatGPT · Gemini (sans données sensibles)</span>
+        <div class="priva-flow-step highlight">
+          <div class="priva-flow-icon dark">
+            <!-- shield lock icon -->
+            <svg viewBox="0 0 24 24"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <span><strong>PrivaDoc</strong> &mdash; Pseudonymisation</span>
+        </div>
+        <div class="priva-flow-arrow">
+          <svg viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="priva-flow-step">
+          <div class="priva-flow-icon">
+            <!-- cpu/chip icon for AI -->
+            <svg viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1"/><path d="M7 9H5m2 3H5m2 3H5m14-6h-2m2 3h-2m2 3h-2M9 7V5m3 2V5m3 2V5M9 19v-2m3 2v-2m3 2v-2" stroke-linecap="round"/></svg>
+          </div>
+          <span>Claude · ChatGPT · Gemini <span style="color:var(--gris);font-weight:400;">— z&eacute;ro donn&eacute;e sensible</span></span>
         </div>
       </div>
     </div>
 
     <!-- 3 fonctionnalités -->
-    <div style="text-align:center;margin-bottom:2rem;">
-      <div class="overline">Fonctionnalités</div>
+    <div style="text-align:center;margin-bottom:2.5rem;">
+      <div class="overline">Fonctionnalit&eacute;s</div>
       <span class="ink-c"></span>
-      <h2>Sécurisez vos échanges avec l'IA</h2>
+      <h2>S&eacute;curisez vos &eacute;changes avec l'IA</h2>
     </div>
     <div class="privadoc-features">
       <div class="privadoc-feature fade-in">
-        <div class="privadoc-feature-icon">🔍</div>
+        <div class="privadoc-feature-icon">
+          <!-- scan / search icon -->
+          <svg viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
         <h3>Anonymisation intelligente</h3>
-        <p>Détection automatique de 22 types d'entités : noms, adresses, dates, IBAN, numéros de sécurité sociale. Le document arrive à l'IA expurgé de toute donnée identifiante.</p>
+        <p>D&eacute;tection automatique de 22 types d'entit&eacute;s : noms, adresses, dates, IBAN, num&eacute;ros de s&eacute;curit&eacute; sociale. Le document arrive &agrave; l'IA expurg&eacute; de toute donn&eacute;e identifiante.</p>
       </div>
       <div class="privadoc-feature fade-in">
-        <div class="privadoc-feature-icon">🔄</div>
-        <h3>Désanonymisation instantanée</h3>
-        <p>Collez la réponse de l'IA et retrouvez les données originales en un clic. Détection automatique du document source. La réponse est ré-individualisée sans ressaisie.</p>
+        <div class="privadoc-feature-icon">
+          <!-- refresh / reverse arrows icon -->
+          <svg viewBox="0 0 24 24"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>D&eacute;sanonymisation instantan&eacute;e</h3>
+        <p>Collez la r&eacute;ponse de l'IA et retrouvez les donn&eacute;es originales en un clic. D&eacute;tection automatique du document source. La r&eacute;ponse est r&eacute;-individualis&eacute;e sans ressaisie.</p>
       </div>
       <div class="privadoc-feature fade-in">
-        <div class="privadoc-feature-icon">🛡️</div>
-        <h3>Sécurité de bout en bout</h3>
-        <p>Chiffrement AES-256-GCM, hébergement 100 % français, aucun document original stocké après traitement. Conforme RGPD article 25 (Privacy by Design).</p>
+        <div class="privadoc-feature-icon">
+          <!-- shield check icon -->
+          <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>S&eacute;curit&eacute; de bout en bout</h3>
+        <p>Chiffrement AES-256-GCM, h&eacute;bergement 100&nbsp;% fran&ccedil;ais, aucun document original stock&eacute; apr&egrave;s traitement. Conforme RGPD article&nbsp;25 (Privacy by Design).</p>
       </div>
     </div>
 
     <!-- 3 étapes -->
-    <div style="text-align:center;margin-bottom:2rem;">
+    <div style="text-align:center;margin-bottom:2.5rem;">
       <div class="overline">Processus</div>
       <span class="ink-c"></span>
-      <h2>3 étapes. 30 secondes.</h2>
+      <h2>3 &eacute;tapes. 30 secondes.</h2>
     </div>
     <div class="privadoc-steps">
       <div class="privadoc-step fade-in">
-        <div class="privadoc-step-num">1</div>
+        <div class="privadoc-step-num">01</div>
         <h3>Uploadez votre document</h3>
-        <p>Glissez-déposez votre fichier dans l'interface sécurisée, hébergée en France.</p>
+        <p>Glissez-d&eacute;posez votre fichier dans l'interface s&eacute;curis&eacute;e, h&eacute;berg&eacute;e en France.</p>
         <div class="step-formats"><span>PDF</span><span>DOCX</span><span>TXT</span><span>MD</span></div>
       </div>
       <div class="privadoc-step fade-in">
-        <div class="privadoc-step-num">2</div>
+        <div class="privadoc-step-num">02</div>
         <h3>Anonymisation automatique</h3>
-        <p>L'IA détecte et remplace toutes les données personnelles par des pseudonymes cohérents. Envoyez ensuite à Claude, ChatGPT ou Gemini en toute sécurité.</p>
+        <p>L'IA d&eacute;tecte et remplace toutes les donn&eacute;es personnelles par des pseudonymes coh&eacute;rents. Envoyez ensuite &agrave; Claude, ChatGPT ou Gemini en toute s&eacute;curit&eacute;.</p>
       </div>
       <div class="privadoc-step fade-in">
-        <div class="privadoc-step-num">3</div>
-        <h3>Désanonymisez la réponse</h3>
-        <p>Collez la réponse de l'IA et retrouvez les données originales instantanément. Le document final est ré-individualisé, prêt à utiliser.</p>
+        <div class="privadoc-step-num">03</div>
+        <h3>D&eacute;sanonymisez la r&eacute;ponse</h3>
+        <p>Collez la r&eacute;ponse de l'IA et retrouvez les donn&eacute;es originales instantan&eacute;ment. Le document final est r&eacute;-individualis&eacute;, pr&ecirc;t &agrave; utiliser.</p>
       </div>
     </div>
 
-    <!-- Conformité : RGPD + AI Act + Souveraineté -->
-    <div style="text-align:center;margin-bottom:2rem;">
-      <div class="overline">Conformité</div>
-      <span class="ink-c"></span>
-      <h2>Conçu pour respecter toutes vos obligations.</h2>
-    </div>
-    <div class="privadoc-compliance">
-      <div class="privadoc-compliance-card fade-in">
-        <div class="privadoc-compliance-tag">RGPD · Art. 25</div>
-        <h3>Privacy by Design</h3>
-        <p>PrivaDoc applique les principes RGPD dès la conception : minimisation des données, pseudonymisation systématique, droit à l'effacement immédiat. Aucun document original n'est conservé après traitement.</p>
+    <!-- Conformité — bloc dark unifié -->
+    <div class="privadoc-compliance-wrap">
+      <div class="privadoc-compliance-header">
+        <div class="overline">Conformit&eacute;</div>
+        <span class="ink-c"></span>
+        <h2>Con&ccedil;u pour respecter toutes vos obligations.</h2>
       </div>
-      <div class="privadoc-compliance-card fade-in">
-        <div class="privadoc-compliance-tag">AI Act · 2024/1689</div>
-        <h3>Conforme au règlement IA européen</h3>
-        <p>Le règlement européen sur l'IA (AI Act) impose des obligations de traçabilité et de protection des données lors de l'usage d'IA générative. PrivaDoc est l'outil de conformité conçu pour y répondre.</p>
+      <div class="privadoc-compliance">
+        <div class="privadoc-compliance-card fade-in">
+          <div class="privadoc-compliance-tag">RGPD &middot; Art.&nbsp;25</div>
+          <h3>Privacy by Design</h3>
+          <p>PrivaDoc applique les principes RGPD d&egrave;s la conception&nbsp;: minimisation des donn&eacute;es, pseudonymisation syst&eacute;matique, droit &agrave; l'effacement imm&eacute;diat. Aucun document original n'est conserv&eacute; apr&egrave;s traitement.</p>
+        </div>
+        <div class="privadoc-compliance-card fade-in">
+          <div class="privadoc-compliance-tag">AI Act &middot; 2024/1689</div>
+          <h3>R&egrave;glement IA europ&eacute;en</h3>
+          <p>Le r&egrave;glement europ&eacute;en sur l'IA impose des obligations de tra&ccedil;abilit&eacute; et de protection des donn&eacute;es lors de l'usage d'IA g&eacute;n&eacute;rative. PrivaDoc est l'outil de conformit&eacute; con&ccedil;u pour y r&eacute;pondre.</p>
+        </div>
+        <div class="privadoc-compliance-card fade-in">
+          <div class="privadoc-compliance-tag">FR &middot; Souverainet&eacute; num&eacute;rique</div>
+          <h3>Serveur souverain fran&ccedil;ais</h3>
+          <p>Vos documents sont trait&eacute;s sur des serveurs situ&eacute;s en France. Aucune donn&eacute;e ne transite par des serveurs &eacute;trangers. Conformit&eacute; totale avec les exigences de localisation du Barreau (RGPD art.&nbsp;44 et s.).</p>
+        </div>
       </div>
-      <div class="privadoc-compliance-card fade-in">
-        <div class="privadoc-compliance-tag">🇫🇷 Souveraineté numérique</div>
-        <h3>Serveur souverain français</h3>
-        <p>Vos documents sont traités sur des serveurs situés en France. Aucune donnée ne transite par des serveurs étrangers. Conformité totale avec les exigences de localisation des données du Barreau et du RGPD (art. 44 et s.).</p>
+      <!-- CNB -->
+      <div class="cnb-banner">
+        <div class="overline" style="color:var(--bleu-c);margin-bottom:0.5rem;">Recommandation CNB</div>
+        <p>Le Conseil National des Barreaux recommande aux avocats de garantir la confidentialit&eacute; des &eacute;changes avec les outils d'IA g&eacute;n&eacute;rative. PrivaDoc r&eacute;pond &agrave; ces exigences en pseudonymisant syst&eacute;matiquement les donn&eacute;es personnelles avant tout envoi vers Claude, ChatGPT ou Gemini &mdash; assurant le respect du <strong>secret professionnel (article&nbsp;2 du RIN)</strong> et des obligations d&eacute;ontologiques de l'avocat.</p>
       </div>
-    </div>
-
-    <!-- CNB -->
-    <div style="margin-top:2rem;background:var(--bleu-p);border:3px solid var(--dark);border-radius:var(--r);padding:2rem;text-align:center;">
-      <div class="overline" style="text-align:center;">Recommandation CNB</div>
-      <p style="font-size:0.92rem;color:var(--dark);max-width:780px;margin:0.8rem auto 0;line-height:1.85;">Le Conseil National des Barreaux recommande aux avocats de garantir la confidentialité des échanges avec les outils d'IA générative. PrivaDoc répond à ces exigences en pseudonymisant systématiquement les données personnelles avant tout envoi vers Claude, ChatGPT ou Gemini — assurant le respect du <strong>secret professionnel (article 2 du RIN)</strong> et des obligations déontologiques de l'avocat.</p>
     </div>
 
   </div>
