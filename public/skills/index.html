@@ -1,0 +1,2209 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<title>LawIA -- Skills Claude pour avocats : IA juridique en droit francais</title>
+<meta name="description" content="Transformez Claude AI en redacteur juridique fiable : 5 Skills pour avocats (assignation, appel, contre-argumentation). Crees par Me Humbert. Essai gratuit.">
+<link rel="canonical" href="https://lawia.fr/">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="product">
+<meta property="og:title" content="5 Skills IA pour avocats -- LawIA">
+<meta property="og:description" content="Transformez Claude AI en redacteur juridique fiable en droit francais. 5 Skills crees par Me Patrice Humbert, avocat et fondateur de LawIA.">
+<meta property="og:image" content="https://lawia.fr/og-image-skills.jpg">
+<meta property="og:url" content="https://lawia.fr/">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="LawIA">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="5 Skills IA pour avocats -- LawIA">
+<meta name="twitter:description" content="Transformez Claude AI en redacteur juridique fiable en droit francais.">
+<meta name="twitter:image" content="https://lawia.fr/og-image-skills.jpg">
+
+<style>
+/* ================================================================
+   LAWIA CHARTER -- Bleu sky + Creme + Noir
+   Georgia / Calibri / Caveat / Consolas
+   3px borders, offset shadows, alternating sections
+   Zero gradients, zero red/green/orange/violet/gold
+   ================================================================ */
+:root {
+  --bleu: #6A9BCC;
+  --bleu-f: #4A7BA8;
+  --bleu-c: #A8C4E0;
+  --bleu-p: #D3E5F8;
+  --dark: #141413;
+  --code: #1A1917;
+  --creme: #FAF9F5;
+  --gris: #B0AEA5;
+  --gris-c: #E8E6DC;
+  --negatif: #C4745B;
+  --r: 12px;
+  --shadow: 0 4px 16px rgba(20,20,19,0.10);
+  --shadow-bleu: 0 4px 16px rgba(74,123,168,0.18);
+}
+
+/* --- RESET --- */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: Calibri, 'Gill Sans', sans-serif;
+  background: var(--creme);
+  color: var(--dark);
+  line-height: 1.75;
+  overflow-x: hidden;
+}
+
+/* --- TYPOGRAPHY --- */
+h1, h2, h3, h4 { font-family: Georgia, serif; font-weight: 700; }
+h2 { font-size: 2.4rem; line-height: 1.2; }
+
+/* --- LAYOUT --- */
+.container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 1; }
+section { padding: 5.5rem 0; }
+
+/* --- UTILITIES --- */
+.ink { display: block; width: 48px; height: 3px; background: var(--dark); margin-bottom: 1rem; }
+.ink-c { display: block; width: 48px; height: 3px; background: var(--dark); margin: 0 auto 1rem; }
+.overline {
+  font-family: Calibri, sans-serif;
+  font-size: 0.7rem;
+  color: var(--bleu-f);
+  text-transform: uppercase;
+  letter-spacing: 3.5px;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+.accent { color: var(--bleu); }
+.tag {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  background: var(--dark);
+  color: var(--creme);
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 4px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  border: 2px solid var(--dark);
+  box-shadow: 2px 2px 0 0 var(--bleu-f);
+}
+.handwritten {
+  font-family: 'Caveat', cursive;
+  font-size: 1.8rem;
+  color: var(--bleu-f);
+  margin: -0.3rem 0 1rem;
+  line-height: 1.3;
+  position: relative;
+  display: inline-block;
+  transform: rotate(-1deg);
+}
+.handwritten::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--bleu-f);
+  opacity: 0.35;
+}
+
+/* ================================================================
+   NAV
+   ================================================================ */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 0.7rem 0;
+  background: var(--creme);
+  border-bottom: 3px solid var(--dark);
+  transition: all 0.3s;
+}
+nav.scrolled {
+  padding: 0.4rem 0;
+  box-shadow: var(--shadow);
+}
+nav .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  font-family: Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--dark);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.logo-img {
+  height: 32px;
+  width: auto;
+}
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 1.6rem;
+  align-items: center;
+}
+nav a {
+  color: var(--gris);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+nav a:hover { color: var(--dark); }
+.nav-cta {
+  background: var(--dark);
+  color: var(--creme) !important;
+  padding: 0.4rem 1rem;
+  border-radius: 4px;
+  border: 2px solid var(--dark);
+}
+.nav-cta:hover {
+  background: var(--bleu);
+  border-color: var(--bleu);
+}
+
+/* --- HAMBURGER --- */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.3rem;
+}
+.hamburger svg {
+  width: 28px;
+  height: 28px;
+  stroke: var(--dark);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--creme);
+  z-index: 200;
+  padding: 5rem 2rem 2rem;
+  text-align: center;
+}
+.mobile-menu.open {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  align-items: center;
+}
+.mobile-menu a {
+  font-family: Georgia, serif;
+  font-size: 1.2rem;
+  color: var(--dark);
+  text-decoration: none;
+  font-weight: 700;
+}
+.mobile-menu a:hover { color: var(--bleu); }
+.mobile-menu .close-menu {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 2rem;
+  color: var(--dark);
+  font-family: Consolas, monospace;
+}
+.mobile-menu .nav-cta {
+  display: inline-block;
+  background: var(--dark);
+  color: var(--creme) !important;
+  padding: 0.6rem 1.5rem;
+  border-radius: 4px;
+  border: 2px solid var(--dark);
+  margin-top: 0.5rem;
+}
+.mobile-menu .nav-cta-bleu {
+  display: inline-block;
+  background: var(--bleu);
+  color: #fff !important;
+  padding: 0.6rem 1.5rem;
+  border-radius: 4px;
+  border: 2px solid var(--bleu);
+}
+
+/* ================================================================
+   BUTTONS
+   ================================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.6rem;
+  border-radius: 4px;
+  font-family: Calibri, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-decoration: none;
+  border: 3px solid var(--dark);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.btn-primary {
+  background: var(--dark);
+  color: var(--creme);
+  box-shadow: var(--shadow-bleu);
+}
+.btn-primary:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0 0 var(--bleu-f);
+}
+.btn-outline {
+  background: var(--creme);
+  color: var(--dark);
+}
+.btn-outline:hover { background: var(--bleu-p); }
+.btn-light {
+  background: var(--bleu);
+  color: #fff;
+  border-color: var(--bleu);
+  box-shadow: 6px 6px 0 0 var(--creme);
+}
+.btn-light:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0 0 var(--creme);
+}
+
+/* ================================================================
+   SECTION 1 -- HERO (creme)
+   ================================================================ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  padding-top: 11rem;
+  padding-bottom: 5rem;
+  position: relative;
+  overflow: hidden;
+  background: var(--creme);
+}
+.hero-dots {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, var(--gris-c) 1px, transparent 1px);
+  background-size: 28px 28px;
+  opacity: 0.5;
+  z-index: 0;
+  pointer-events: none;
+}
+.hero .container { position: relative; z-index: 1; width: 100%; }
+.hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  justify-content: center;
+}
+.hero-title-block { margin-bottom: 0; }
+.hero-title-block h1 {
+  font-size: clamp(3rem, 5.5vw, 5.2rem);
+  line-height: 1.05;
+  margin-bottom: -0.2rem;
+  max-width: 100%;
+  letter-spacing: -1.5px;
+}
+.hero-row {
+  display: grid;
+  grid-template-columns: 1fr 0.9fr;
+  gap: 3.5rem;
+  align-items: end;
+}
+.hero-content { position: relative; z-index: 1; }
+.hero-content h2 {
+  font-size: clamp(2.2rem, 4vw, 3.8rem);
+  line-height: 1.1;
+  margin-bottom: 1rem;
+  color: var(--dark);
+  font-family: Georgia, serif;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+.hero-sub {
+  font-size: 1.05rem;
+  color: var(--gris);
+  margin-bottom: 2rem;
+  max-width: 500px;
+}
+
+/* --- Hero Author Card --- */
+.hero-author-card {
+  width: 100%;
+  background: #fff;
+  border: 3px solid var(--dark);
+  border-radius: var(--r);
+  overflow: hidden;
+  box-shadow: 8px 8px 0 0 var(--bleu-f);
+  position: relative;
+  top: 1rem;
+  z-index: 1;
+}
+.hero-author-card img {
+  width: 100%;
+  aspect-ratio: 3 / 3.2;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  border-bottom: 3px solid var(--dark);
+}
+.hero-author-footer {
+  padding: 1rem 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+}
+.hero-author-name {
+  font-family: Georgia, serif;
+  font-size: 0.98rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--dark);
+}
+.hero-author-role {
+  font-size: 0.78rem;
+  color: var(--bleu-f);
+  font-weight: 600;
+}
+.hero-author-badge {
+  background: var(--bleu-p);
+  border: 2px solid var(--bleu-f);
+  border-radius: 4px;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--bleu-f);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+/* --- Hero Carousel --- */
+.hero-carousel {
+  width: 100%;
+  border: 3px solid var(--dark);
+  border-radius: var(--r);
+  overflow: hidden;
+  box-shadow: 8px 8px 0 0 var(--bleu-f);
+  position: relative;
+  z-index: 1;
+  margin-bottom: 3rem;
+}
+.carousel-slide { display: none; animation: fadeSlide 0.4s ease; }
+.carousel-slide.active { display: block; }
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.cslide-header {
+  background: var(--code);
+  padding: 0.55rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  border-bottom: 2px solid #2a2a28;
+}
+.cslide-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #3a3a38;
+  display: inline-block;
+}
+.cslide-filename {
+  font-family: Consolas, monospace;
+  font-size: 0.7rem;
+  color: var(--gris);
+  margin-left: 0.4rem;
+}
+.cslide-body {
+  padding: 1.1rem 1.3rem;
+  background: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.cslide-num {
+  font-family: Consolas, monospace;
+  font-size: 0.62rem;
+  color: var(--bleu-f);
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+.cslide-title {
+  font-family: Georgia, serif;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--dark);
+  line-height: 1.3;
+  margin-bottom: 0.7rem;
+  padding-bottom: 0.55rem;
+  border-bottom: 2px solid var(--dark);
+}
+.cslide-item {
+  font-size: 0.77rem;
+  padding: 0.28rem 0;
+  border-bottom: 1px solid var(--gris-c);
+  color: var(--dark);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.cslide-item::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--bleu-f);
+  flex-shrink: 0;
+}
+.cslide-item.lock {
+  filter: blur(2.5px);
+  user-select: none;
+  color: var(--gris);
+}
+.cslide-item.lock::before { background: var(--gris-c); }
+.cslide-fade {
+  position: absolute;
+  bottom: 40px;
+  left: 0;
+  right: 0;
+  height: 55px;
+  background: linear-gradient(transparent, #fff);
+  pointer-events: none;
+}
+.cslide-footer {
+  padding: 0.85rem 1.1rem;
+  background: var(--bleu-p);
+  border-top: 2px solid var(--bleu-f);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.cslide-name {
+  font-family: Georgia, serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--dark);
+}
+.cslide-badge {
+  background: var(--dark);
+  color: var(--creme);
+  font-size: 0.6rem;
+  font-weight: 700;
+  padding: 0.18rem 0.5rem;
+  border-radius: 4px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.carousel-nav {
+  display: flex;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 0.6rem;
+  background: #fff;
+  border-top: 1px solid var(--gris-c);
+}
+.cdot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gris-c);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.25s, transform 0.25s;
+}
+.cdot.active {
+  background: var(--bleu-f);
+  transform: scale(1.3);
+}
+
+/* ================================================================
+   SECTION 2 -- PROBLEM (dark)
+   ================================================================ */
+.problem { background: var(--dark); color: var(--creme); }
+.problem .overline { color: var(--bleu-c); }
+.problem .ink { background: var(--creme); }
+.problem h2 { color: var(--creme); }
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.tl-item {
+  background: var(--code);
+  border: 2px solid #2a2a28;
+  border-radius: var(--r);
+  padding: 1.2rem;
+  text-align: center;
+}
+.tl-icon {
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 0.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tl-icon svg {
+  width: 28px;
+  height: 28px;
+  stroke: var(--bleu-f);
+  stroke-width: 2;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.tl-item h4 { font-size: 0.88rem; color: var(--creme); margin-bottom: 0.3rem; }
+.tl-item p { font-size: 0.78rem; color: var(--gris); }
+.tl-bar {
+  width: 100%;
+  height: 3px;
+  background: #2a2a28;
+  border-radius: 2px;
+  margin-top: 0.6rem;
+  overflow: hidden;
+}
+.tl-bar-fill { height: 100%; background: var(--bleu); border-radius: 2px; }
+
+/* ================================================================
+   SECTION 3 -- COMPARISON (creme)
+   ================================================================ */
+.comparison { background: var(--creme); }
+.comp-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+.comp-card {
+  background: #fff;
+  border: 3px solid var(--dark);
+  border-radius: var(--r);
+  padding: 1.8rem;
+  box-shadow: var(--shadow);
+}
+.comp-card h3 {
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 2px solid var(--gris-c);
+}
+.comp-card.sans h3 { color: var(--negatif); border-bottom-color: var(--negatif); }
+.comp-card.with { box-shadow: var(--shadow-bleu); }
+.comp-card.with h3 { color: var(--bleu-f); border-bottom-color: var(--bleu); }
+.comp-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 0.7rem;
+  font-size: 0.88rem;
+}
+.comp-x { color: var(--negatif); font-weight: 700; flex-shrink: 0; font-family: Consolas, monospace; }
+.comp-v { color: var(--bleu-f); font-weight: 700; flex-shrink: 0; font-family: Consolas, monospace; }
+
+/* ================================================================
+   SECTION 4 -- SKILLS (dark)
+   ================================================================ */
+.skills-section { background: var(--dark); color: var(--creme); }
+.skills-section .overline { color: var(--bleu-c); }
+.skills-section .ink-c { background: var(--creme); }
+.skills-section h2 { color: var(--creme); }
+.skills-section p.sub { color: var(--gris); }
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.2rem;
+  margin-top: 2rem;
+}
+.skill-card {
+  background: var(--bleu-p);
+  border: 2px solid var(--bleu-c);
+  border-radius: var(--r);
+  padding: 1.6rem;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+.skill-card:hover {
+  border-color: var(--bleu-f);
+  transform: translateY(-3px);
+  box-shadow: 0 0 0 2px var(--bleu-f), 5px 5px 0 0 var(--bleu-f);
+}
+.skill-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--bleu-f);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.skill-card:hover::before { opacity: 1; }
+.skill-num {
+  font-family: Consolas, monospace;
+  font-size: 0.68rem;
+  color: var(--bleu-f);
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  margin-bottom: 0.4rem;
+}
+.skill-card h3 { font-size: 1rem; color: var(--dark); margin-bottom: 0.5rem; }
+.skill-card p { font-size: 0.85rem; color: var(--gris); margin-bottom: 0.7rem; }
+.skill-gain {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--bleu-f);
+  background: #fff;
+  border: 1px solid var(--bleu-c);
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  display: inline-block;
+}
+.skill-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.8rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  padding: 0.4rem 0.9rem;
+  border: 2px solid var(--bleu-f);
+  background: var(--bleu-f);
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+.skill-link:hover { background: var(--dark); border-color: var(--dark); color: #fff; }
+.skill-card-hint {
+  font-size: 0.67rem;
+  color: var(--dark);
+  font-family: Consolas, monospace;
+  letter-spacing: 1px;
+  margin-top: 0.3rem;
+  display: block;
+}
+
+/* --- Skill card bounce animation --- */
+@keyframes skillBounce {
+  0% { transform: translateY(0) scale(1); }
+  30% { transform: translateY(-8px) scale(1.04); }
+  60% { transform: translateY(-2px) scale(1.01); }
+  100% { transform: translateY(0) scale(1); }
+}
+.skill-card.clicked { animation: skillBounce 0.55s cubic-bezier(0.34, 1.56, 0.64, 1); }
+.skill-card.expanded {
+  border-color: var(--bleu);
+  box-shadow: 0 0 0 2px var(--bleu), 6px 6px 0 0 var(--bleu-f);
+}
+.skill-card.expanded::before { opacity: 1; }
+
+/* --- Skill preview (expandable) --- */
+.skill-preview {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s;
+  opacity: 0;
+}
+.skill-card.expanded .skill-preview {
+  max-height: 320px;
+  opacity: 1;
+  transition: max-height 0.45s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s 0.08s;
+}
+.skill-preview-inner {
+  margin-top: 1rem;
+  border-top: 2px solid var(--bleu-c);
+  padding-top: 1rem;
+}
+.sprev-label {
+  font-family: Consolas, monospace;
+  font-size: 0.62rem;
+  color: var(--bleu-f);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+.sprev-item {
+  font-size: 0.78rem;
+  padding: 0.3rem 0;
+  border-bottom: 1px solid var(--bleu-c);
+  color: var(--dark);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.sprev-item::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--bleu-f);
+  flex-shrink: 0;
+}
+.sprev-item.lock { filter: blur(2.8px); user-select: none; color: var(--bleu-f); }
+.sprev-item.lock::before { background: var(--bleu-c); }
+.sprev-unlock {
+  display: block;
+  text-align: center;
+  font-size: 0.72rem;
+  color: var(--bleu-f);
+  margin-top: 0.6rem;
+  letter-spacing: 0.5px;
+}
+
+/* --- Free skill card variant --- */
+.skill-card--free {
+  background: #fff !important;
+  border: 2px dashed var(--bleu-f) !important;
+  cursor: default;
+}
+.skill-card--free:hover {
+  transform: none !important;
+  box-shadow: none !important;
+  border-color: var(--bleu-f) !important;
+}
+.skill-card--free .skill-num { color: var(--negatif); }
+.skill-link--free {
+  background: #fff !important;
+  color: var(--bleu-f) !important;
+  border-color: var(--bleu-f) !important;
+}
+.skill-link--free:hover {
+  background: var(--bleu-f) !important;
+  color: #fff !important;
+}
+
+/* ================================================================
+   SECTION 5 -- DEMO TERMINAL (creme)
+   ================================================================ */
+.demo-section { background: var(--creme); }
+.terminal {
+  background: var(--code);
+  border: 3px solid var(--dark);
+  border-radius: var(--r);
+  overflow: hidden;
+  max-width: 700px;
+  margin: 2rem auto 0;
+  box-shadow: var(--shadow);
+}
+.terminal-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.6rem 0.9rem;
+  background: var(--dark);
+  border-bottom: 2px solid #2a2a28;
+}
+.terminal-dot { width: 9px; height: 9px; border-radius: 50%; border: 1.5px solid #555; }
+.terminal-title {
+  flex: 1;
+  text-align: center;
+  font-family: Consolas, monospace;
+  font-size: 0.7rem;
+  color: var(--gris);
+}
+.terminal-body {
+  padding: 1.2rem;
+  font-family: Consolas, monospace;
+  font-size: 0.76rem;
+  line-height: 1.7;
+  color: #bbb;
+  white-space: pre-line;
+}
+.terminal-body .lbl { color: var(--bleu-c); }
+.terminal-body .val { color: var(--bleu); }
+.terminal-body .dim { color: #444; }
+.terminal-body .bold { color: #eee; font-weight: 700; }
+
+/* ================================================================
+   SECTION 6 -- STEPS (bleu-p)
+   ================================================================ */
+.steps-section { background: var(--bleu-p); color: var(--dark); }
+.steps-section .overline { color: var(--bleu-f); }
+.steps-section .ink-c { background: var(--dark); }
+.steps-section h2 { color: var(--dark); }
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.step {
+  text-align: center;
+  padding: 1.5rem;
+  background: #fff;
+  border: 3px solid var(--dark);
+  border-radius: var(--r);
+  box-shadow: var(--shadow);
+}
+.step-num {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 2.5px solid var(--dark);
+  font-family: Georgia, serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+}
+.step h3 { font-size: 0.95rem; color: var(--dark); margin-bottom: 0.4rem; }
+.step p { font-size: 0.85rem; color: var(--gris); }
+
+/* ================================================================
+   SECTION 7 -- PROOF / AUTHOR (white)
+   ================================================================ */
+.proof { background: #fff; }
+.author-section-grid {
+  display: grid;
+  grid-template-columns: 1fr 0.8fr;
+  gap: 3rem;
+  align-items: start;
+  margin-top: 2.5rem;
+}
+.author-photo-card {
+  width: 100%;
+  background: #fff;
+  border: 3px solid var(--dark);
+  border-radius: var(--r);
+  overflow: hidden;
+  box-shadow: 8px 8px 0 0 var(--bleu-f);
+  position: relative;
+  top: 1rem;
+}
+.author-photo-card img {
+  width: 100%;
+  aspect-ratio: 3 / 3.2;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  border-bottom: 3px solid var(--dark);
+}
+.author-photo-footer {
+  padding: 1rem 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+}
+.author-photo-info .author-name {
+  font-family: Georgia, serif;
+  font-size: 0.98rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+.author-photo-info .author-role {
+  font-size: 0.78rem;
+  color: var(--bleu-f);
+  font-weight: 600;
+}
+.author-photo-badge {
+  background: var(--bleu-p);
+  border: 2px solid var(--bleu-f);
+  border-radius: 4px;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--bleu-f);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+.author-card-text h3 { font-size: 1.25rem; margin-bottom: 0.3rem; }
+.author-card-text .role {
+  font-size: 0.78rem;
+  color: var(--bleu-f);
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.author-card-text p { font-size: 0.9rem; color: var(--gris); line-height: 1.7; }
+.credentials { display: flex; flex-direction: column; gap: 0.4rem; margin-top: 1rem; }
+.credential { font-size: 0.82rem; padding: 0.35rem 0; border-bottom: 1px solid var(--gris-c); }
+.author-socials { display: flex; gap: 0.75rem; margin-top: 1.1rem; flex-wrap: wrap; }
+.author-social-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.9rem;
+  border: 2px solid var(--dark);
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s;
+  background: #fff;
+  color: var(--dark);
+}
+.author-social-btn:hover { background: var(--dark); color: #fff; }
+.author-social-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+.author-social-btn.yt { border-color: var(--negatif); color: var(--negatif); }
+.author-social-btn.yt:hover { background: var(--negatif); color: #fff; border-color: var(--negatif); }
+.author-social-btn.li { border-color: var(--bleu-f); color: var(--bleu-f); }
+.author-social-btn.li:hover { background: var(--bleu-f); color: #fff; border-color: var(--bleu-f); }
+.author-social-btn.sk { border-color: var(--bleu); color: var(--bleu); }
+.author-social-btn.sk:hover { background: var(--bleu); color: #fff; border-color: var(--bleu); }
+
+/* ================================================================
+   SECTION 8 -- TESTIMONIALS (bleu-p)
+   ================================================================ */
+.temoignages-section { background: var(--bleu-p); }
+.temoignages-section .overline { color: var(--bleu-f); }
+.temoignages-section .ink-c { background: var(--dark); }
+.temoignages-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.3rem;
+  margin-top: 2.5rem;
+}
+.temo-card {
+  background: #fff;
+  border: 3px solid var(--dark);
+  border-radius: var(--r);
+  padding: 1.5rem;
+  box-shadow: 5px 5px 0 0 var(--bleu-f);
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  transition: transform 0.2s;
+}
+.temo-card:hover { transform: translateY(-3px); }
+.temo-card--featured {
+  background: var(--dark);
+  border-color: var(--bleu-f);
+  box-shadow: 5px 5px 0 0 var(--bleu);
+}
+.temo-stars { font-size: 0.95rem; color: var(--bleu-f); letter-spacing: 2px; }
+.temo-card--featured .temo-stars { color: var(--bleu-c); }
+.temo-quote {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 0.88rem;
+  color: var(--dark);
+  line-height: 1.65;
+  flex: 1;
+}
+.temo-card--featured .temo-quote { color: var(--creme); }
+.temo-footer {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  border-top: 1px solid var(--gris-c);
+  padding-top: 0.9rem;
+}
+.temo-card--featured .temo-footer { border-top-color: #2a2a28; }
+.temo-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--bleu-p);
+  border: 2px solid var(--bleu-f);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Georgia, serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--bleu-f);
+  flex-shrink: 0;
+}
+.temo-card--featured .temo-avatar {
+  background: var(--bleu-f);
+  border-color: var(--bleu-c);
+  color: #fff;
+}
+.temo-name { font-weight: 700; font-size: 0.88rem; color: var(--dark); }
+.temo-card--featured .temo-name { color: var(--creme); }
+.temo-role { font-size: 0.75rem; color: var(--gris); margin-top: 0.1rem; }
+.temo-card--featured .temo-role { color: var(--bleu-c); }
+.temo-skill {
+  font-family: Consolas, monospace;
+  font-size: 0.62rem;
+  color: var(--bleu-f);
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: var(--bleu-p);
+  padding: 0.15rem 0.45rem;
+  border-radius: 3px;
+  margin-top: 0.3rem;
+  display: inline-block;
+}
+.temo-card--featured .temo-skill {
+  background: rgba(106, 155, 204, 0.2);
+  color: var(--bleu-c);
+}
+.temo-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin-top: 2.5rem;
+  background: #fff;
+  border: 3px solid var(--dark);
+  border-radius: var(--r);
+  overflow: hidden;
+  box-shadow: 5px 5px 0 0 var(--bleu-f);
+}
+.temo-stat { flex: 1; text-align: center; padding: 1.2rem 0.5rem; }
+.temo-stat-num {
+  font-family: Georgia, serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--dark);
+  line-height: 1;
+}
+.temo-stat-label {
+  font-size: 0.72rem;
+  color: var(--gris);
+  margin-top: 0.2rem;
+  font-family: Consolas, monospace;
+  letter-spacing: 0.5px;
+}
+.temo-stat-sep { width: 2px; background: var(--gris-c); align-self: stretch; }
+
+/* ================================================================
+   SECTION 9 -- PRICING (dark)
+   ================================================================ */
+.pricing { background: var(--dark); color: var(--creme); }
+.pricing .overline { color: var(--bleu-c); }
+.pricing .ink-c { background: var(--creme); }
+.pricing h2 { color: var(--creme); }
+.price-card {
+  max-width: 460px;
+  margin: 2rem auto 0;
+  background: var(--creme);
+  border: 3px solid var(--dark);
+  border-radius: var(--r);
+  padding: 2.5rem;
+  text-align: center;
+  color: var(--dark);
+  box-shadow: 8px 8px 0 0 var(--bleu-f);
+}
+.price-old-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  margin-bottom: 0.5rem;
+}
+.price-old {
+  font-family: Georgia, serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--gris);
+  text-decoration: line-through;
+  text-decoration-color: var(--bleu-f);
+  text-decoration-thickness: 3px;
+}
+.price-old-label {
+  font-size: 0.75rem;
+  color: var(--gris);
+  background: var(--gris-c);
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+}
+.price-now {
+  font-family: Georgia, serif;
+  font-size: 3.8rem;
+  font-weight: 700;
+  color: var(--dark);
+  line-height: 1;
+  letter-spacing: -1px;
+}
+.price-now span { font-size: 1.1rem; font-weight: 400; color: var(--gris); }
+.price-economy {
+  display: inline-block;
+  background: var(--bleu-p);
+  color: var(--bleu-f);
+  border: 2px solid var(--bleu-f);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.25rem 0.7rem;
+  border-radius: 4px;
+  margin: 0.4rem 0 0.2rem;
+}
+.price-note { font-size: 0.82rem; color: var(--gris); margin: 0.4rem 0 1.2rem; }
+.price-list { text-align: left; list-style: none; margin-bottom: 1.5rem; }
+.price-list li {
+  padding: 0.35rem 0;
+  border-bottom: 1px solid var(--gris-c);
+  font-size: 0.88rem;
+}
+.price-list li::before { content: '-- '; color: var(--bleu-f); font-weight: 700; }
+
+/* ================================================================
+   SECTION 10 -- FAQ (creme)
+   ================================================================ */
+.faq { background: var(--creme); }
+.faq-list { max-width: 680px; margin: 2rem auto 0; }
+details {
+  border: 3px solid var(--dark);
+  border-radius: var(--r);
+  margin-bottom: 0.8rem;
+  background: #fff;
+  overflow: hidden;
+}
+summary {
+  padding: 1rem 1.2rem;
+  font-family: Georgia, serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+summary::after {
+  content: '+';
+  font-family: Consolas, monospace;
+  font-size: 1.2rem;
+  color: var(--bleu);
+  transition: transform 0.3s;
+}
+details[open] summary::after { content: '\2212'; }
+details[open] summary { border-bottom: 1px solid var(--gris-c); }
+details p { padding: 0.8rem 1.2rem; font-size: 0.88rem; color: var(--gris); }
+
+/* ================================================================
+   SECTION 11 -- FINAL CTA (dark)
+   ================================================================ */
+.free-cta { background: var(--dark); text-align: center; color: var(--creme); }
+.free-cta h2 { color: var(--creme); font-size: 2rem; margin-bottom: 0.4rem; }
+.free-cta p {
+  color: var(--gris);
+  margin-bottom: 1.5rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ================================================================
+   FOOTER
+   ================================================================ */
+footer {
+  background: var(--dark);
+  border-top: 2px solid #2a2a28;
+  padding: 2rem 0;
+  text-align: center;
+}
+footer p { color: var(--gris); font-size: 0.78rem; }
+footer a { color: var(--bleu-c); text-decoration: none; }
+
+/* ================================================================
+   RESPONSIVE
+   ================================================================ */
+@media (max-width: 900px) {
+  .hamburger { display: block; }
+  nav ul { display: none; }
+  .hero-row { grid-template-columns: 1fr; }
+  .hero-author-card { max-width: 340px; margin: 0 auto; top: 0; }
+  .timeline { grid-template-columns: 1fr; }
+  .comp-grid { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr; }
+  .author-section-grid { grid-template-columns: 1fr; }
+  .author-photo-card { max-width: 340px; margin: 0 auto 2rem; top: 0; }
+  .temoignages-grid { grid-template-columns: 1fr; }
+  .responsive-grid { grid-template-columns: 1fr !important; }
+}
+@media (max-width: 700px) {
+  .temo-stats { flex-wrap: wrap; }
+  .temo-stat { flex: 0 0 50%; border-bottom: 1px solid var(--gris-c); }
+  .temo-stat-sep { display: none; }
+}
+@media (max-width: 600px) {
+  .skills-grid { grid-template-columns: 1fr; }
+  .hero-title-block h1 { font-size: 2.2rem; letter-spacing: -0.5px; }
+  .hero-content h2 { font-size: 1.7rem; }
+  .hero { padding-top: 8rem; }
+}
+</style>
+
+<!-- ================================================================
+     STRUCTURED DATA
+     ================================================================ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Pack 5 Skills LawIA pour Claude AI",
+  "description": "5 fichiers d'instructions transformant Claude AI en redacteur juridique specialise droit francais : assignation TJ, requete TA, contre-argumentation, conclusions CA, convention d'honoraires.",
+  "brand": { "@type": "Brand", "name": "LawIA" },
+  "url": "https://lawia.fr/",
+  "offers": {
+    "@type": "Offer",
+    "price": "250.00",
+    "priceCurrency": "EUR",
+    "priceValidUntil": "2026-12-31",
+    "availability": "https://schema.org/InStock",
+    "seller": { "@type": "Organization", "name": "LawIA SAS" }
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "3",
+    "bestRating": "5"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Pack 5 Skills LawIA",
+  "applicationCategory": "LegalApplication",
+  "operatingSystem": "Claude AI (Anthropic)",
+  "offers": { "@type": "Offer", "price": "250.00", "priceCurrency": "EUR" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Patrice Humbert",
+  "honorificPrefix": "Maitre",
+  "jobTitle": "Avocat au Barreau d'Aix-en-Provence",
+  "description": "Avocat specialiste en dommage corporel et responsabilite medicale, fondateur de LawIA, premier avocat certifie IA en France.",
+  "url": "https://avocat-lexvox.com",
+  "sameAs": [
+    "https://www.youtube.com/@LAWIA",
+    "https://www.linkedin.com/in/patricehumbert",
+    "https://www.skool.com/ia-avocats"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Qu'est-ce qu'un Skill Claude exactement ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Un Skill est un ensemble d'instructions redigees en langage naturel, enregistrees dans un fichier texte. Pas de code, pas de plugin : Claude les lit et les applique automatiquement. C'est comme donner a Claude une memoire permanente de votre methodologie de travail."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Ai-je besoin de competences techniques ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolument pas. L'installation se fait par un simple glisser-deposer dans Claude Desktop. Une video de formation pas a pas est incluse. Si vous savez utiliser Claude, vous savez utiliser les Skills."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Comment se passe l'installation ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Vous recevez 5 fichiers Skills. Il suffit de les placer dans le dossier dedie de Claude Desktop. L'ensemble prend moins de 3 minutes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Est-ce compatible avec ma specialite ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Les Skills couvrent des taches transversales (conclusions, contre-argumentation, conventions d'honoraires, analyse jurisprudentielle) utiles quelle que soit votre specialite. Chaque Skill est accompagne d'une video d'adaptation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Mes donnees client sont-elles en securite ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Les Skills sont de simples fichiers texte stockes localement sur votre ordinateur. Ils ne transmettent aucune donnee a des tiers. La confidentialite depend de votre abonnement Anthropic, pas des Skills."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Faut-il un abonnement Claude ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Oui, un abonnement Claude Pro ou Claude Team est necessaire. Les Skills fonctionnent avec ces deux formules. L'abonnement se souscrit aupres d'Anthropic."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Puis-je personnaliser les Skills ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Oui. Les Skills sont des fichiers texte modifiables. Chaque Skill est accompagne d'une video dediee pour la personnalisation et l'adaptation a votre pratique."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Y a-t-il un support ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Le pack inclut 6 videos de support : une video generale d'installation et 5 videos dediees. En cas de question supplementaire, contactez-nous par email."
+      }
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<!-- ================================================================
+     NAV
+     ================================================================ -->
+<nav id="mainNav">
+  <div class="container">
+    <a href="/" class="logo">
+      <img src="/logo lawia.png" alt="LAWIA" class="logo-img">
+      Law<span class="accent">IA</span>
+    </a>
+    <ul>
+      <li><a href="#skills">Les 5 Skills</a></li>
+      <li><a href="#install">Installation</a></li>
+      <li><a href="#author">Me Humbert</a></li>
+      <li><a href="#pricing">Prix</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a class="nav-cta" href="/skills/pack-gratuit.html">Essai gratuit</a></li>
+      <li><a class="nav-cta" href="/skills/jurisconnect" style="background:var(--bleu);border-color:var(--bleu);">JurisConnect MCP</a></li>
+      <li><a class="nav-cta" href="/skills/privadoc-lawia" style="background:var(--bleu-f);border-color:var(--bleu-f);">PrivaDoc</a></li>
+    </ul>
+    <button class="hamburger" onclick="document.getElementById('mobileMenu').classList.add('open')" aria-label="Menu">
+      <svg viewBox="0 0 24 24" fill="none"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</nav>
+
+<nav id="mobileMenu" class="mobile-menu" aria-label="Menu mobile">
+  <button class="close-menu" onclick="this.parentElement.classList.remove('open')" aria-label="Fermer le menu">&times;</button>
+  <a href="#skills" onclick="this.parentElement.classList.remove('open')">Les 5 Skills</a>
+  <a href="#install" onclick="this.parentElement.classList.remove('open')">Installation</a>
+  <a href="#author" onclick="this.parentElement.classList.remove('open')">Me Humbert</a>
+  <a href="#pricing" onclick="this.parentElement.classList.remove('open')">Prix</a>
+  <a href="#faq" onclick="this.parentElement.classList.remove('open')">FAQ</a>
+  <a class="nav-cta" href="/skills/pack-gratuit.html">Essai gratuit</a>
+  <a class="nav-cta-bleu" href="/skills/jurisconnect">JurisConnect MCP</a>
+  <a class="nav-cta-bleu" href="/skills/privadoc-lawia">PrivaDoc</a>
+</nav>
+
+<!-- ================================================================
+     SECTION 1 -- HERO (creme)
+     ================================================================ -->
+<section class="hero">
+  <div class="hero-dots"></div>
+  <div class="container">
+
+    <!-- Tags -->
+    <div class="hero-tags">
+      <span class="tag">CLAUDE AI</span>
+      <span class="tag">DROIT FRANCAIS</span>
+      <span class="tag">ME HUMBERT</span>
+    </div>
+
+    <!-- Title -->
+    <div class="hero-title-block">
+      <h1>5 <span class="accent">SKILLS</span> et automatisation IA pour avocats.</h1>
+    </div>
+
+    <!-- Carousel preview (above two-column) -->
+    <div class="hero-carousel" id="heroCarousel">
+
+      <!-- SLIDE 1 -- Assignation TJ -->
+      <div class="carousel-slide active">
+        <div class="cslide-header">
+          <span class="cslide-dot"></span><span class="cslide-dot"></span><span class="cslide-dot"></span>
+          <span class="cslide-filename">assignation-tj.md</span>
+        </div>
+        <div class="cslide-body">
+          <div class="cslide-num">SKILL 01 -- Assignation TJ</div>
+          <div class="cslide-title">Structure complete d'une assignation au fond devant le TJ</div>
+          <div class="cslide-item">En-tete : tribunal, chambre, RG, parties</div>
+          <div class="cslide-item">Expose des faits chronologique structure</div>
+          <div class="cslide-item lock">Discussion -- fondements juridiques applicables</div>
+          <div class="cslide-item lock">Qualification des prejudices + postes DINTHILLAC</div>
+          <div class="cslide-item lock">Dispositif + bordereau de pieces integre</div>
+          <div class="cslide-fade"></div>
+        </div>
+        <div class="cslide-footer">
+          <span class="cslide-name">Assignation TJ</span>
+          <span class="cslide-badge">Skill 01 / 5</span>
+        </div>
+      </div>
+
+      <!-- SLIDE 2 -- Requete TA -->
+      <div class="carousel-slide">
+        <div class="cslide-header">
+          <span class="cslide-dot"></span><span class="cslide-dot"></span><span class="cslide-dot"></span>
+          <span class="cslide-filename">requete-ta.md</span>
+        </div>
+        <div class="cslide-body">
+          <div class="cslide-num">SKILL 02 -- Requete TA</div>
+          <div class="cslide-title">Requete introductive d'instance devant le tribunal administratif</div>
+          <div class="cslide-item">Designation de la juridiction competente</div>
+          <div class="cslide-item">Expose des faits + historique de la procedure</div>
+          <div class="cslide-item lock">Moyens en droit : illegalite externe / interne</div>
+          <div class="cslide-item lock">Conclusions au fond + demandes accessoires</div>
+          <div class="cslide-item lock">Pieces jointes numerotees + bordereau</div>
+          <div class="cslide-fade"></div>
+        </div>
+        <div class="cslide-footer">
+          <span class="cslide-name">Requete TA</span>
+          <span class="cslide-badge">Skill 02 / 5</span>
+        </div>
+      </div>
+
+      <!-- SLIDE 3 -- Contre-argumentation -->
+      <div class="carousel-slide">
+        <div class="cslide-header">
+          <span class="cslide-dot"></span><span class="cslide-dot"></span><span class="cslide-dot"></span>
+          <span class="cslide-filename">contre-argumentation.md</span>
+        </div>
+        <div class="cslide-body">
+          <div class="cslide-num">SKILL 03 -- Contre-argumentation *</div>
+          <div class="cslide-title">Analyse et demontage des arguments adverses -- triple verification</div>
+          <div class="cslide-item">Cartographie des arguments adverses</div>
+          <div class="cslide-item">Failles procedurales + irrecevabilites</div>
+          <div class="cslide-item lock">Contre-arguments juridiques sources</div>
+          <div class="cslide-item lock">Auto-verification : zero hallucination</div>
+          <div class="cslide-item lock">Synthese redigee prete a inserer</div>
+          <div class="cslide-fade"></div>
+        </div>
+        <div class="cslide-footer">
+          <span class="cslide-name">Contre-argumentation</span>
+          <span class="cslide-badge">Skill 03 / 5</span>
+        </div>
+      </div>
+
+      <!-- SLIDE 4 -- Conclusions CA -->
+      <div class="carousel-slide">
+        <div class="cslide-header">
+          <span class="cslide-dot"></span><span class="cslide-dot"></span><span class="cslide-dot"></span>
+          <span class="cslide-filename">conclusions-ca.md</span>
+        </div>
+        <div class="cslide-body">
+          <div class="cslide-num">SKILL 04 -- Conclusions CA</div>
+          <div class="cslide-title">Conclusions recapitulatives -- Cour d'appel</div>
+          <div class="cslide-item">Structure : faits, procedure, pretentions</div>
+          <div class="cslide-item">Rappel du jugement + critiques motivees</div>
+          <div class="cslide-item lock">Discussion des moyens du premier juge</div>
+          <div class="cslide-item lock">Dispositif conforme R.954-1 CPC</div>
+          <div class="cslide-item lock">Tableau recapitulatif des chefs de demande</div>
+          <div class="cslide-fade"></div>
+        </div>
+        <div class="cslide-footer">
+          <span class="cslide-name">Conclusions CA</span>
+          <span class="cslide-badge">Skill 04 / 5</span>
+        </div>
+      </div>
+
+      <!-- SLIDE 5 -- Convention honoraires -->
+      <div class="carousel-slide">
+        <div class="cslide-header">
+          <span class="cslide-dot"></span><span class="cslide-dot"></span><span class="cslide-dot"></span>
+          <span class="cslide-filename">convention-honoraires.md</span>
+        </div>
+        <div class="cslide-body">
+          <div class="cslide-num">SKILL 05 -- Convention honoraires</div>
+          <div class="cslide-title">Convention d'honoraires conforme CNB -- 4 formules de facturation</div>
+          <div class="cslide-item">Identification parties + objet de la mission</div>
+          <div class="cslide-item">Forfait / Taux horaire / Resultat / Mixte</div>
+          <div class="cslide-item lock">Modalites de paiement + provisions</div>
+          <div class="cslide-item lock">Clause de revision + rupture de mandat</div>
+          <div class="cslide-item lock">Mentions CNB obligatoires + signature</div>
+          <div class="cslide-fade"></div>
+        </div>
+        <div class="cslide-footer">
+          <span class="cslide-name">Convention honoraires</span>
+          <span class="cslide-badge">Skill 05 / 5</span>
+        </div>
+      </div>
+
+      <!-- Dot navigation -->
+      <div class="carousel-nav">
+        <button class="cdot active" data-idx="0" aria-label="Slide 1"></button>
+        <button class="cdot" data-idx="1" aria-label="Slide 2"></button>
+        <button class="cdot" data-idx="2" aria-label="Slide 3"></button>
+        <button class="cdot" data-idx="3" aria-label="Slide 4"></button>
+        <button class="cdot" data-idx="4" aria-label="Slide 5"></button>
+      </div>
+    </div>
+
+    <!-- Two-column: subtitle + author photo -->
+    <div class="hero-row">
+      <div class="hero-content">
+        <h2>Transformez <span class="accent">Claude</span> AI en redacteur juridique fiable en droit francais.</h2>
+        <p class="handwritten">Et devenir le Mirabeau des temps modernes</p>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.5rem;">
+          <a href="#pricing" class="btn btn-primary">Telecharger les 5 Skills</a>
+          <a class="btn btn-outline" href="/skills/pack-gratuit.html">Essai gratuit</a>
+        </div>
+      </div>
+      <div class="hero-author-card">
+        <img src="img/patrice-superman.webp" alt="Me Patrice Humbert, avocat au Barreau d'Aix-en-Provence, fondateur de LawIA" width="800" height="800" loading="lazy">
+        <div class="hero-author-footer">
+          <div>
+            <div class="hero-author-name">Me Patrice HUMBERT</div>
+            <div class="hero-author-role">Avocat -- Barreau d'Aix-en-Provence</div>
+          </div>
+          <div class="hero-author-badge">Auteur</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================================================================
+     SECTION 2 -- PROBLEM (dark)
+     ================================================================ -->
+<section class="problem">
+  <div class="container">
+    <div class="overline">Le constat</div>
+    <span class="ink"></span>
+    <h2>Claude AI sans skill = un risque professionnel</h2>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <h4>Hallucinations</h4>
+        <p>Claude invente des references juridiques. Un arret cite qui n'existe pas, c'est une mise en cause disciplinaire.</p>
+        <div class="tl-bar"><div class="tl-bar-fill" style="width:80%"></div></div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <h4>Temps perdu</h4>
+        <p>Vous reexpliquez votre methode, vos exigences, votre cadre juridique a chaque nouvelle conversation.</p>
+        <div class="tl-bar"><div class="tl-bar-fill" style="width:60%"></div></div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-icon">
+          <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <h4>Hors-sujet</h4>
+        <p>Droit francais melange au Common Law. Format qui change a chaque fois. Aucune constance.</p>
+        <div class="tl-bar"><div class="tl-bar-fill" style="width:40%"></div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     SECTION 3 -- COMPARISON (creme)
+     ================================================================ -->
+<section class="comparison">
+  <div class="container">
+    <div style="text-align:center;">
+      <div class="overline">La transformation</div>
+      <span class="ink-c"></span>
+      <h2>Claude AI sans Skills vs avec les Skills LawIA</h2>
+    </div>
+    <div class="comp-grid">
+      <div class="comp-card sans">
+        <h3>Sans Skill</h3>
+        <div class="comp-item"><span class="comp-x">&#10005;</span> Aucune memoire entre les conversations</div>
+        <div class="comp-item"><span class="comp-x">&#10005;</span> Format qui change a chaque fois</div>
+        <div class="comp-item"><span class="comp-x">&#10005;</span> References juridiques non verifiees</div>
+        <div class="comp-item"><span class="comp-x">&#10005;</span> Droit francais melange au Common Law</div>
+        <div class="comp-item"><span class="comp-x">&#10005;</span> Hallucinations frequentes</div>
+      </div>
+      <div class="comp-card with">
+        <h3>Avec Skill</h3>
+        <div class="comp-item"><span class="comp-v">&#10003;</span> Zero config : ouvrez Claude et travaillez</div>
+        <div class="comp-item"><span class="comp-v">&#10003;</span> Format professionnel constant</div>
+        <div class="comp-item"><span class="comp-v">&#10003;</span> Sources et articles cites systematiquement</div>
+        <div class="comp-item"><span class="comp-v">&#10003;</span> Ancrage exclusif en droit francais</div>
+        <div class="comp-item"><span class="comp-v">&#10003;</span> Garde-fous contre les hallucinations</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     SECTION 4 -- SKILLS (dark)
+     ================================================================ -->
+<section class="skills-section" id="skills">
+  <div class="container">
+    <div style="text-align:center;">
+      <div class="overline">Les Skills</div>
+      <span class="ink-c"></span>
+      <h2 style="color:var(--creme);">5 Skills, 5 actes maitrises</h2>
+      <p style="max-width:540px;margin:0.6rem auto 0;color:var(--gris);font-size:1rem;">Selectionnez un Skill pour voir ce qu'il produit. Chaque Skill couvre une tache transversale utile quelle que soit votre specialite.</p>
+    </div>
+    <div class="skills-grid">
+
+      <!-- Skill 01 -->
+      <div class="skill-card" data-skill="01">
+        <div class="skill-num">SKILL 01</div>
+        <h3>Assignation Tribunal Judiciaire</h3>
+        <p>Refere et au fond. 5 matieres : dommage corporel, responsabilite medicale, consommation, construction, droit civil. Art. 752 et 753 CPC.</p>
+        <span class="skill-gain">2h gagnees par assignation</span>
+        <a class="skill-link" href="/skills/skill-assignation.html">Decouvrir &rarr;</a>
+        <div class="skill-preview">
+          <div class="skill-preview-inner">
+            <div class="sprev-label">Apercu du contenu</div>
+            <div class="sprev-item">En-tete : tribunal, chambre, RG, parties</div>
+            <div class="sprev-item">Expose des faits chronologique structure</div>
+            <div class="sprev-item lock">Discussion -- fondements juridiques</div>
+            <div class="sprev-item lock">Qualification des prejudices + postes DINTHILLAC</div>
+            <div class="sprev-item lock">Dispositif + bordereau de pieces integre</div>
+            <div class="sprev-unlock">Debloquer avec le Pack 5 Skills</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Skill 02 -->
+      <div class="skill-card" data-skill="02">
+        <div class="skill-num">SKILL 02</div>
+        <h3>Requete Tribunal Administratif</h3>
+        <p>Refere et memoire au fond. 8 matieres, verificateur RAPO integre, protocole anti-hallucination OpenLegi.</p>
+        <span class="skill-gain">2h gagnees par requete</span>
+        <a class="skill-link" href="/skills/skill-bordereau.html">Decouvrir &rarr;</a>
+        <div class="skill-preview">
+          <div class="skill-preview-inner">
+            <div class="sprev-label">Apercu du contenu</div>
+            <div class="sprev-item">Designation de la juridiction competente</div>
+            <div class="sprev-item">Expose des faits + historique de la procedure</div>
+            <div class="sprev-item lock">Moyens en droit : illegalite externe / interne</div>
+            <div class="sprev-item lock">Conclusions au fond + demandes accessoires</div>
+            <div class="sprev-item lock">Pieces jointes numerotees + bordereau</div>
+            <div class="sprev-unlock">Debloquer avec le Pack 5 Skills</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Skill 03 -->
+      <div class="skill-card" data-skill="03">
+        <div class="skill-num">SKILL 03 *</div>
+        <h3>Contre-argumentation</h3>
+        <p>Analyse methodique des ecritures adverses, detection des 5 types de failles, repertoire de contre-arguments evalues (1-5). 7 domaines.</p>
+        <span class="skill-gain">2h gagnees par dossier</span>
+        <a class="skill-link" href="/skills/skill-contre-argumentation.html">Decouvrir &rarr;</a>
+        <div class="skill-preview">
+          <div class="skill-preview-inner">
+            <div class="sprev-label">Apercu du contenu</div>
+            <div class="sprev-item">Cartographie des arguments adverses</div>
+            <div class="sprev-item">Failles procedurales + irrecevabilites</div>
+            <div class="sprev-item lock">Contre-arguments juridiques sources</div>
+            <div class="sprev-item lock">Auto-verification : zero hallucination</div>
+            <div class="sprev-item lock">Synthese redigee prete a inserer</div>
+            <div class="sprev-unlock">Debloquer avec le Pack 5 Skills</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Skill 04 -->
+      <div class="skill-card" data-skill="04">
+        <div class="skill-num">SKILL 04</div>
+        <h3>Conclusions en appel</h3>
+        <p>Appelant ou intime, 10 sections, syllogisme En droit / En l'espece. Critique du jugement, contre-argumentation, .docx professionnel.</p>
+        <span class="skill-gain">3h gagnees par jeu de conclusions</span>
+        <a class="skill-link" href="/skills/skill-consultation.html">Decouvrir &rarr;</a>
+        <div class="skill-preview">
+          <div class="skill-preview-inner">
+            <div class="sprev-label">Apercu du contenu</div>
+            <div class="sprev-item">Structure : faits, procedure, pretentions</div>
+            <div class="sprev-item">Rappel du jugement + critiques motivees</div>
+            <div class="sprev-item lock">Discussion des moyens du premier juge</div>
+            <div class="sprev-item lock">Dispositif conforme R.954-1 CPC</div>
+            <div class="sprev-item lock">Tableau recapitulatif des chefs de demande</div>
+            <div class="sprev-unlock">Debloquer avec le Pack 5 Skills</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Skill 05 -->
+      <div class="skill-card" data-skill="05">
+        <div class="skill-num">SKILL 05</div>
+        <h3>Convention d'honoraires</h3>
+        <p>Forfait, taux horaire 250 EUR HT ou les deux. Honoraire de resultat 14 %. Conforme CNB 2023, CJUE C-395/21, RGPD + AI Act. 20 articles.</p>
+        <span class="skill-gain">15 min gagnees par convention</span>
+        <a class="skill-link" href="/skills/skill-convention.html">Decouvrir &rarr;</a>
+        <div class="skill-preview">
+          <div class="skill-preview-inner">
+            <div class="sprev-label">Apercu du contenu</div>
+            <div class="sprev-item">Identification parties + objet de la mission</div>
+            <div class="sprev-item">Forfait / Taux horaire / Resultat / Mixte</div>
+            <div class="sprev-item lock">Modalites de paiement + provisions</div>
+            <div class="sprev-item lock">Clause de revision + rupture de mandat</div>
+            <div class="sprev-item lock">Mentions CNB obligatoires + signature</div>
+            <div class="sprev-unlock">Debloquer avec le Pack 5 Skills</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Free card -->
+      <div class="skill-card skill-card--free">
+        <div class="skill-num">GRATUIT</div>
+        <h3>Nos 2 Skills gratuits a decouvrir</h3>
+        <p>Un template d'acte juridique DOCX et un verificateur de sources -- offerts par Me Humbert pour tester avant d'acheter.</p>
+        <span class="skill-gain">Acces immediat -- sans CB</span>
+        <a class="skill-link skill-link--free" href="/skills/pack-gratuit.html">Recevoir les Skills gratuits &rarr;</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     SECTION 5 -- DEMO TERMINAL (creme)
+     ================================================================ -->
+<section class="demo-section">
+  <div class="container">
+    <div style="text-align:center;">
+      <div class="overline">En action</div>
+      <span class="ink-c"></span>
+      <h2>Exemple de consultation avec le Skill 01</h2>
+    </div>
+    <div class="terminal">
+      <div class="terminal-bar">
+        <span class="terminal-dot"></span>
+        <span class="terminal-dot"></span>
+        <span class="terminal-dot"></span>
+        <span class="terminal-title">claude -- skill-assignation-tj.md</span>
+      </div>
+      <div class="terminal-body"><span class="lbl">Vous :</span> <span class="bold">Redige une assignation en refere expertise medicale devant le TJ de Marseille.</span>
+
+<span class="dim">---</span>
+
+<span class="lbl">Claude (Skill 01) :</span>
+<span class="val">ASSIGNATION EN REFERE EXPERTISE</span>
+<span class="val">Tribunal judiciaire de Marseille</span>
+
+<span class="bold">I. PARTIES</span>
+Demandeur : [identification complete]
+Defendeur : [identification complete]
+
+<span class="bold">II. OBJET</span>
+Designation d'un expert medical
+sur le fondement de l'article 145 du CPC
+
+<span class="bold">III. EXPOSE DES FAITS</span>
+[chronologie structuree + pieces visees]
+
+<span class="dim">... 7 sections generees automatiquement</span>
+<span class="dim">... bordereau de pieces integre</span>
+<span class="dim">... references verifiees sur Legifrance</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     SECTION 6 -- STEPS (bleu-p)
+     ================================================================ -->
+<section class="steps-section" id="install">
+  <div class="container">
+    <div style="text-align:center;">
+      <div class="overline">Installation</div>
+      <span class="ink-c"></span>
+      <h2>3 etapes pour commencer</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Telechargez</h3>
+        <p>Vous recevez les 5 Skills prets a l'emploi. Un simple glisser-deposer dans Claude Desktop suffit.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Installez</h3>
+        <p>Rien a configurer. Des la premiere conversation, Claude connait votre methodologie.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Utilisez</h3>
+        <p>Format professionnel, sources verifiables, ancrage en droit francais. A chaque fois.</p>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:1.5rem;color:var(--gris);font-size:0.88rem;">Pas de competence technique requise. Si vous savez utiliser Claude, vous savez utiliser les Skills.</p>
+  </div>
+</section>
+
+<!-- ================================================================
+     SECTION 7 -- AUTHOR / PROOF (white)
+     ================================================================ -->
+<section class="proof" id="author">
+  <div class="container">
+    <div style="text-align:center;">
+      <div class="overline">L'auteur</div>
+      <span class="ink-c"></span>
+      <h2>Me Patrice Humbert</h2>
+    </div>
+    <div class="author-section-grid">
+      <!-- Photo card -->
+      <div class="author-photo-card">
+        <img src="img/patrice-superman.webp" alt="Me Patrice Humbert, avocat au Barreau d'Aix-en-Provence, fondateur de LawIA -- intelligence artificielle juridique pour avocats" width="800" height="800" loading="lazy">
+        <div class="author-photo-footer">
+          <div class="author-photo-info">
+            <div class="author-name">Me Patrice HUMBERT</div>
+            <div class="author-role">Avocat -- Barreau d'Aix-en-Provence</div>
+          </div>
+          <div class="author-photo-badge">Auteur</div>
+        </div>
+      </div>
+      <!-- Bio text -->
+      <div class="author-card-text">
+        <h3>Me Patrice Humbert</h3>
+        <div class="role">Avocat au Barreau d'Aix-en-Provence -- Fondateur de LAW I.A.</div>
+        <p>Avocat depuis 2006, specialiste en dommage corporel et responsabilite medicale (CNB). Major de l'EDA Sud (Prix du Batonnier). Double diplome en Faculte de Medecine (DU Traumatismes cranio-cerebraux, DESU Reparation juridique du dommage corporel). Depuis decembre 2022, il a consacre plus de 1 500 heures a l'IA et forme plus de 1 000 professionnels du droit.</p>
+        <div class="credentials">
+          <div class="credential">1 000+ avocats formes</div>
+          <div class="credential">4,9 / 5 note moyenne</div>
+          <div class="credential">2h gagnees par acte redige</div>
+          <div class="credential">5 specialites couvertes</div>
+        </div>
+        <div class="author-socials">
+          <a class="author-social-btn yt" href="https://www.youtube.com/@LAWI.A.-fj5rw" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.7 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg>
+            YouTube
+          </a>
+          <a class="author-social-btn li" href="https://www.linkedin.com/in/patricehumbert/" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zm1.78 13.02H3.56V9h3.56v11.45zM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0z"/></svg>
+            LinkedIn
+          </a>
+          <a class="author-social-btn sk" href="https://www.skool.com/ia-avocats" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+            Skool
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     SECTION 8 -- TESTIMONIALS (bleu-p)
+     ================================================================ -->
+<section class="temoignages-section" id="temoignages">
+  <div class="container">
+    <div style="text-align:center;">
+      <div class="overline">Ils utilisent les Skills</div>
+      <span class="ink-c"></span>
+      <h2>Retours d'experience d'avocats</h2>
+      <p style="color:var(--gris);max-width:480px;margin:0.4rem auto 0;font-size:0.95rem;">Des praticiens de toutes specialites temoignent de leur experience quotidienne avec les Skills LawIA.</p>
+    </div>
+    <div class="temoignages-grid">
+
+      <!-- Testimonial 1 -->
+      <div class="temo-card">
+        <div class="temo-stars">*****</div>
+        <blockquote class="temo-quote">Les skills de notre Confrere HUMBERT m'ont permis de gagner un temps considerable dans mes taches. Ils ne necessitent aucune competence technique. Une fois enregistre, Claude est en capacite de generer des actes de grande qualite.</blockquote>
+        <div class="temo-footer">
+          <div class="temo-avatar">JA</div>
+          <div>
+            <div class="temo-name">Me Julien AYOUN</div>
+            <div class="temo-role">Avocat -- Barreau de Marseille</div>
+            <div class="temo-skill">Pack 5 Skills</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial 2 (featured/dark) -->
+      <div class="temo-card temo-card--featured">
+        <div class="temo-stars">*****</div>
+        <blockquote class="temo-quote">Patrice HUMBERT est mon associe mais je tenais tout de meme a faire ce temoignage car je suis tres fiere du travail qu'il a pu accomplir. En mettant a disposition de notre profession des ressources de qualite, j'ai l'intime conviction qu'un cabinet de taille modeste peut desormais rivaliser avec les structures les plus completes.</blockquote>
+        <div class="temo-footer">
+          <div class="temo-avatar">CR</div>
+          <div>
+            <div class="temo-name">Me Cedrine RAYBAUD</div>
+            <div class="temo-role">Avocate associee -- Barreau de Tarascon</div>
+            <div class="temo-skill">Cabinet LEXVOX</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial 3 -->
+      <div class="temo-card">
+        <div class="temo-stars">*****</div>
+        <blockquote class="temo-quote">La contre-argumentation est redoutable. Je colle les ecritures adverses, le Skill detecte les failles procedurales, les incoherences, et me sort une synthese que je reecris en 20 minutes. Mon contradicteur ne s'y attendait pas.</blockquote>
+        <div class="temo-footer">
+          <div class="temo-avatar">TL</div>
+          <div>
+            <div class="temo-name">Me Thomas L.</div>
+            <div class="temo-role">Avocat -- Droit civil -- Barreau de Paris</div>
+            <div class="temo-skill">Skill 03 -- Contre-argumentation</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Stats bar -->
+    <div class="temo-stats">
+      <div class="temo-stat">
+        <div class="temo-stat-num">1 000+</div>
+        <div class="temo-stat-label">Professionnels</div>
+      </div>
+      <div class="temo-stat-sep"></div>
+      <div class="temo-stat">
+        <div class="temo-stat-num">4,9 / 5</div>
+        <div class="temo-stat-label">Note moyenne</div>
+      </div>
+      <div class="temo-stat-sep"></div>
+      <div class="temo-stat">
+        <div class="temo-stat-num">-2h</div>
+        <div class="temo-stat-label">Economisees</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================================================================
+     SECTION 9 -- PRICING (dark)
+     ================================================================ -->
+<section class="pricing" id="pricing">
+  <div class="container">
+    <div style="text-align:center;">
+      <div class="overline">Prix</div>
+      <span class="ink-c"></span>
+      <h2>Pack 5 Skills -- paiement unique, acces permanent</h2>
+      <p style="color:var(--gris);max-width:480px;margin:0.4rem auto 0;font-size:0.95rem;">Chaque Skill est disponible a l'unite. Le Pack regroupe les 5 au meme prix. Acces permanent, sans abonnement.</p>
+    </div>
+    <div class="price-card">
+      <div class="price-old-row">
+        <div class="price-old">300 EUR HT</div>
+        <div class="price-old-label">valeur a l'unite</div>
+      </div>
+      <div class="price-now">250 EUR <span>HT</span></div>
+      <div class="price-economy">Vous economisez 50 EUR HT</div>
+      <div class="price-note">Pack 5 Skills -- paiement unique (TVA en sus), tout inclus</div>
+      <ul class="price-list">
+        <li>5 Skills Claude prets a l'emploi</li>
+        <li>6 videos de formation (installation + 1 par Skill)</li>
+        <li>Mises a jour incluses</li>
+        <li>Acces permanent, sans abonnement</li>
+        <li>Support par email</li>
+      </ul>
+      <a href="/skills/tarifs.html" class="btn btn-primary" style="width:100%;justify-content:center;border-color:var(--dark);">Voir tous les tarifs &rarr;</a>
+      <p style="font-size:0.78rem;color:var(--gris);margin-top:0.6rem;">Ou achetez chaque Skill individuellement a 60 EUR HT.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     SECTION 10 -- FAQ (creme)
+     ================================================================ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div style="text-align:center;">
+      <div class="overline">Questions frequentes</div>
+      <span class="ink-c"></span>
+      <h2>FAQ sur les Skills IA pour avocats</h2>
+    </div>
+    <div class="faq-list">
+      <details>
+        <summary>Qu'est-ce qu'un Skill Claude exactement ?</summary>
+        <p>Un Skill est un ensemble d'instructions redigees en langage naturel, enregistrees dans un fichier texte. Pas de code, pas de plugin : Claude les lit et les applique automatiquement. C'est comme donner a Claude une memoire permanente de votre methodologie de travail.</p>
+      </details>
+      <details>
+        <summary>Ai-je besoin de competences techniques ?</summary>
+        <p>Absolument pas. L'installation se fait par un simple glisser-deposer dans Claude Desktop. Une video de formation pas a pas est incluse. Si vous savez utiliser Claude, vous savez utiliser les Skills.</p>
+      </details>
+      <details>
+        <summary>Comment se passe l'installation ?</summary>
+        <p>Vous recevez 5 fichiers Skills. Il suffit de les placer dans le dossier dedie de Claude Desktop. L'ensemble prend moins de 3 minutes.</p>
+      </details>
+      <details>
+        <summary>Est-ce compatible avec ma specialite ?</summary>
+        <p>Les Skills couvrent des taches transversales (conclusions, contre-argumentation, conventions d'honoraires, analyse jurisprudentielle) utiles quelle que soit votre specialite. Chaque Skill est accompagne d'une video d'adaptation.</p>
+      </details>
+      <details>
+        <summary>Mes donnees client sont-elles en securite ?</summary>
+        <p>Les Skills sont de simples fichiers texte stockes localement sur votre ordinateur. Ils ne transmettent aucune donnee a des tiers. La confidentialite depend de votre abonnement Anthropic, pas des Skills.</p>
+      </details>
+      <details>
+        <summary>Faut-il un abonnement Claude ?</summary>
+        <p>Oui, un abonnement Claude Pro ou Claude Team est necessaire. Les Skills fonctionnent avec ces deux formules. L'abonnement se souscrit aupres d'Anthropic.</p>
+      </details>
+      <details>
+        <summary>Puis-je personnaliser les Skills ?</summary>
+        <p>Oui. Les Skills sont des fichiers texte modifiables. Chaque Skill est accompagne d'une video dediee pour la personnalisation et l'adaptation a votre pratique.</p>
+      </details>
+      <details>
+        <summary>Y a-t-il un support ?</summary>
+        <p>Le pack inclut 6 videos de support : une video generale d'installation et 5 videos dediees. En cas de question supplementaire, contactez-nous par email.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     SECTION 11 -- FINAL CTA (dark)
+     ================================================================ -->
+<section class="free-cta" id="free">
+  <div class="container">
+    <h2>Testez les Skills avant d'acheter</h2>
+    <p>Acces immediat. Aucune information de paiement requise. Un template DOCX juridique et un verificateur de sources, crees par Me Humbert.</p>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;">
+      <a class="btn btn-light" href="/skills/pack-gratuit.html">Recevoir le pack gratuit</a>
+      <a class="btn btn-outline" href="#pricing" style="border-color:var(--creme);color:var(--creme);">Voir les tarifs</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     FOOTER
+     ================================================================ -->
+<footer>
+  <div class="container">
+    <p>LawIA SAS -- SIREN 990 961 120 -- <a href="mailto:contact@lawia.fr">contact@lawia.fr</a></p>
+    <p style="margin-top:0.3rem;">Pack de 5 Skills Claude pour avocats, cree par Me Patrice Humbert</p>
+    <p style="margin-top:0.5rem;font-size:0.72rem;"><a href="/skills/mentions-legales.html">Mentions legales</a> &middot; <a href="/skills/cgv.html">CGV</a> &middot; <a href="/skills/rgpd.html">RGPD</a> &middot; <a href="mailto:contact@lawia.fr">Contact</a></p>
+  </div>
+</footer>
+
+<!-- ================================================================
+     JAVASCRIPT
+     ================================================================ -->
+<script>
+(function() {
+  'use strict';
+
+  /* --- Nav scroll detection --- */
+  var nav = document.getElementById('mainNav');
+  if (nav) {
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 40) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    }, { passive: true });
+  }
+
+  /* --- Smooth scroll for anchor links --- */
+  document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      var target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  /* --- Skill card expand/collapse with bounce --- */
+  document.querySelectorAll('.skill-card[data-skill]').forEach(function(card) {
+    card.addEventListener('click', function(e) {
+      // Don't toggle if clicking a link
+      if (e.target.closest('.skill-link')) return;
+
+      var wasExpanded = card.classList.contains('expanded');
+
+      // Collapse all others
+      document.querySelectorAll('.skill-card.expanded').forEach(function(c) {
+        c.classList.remove('expanded');
+      });
+
+      // Toggle this one
+      if (!wasExpanded) {
+        card.classList.add('expanded');
+        card.classList.add('clicked');
+        card.addEventListener('animationend', function handler() {
+          card.classList.remove('clicked');
+          card.removeEventListener('animationend', handler);
+        });
+      }
+    });
+  });
+
+  /* --- Hero Carousel --- */
+  var carousel = document.getElementById('heroCarousel');
+  if (carousel) {
+    var slides = carousel.querySelectorAll('.carousel-slide');
+    var dots = carousel.querySelectorAll('.cdot');
+    var currentIdx = 0;
+    var intervalId = null;
+    var INTERVAL = 3500;
+
+    function goToSlide(idx) {
+      slides[currentIdx].classList.remove('active');
+      dots[currentIdx].classList.remove('active');
+      currentIdx = idx;
+      slides[currentIdx].classList.add('active');
+      dots[currentIdx].classList.add('active');
+    }
+
+    function nextSlide() {
+      goToSlide((currentIdx + 1) % slides.length);
+    }
+
+    function startAutoplay() {
+      if (intervalId) clearInterval(intervalId);
+      intervalId = setInterval(nextSlide, INTERVAL);
+    }
+
+    function stopAutoplay() {
+      if (intervalId) {
+        clearInterval(intervalId);
+        intervalId = null;
+      }
+    }
+
+    // Dot click navigation
+    dots.forEach(function(dot) {
+      dot.addEventListener('click', function() {
+        goToSlide(parseInt(this.getAttribute('data-idx'), 10));
+        startAutoplay(); // Reset timer on manual nav
+      });
+    });
+
+    // Pause on hidden tab
+    document.addEventListener('visibilitychange', function() {
+      if (document.hidden) {
+        stopAutoplay();
+      } else {
+        startAutoplay();
+      }
+    });
+
+    // Start
+    startAutoplay();
+  }
+
+})();
+</script>
+
+</body>
+</html>

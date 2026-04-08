@@ -1,0 +1,2 @@
+# Bloquer l'acces direct aux fichiers ZIP
+/skills-zip/*  /404  404

@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contre-Argumentation Judiciaire — Analyse des failles adverses | LawIA Skills</title>
+    <meta name="description" content="Skill IA pour la contre-argumentation judiciaire en droit français. Analyse méthodique des écritures adverses, détection des failles, répertoire de contre-arguments sourcés. 7 domaines juridiques, 6 étapes validées.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bleu:    #6A9BCC;
+            --bleu-f:  #4A7BA8;
+            --bleu-c:  #A8C4E0;
+            --bleu-p:  #D3E5F8;
+            --dark:    #141413;
+            --code:    #1A1917;
+            --creme:   #FAF9F5;
+            --gris:    #B0AEA5;
+            --gris-c:  #E8E6DC;
+            --r: 12px;
+            --shadow:      0 4px 16px rgba(20,20,19, 0.10);
+            --shadow-bleu: 0 4px 16px rgba(74,123,168, 0.18);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body { font-family: Calibri, 'Gill Sans', sans-serif; background: var(--creme); color: var(--dark); line-height: 1.75; overflow-x: hidden; }
+        a { text-decoration: none; color: inherit; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 1; }
+        section { padding: 5.5rem 0; }
+
+        h1, h2, h3, h4 { font-family: Georgia, serif; font-weight: 700; }
+        h1 { font-size: clamp(2.2rem, 4.5vw, 3.4rem); line-height: 1.12; margin-bottom: 1.2rem; }
+        h2 { font-size: 2.4rem; line-height: 1.2; }
+
+        .overline { font-family: Calibri, sans-serif; font-size: 0.7rem; color: var(--bleu-f); text-transform: uppercase; letter-spacing: 3.5px; font-weight: 700; margin-bottom: 0.4rem; }
+        .accent { color: var(--bleu); }
+        .handwritten { font-family: 'Caveat', cursive; font-size: 1.8rem; color: var(--bleu-f); margin: -0.3rem 0 1rem; line-height: 1.3; position: relative; display: inline-block; transform: rotate(-1deg); }
+        .handwritten::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 100%; height: 2px; background: var(--bleu-f); opacity: 0.35; }
+        .ink-c { display: block; width: 48px; height: 3px; background: var(--dark); margin: 0 auto 1rem; }
+        .dots-pattern { position: absolute; inset: 0; background-image: radial-gradient(circle, var(--gris-c) 1px, transparent 1px); background-size: 28px 28px; opacity: 0.5; pointer-events: none; z-index: 0; }
+
+        /* NAV */
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0.7rem 0; background: var(--creme); border-bottom: 3px solid var(--dark); }
+        nav .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: Georgia, serif; font-size: 1.5rem; font-weight: 700; color: var(--dark); }
+        .logo span { color: var(--bleu); }
+        .logo-sub { font-family: Calibri, sans-serif; font-size: 0.7rem; color: var(--gris); font-weight: 400; margin-left: 0.5rem; }
+        nav ul { display: flex; list-style: none; gap: 1.6rem; align-items: center; }
+        nav a { color: var(--gris); font-size: 0.95rem; font-weight: 600; transition: color 0.2s; }
+        nav a:hover { color: var(--dark); }
+        .nav-cta { background: var(--dark); color: var(--creme) !important; padding: 0.4rem 1rem; border-radius: 4px; border: 2px solid var(--dark); }
+        .nav-cta:hover { background: var(--bleu); border-color: var(--bleu); }
+        .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 0.3rem; }
+        .hamburger svg { width: 28px; height: 28px; stroke: var(--dark); stroke-width: 2.5; stroke-linecap: round; }
+        @media (max-width: 768px) { .hamburger { display: block; } nav ul { display: none; } }
+
+        /* BOUTONS */
+        .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.8rem 1.6rem; border-radius: 4px; font-family: Calibri, sans-serif; font-size: 0.95rem; font-weight: 700; border: 3px solid var(--dark); cursor: pointer; transition: all 0.2s; }
+        .btn-primary { background: var(--dark); color: var(--creme); }
+        .btn-primary:hover { transform: translate(-2px,-2px); box-shadow: 8px 8px 0 0 var(--bleu-f); }
+        .btn-outline { background: var(--creme); color: var(--dark); }
+        .btn-outline:hover { background: var(--bleu-p); }
+        .btn-light { background: var(--bleu); color: #fff; border-color: var(--bleu); box-shadow: 6px 6px 0 0 var(--creme); }
+        .btn-light:hover { transform: translate(-2px,-2px); box-shadow: 8px 8px 0 0 var(--creme); }
+
+        /* TAGS */
+        .tag { display: inline-block; padding: 0.3rem 0.8rem; background: var(--dark); color: var(--creme); font-size: 0.75rem; font-weight: 700; border-radius: 4px; letter-spacing: 0.6px; text-transform: uppercase; border: 2px solid var(--dark); box-shadow: 2px 2px 0 0 var(--bleu-f); }
+        .tag-bleu { background: var(--bleu-p); color: var(--bleu-f); border-color: var(--bleu-f); box-shadow: 2px 2px 0 0 var(--bleu-c); }
+
+        /* HERO */
+        #hero { padding-top: 8rem; padding-bottom: 5rem; background: var(--creme); position: relative; border-bottom: 3px solid var(--dark); }
+        .hero-inner { display: grid; grid-template-columns: 1fr 0.8fr; gap: 3rem; align-items: start; }
+        .hero-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.2rem; }
+        .hero-meta { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-top: 1.4rem; font-size: 0.85rem; color: var(--gris); }
+        .hero-meta strong { color: var(--dark); }
+        .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
+        .hero-desc { font-size: 1.08rem; color: #444; margin-top: 0.6rem; max-width: 540px; line-height: 1.7; }
+
+        /* AUTHOR CARD */
+        .author-card { width: 100%; background: #fff; border: 3px solid var(--dark); border-radius: var(--r); overflow: hidden; box-shadow: 8px 8px 0 0 var(--bleu-f); position: relative; top: 1rem; }
+        .author-photo { width: 100%; aspect-ratio: 3 / 3.2; object-fit: cover; object-position: top center; display: block; border-bottom: 3px solid var(--dark); }
+        .author-footer { padding: 1rem 1.2rem; display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; }
+        .author-info { flex: 1; }
+        .author-name { font-family: Georgia, serif; font-size: 0.98rem; font-weight: 700; line-height: 1.3; }
+        .author-role { font-size: 0.78rem; color: var(--bleu-f); font-weight: 600; }
+        .author-badge { background: var(--bleu-p); border: 2px solid var(--bleu-f); border-radius: 4px; padding: 0.25rem 0.6rem; font-size: 0.65rem; font-weight: 700; color: var(--bleu-f); text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; }
+
+        /* TRUST BAR */
+        .trust-bar { background: var(--dark); padding: 1.1rem 0; border-bottom: 3px solid var(--bleu-f); }
+        .trust-inner { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; }
+        .trust-item { display: flex; align-items: center; gap: 0.5rem; color: var(--gris-c); font-size: 0.82rem; font-weight: 600; }
+        .trust-item svg { width: 16px; height: 16px; stroke: var(--bleu); fill: none; flex-shrink: 0; }
+
+        /* FEATURES */
+        #features { background: var(--creme); }
+        .features-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 3rem; }
+        .feature-card { background: #fff; border: 3px solid var(--dark); border-radius: var(--r); padding: 1.8rem 1.5rem; box-shadow: 6px 6px 0 0 var(--gris-c); transition: all 0.2s; }
+        .feature-card:hover { transform: translate(-2px,-2px); box-shadow: 8px 8px 0 0 var(--bleu-f); }
+        .feature-icon { width: 44px; height: 44px; background: var(--bleu-p); border: 2px solid var(--bleu-f); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
+        .feature-icon svg { width: 22px; height: 22px; stroke: var(--bleu-f); fill: none; stroke-width: 2; }
+        .feature-card h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+        .feature-card p { font-size: 0.88rem; color: #555; line-height: 1.6; }
+
+        /* PREVIEW FAILLES */
+        #failles { background: var(--bleu-p); border-top: 3px solid var(--dark); border-bottom: 3px solid var(--dark); }
+        .failles-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .failles-text h2 { margin-bottom: 1rem; }
+        .failles-text p { font-size: 1rem; color: #444; line-height: 1.7; margin-bottom: 1rem; }
+
+        .failles-grid-mini { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-top: 1.5rem; }
+        .faille-mini { background: #fff; border: 2px solid var(--dark); border-radius: 8px; padding: 0.9rem 1rem; }
+        .faille-mini-label { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--bleu-f); margin-bottom: 0.2rem; }
+        .faille-mini-title { font-family: Georgia, serif; font-size: 0.88rem; font-weight: 700; margin-bottom: 0.2rem; }
+        .faille-mini-grav { font-size: 0.72rem; color: var(--gris); }
+        .grav-critique { color: var(--bleu-f); font-weight: 700; }
+        .grav-majeure { color: var(--dark); font-weight: 700; }
+        .grav-moderee { color: var(--gris); font-weight: 600; }
+
+        /* A5 doc */
+        .doc-a5 { width: 280px; margin: 0 auto; background: #fff; border: 3px solid var(--dark); border-radius: 6px; box-shadow: 10px 10px 0 0 var(--dark); position: relative; overflow: hidden; font-family: Georgia, serif; }
+        .doc-a5-inner { padding: 1.4rem 1.2rem 0; }
+        .doc-a5-header { border-bottom: 2px solid var(--dark); padding-bottom: 0.8rem; margin-bottom: 0.8rem; }
+        .doc-a5-title { font-size: 0.58rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--dark); line-height: 1.3; }
+        .doc-a5-ref { font-size: 0.5rem; color: var(--gris); margin-top: 0.3rem; }
+        .doc-a5-block { margin-bottom: 0.7rem; }
+        .doc-a5-art { font-size: 0.52rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--dark); border-bottom: 1px solid var(--gris-c); padding-bottom: 0.2rem; margin-bottom: 0.3rem; }
+        .doc-a5-line { height: 5px; background: var(--gris-c); border-radius: 2px; margin-bottom: 3px; }
+        .doc-a5-line.s { width: 70%; }
+        .doc-a5-line.xs { width: 50%; }
+        .doc-a5-line.full { width: 100%; }
+        .doc-a5-line.blurred { filter: blur(3px); background: var(--bleu-c); opacity: 0.5; }
+        .doc-a5-xml { font-family: Consolas, monospace; font-size: 0.42rem; color: var(--bleu-f); background: var(--bleu-p); padding: 0.3rem 0.5rem; border-radius: 3px; margin-bottom: 0.4rem; line-height: 1.5; }
+        .doc-a5-fade { position: absolute; bottom: 0; left: 0; right: 0; height: 50%; background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.92) 40%, rgba(255,255,255,1) 100%); display: flex; align-items: flex-end; justify-content: center; padding-bottom: 1.4rem; }
+        .doc-a5-lock { display: flex; flex-direction: column; align-items: center; gap: 0.4rem; }
+        .doc-a5-lock svg { width: 28px; height: 28px; stroke: var(--dark); fill: none; stroke-width: 2; }
+        .doc-a5-lock span { font-family: Calibri, sans-serif; font-size: 0.68rem; font-weight: 700; color: var(--dark); text-transform: uppercase; letter-spacing: 1px; background: var(--bleu-p); border: 2px solid var(--bleu-f); padding: 0.2rem 0.6rem; border-radius: 4px; }
+
+        /* DOMAINES */
+        #domaines { background: var(--dark); position: relative; }
+        .domaines-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; margin-top: 3rem; }
+        .domaine-card { background: #1e1e1c; border: 2px solid #2a2a28; border-radius: var(--r); padding: 1.4rem 1.2rem; transition: all 0.2s; }
+        .domaine-card:hover { border-color: var(--bleu); transform: translateY(-2px); }
+        .domaine-ico { font-size: 1.8rem; margin-bottom: 0.7rem; }
+        .domaine-card h4 { font-family: Georgia, serif; font-size: 0.98rem; color: var(--creme); margin-bottom: 0.4rem; }
+        .domaine-card p { font-size: 0.82rem; color: var(--gris); line-height: 1.55; }
+
+        /* WORKFLOW */
+        #workflow { background: var(--creme); }
+        .steps-outer { margin-top: 3rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+        .step-card { background: #fff; border: 3px solid var(--dark); border-radius: var(--r); padding: 1.6rem 1.3rem; box-shadow: 5px 5px 0 0 var(--gris-c); }
+        .step-card.validation { border-color: var(--bleu-f); box-shadow: 5px 5px 0 0 var(--bleu-c); }
+        .step-num { font-family: Consolas, monospace; font-size: 0.7rem; color: var(--bleu-f); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.6rem; }
+        .step-card h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+        .step-card p { font-size: 0.86rem; color: #555; line-height: 1.6; }
+        .step-validation-badge { display: inline-block; margin-top: 0.6rem; font-size: 0.7rem; font-weight: 700; color: var(--bleu-f); background: var(--bleu-p); border: 1px solid var(--bleu-f); border-radius: 4px; padding: 0.2rem 0.5rem; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        /* GRILLE FAILLES */
+        #grille { background: var(--bleu-p); border-top: 3px solid var(--dark); border-bottom: 3px solid var(--dark); }
+        .failles-table { width: 100%; border-collapse: collapse; margin-top: 2.5rem; background: #fff; border: 3px solid var(--dark); border-radius: var(--r); overflow: hidden; box-shadow: 6px 6px 0 0 var(--bleu-f); }
+        .failles-table th { background: var(--dark); color: var(--creme); font-family: Calibri, sans-serif; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 0.9rem 1.2rem; text-align: left; }
+        .failles-table td { padding: 0.85rem 1.2rem; font-size: 0.87rem; border-bottom: 1px solid var(--gris-c); line-height: 1.5; }
+        .failles-table tr:last-child td { border-bottom: none; }
+        .failles-table tr:nth-child(even) td { background: var(--creme); }
+        .badge-critique { background: var(--bleu-p); color: var(--bleu-f); border: 1px solid var(--bleu-f); border-radius: 3px; padding: 0.15rem 0.5rem; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; }
+        .badge-majeure { background: var(--gris-c); color: var(--dark); border: 1px solid var(--gris); border-radius: 3px; padding: 0.15rem 0.5rem; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; }
+        .badge-moderee { background: transparent; color: var(--gris); border: 1px solid var(--gris-c); border-radius: 3px; padding: 0.15rem 0.5rem; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; }
+
+        /* ARBORESCENCE */
+        #arborescence { background: var(--dark); }
+        .tree-box { background: var(--code); border: 3px solid var(--bleu-f); border-radius: var(--r); padding: 2rem 2.2rem; margin-top: 2.5rem; font-family: Consolas, monospace; font-size: 0.88rem; color: var(--gris-c); line-height: 2; max-width: 620px; box-shadow: 8px 8px 0 0 var(--bleu-f); }
+        .tree-box .tr-dir { color: var(--bleu-c); font-weight: 700; }
+        .tree-box .tr-file { color: #e8e6dc; }
+        .tree-box .tr-skill { color: var(--bleu); font-weight: 700; }
+        .tree-box .tr-ref { color: var(--gris); font-size: 0.8rem; }
+
+        /* CTA */
+        #cta { background: var(--dark); border-top: 3px solid var(--bleu-f); }
+        .cta-inner { text-align: center; max-width: 720px; margin: 0 auto; }
+        .cta-inner h2 { color: var(--creme); font-size: 2.6rem; margin-bottom: 1rem; }
+        .cta-inner p { color: var(--gris-c); font-size: 1.05rem; margin-bottom: 2rem; }
+        .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .price-badge { display: inline-block; font-family: Consolas, monospace; font-size: 0.85rem; color: var(--bleu-c); background: rgba(74,123,168,0.15); border: 1px solid var(--bleu-f); border-radius: 4px; padding: 0.3rem 0.8rem; margin-bottom: 1.5rem; }
+
+        /* FOOTER */
+        footer { background: var(--dark); border-top: 1px solid #2a2a28; padding: 2.5rem 0; }
+        footer .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .footer-logo { font-family: Georgia, serif; font-size: 1.1rem; color: var(--creme); font-weight: 700; }
+        .footer-logo span { color: var(--bleu); }
+        footer p { color: var(--gris); font-size: 0.82rem; }
+
+        .section-header { text-align: center; margin-bottom: 0.5rem; }
+        .section-header h2 { margin-bottom: 0.6rem; }
+        .section-header p { font-size: 1rem; color: #555; max-width: 620px; margin: 0 auto; line-height: 1.7; }
+
+        @media (max-width: 900px) {
+            .hero-inner { grid-template-columns: 1fr; }
+            .author-card { max-width: 340px; margin: 0 auto; top: 0; }
+            .features-grid { grid-template-columns: 1fr 1fr; }
+            .failles-layout { grid-template-columns: 1fr; }
+            .domaines-grid { grid-template-columns: repeat(2, 1fr); }
+            .steps-outer { grid-template-columns: 1fr 1fr; }
+            .failles-grid-mini { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 600px) {
+            .features-grid { grid-template-columns: 1fr; }
+            .steps-outer { grid-template-columns: 1fr; }
+            .domaines-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+    <div class="container">
+        <div class="logo">LawIA<span>.</span><span style="color:var(--gris);font-weight:400">Skills</span><span class="logo-sub">by LEXVOX AVOCATS</span></div>
+        <button class="hamburger" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+        <ul>
+            <li><a href="#features">Fonctions</a></li>
+            <li><a href="#failles">Les failles</a></li>
+            <li><a href="#workflow">Workflow</a></li>
+            <li><a href="#domaines">Domaines</a></li>
+            <li><a href="#cta" class="nav-cta">Obtenir le skill</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+    <div class="dots-pattern"></div>
+    <div class="container">
+        <div class="hero-inner">
+            <div class="hero-text">
+                <div class="hero-tags">
+                    <span class="tag">Contre-argumentation</span>
+                    <span class="tag-bleu">Droit civil</span>
+                    <span class="tag-bleu">Dommage corporel</span>
+                    <span class="tag-bleu">Droit administratif</span>
+                    <span class="tag-bleu">Pénal · Famille</span>
+                </div>
+                <div class="overline">LawIA Skills · Plaidoirie &amp; Écritures</div>
+                <h1>Contre-argumentation <span class="accent">judiciaire</span></h1>
+                <div class="handwritten">analyse des failles adverses</div>
+                <p class="hero-desc">
+                    Analysez méthodiquement les écritures adverses, détectez leurs failles (juridiques, probatoires, logiques) et construisez une contre-argumentation blindée. Workflow en 6 étapes avec double validation, répertoire de contre-arguments évalués, contrôle strict des pièces.
+                </p>
+                <div class="hero-meta">
+                    <span><strong>7 domaines</strong> juridiques</span>
+                    <span><strong>5 types</strong> de failles</span>
+                    <span><strong>6 étapes</strong> validées</span>
+                    <span><strong>Commande</strong> <code style="font-family:Consolas;background:var(--gris-c);padding:0.1em 0.4em;border-radius:3px">/contrer</code></span>
+                </div>
+                <div class="hero-actions">
+                    <a href="#cta" class="btn btn-primary">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                        Obtenir le skill
+                    </a>
+                    <a href="#workflow" class="btn btn-outline">Voir le workflow →</a>
+                </div>
+            </div>
+            <!-- AUTHOR CARD -->
+            <div class="author-card">
+                <img src="/img/patrice-contre-argumentation.webp" alt="Me Patrice Humbert — Avocat LEXVOX" class="author-photo" width="800" height="800" loading="lazy">
+                <div class="author-footer">
+                    <div class="author-info">
+                        <div class="author-name">Me Patrice HUMBERT</div>
+                        <div class="author-role">Avocat · Barreau d'Aix-en-Provence</div>
+                    </div>
+                    <div class="author-badge">Auteur</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+    <div class="container">
+        <div class="trust-inner">
+            <div class="trust-item">
+                <svg viewBox="0 0 24 24" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                Contrôle strict des pièces
+            </div>
+            <div class="trust-item">
+                <svg viewBox="0 0 24 24" stroke-width="2"><path d="M9 4H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V8l-5-4z"/><polyline points="17 2 17 8 23 8"/></svg>
+                Tableau convergence / divergence
+            </div>
+            <div class="trust-item">
+                <svg viewBox="0 0 24 24" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                5 types de failles détectés
+            </div>
+            <div class="trust-item">
+                <svg viewBox="0 0 24 24" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                Sourçage systématique
+            </div>
+            <div class="trust-item">
+                <svg viewBox="0 0 24 24" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                2 validations intermédiaires
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- FEATURES -->
+<section id="features">
+    <div class="container">
+        <div class="section-header">
+            <span class="ink-c"></span>
+            <h2>Ce que fait le skill</h2>
+            <p>Un analyseur de niveau expert qui décompose l'argumentation adverse, localise ses vulnérabilités et construit la réponse optimale.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24"><path d="M9 4H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V8l-5-4z"/><polyline points="17 2 17 8 23 8"/></svg>
+                </div>
+                <h3>Catalogage des pièces</h3>
+                <p>Inventaire exhaustif de tous les documents adverses et du client. Contrôle systématique : aucune pièce inventée, aucune référence sans vérification dans les bordereaux.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                </div>
+                <h3>Grille de détection des failles</h3>
+                <p>5 types analysés : incohérence logique, faiblesse juridique, lacune probatoire, arguments obsolètes, biais argumentatif. Chaque faille cotée de mineure à critique.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
+                </div>
+                <h3>Tableau convergence/divergence</h3>
+                <p>Cartographie systématique de chaque argument adverse, position client en accord ou désaccord, pièces opposables. Validé avant toute rédaction.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                </div>
+                <h3>Rédaction structurée</h3>
+                <p>Style plaidoirie française : majeure (droit) → mineure (faits) → démonstration de la faille. Vocabulaire varié, transitions élégantes, ton ferme sans agressivité.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PREVIEW FAILLES -->
+<section id="failles">
+    <div class="container">
+        <div class="failles-layout">
+            <!-- DOC A5 -->
+            <div style="display:flex;justify-content:center;">
+                <div class="doc-a5" style="aspect-ratio:3/3.2;">
+                    <div class="doc-a5-inner">
+                        <div class="doc-a5-header">
+                            <div class="doc-a5-title">CONTRE-ARGUMENTATION JUDICIAIRE</div>
+                            <div class="doc-a5-ref">Étape 0 — Catalogue · Étape 3 — Convergence/Divergence</div>
+                        </div>
+                        <div class="doc-a5-block">
+                            <div class="doc-a5-art">Catalogue des documents</div>
+                            <div class="doc-a5-xml">&lt;catalogue_documents&gt;<br>&nbsp;&nbsp;&lt;documents_adverses&gt;…&lt;/&gt;<br>&nbsp;&nbsp;&lt;documents_client&gt;…&lt;/&gt;<br>&lt;/catalogue_documents&gt;</div>
+                        </div>
+                        <div class="doc-a5-block">
+                            <div class="doc-a5-art">Tableau convergence/divergence</div>
+                            <div class="doc-a5-line full"></div>
+                            <div class="doc-a5-line s"></div>
+                            <div class="doc-a5-line full"></div>
+                        </div>
+                        <div class="doc-a5-block">
+                            <div class="doc-a5-art">Répertoire de contre-arguments</div>
+                            <div class="doc-a5-line full blurred"></div>
+                            <div class="doc-a5-line s blurred"></div>
+                            <div class="doc-a5-line full blurred"></div>
+                        </div>
+                        <div class="doc-a5-block">
+                            <div class="doc-a5-art">Rédaction — Dispositif proposé</div>
+                            <div class="doc-a5-line full blurred"></div>
+                            <div class="doc-a5-line full blurred"></div>
+                        </div>
+                    </div>
+                    <div class="doc-a5-fade">
+                        <div class="doc-a5-lock">
+                            <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                            <span>Contenu réservé</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- TEXTE + MINI FAILLES -->
+            <div class="failles-text">
+                <div class="overline">Grille de détection</div>
+                <h2>5 types de <span class="accent">failles</span> adverses</h2>
+                <p>La grille d'analyse identifie méthodiquement chaque vulnérabilité dans le raisonnement adverse, avec cotation de gravité et impact juridique.</p>
+                <div class="failles-grid-mini">
+                    <div class="faille-mini">
+                        <div class="faille-mini-label">Faille 01</div>
+                        <div class="faille-mini-title">Faiblesse juridique</div>
+                        <div class="faille-mini-grav"><span class="grav-critique">Critique → Majeure</span></div>
+                    </div>
+                    <div class="faille-mini">
+                        <div class="faille-mini-label">Faille 02</div>
+                        <div class="faille-mini-title">Lacune probatoire</div>
+                        <div class="faille-mini-grav"><span class="grav-majeure">Modérée → Majeure</span></div>
+                    </div>
+                    <div class="faille-mini">
+                        <div class="faille-mini-label">Faille 03</div>
+                        <div class="faille-mini-title">Incohérence logique</div>
+                        <div class="faille-mini-grav"><span class="grav-majeure">Modérée → Majeure</span></div>
+                    </div>
+                    <div class="faille-mini">
+                        <div class="faille-mini-label">Faille 04</div>
+                        <div class="faille-mini-title">Arguments obsolètes</div>
+                        <div class="faille-mini-grav"><span class="grav-moderee">Modérée → Majeure</span></div>
+                    </div>
+                    <div class="faille-mini" style="grid-column: 1 / -1;">
+                        <div class="faille-mini-label">Faille 05</div>
+                        <div class="faille-mini-title">Biais argumentatif</div>
+                        <div class="faille-mini-grav"><span class="grav-moderee">Mineure → Modérée</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- WORKFLOW -->
+<section id="workflow">
+    <div class="container">
+        <div class="section-header">
+            <span class="ink-c"></span>
+            <h2>Workflow en 6 étapes</h2>
+            <p>Deux validations obligatoires avant toute rédaction. Aucun contre-argument sans catalogue confirmé, aucune rédaction sans tableau de convergence validé.</p>
+        </div>
+        <div class="steps-outer">
+            <div class="step-card validation">
+                <div class="step-num">Étape 00</div>
+                <h3>Catalogage &amp; validation</h3>
+                <p>Inventaire exhaustif de tous les documents adverses et du client. Structure XML obligatoire. Attente de validation avant de continuer.</p>
+                <span class="step-validation-badge">⏸ Pause — validation requise</span>
+            </div>
+            <div class="step-card">
+                <div class="step-num">Étape 01</div>
+                <h3>Extraction du dispositif</h3>
+                <p>Extraction systématique du dispositif adverse (demandes principales, subsidiaires, prétentions pécuniaires, moyens de fait et de droit) en XML structuré.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">Étape 02</div>
+                <h3>Analyse complète</h3>
+                <p>Analyse intégrale des écritures en ordre cognitif optimal : texte juridique avant documents probatoires, contexte avant interprétation, fondement avant application.</p>
+            </div>
+            <div class="step-card validation">
+                <div class="step-num">Étape 03</div>
+                <h3>Tableau convergence/divergence</h3>
+                <p>Cartographie de chaque argument adverse avec position client (accord/désaccord). Pièces opposables référencées. Attente de validation avant de continuer.</p>
+                <span class="step-validation-badge">⏸ Pause — validation requise</span>
+            </div>
+            <div class="step-card">
+                <div class="step-num">Étape 04</div>
+                <h3>Détection des failles</h3>
+                <p>Application de la grille d'analyse sur les points en désaccord. Cotation de gravité (mineure → critique) et impact juridique pour chaque faille identifiée.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">Étape 05–06</div>
+                <h3>Répertoire &amp; rédaction</h3>
+                <p>Répertoire de contre-arguments évalués (1–5 étoiles). Rédaction finale selon structure rhétorique optimale avec dispositif proposé et vérification des pièces citées.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- GRILLE GRAVITÉ -->
+<section id="grille">
+    <div class="container">
+        <div class="section-header">
+            <span class="ink-c"></span>
+            <h2>Matrice de gravité des failles</h2>
+            <p>Chaque faille est classée selon son type et sa gravité pour prioriser la contre-argumentation sur les points les plus exploitables.</p>
+        </div>
+        <table class="failles-table">
+            <thead>
+                <tr>
+                    <th>Type de faille</th>
+                    <th>Gravité</th>
+                    <th>Impact stratégique</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Faiblesse juridique</strong> — texte abrogé, jurisprudence dépassée, mauvais régime</td>
+                    <td><span class="badge-critique">Critique</span></td>
+                    <td>Rejet pur et simple de l'argument. Le plus exploitable.</td>
+                </tr>
+                <tr>
+                    <td><strong>Lacune probatoire</strong> — assertion sans pièce, pièce non produite, preuve insuffisante</td>
+                    <td><span class="badge-majeure">Majeure</span></td>
+                    <td>Renversement de la charge de la preuve, affaiblissement devant le juge.</td>
+                </tr>
+                <tr>
+                    <td><strong>Incohérence logique</strong> — contradiction interne, raisonnement circulaire, généralisation</td>
+                    <td><span class="badge-majeure">Majeure</span></td>
+                    <td>Démontage de la crédibilité globale du raisonnement adverse.</td>
+                </tr>
+                <tr>
+                    <td><strong>Arguments obsolètes</strong> — revirement jurisprudentiel, loi abrogée, doctrine ancienne</td>
+                    <td><span class="badge-majeure">Majeure</span></td>
+                    <td>Écartement pour défaut d'actualisation normative.</td>
+                </tr>
+                <tr>
+                    <td><strong>Biais argumentatif</strong> — pathos excessif, ad hominem, faux dilemme, pente glissante</td>
+                    <td><span class="badge-moderee">Modérée</span></td>
+                    <td>Recentrage sur le droit. Affaiblit l'ensemble du raisonnement adverse.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<!-- DOMAINES -->
+<section id="domaines">
+    <div class="dots-pattern" style="opacity:0.12;"></div>
+    <div class="container">
+        <div class="section-header">
+            <span class="ink-c" style="background:var(--bleu);"></span>
+            <h2 style="color:var(--creme);">7 domaines juridiques</h2>
+            <div class="handwritten" style="display:block;text-align:center;color:var(--bleu-c);">vocabulaire et textes adaptés à chaque matière</div>
+        </div>
+        <div class="domaines-grid">
+            <div class="domaine-card">
+                <div class="domaine-ico">🏥</div>
+                <h4>Dommage corporel</h4>
+                <p>Accidents de la circulation, responsabilité médicale. Nomenclature Dintilhac, faute médicale, aléa thérapeutique.</p>
+            </div>
+            <div class="domaine-card">
+                <div class="domaine-ico">⚖️</div>
+                <h4>Droit civil</h4>
+                <p>Responsabilité contractuelle et délictuelle, inexécution, dommages-intérêts. Articles 1240 s. Code civil.</p>
+            </div>
+            <div class="domaine-card">
+                <div class="domaine-ico">🏛️</div>
+                <h4>Droit administratif</h4>
+                <p>Contentieux administratif, recours pour excès de pouvoir, responsabilité de la puissance publique.</p>
+            </div>
+            <div class="domaine-card">
+                <div class="domaine-ico">📑</div>
+                <h4>Droit des contrats</h4>
+                <p>Vices du consentement, inexécution, résolution, garanties. Réforme du droit des obligations 2016.</p>
+            </div>
+            <div class="domaine-card">
+                <div class="domaine-ico">🏢</div>
+                <h4>Droit des affaires</h4>
+                <p>Contentieux commercial, responsabilité des dirigeants, concurrence déloyale, abus de droit.</p>
+            </div>
+            <div class="domaine-card">
+                <div class="domaine-ico">🔒</div>
+                <h4>Droit pénal</h4>
+                <p>Défense pénale, partie civile, qualification des infractions, éléments constitutifs, jurisprudence criminelle.</p>
+            </div>
+            <div class="domaine-card">
+                <div class="domaine-ico">👨‍👩‍👧</div>
+                <h4>Droit de la famille</h4>
+                <p>Divorce, autorité parentale, prestation compensatoire, liquidation du régime matrimonial.</p>
+            </div>
+            <div class="domaine-card" style="background: rgba(74,123,168,0.12); border-color: var(--bleu);">
+                <div class="domaine-ico">🔁</div>
+                <h4>Adaptation automatique</h4>
+                <p>Le skill adapte vocabulaire, textes applicables et jurisprudence à la juridiction saisie (judiciaire, administrative, pénale, commerciale).</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ARBORESCENCE -->
+<section id="arborescence">
+    <div class="dots-pattern" style="opacity:0.12;"></div>
+    <div class="container">
+        <div class="section-header">
+            <span class="ink-c" style="background:var(--bleu);"></span>
+            <h2 style="color:var(--creme);">Contenu du skill</h2>
+        </div>
+        <div class="tree-box">
+            <span class="tr-skill">contre-argumentation-judiciaire/</span><br>
+            &nbsp;&nbsp;├── <span class="tr-skill">SKILL.md</span><br>
+            &nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;<span class="tr-ref">↳ Workflow 6 étapes, règle absolue des pièces, format XML</span><br>
+            &nbsp;&nbsp;├── <span class="tr-file">references/grille-failles.md</span><br>
+            &nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;<span class="tr-ref">↳ 5 types de failles, matrice de gravité, méthodologie</span><br>
+            &nbsp;&nbsp;├── <span class="tr-file">references/structure-redaction.md</span><br>
+            &nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;<span class="tr-ref">↳ Architecture rhétorique, majeure/mineure/faille, variantes stylistiques</span><br>
+            &nbsp;&nbsp;├── <span class="tr-file">references/exemples.md</span><br>
+            &nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;<span class="tr-ref">↳ Cas concrets de contre-argumentation annotés</span><br>
+            &nbsp;&nbsp;├── <span class="tr-file">references/sources-fiables.md</span><br>
+            &nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;<span class="tr-ref">↳ Sites autorisés et interdits pour les recherches juridiques</span><br>
+            &nbsp;&nbsp;└── <span style="color:#aaa;font-size:0.78rem;">LAWIA Contrat de Licence V1</span>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+    <div class="container">
+        <div class="cta-inner">
+            <div class="price-badge">LAWIA Skills · Licence cabinet · Accès illimité</div>
+            <h2>Prêt à démonter la prochaine assignation adverse ?</h2>
+            <p>Un contre-argumentaire structuré, sourcé, évalué en force probante — en quelques minutes plutôt que plusieurs heures. Zéro pièce inventée, zéro référence non vérifiée.</p>
+            <div class="cta-actions">
+                <a href="/tarifs.html" class="btn btn-light">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    Obtenir le skill
+                </a>
+                <a href="/assignation-juridique/" class="btn btn-outline" style="color:var(--creme);border-color:var(--gris);">
+                    ← Voir Assignation TJ
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <div class="footer-logo">LawIA<span>.</span>Skills</div>
+        <p>SELARL LEXVOX AVOCATS · Barreau d'Aix-en-Provence &amp; Tarascon · www.avocat-lexvox.com</p>
+        <p style="margin-top:0.3rem;">© 2026 · LAWIA Contrat de Licence V1 · Tous droits réservés</p>
+    </div>
+</footer>
+
+</body>
+</html>

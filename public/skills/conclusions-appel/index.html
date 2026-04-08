@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conclusions d'appel — Cour d'appel — Appelant & Intimé | LawIA Skills</title>
+    <meta name="description" content="Skill IA pour la rédaction de conclusions d'appel devant les cours d'appel françaises. Appelant ou intimé, 10 sections, syllogisme En droit / En l'espèce, contre-argumentation intégrée, .docx professionnel. 6 domaines.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bleu:    #6A9BCC;
+            --bleu-f:  #4A7BA8;
+            --bleu-c:  #A8C4E0;
+            --bleu-p:  #D3E5F8;
+            --dark:    #141413;
+            --code:    #1A1917;
+            --creme:   #FAF9F5;
+            --gris:    #B0AEA5;
+            --gris-c:  #E8E6DC;
+            --r: 12px;
+            --shadow:      0 4px 16px rgba(20,20,19, 0.10);
+            --shadow-bleu: 0 4px 16px rgba(74,123,168, 0.18);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-size: 16px; }
+        body { font-family: Calibri, 'Gill Sans', sans-serif; background: var(--creme); color: var(--dark); line-height: 1.75; overflow-x: hidden; }
+        a { text-decoration: none; color: inherit; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; position: relative; z-index: 1; }
+        section { padding: 5.5rem 0; }
+        h1, h2, h3, h4 { font-family: Georgia, serif; font-weight: 700; }
+        h1 { font-size: clamp(2.2rem, 4.5vw, 3.4rem); line-height: 1.12; margin-bottom: 1.2rem; }
+        h2 { font-size: 2.4rem; line-height: 1.2; }
+        .overline { font-family: Calibri, sans-serif; font-size: 0.7rem; color: var(--bleu-f); text-transform: uppercase; letter-spacing: 3.5px; font-weight: 700; margin-bottom: 0.4rem; }
+        .accent { color: var(--bleu); }
+        .handwritten { font-family: 'Caveat', cursive; font-size: 1.8rem; color: var(--bleu-f); margin: -0.3rem 0 1rem; line-height: 1.3; position: relative; display: inline-block; transform: rotate(-1deg); }
+        .handwritten::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 100%; height: 2px; background: var(--bleu-f); opacity: 0.35; }
+        .ink-c { display: block; width: 48px; height: 3px; background: var(--dark); margin: 0 auto 1rem; }
+        .dots-pattern { position: absolute; inset: 0; background-image: radial-gradient(circle, var(--gris-c) 1px, transparent 1px); background-size: 28px 28px; opacity: 0.5; pointer-events: none; z-index: 0; }
+
+        /* NAV */
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 0.7rem 0; background: var(--creme); border-bottom: 3px solid var(--dark); }
+        nav .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: Georgia, serif; font-size: 1.5rem; font-weight: 700; color: var(--dark); }
+        .logo span { color: var(--bleu); }
+        .logo-sub { font-family: Calibri, sans-serif; font-size: 0.7rem; color: var(--gris); font-weight: 400; margin-left: 0.5rem; }
+        nav ul { display: flex; list-style: none; gap: 1.6rem; align-items: center; }
+        nav a { color: var(--gris); font-size: 0.95rem; font-weight: 600; transition: color 0.2s; }
+        nav a:hover { color: var(--dark); }
+        .nav-cta { background: var(--dark); color: var(--creme) !important; padding: 0.4rem 1rem; border-radius: 4px; border: 2px solid var(--dark); }
+        .nav-cta:hover { background: var(--bleu); border-color: var(--bleu); }
+        .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 0.3rem; }
+        .hamburger svg { width: 28px; height: 28px; stroke: var(--dark); stroke-width: 2.5; stroke-linecap: round; }
+        @media (max-width: 768px) { .hamburger { display: block; } nav ul { display: none; } }
+
+        /* BOUTONS */
+        .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.8rem 1.6rem; border-radius: 4px; font-family: Calibri, sans-serif; font-size: 0.95rem; font-weight: 700; border: 3px solid var(--dark); cursor: pointer; transition: all 0.2s; }
+        .btn-primary { background: var(--dark); color: var(--creme); }
+        .btn-primary:hover { transform: translate(-2px,-2px); box-shadow: 8px 8px 0 0 var(--bleu-f); }
+        .btn-outline { background: var(--creme); color: var(--dark); }
+        .btn-outline:hover { background: var(--bleu-p); }
+        .btn-light { background: var(--bleu); color: #fff; border-color: var(--bleu); box-shadow: 6px 6px 0 0 var(--creme); }
+        .btn-light:hover { transform: translate(-2px,-2px); box-shadow: 8px 8px 0 0 var(--creme); }
+
+        /* TAGS */
+        .tag { display: inline-block; padding: 0.3rem 0.8rem; background: var(--dark); color: var(--creme); font-size: 0.75rem; font-weight: 700; border-radius: 4px; letter-spacing: 0.6px; text-transform: uppercase; border: 2px solid var(--dark); box-shadow: 2px 2px 0 0 var(--bleu-f); }
+        .tag-bleu { background: var(--bleu-p); color: var(--bleu-f); border-color: var(--bleu-f); box-shadow: 2px 2px 0 0 var(--bleu-c); }
+
+        /* HERO */
+        #hero { padding-top: 8rem; padding-bottom: 5rem; background: var(--creme); position: relative; border-bottom: 3px solid var(--dark); }
+        .hero-inner { display: grid; grid-template-columns: 1fr 0.8fr; gap: 3rem; align-items: start; }
+        .hero-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.2rem; }
+        .hero-meta { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-top: 1.4rem; font-size: 0.85rem; color: var(--gris); }
+        .hero-meta strong { color: var(--dark); }
+        .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
+        .hero-desc { font-size: 1.08rem; color: #444; margin-top: 0.6rem; max-width: 540px; line-height: 1.7; }
+
+        /* AUTHOR CARD */
+        .author-card { width: 100%; background: #fff; border: 3px solid var(--dark); border-radius: var(--r); overflow: hidden; box-shadow: 8px 8px 0 0 var(--bleu-f); position: relative; top: 1rem; }
+        .author-photo { width: 100%; aspect-ratio: 3 / 3.2; object-fit: cover; object-position: top center; display: block; border-bottom: 3px solid var(--dark); }
+        .author-footer { padding: 1rem 1.2rem; display: flex; align-items: center; justify-content: space-between; gap: 0.8rem; }
+        .author-info { flex: 1; }
+        .author-name { font-family: Georgia, serif; font-size: 0.98rem; font-weight: 700; line-height: 1.3; }
+        .author-role { font-size: 0.78rem; color: var(--bleu-f); font-weight: 600; }
+        .author-badge { background: var(--bleu-p); border: 2px solid var(--bleu-f); border-radius: 4px; padding: 0.25rem 0.6rem; font-size: 0.65rem; font-weight: 700; color: var(--bleu-f); text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; }
+
+        /* TRUST BAR */
+        .trust-bar { background: var(--dark); padding: 1.1rem 0; border-bottom: 3px solid var(--bleu-f); }
+        .trust-inner { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; }
+        .trust-item { display: flex; align-items: center; gap: 0.5rem; color: var(--gris-c); font-size: 0.82rem; font-weight: 600; }
+        .trust-item svg { width: 16px; height: 16px; stroke: var(--bleu); fill: none; flex-shrink: 0; }
+
+        /* FEATURES */
+        #features { background: var(--creme); }
+        .features-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.2rem; margin-top: 3rem; }
+        .feature-card { background: #fff; border: 3px solid var(--dark); border-radius: var(--r); padding: 1.8rem 1.5rem; box-shadow: 6px 6px 0 0 var(--gris-c); transition: all 0.2s; }
+        .feature-card:hover { transform: translate(-2px,-2px); box-shadow: 8px 8px 0 0 var(--bleu-f); }
+        .feature-icon { width: 44px; height: 44px; background: var(--bleu-p); border: 2px solid var(--bleu-f); border-radius: 8px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; }
+        .feature-icon svg { width: 22px; height: 22px; stroke: var(--bleu-f); fill: none; stroke-width: 2; }
+        .feature-card h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+        .feature-card p { font-size: 0.88rem; color: #555; line-height: 1.6; }
+
+        /* PREVIEW A5 */
+        #preview { background: var(--bleu-p); border-top: 3px solid var(--dark); border-bottom: 3px solid var(--dark); }
+        .preview-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .doc-a5 { width: 280px; margin: 0 auto; background: #fff; border: 3px solid var(--dark); border-radius: 6px; box-shadow: 10px 10px 0 0 var(--dark); position: relative; overflow: hidden; font-family: Georgia, serif; }
+        .doc-a5-inner { padding: 1.4rem 1.2rem 0; }
+        .doc-a5-header { border-bottom: 2px solid var(--dark); padding-bottom: 0.8rem; margin-bottom: 0.8rem; }
+        .doc-a5-court { font-size: 0.58rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--dark); }
+        .doc-a5-type { font-size: 0.52rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--bleu-f); margin-top: 0.2rem; }
+        .doc-a5-rg { font-size: 0.46rem; color: var(--gris); margin-top: 0.2rem; }
+        .doc-a5-section { margin-bottom: 0.55rem; }
+        .doc-a5-stitle { font-size: 0.5rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--dark); border-bottom: 1px solid var(--gris-c); padding-bottom: 0.15rem; margin-bottom: 0.25rem; }
+        .doc-a5-line { height: 5px; background: var(--gris-c); border-radius: 2px; margin-bottom: 3px; }
+        .doc-a5-line.s { width: 70%; }
+        .doc-a5-line.xs { width: 50%; }
+        .doc-a5-line.full { width: 100%; }
+        .doc-a5-line.blurred { filter: blur(3px); background: var(--bleu-c); opacity: 0.5; }
+        .doc-a5-plaise { font-size: 0.56rem; font-weight: 700; color: var(--dark); text-align: center; margin: 0.4rem 0; letter-spacing: 1px; }
+        .doc-a5-fade { position: absolute; bottom: 0; left: 0; right: 0; height: 50%; background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.92) 40%, rgba(255,255,255,1) 100%); display: flex; align-items: flex-end; justify-content: center; padding-bottom: 1.4rem; }
+        .doc-a5-lock { display: flex; flex-direction: column; align-items: center; gap: 0.4rem; }
+        .doc-a5-lock svg { width: 28px; height: 28px; stroke: var(--dark); fill: none; stroke-width: 2; }
+        .doc-a5-lock span { font-family: Calibri, sans-serif; font-size: 0.68rem; font-weight: 700; color: var(--dark); text-transform: uppercase; letter-spacing: 1px; background: var(--bleu-p); border: 2px solid var(--bleu-f); padding: 0.2rem 0.6rem; border-radius: 4px; }
+        .reveal-list { list-style: none; margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.4rem; }
+        .reveal-list li { font-size: 0.87rem; display: flex; align-items: center; gap: 0.5rem; color: var(--dark); font-weight: 600; }
+        .reveal-list li .r-icon { width: 18px; height: 18px; flex-shrink: 0; }
+        .reveal-list li.visible .r-icon { color: var(--bleu-f); }
+        .reveal-list li.locked { color: var(--gris); }
+        .reveal-list li.locked .r-icon { color: var(--gris); }
+
+        /* APPELANT / INTIME */
+        #positions { background: var(--creme); }
+        .positions-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
+        .position-card { background: #fff; border: 3px solid var(--dark); border-radius: var(--r); overflow: hidden; box-shadow: 8px 8px 0 0 var(--gris-c); }
+        .position-card.featured { box-shadow: 8px 8px 0 0 var(--bleu-f); }
+        .position-header { padding: 1.5rem 1.8rem 1.2rem; border-bottom: 3px solid var(--dark); background: var(--bleu-p); }
+        .position-card.featured .position-header { background: var(--dark); color: var(--creme); }
+        .position-ref { font-family: Consolas, monospace; font-size: 0.72rem; color: var(--bleu-f); font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 0.3rem; }
+        .position-card.featured .position-ref { color: var(--bleu-c); }
+        .position-title { font-family: Georgia, serif; font-size: 1.25rem; font-weight: 700; margin-bottom: 0.3rem; }
+        .position-sub { font-size: 0.85rem; color: var(--gris); }
+        .position-card.featured .position-sub { color: var(--gris-c); }
+        .position-body { padding: 1.5rem 1.8rem; }
+        .position-body ul { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+        .position-body li { font-size: 0.9rem; display: flex; align-items: flex-start; gap: 0.5rem; line-height: 1.5; }
+        .position-body li::before { content: '→'; color: var(--bleu-f); font-weight: 700; flex-shrink: 0; margin-top: 0.05em; }
+        .position-cpc { margin-top: 1.2rem; padding: 0.8rem 1rem; background: var(--bleu-p); border: 2px solid var(--bleu-f); border-radius: 6px; font-family: Consolas, monospace; font-size: 0.82rem; font-weight: 700; color: var(--bleu-f); text-align: center; }
+        .position-card.featured .position-cpc { background: var(--bleu-f); color: #fff; border-color: var(--bleu-f); }
+
+        /* DOMAINES */
+        #domaines { background: var(--dark); position: relative; }
+        .domaines-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-top: 3rem; }
+        .domaine-card { background: #1e1e1c; border: 2px solid #2a2a28; border-radius: var(--r); padding: 1.4rem 1.2rem; transition: all 0.2s; }
+        .domaine-card:hover { border-color: var(--bleu); transform: translateY(-2px); }
+        .domaine-ico { font-size: 1.8rem; margin-bottom: 0.7rem; }
+        .domaine-card h4 { font-family: Georgia, serif; font-size: 0.98rem; color: var(--creme); margin-bottom: 0.4rem; }
+        .domaine-card p { font-size: 0.82rem; color: var(--gris); line-height: 1.55; }
+
+        /* WORKFLOW */
+        #workflow { background: var(--creme); }
+        .steps-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.2rem; margin-top: 3rem; }
+        .steps-grid-row2 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.2rem; margin-top: 1.2rem; }
+        .step-card { background: #fff; border: 3px solid var(--dark); border-radius: var(--r); padding: 1.4rem 1.2rem; box-shadow: 5px 5px 0 0 var(--gris-c); }
+        .step-card.key { border-color: var(--bleu-f); box-shadow: 5px 5px 0 0 var(--bleu-c); }
+        .step-num { font-family: Consolas, monospace; font-size: 0.65rem; color: var(--bleu-f); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.5rem; }
+        .step-card h3 { font-size: 0.92rem; margin-bottom: 0.4rem; }
+        .step-card p { font-size: 0.82rem; color: #555; line-height: 1.55; }
+
+        /* ARBORESCENCE */
+        #arborescence { background: var(--dark); }
+        .tree-box { background: var(--code); border: 3px solid var(--bleu-f); border-radius: var(--r); padding: 2rem 2.2rem; margin-top: 2.5rem; font-family: Consolas, monospace; font-size: 0.88rem; color: var(--gris-c); line-height: 2; max-width: 680px; box-shadow: 8px 8px 0 0 var(--bleu-f); }
+        .tr-skill { color: var(--bleu); font-weight: 700; }
+        .tr-file { color: #e8e6dc; }
+        .tr-ref { color: var(--gris); font-size: 0.8rem; }
+
+        /* CTA */
+        #cta { background: var(--dark); border-top: 3px solid var(--bleu-f); }
+        .cta-inner { text-align: center; max-width: 720px; margin: 0 auto; }
+        .cta-inner h2 { color: var(--creme); font-size: 2.6rem; margin-bottom: 1rem; }
+        .cta-inner p { color: var(--gris-c); font-size: 1.05rem; margin-bottom: 2rem; }
+        .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .price-badge { display: inline-block; font-family: Consolas, monospace; font-size: 0.85rem; color: var(--bleu-c); background: rgba(74,123,168,0.15); border: 1px solid var(--bleu-f); border-radius: 4px; padding: 0.3rem 0.8rem; margin-bottom: 1.5rem; }
+
+        footer { background: var(--dark); border-top: 1px solid #2a2a28; padding: 2.5rem 0; }
+        footer .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .footer-logo { font-family: Georgia, serif; font-size: 1.1rem; color: var(--creme); font-weight: 700; }
+        .footer-logo span { color: var(--bleu); }
+        footer p { color: var(--gris); font-size: 0.82rem; }
+        .section-header { text-align: center; margin-bottom: 0.5rem; }
+        .section-header h2 { margin-bottom: 0.6rem; }
+        .section-header p { font-size: 1rem; color: #555; max-width: 620px; margin: 0 auto; line-height: 1.7; }
+
+        @media (max-width: 1024px) { .steps-grid, .steps-grid-row2 { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 900px) {
+            .hero-inner { grid-template-columns: 1fr; }
+            .author-card { max-width: 340px; margin: 0 auto; top: 0; }
+            .features-grid { grid-template-columns: 1fr 1fr; }
+            .preview-layout { grid-template-columns: 1fr; }
+            .positions-grid { grid-template-columns: 1fr; }
+            .domaines-grid { grid-template-columns: 1fr 1fr; }
+            .steps-grid, .steps-grid-row2 { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 600px) {
+            .features-grid { grid-template-columns: 1fr; }
+            .domaines-grid { grid-template-columns: 1fr 1fr; }
+            .steps-grid, .steps-grid-row2 { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+    <div class="container">
+        <div class="logo">LawIA<span>.</span><span style="color:var(--gris);font-weight:400">Skills</span><span class="logo-sub">by LEXVOX AVOCATS</span></div>
+        <button class="hamburger" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+        <ul>
+            <li><a href="#features">Fonctions</a></li>
+            <li><a href="#positions">Appelant / Intimé</a></li>
+            <li><a href="#workflow">Workflow</a></li>
+            <li><a href="#domaines">Domaines</a></li>
+            <li><a href="#cta" class="nav-cta">Obtenir le skill</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+    <div class="dots-pattern"></div>
+    <div class="container">
+        <div class="hero-inner">
+            <div class="hero-text">
+                <div class="hero-tags">
+                    <span class="tag">Conclusions d'appel</span>
+                    <span class="tag-bleu">Dommage corporel</span>
+                    <span class="tag-bleu">Responsabilité médicale</span>
+                    <span class="tag-bleu">Famille · Contrats · Construction</span>
+                </div>
+                <div class="overline">LawIA Skills · Procédure d'appel</div>
+                <h1>Conclusions devant la <span class="accent">Cour d'appel</span></h1>
+                <div class="handwritten">appelant · intimé · récapitulatives</div>
+                <p class="hero-desc">
+                    Rédige des conclusions d'appel complètes, structurées en 10 sections, conformes aux articles 542, 562 et 954 du CPC. Syllogisme tripartite <em>En droit / En l'espèce</em>, contre-argumentation intégrée, références vérifiées sur Légifrance, livrable en .docx professionnel.
+                </p>
+                <div class="hero-meta">
+                    <span><strong>10 sections</strong> obligatoires</span>
+                    <span><strong>Art. 954</strong> CPC — dispositif précis</span>
+                    <span><strong>6 domaines</strong> civils</span>
+                    <span><strong>Commande</strong> <code style="font-family:Consolas;background:var(--gris-c);padding:0.1em 0.4em;border-radius:3px">/conclusions</code></span>
+                </div>
+                <div class="hero-actions">
+                    <a href="#cta" class="btn btn-primary">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                        Obtenir le skill
+                    </a>
+                    <a href="#preview" class="btn btn-outline">Voir la structure →</a>
+                </div>
+            </div>
+            <!-- AUTHOR CARD -->
+            <div class="author-card">
+                <img src="/img/patrice-plaidoirie.webp" alt="Me Patrice Humbert — Avocat LEXVOX" class="author-photo" width="800" height="800" loading="lazy">
+                <div class="author-footer">
+                    <div class="author-info">
+                        <div class="author-name">Me Patrice HUMBERT</div>
+                        <div class="author-role">Avocat · Barreau d'Aix-en-Provence</div>
+                    </div>
+                    <div class="author-badge">Auteur</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+    <div class="container">
+        <div class="trust-inner">
+            <div class="trust-item">
+                <svg viewBox="0 0 24 24" stroke-width="2"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                Art. 542, 562 &amp; 954 CPC
+            </div>
+            <div class="trust-item">
+                <svg viewBox="0 0 24 24" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                Syllogisme En droit / En l'espèce
+            </div>
+            <div class="trust-item">
+                <svg viewBox="0 0 24 24" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                Sources vérifiées Légifrance
+            </div>
+            <div class="trust-item">
+                <svg viewBox="0 0 24 24" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                Livrable .docx professionnel
+            </div>
+            <div class="trust-item">
+                <svg viewBox="0 0 24 24" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                Contre-argumentation intégrée
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- FEATURES -->
+<section id="features">
+    <div class="container">
+        <div class="section-header">
+            <span class="ink-c"></span>
+            <h2>Ce que fait le skill</h2>
+            <p>Un rédacteur expert qui critique le jugement entrepris, construit l'argumentation d'appel et produit un document Word prêt à déposer au greffe.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                </div>
+                <h3>Critique du jugement</h3>
+                <p>Détecte les 5 types d'erreurs du premier juge : erreur de droit, dénaturation des faits, insuffisance de motivation, contradiction de motifs, défaut de réponse à conclusions.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24"><path d="M9 4H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V8l-5-4z"/><polyline points="17 2 17 8 23 8"/></svg>
+                </div>
+                <h3>Syllogisme tripartite</h3>
+                <p>Chaque moyen d'appel suit impérativement la structure : <em>I. En droit</em> → <em>II. En l'espèce</em> → <em>III. Conséquence juridique</em>, avec sources vérifiées sur Légifrance.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
+                </div>
+                <h3>Anti-hallucination absolue</h3>
+                <p>Aucune jurisprudence inventée. Chaque arrêt est vérifié sur Légifrance ou Cour de cassation avant intégration. Règle critique : si introuvable → ne pas inventer.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+                <h3>Déclaration d'appel intégrée</h3>
+                <p>Le skill lit la déclaration d'appel (art. 901 CPC) pour extraire les <strong>chefs du dispositif critiqués</strong>. La Cour ne statue que sur les chefs visés : chaque conclusion est rigoureusement délimitée par l'acte introductif RPVA.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                </div>
+                <h3>Document .docx finalisé</h3>
+                <p>Marges 2,5 cm, Times New Roman 12 pt, interligne 1,15, numérotation des pages, en-tête RG, notes de fin avec liens hypertexte. Prêt à déposer au greffe RPVA.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PREVIEW A5 -->
+<section id="preview">
+    <div class="container">
+        <div class="preview-layout">
+            <!-- DOC A5 -->
+            <div style="display:flex;justify-content:center;">
+                <div class="doc-a5" style="aspect-ratio:3/3.2;">
+                    <div class="doc-a5-inner">
+                        <div class="doc-a5-header">
+                            <div class="doc-a5-court">COUR D'APPEL D'AIX-EN-PROVENCE</div>
+                            <div class="doc-a5-type">CONCLUSIONS D'APPELANT — N°1</div>
+                            <div class="doc-a5-rg">N° RG : 26/XXXXX · Ch. 10</div>
+                        </div>
+                        <div class="doc-a5-plaise">PLAISE À LA COUR,</div>
+                        <div class="doc-a5-section">
+                            <div class="doc-a5-stitle">I. Exposé des faits</div>
+                            <div class="doc-a5-line full"></div>
+                            <div class="doc-a5-line s"></div>
+                            <div class="doc-a5-line full"></div>
+                        </div>
+                        <div class="doc-a5-section">
+                            <div class="doc-a5-stitle">II. Procédure · Critique du jugement</div>
+                            <div class="doc-a5-line full"></div>
+                            <div class="doc-a5-line xs"></div>
+                        </div>
+                        <div class="doc-a5-section">
+                            <div class="doc-a5-stitle">III. Discussion — Syllogismes</div>
+                            <div class="doc-a5-line full blurred"></div>
+                            <div class="doc-a5-line s blurred"></div>
+                            <div class="doc-a5-line full blurred"></div>
+                        </div>
+                        <div class="doc-a5-section">
+                            <div class="doc-a5-stitle">IV. PAR CES MOTIFS · Bordereau</div>
+                            <div class="doc-a5-line full blurred"></div>
+                            <div class="doc-a5-line full blurred"></div>
+                        </div>
+                    </div>
+                    <div class="doc-a5-fade">
+                        <div class="doc-a5-lock">
+                            <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                            <span>Contenu réservé</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- TEXTE -->
+            <div>
+                <div class="overline">Structure du document</div>
+                <h2>10 sections <span class="accent">obligatoires</span></h2>
+                <p style="font-size:1rem;color:#444;line-height:1.7;margin-bottom:1rem;">Conformes aux exigences des articles 542, 562 et 954 du Code de procédure civile. Chaque section a un rôle précis dans la stratégie d'appel.</p>
+                <ul class="reveal-list">
+                    <li class="visible">
+                        <svg class="r-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+                        En-tête procédural — parties, RG, représentation
+                    </li>
+                    <li class="visible">
+                        <svg class="r-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+                        PLAISE À LA COUR — Exposé des faits
+                    </li>
+                    <li class="visible">
+                        <svg class="r-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+                        Procédure — Critique du jugement entrepris
+                    </li>
+                    <li class="locked">
+                        <svg class="r-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                        Discussion — Syllogismes En droit / En l'espèce
+                    </li>
+                    <li class="locked">
+                        <svg class="r-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                        PAR CES MOTIFS — Dispositif art. 954 CPC
+                    </li>
+                    <li class="locked">
+                        <svg class="r-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                        Justification des montants — Bordereau — Clôture
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- APPELANT / INTIME -->
+<section id="positions">
+    <div class="container">
+        <div class="section-header">
+            <span class="ink-c"></span>
+            <h2>Appelant ou Intimé</h2>
+            <p>Le skill adapte automatiquement la stratégie, la structure des demandes et le vocabulaire procédural selon la position de votre client.</p>
+        </div>
+        <div class="positions-grid">
+            <div class="position-card featured">
+                <div class="position-header">
+                    <div class="position-ref">Position · Appelant</div>
+                    <div class="position-title">Conclusions d'appelant</div>
+                    <div class="position-sub">Critique le jugement — demande l'infirmation</div>
+                </div>
+                <div class="position-body">
+                    <ul>
+                        <li>Identifie et développe les erreurs du premier juge (droit, fait, procédure, motivation)</li>
+                        <li>Formule : <em>INFIRMER le jugement en ce qu'il a… — Statuant à nouveau,</em></li>
+                        <li>Hiérarchise les moyens d'appel par force juridique décroissante</li>
+                        <li>Intègre la contre-argumentation préventive des arguments adverses forts</li>
+                        <li>Chiffre et justifie chaque poste de préjudice — art. 700 + dépens</li>
+                    </ul>
+                    <div class="position-cpc">Art. 901 CPC → Déclaration d'appel → Chefs critiqués → Art. 542 &amp; 562 CPC</div>
+                </div>
+            </div>
+            <div class="position-card">
+                <div class="position-header">
+                    <div class="position-ref">Position · Intimé</div>
+                    <div class="position-title">Conclusions d'intimé</div>
+                    <div class="position-sub">Défend le jugement — demande la confirmation</div>
+                </div>
+                <div class="position-body">
+                    <ul>
+                        <li>Défend point par point les motifs du jugement de première instance</li>
+                        <li>Formule : <em>CONFIRMER le jugement entrepris en toutes ses dispositions</em></li>
+                        <li>Réfute les moyens d'appel adverses par ordre de solidité décroissante</li>
+                        <li>Formule le cas échéant un appel incident sur les chefs non satisfaits</li>
+                        <li>Art. 700 CPC et dépens d'appel en charge de l'appelant</li>
+                    </ul>
+                    <div class="position-cpc">Art. 954 CPC — Dispositif précis, prétentions chiffrées</div>
+                </div>
+            </div>
+        </div>
+        <!-- Note récapitulatives -->
+        <div style="margin-top:2rem;background:#fff;border:3px solid var(--dark);border-radius:var(--r);padding:1.4rem 2rem;box-shadow:5px 5px 0 0 var(--bleu-f);display:flex;gap:1.5rem;align-items:flex-start;flex-wrap:wrap;">
+            <div>
+                <div class="overline">Conclusions récapitulatives</div>
+                <p style="font-size:0.88rem;color:#444;line-height:1.6;margin-top:0.3rem;">À chaque nouvelle jeu de conclusions, le skill génère des conclusions <strong>récapitulatives</strong> intégrant l'ensemble des moyens des écritures précédentes. Exigence obligatoire de la procédure d'appel (art. 954 al. 2 CPC). Numérotation des conclusions (N°1, N°2…) et date de signification automatiquement renseignées.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- WORKFLOW -->
+<section id="workflow">
+    <div class="container">
+        <div class="section-header">
+            <span class="ink-c"></span>
+            <h2>Processus en 10 étapes</h2>
+            <p>De la lecture des références à la remise du fichier .docx — une méthodologie rigoureuse qui garantit la conformité de chaque jeu de conclusions.</p>
+        </div>
+        <div class="steps-grid">
+            <div class="step-card key">
+                <div class="step-num">Étape 01</div>
+                <h3>Lecture des références</h3>
+                <p>Les 6 fichiers de référence sont lus intégralement AVANT toute rédaction. Aucun raccourci autorisé.</p>
+            </div>
+            <div class="step-card key">
+                <div class="step-num">Étape 02</div>
+                <h3>Déclaration d'appel &amp; collecte</h3>
+                <p>Lecture de la <strong>déclaration d'appel (art. 901 CPC)</strong> pour extraire les chefs du dispositif critiqués. Position, Cour, RG, jugement entrepris. La Cour ne statue que sur les chefs visés dans l'acte RPVA.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">Étape 03</div>
+                <h3>Analyse préliminaire</h3>
+                <p>Lecture intégrale des pièces. Faits établis vs contestés. Qualifications juridiques. Tableau synoptique des pièces.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">Étape 04</div>
+                <h3>Critique du jugement</h3>
+                <p>5 types d'erreurs analysés : droit, fait, procédure, motivation insuffisante, contradiction de motifs.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">Étape 05</div>
+                <h3>Vérification sources</h3>
+                <p>Chaque article et arrêt vérifié sur Légifrance / Cour de cassation avant intégration. Aucune invention tolérée.</p>
+            </div>
+        </div>
+        <div class="steps-grid-row2">
+            <div class="step-card">
+                <div class="step-num">Étape 06</div>
+                <h3>Évaluation args adverses</h3>
+                <p>Solidité cotée : très faible → très forte. Seuls les arguments forts et très forts font l'objet d'une réfutation explicite.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">Étape 07</div>
+                <h3>Architecture argumentative</h3>
+                <p>Moyens hiérarchisés par force juridique décroissante. Chaque moyen doit pouvoir emporter seul la réformation.</p>
+            </div>
+            <div class="step-card key">
+                <div class="step-num">Étape 08</div>
+                <h3>Rédaction structurée</h3>
+                <p>10 sections rédigées selon la structure codifiée. Syllogisme <em>En droit / En l'espèce</em> pour chaque moyen. Style haute tenue.</p>
+            </div>
+            <div class="step-card key">
+                <div class="step-num">Étape 09</div>
+                <h3>Génération .docx</h3>
+                <p>Document Word professionnel : marges, police Times 12pt, interligne 1,15, en-tête RG, numérotation, notes de fin.</p>
+            </div>
+            <div class="step-card">
+                <div class="step-num">Étape 10</div>
+                <h3>Contrôle qualité</h3>
+                <p>Checklist complète : références vérifiées, faits sourçés, syllogismes complets, montants calculés, bordereau cohérent.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- DOMAINES -->
+<section id="domaines">
+    <div class="dots-pattern" style="opacity:0.12;"></div>
+    <div class="container">
+        <div class="section-header">
+            <span class="ink-c" style="background:var(--bleu);"></span>
+            <h2 style="color:var(--creme);">6 domaines de droit civil</h2>
+            <div class="handwritten" style="display:block;text-align:center;color:var(--bleu-c);">nomenclature Dintilhac · critères art. 271 · loi Badinter</div>
+        </div>
+        <div class="domaines-grid">
+            <div class="domaine-card">
+                <div class="domaine-ico">🏥</div>
+                <h4>Dommage corporel</h4>
+                <p>Nomenclature Dintilhac intégrée. Développement poste par poste avec calcul détaillé. Jurisprudence spécifique à chaque chef de préjudice.</p>
+            </div>
+            <div class="domaine-card">
+                <div class="domaine-ico">⚕️</div>
+                <h4>Responsabilité médicale</h4>
+                <p>Art. L.1142-1 et s. CSP. Faute médicale, perte de chance, aléa thérapeutique ONIAM. Expertise judiciaire comme pièce centrale.</p>
+            </div>
+            <div class="domaine-card">
+                <div class="domaine-ico">👨‍👩‍👧</div>
+                <h4>Droit de la famille</h4>
+                <p>Prestation compensatoire (critères art. 271), autorité parentale, pension alimentaire. Ton adapté — préservation de la dignité des parties.</p>
+            </div>
+            <div class="domaine-card">
+                <div class="domaine-ico">📑</div>
+                <h4>Droit des contrats</h4>
+                <p>Réforme 2016 — art. 1103 et s. Inexécution, résolution, dommages-intérêts. Qualification précise des obligations.</p>
+            </div>
+            <div class="domaine-card">
+                <div class="domaine-ico">🚗</div>
+                <h4>Accident de la circulation</h4>
+                <p>Loi Badinter du 5 juillet 1985. Conducteur / non-conducteur. Implication du véhicule. Faute inexcusable cause exclusive.</p>
+            </div>
+            <div class="domaine-card">
+                <div class="domaine-ico">🏗️</div>
+                <h4>Droit de la construction</h4>
+                <p>Garantie décennale (art. 1792), biennale, parfait achèvement. Assurance DO. Désordres post-réception.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ARBORESCENCE -->
+<section id="arborescence">
+    <div class="dots-pattern" style="opacity:0.12;"></div>
+    <div class="container">
+        <div class="section-header">
+            <span class="ink-c" style="background:var(--bleu);"></span>
+            <h2 style="color:var(--creme);">Contenu du skill</h2>
+        </div>
+        <div class="tree-box">
+            <span class="tr-skill">conclusions-appel/</span><br>
+            &nbsp;&nbsp;├── <span class="tr-skill">SKILL.md</span><br>
+            &nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;<span class="tr-ref">↳ Workflow 10 étapes, règles critiques, adaptations par domaine</span><br>
+            &nbsp;&nbsp;├── <span class="tr-file">references/structure-conclusions.md</span><br>
+            &nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;<span class="tr-ref">↳ 10 sections codifiées, modèles de rédaction section par section</span><br>
+            &nbsp;&nbsp;├── <span class="tr-file">references/syllogisme-juridique.md</span><br>
+            &nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;<span class="tr-ref">↳ Méthodologie tripartite En droit / En l'espèce / Conséquence</span><br>
+            &nbsp;&nbsp;├── <span class="tr-file">references/contre-argumentation.md</span><br>
+            &nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;<span class="tr-ref">↳ Identification, évaluation et neutralisation des arguments adverses</span><br>
+            &nbsp;&nbsp;├── <span class="tr-file">references/formules-types-appel.md</span><br>
+            &nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;<span class="tr-ref">↳ Vocabulaire judiciaire : interjeté, infirmer, réformer, statuer à nouveau…</span><br>
+            &nbsp;&nbsp;├── <span class="tr-file">references/exemples-conclusions.md</span><br>
+            &nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;<span class="tr-ref">↳ 2 exemples complets annotés : responsabilité médicale, prestation compensatoire</span><br>
+            &nbsp;&nbsp;├── <span class="tr-file">references/checklist-qualite.md</span><br>
+            &nbsp;&nbsp;│&nbsp;&nbsp;&nbsp;<span class="tr-ref">↳ Contrôle qualité final + garde-fous anti-hallucination</span><br>
+            &nbsp;&nbsp;└── <span style="color:#aaa;font-size:0.78rem;">LAWIA Contrat de Licence V1</span>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+    <div class="container">
+        <div class="cta-inner">
+            <div class="price-badge">LAWIA Skills · Licence cabinet · Accès illimité</div>
+            <h2>Prêt pour votre prochain appel ?</h2>
+            <p>Des conclusions d'appel structurées en 10 sections, syllogismes vérifiés, contre-argumentation intégrée — livrées en .docx professionnel prêt à déposer au greffe RPVA.</p>
+            <div class="cta-actions">
+                <a href="/tarifs.html" class="btn btn-light">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    Obtenir le skill
+                </a>
+                <a href="/contre-argumentation/" class="btn btn-outline" style="color:var(--creme);border-color:var(--gris);">
+                    ← Contre-argumentation
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <div class="footer-logo">LawIA<span>.</span>Skills</div>
+        <p>SELARL LEXVOX AVOCATS · Barreau d'Aix-en-Provence &amp; Tarascon · www.avocat-lexvox.com</p>
+        <p style="margin-top:0.3rem;">© 2026 · LAWIA Contrat de Licence V1 · Tous droits réservés</p>
+    </div>
+</footer>
+
+</body>
+</html>

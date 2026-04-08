@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pack Gratuit — 2 Skills Claude offerts par LawIA</title>
+<meta name="description" content="Téléchargez gratuitement 2 Skills Claude pour avocats : bordereau de pièces avec 4 livrables et vérificateur de sources V1.2 anti-hallucination. Par Me Patrice Humbert.">
+<link rel="canonical" href="https://lawia.fr/pack-gratuit.html" />
+<link rel="icon" type="image/png" href="/favicon.png">
+<style>
+:root{--bleu:#6A9BCC;--bleu-f:#4A7BA8;--bleu-c:#A8C4E0;--bleu-p:#D3E5F8;--dark:#141413;--code:#1A1917;--creme:#FAF9F5;--gris:#B0AEA5;--gris-c:#E8E6DC;--negatif:#C4745B;--r:12px;--shadow:0 4px 16px rgba(20,20,19,0.10);}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;font-size:16px;}
+body{font-family:Calibri,'Gill Sans',sans-serif;background:var(--creme);color:var(--dark);line-height:1.75;}
+h1,h2,h3,h4{font-family:Georgia,serif;font-weight:700;}
+h2{font-size:2.4rem;line-height:1.2;}
+.container{max-width:880px;margin:0 auto;padding:0 2rem;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0.7rem 0;background:var(--creme);border-bottom:3px solid var(--dark);}
+nav .container{display:flex;justify-content:space-between;align-items:center;}
+.logo{display:flex;align-items:center;gap:0.5rem;font-family:Georgia,serif;font-size:1.5rem;font-weight:700;color:var(--dark);text-decoration:none;}
+.logo-img{height:32px;width:auto;}
+.logo span{color:var(--bleu);}
+.back{font-size:0.95rem;font-weight:600;color:var(--bleu-f);text-decoration:none;display:flex;align-items:center;gap:0.3rem;}
+.back:hover{color:var(--dark);}
+
+/* HERO */
+.hero-free{padding:7rem 0 3.5rem;text-align:center;background:var(--bleu-p);position:relative;overflow:hidden;}
+.hero-free::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,var(--bleu-c) 1px,transparent 1px);background-size:28px 28px;opacity:0.25;pointer-events:none;}
+.hero-free .container{position:relative;z-index:1;}
+.badge{display:inline-block;font-size:0.72rem;font-weight:700;color:var(--bleu-f);background:#fff;padding:0.3rem 0.9rem;border-radius:20px;border:2px solid var(--bleu-c);text-transform:uppercase;letter-spacing:2px;margin-bottom:1.5rem;}
+.hero-free h1{font-size:clamp(2rem,4vw,2.8rem);line-height:1.15;margin-bottom:1rem;}
+.hero-free h1 .accent{color:var(--bleu);}
+.hero-desc{font-size:1.1rem;color:var(--gris);max-width:600px;margin:0 auto 2rem;}
+
+/* SKILLS GRATUITS */
+section{padding:4rem 0;}
+.skills-free{background:#fff;}
+.skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2rem;}
+.skill-free-card{background:var(--creme);border:3px solid var(--dark);border-radius:var(--r);padding:2rem;box-shadow:var(--shadow);position:relative;}
+.skill-free-card::before{content:'GRATUIT';position:absolute;top:1rem;right:1rem;font-size:0.65rem;font-weight:700;color:#fff;background:var(--bleu-f);padding:0.2rem 0.6rem;border-radius:4px;letter-spacing:1px;}
+.skill-num{font-family:Consolas,monospace;font-size:0.7rem;color:var(--bleu-f);font-weight:700;text-transform:uppercase;letter-spacing:2px;margin-bottom:0.6rem;}
+.skill-free-card h3{font-size:1.15rem;margin-bottom:0.6rem;}
+.skill-free-card p{font-size:0.9rem;color:var(--gris);margin-bottom:1rem;}
+.skill-features{list-style:none;margin-bottom:1.5rem;}
+.skill-features li{font-size:0.85rem;padding:0.35rem 0;border-bottom:1px solid var(--gris-c);color:var(--dark);}
+.skill-features li::before{content:'— ';color:var(--bleu-f);font-weight:700;}
+
+/* FORMULAIRE */
+.form-section{background:var(--dark);color:var(--creme);text-align:center;}
+.form-section h2{color:var(--creme);}
+.form-section p{color:var(--gris);max-width:500px;margin:0.5rem auto 2rem;}
+.form-box{max-width:480px;margin:0 auto;background:var(--code);border:3px solid #2a2a28;border-radius:var(--r);padding:2.5rem;box-shadow:var(--shadow);}
+.form-box label{display:block;text-align:left;font-size:0.82rem;color:var(--gris);font-weight:600;margin-bottom:0.3rem;}
+.form-box input{width:100%;padding:0.7rem 1rem;border:2px solid #2a2a28;border-radius:4px;background:var(--dark);color:var(--creme);font-size:0.95rem;font-family:Calibri,sans-serif;margin-bottom:1rem;outline:none;transition:border 0.2s;}
+.form-box input:focus{border-color:var(--bleu);}
+.form-box input::placeholder{color:#555;}
+.btn{display:inline-flex;align-items:center;gap:0.5rem;padding:0.8rem 1.6rem;border-radius:4px;font-family:Calibri,sans-serif;font-size:0.95rem;font-weight:700;text-decoration:none;border:3px solid var(--dark);cursor:pointer;transition:all 0.2s;}
+.btn-submit{width:100%;justify-content:center;background:var(--bleu);color:#fff;border-color:var(--bleu);font-size:1rem;box-shadow:0 4px 16px rgba(106,155,204,0.18);}
+.btn-submit:hover{background:var(--bleu-f);border-color:var(--bleu-f);}
+.form-note{font-size:0.75rem;color:#555;margin-top:0.8rem;}
+
+/* CE QUE VOUS RECEVEZ */
+.details-section{background:var(--creme);}
+.checklist{max-width:600px;margin:2rem auto 0;}
+.check-item{display:flex;align-items:flex-start;gap:0.8rem;padding:1rem 0;border-bottom:1px solid var(--gris-c);}
+.check-icon{width:28px;height:28px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:var(--bleu-p);border-radius:50%;margin-top:0.1rem;}
+.check-icon svg{width:14px;height:14px;stroke:var(--bleu-f);stroke-width:3;fill:none;}
+.check-item h4{font-size:0.95rem;margin-bottom:0.15rem;}
+.check-item p{font-size:0.85rem;color:var(--gris);}
+
+/* UPGRADE */
+.upgrade{background:var(--bleu-p);text-align:center;}
+.upgrade h2{margin-bottom:0.5rem;}
+.upgrade p{color:var(--gris);max-width:500px;margin:0 auto 1.5rem;}
+.btn-primary{background:var(--dark);color:var(--creme);box-shadow:var(--shadow);}
+.btn-primary:hover{box-shadow:0 6px 24px rgba(20,20,19,0.15);}
+
+footer{background:var(--dark);padding:2rem 0;text-align:center;border-top:2px solid #2a2a28;}
+footer p{color:var(--gris);font-size:0.78rem;}
+footer a{color:var(--bleu-c);text-decoration:none;}
+
+@media(max-width:700px){.skills-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<nav><div class="container">
+  <a class="logo" href="/" title="Retour au site LAWIA"><img src="/logo lawia.png" alt="LAWIA" class="logo-img"> Law<span>IA</span></a>
+  <a class="back" href="/skills/">← Retour aux Skills</a>
+</div></nav>
+
+<!-- HERO -->
+<section class="hero-free">
+  <div class="container">
+    <div class="badge">100% gratuit</div>
+    <h1>2 Skills <span class="accent">offerts</span><br>pour tester LawIA</h1>
+    <p class="hero-desc">Découvrez la puissance des Skills Claude avec un bordereau de pièces 4 livrables et un vérificateur de sources V1.2 anti-hallucination. Aucune carte bancaire requise.</p>
+  </div>
+</section>
+
+<!-- LES 2 SKILLS GRATUITS -->
+<section class="skills-free">
+  <div class="container">
+    <div style="text-align:center;">
+      <h2>Ce que contient le pack gratuit</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-free-card">
+        <div class="skill-num">Skill gratuit 01</div>
+        <h3>Bordereau de pièces</h3>
+        <p>Analyse, classe et synthétise les pièces d'un dossier juridique. Produit systématiquement 4 livrables cohérents entre eux : tableau Word, synthèse factuelle, bordereau et PDF tamponné.</p>
+        <ul class="skill-features">
+          <li>Tableau de synthèse Word détaillé</li>
+          <li>Synthèse factuelle chronologique</li>
+          <li>Bordereau de communication format cabinet</li>
+          <li>PDF réorganisé avec tampons « Pièce n° X »</li>
+          <li>Détection des incohérences entre pièces</li>
+          <li>Commandes : /bordereau · /pieces · /analyser-dossier</li>
+        </ul>
+      </div>
+      <div class="skill-free-card">
+        <div class="skill-num">Skill gratuit 02</div>
+        <h3>Vérificateur de Sources V1.2 <span style="font-size:0.7rem;background:var(--bleu-p);color:var(--bleu-f);border:1px solid var(--bleu-c);padding:0.15rem 0.5rem;border-radius:4px;font-family:Consolas,monospace;vertical-align:middle;">V1.2</span></h3>
+        <p>Système d'analyse juridique multidimensionnelle — 5 modes opératoires. Mode 2 enrichi : triple vérification anti-hallucination (vérifier l'adversaire → contre-argumenter → s'auto-vérifier).</p>
+        <ul class="skill-features">
+          <li>Contrôle bibliographique exhaustif</li>
+          <li>Contre-argumentation avancée + triple vérification</li>
+          <li>Audit rédactionnel de vos écritures</li>
+          <li>Conformité procédurale bordereau et délais</li>
+          <li>Cartographie argumentaire visuelle</li>
+          <li>Zéro hallucination — sources officielles uniquement</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMULAIRE -->
+<section class="form-section">
+  <div class="container">
+    <h2 style="color:var(--creme);">Recevez vos 2 Skills gratuits</h2>
+    <p>Entrez votre email professionnel. Vous recevrez le Bordereau de pièces + le Vérificateur V1.2 + le guide d'installation en moins de 2 minutes.</p>
+    <form class="form-box" id="freePackForm" novalidate>
+      <label for="prenom">Prénom</label>
+      <input type="text" id="prenom" name="prenom" placeholder="Votre prénom" required>
+      <label for="email">Email professionnel</label>
+      <input type="email" id="email" name="email" placeholder="prenom@cabinet.fr" required>
+      <button class="btn btn-submit" type="submit" id="submitBtn">Recevoir mes 2 Skills gratuits →</button>
+      <div id="formMessage" style="margin-top:1rem;font-size:0.9rem;display:none;"></div>
+      <p class="form-note">Aucun spam. Vos données restent confidentielles. Désabonnement en un clic.</p>
+    </form>
+  </div>
+</section>
+
+<!-- CE QUE VOUS RECEVEZ -->
+<section class="details-section">
+  <div class="container">
+    <div style="text-align:center;">
+      <h2>Ce que vous recevez exactement</h2>
+    </div>
+    <div class="checklist">
+      <div class="check-item">
+        <div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div>
+          <h4>2 fichiers Skills (.md)</h4>
+          <p>Prêts à être glissés dans Claude Desktop. Aucune installation technique requise.</p>
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div>
+          <h4>Guide d'installation (PDF)</h4>
+          <p>Pas à pas illustré. De l'ouverture du fichier à la première utilisation en 3 minutes.</p>
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div>
+          <h4>Vidéo de prise en main</h4>
+          <p>Me Humbert vous montre en direct comment utiliser chaque Skill dans Claude.</p>
+        </div>
+      </div>
+      <div class="check-item">
+        <div class="check-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+        <div>
+          <h4>Accès au support email</h4>
+          <p>Une question ? L'équipe LawIA vous répond sous 24h.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- UPGRADE -->
+<section class="upgrade">
+  <div class="container">
+    <h2>Envie d'aller plus loin ?</h2>
+    <p>Le pack complet contient 5 Skills professionnels + 6 vidéos de formation + mises à jour incluses.</p>
+    <a class="btn btn-primary" href="/skills/tarifs.html">Découvrir le Pack complet →</a>
+  </div>
+</section>
+
+<footer><div class="container">
+  <p>LawIA — Créé par Me Patrice Humbert · <a href="https://www.lawia-formation.fr" target="_blank" rel="noopener noreferrer">lawia-formation.fr</a></p>
+  <p style="margin-top:0.5rem;font-size:0.72rem;"><a href="/skills/mentions-legales.html">Mentions légales</a> · <a href="/skills/cgv.html">CGV</a></p>
+</div></footer>
+
+<script>
+document.getElementById('freePackForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  var btn = document.getElementById('submitBtn');
+  var msg = document.getElementById('formMessage');
+  var email = document.getElementById('email').value.trim();
+  var prenom = document.getElementById('prenom').value.trim();
+
+  if (!email || !email.includes('@') || !email.includes('.')) {
+    msg.style.display = 'block';
+    msg.style.color = '#C4745B';
+    msg.textContent = 'Veuillez entrer une adresse email valide.';
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'Envoi en cours...';
+  msg.style.display = 'none';
+
+  fetch('/api/free-pack', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email: email, prenom: prenom })
+  })
+  .then(function(res) { return res.json().then(function(data) { return { ok: res.ok, data: data }; }); })
+  .then(function(result) {
+    if (result.ok && result.data.success) {
+      msg.style.display = 'block';
+      msg.style.color = '#6A9BCC';
+      msg.innerHTML = '✓ ' + result.data.message + '<br><a href="' + result.data.downloadUrl + '" style="color:#fff;text-decoration:underline;font-weight:700;">Télécharger maintenant →</a>';
+      btn.textContent = 'Envoyé ✓';
+    } else {
+      msg.style.display = 'block';
+      msg.style.color = '#C4745B';
+      msg.textContent = result.data.error || 'Une erreur est survenue. Réessayez.';
+      btn.disabled = false;
+      btn.textContent = 'Recevoir mes 2 Skills gratuits →';
+    }
+  })
+  .catch(function() {
+    msg.style.display = 'block';
+    msg.style.color = '#C4745B';
+    msg.textContent = 'Erreur de connexion. Veuillez réessayer.';
+    btn.disabled = false;
+    btn.textContent = 'Recevoir mes 2 Skills gratuits →';
+  });
+});
+</script>
+</body>
+</html>
